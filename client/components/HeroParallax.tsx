@@ -87,24 +87,24 @@ export function HeroParallax() {
     offset: ["start start", "end start"],
   });
 
-  // Smoother transforms with optimized easing and ranges
+  // Enhanced smoother transforms with extended ranges for better parallax effect
   const translateX = useTransform(
     scrollYProgress,
-    [0, 0.8, 1],
-    [0, 600, 800],
+    [0, 0.3, 0.7, 1],
+    [0, 300, 800, 1200],
     { clamp: false }
   );
   const translateXReverse = useTransform(
     scrollYProgress,
-    [0, 0.8, 1],
-    [0, -600, -800],
+    [0, 0.3, 0.7, 1],
+    [0, -300, -800, -1200],
     { clamp: false }
   );
-  const rotateX = useTransform(scrollYProgress, [0, 0.4, 0.8], [15, 5, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.3], [0.2, 0.8, 1]);
-  const rotateZ = useTransform(scrollYProgress, [0, 0.4, 0.8], [8, 3, 0]);
-  const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [-400, 100, 300]);
-  const scale = useTransform(scrollYProgress, [0, 0.4, 0.8], [1.3, 1.1, 1]);
+  const rotateX = useTransform(scrollYProgress, [0, 0.2, 0.6, 1], [15, 8, 3, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.25, 0.4], [0.1, 0.6, 0.9, 1]);
+  const rotateZ = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [8, 5, 2, 0]);
+  const translateY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [-500, -100, 200, 500]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.6, 1], [1.4, 1.2, 1.05, 1]);
 
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
@@ -113,7 +113,7 @@ export function HeroParallax() {
   return (
     <div
       ref={ref}
-      className="h-[200vh] py-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[300vh] py-32 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1200px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -122,10 +122,11 @@ export function HeroParallax() {
           rotateZ,
           translateY,
           opacity,
+          scale,
         }}
-        className="will-change-transform"
+        className="will-change-transform mt-20"
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20 will-change-transform">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-24 mb-32 will-change-transform">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -134,7 +135,7 @@ export function HeroParallax() {
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row mb-20 space-x-20 will-change-transform">
+        <motion.div className="flex flex-row mb-32 space-x-24 will-change-transform">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -143,7 +144,7 @@ export function HeroParallax() {
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 will-change-transform">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-24 mb-32 will-change-transform">
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -161,7 +162,7 @@ export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto pt-10 md:pt-20 pb-20 md:pb-40 px-4 w-full left-0 top-0">
       {/* Company Badge */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -171,7 +172,7 @@ export const Header = () => {
           <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
           Part of SOH Group
         </span>
-      </motion.div>
+      </motion.div> */}
 
       {/* Main Heading */}
       <motion.h1
@@ -244,24 +245,24 @@ export const ProductCard = ({
         x: translate,
       }}
       whileHover={{
-        y: -20,
-        scale: 1.02,
+        y: -25,
+        scale: 1.03,
       }}
       transition={{
         type: "spring",
-        stiffness: 400,
-        damping: 40,
-        mass: 0.8,
+        stiffness: 300,
+        damping: 30,
+        mass: 0.6,
       }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative flex-shrink-0 will-change-transform"
+      className="group/product h-[28rem] w-[32rem] relative flex-shrink-0 will-change-transform"
     >
-      <div className="block group-hover/product:shadow-2xl rounded-xl overflow-hidden">
+      <div className="block group-hover/product:shadow-3xl rounded-2xl overflow-hidden">
         <img
           src={product.thumbnail}
-          height="600"
-          width="600"
-          className="object-cover object-center absolute h-full w-full inset-0 transition-transform duration-700 group-hover/product:scale-105"
+          height="700"
+          width="700"
+          className="object-cover object-center absolute h-full w-full inset-0 transition-transform duration-700 group-hover/product:scale-110"
           alt={product.title}
           loading="lazy"
         />
@@ -269,23 +270,23 @@ export const ProductCard = ({
 
       {/* Enhanced overlay with gradient */}
       <motion.div
-        className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-90 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none rounded-xl"
-        transition={{ duration: 0.3 }}
+        className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-95 bg-gradient-to-t from-black/95 via-black/60 to-transparent pointer-events-none rounded-2xl"
+        transition={{ duration: 0.4 }}
       />
 
       {/* Enhanced title with better positioning */}
       <motion.h2
-        className="absolute bottom-6 left-6 opacity-0 group-hover/product:opacity-100 text-white text-xl font-semibold"
-        initial={{ y: 20 }}
-        whileHover={{ y: 0 }}
-        transition={{ duration: 0.3 }}
+        className="absolute bottom-8 left-8 opacity-0 group-hover/product:opacity-100 text-white text-2xl font-bold tracking-tight"
+        initial={{ y: 30, opacity: 0 }}
+        whileHover={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
       >
         {product.title}
       </motion.h2>
 
-      {/* Subtle border on hover */}
+      {/* Subtle border on hover with glow effect */}
       <motion.div
-        className="absolute inset-0 rounded-xl border-2 border-transparent group-hover/product:border-blue-400/50 transition-colors duration-300"
+        className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover/product:border-blue-400/60 group-hover/product:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all duration-400"
       />
     </motion.div>
   );

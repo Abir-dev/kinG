@@ -38,12 +38,12 @@ export function Navigation() {
             className="flex items-center space-x-2"
           >
             <div className="w-15 h-15 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">
-                <img src="/logo4.png" alt="Kin-G Logo" className='h-15 w-15' style={{ maxWidth: '60px', maxHeight: '60px' }} />
+              <span className="font-bold text-sm">
+                <img src="/logo4.png" alt="Kin-G Logo" className='h-15 w-15 invert dark:invert-0' style={{ maxWidth: '60px', maxHeight: '60px' }} />
               </span>
             </div> 
             <div className="flex flex-col z-20">
-              <span className="text-lg font-bold text-white bg-clip-text text-transparent leading-none ">
+              <span className="text-lg font-bold text-foreground leading-none">
                 Kin-G
               </span>
               <span className="text-xs text-muted-foreground leading-none">Technology</span>
