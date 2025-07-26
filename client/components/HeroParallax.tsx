@@ -185,7 +185,7 @@ export const Header = () => {
         </span>
         <br />
         <span className="text-2xl md:text-4xl lg:text-5xl font-semibold text-neutral-700 dark:text-neutral-300 block mt-2">
-          Technology & Consultancy
+          Technology 
         </span>
       </motion.h1>
 

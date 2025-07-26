@@ -38,7 +38,7 @@ export function About() {
             </h2>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              <strong className="text-neon-cyan">Kin-G Technology & Consultancy Pvt. Ltd.</strong> is the core
+              <strong className="text-neon-cyan">Kin-G Technology  Pvt. Ltd.</strong> is the core
               EdTech and B2B arm of SOH Group, providing comprehensive business solutions that drive growth and innovation.
             </p>
 

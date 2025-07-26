@@ -1,6 +1,6 @@
-# Kin-G Technology & Consultancy Website
+# Kin-G Technology  Website
 
-A modern, responsive multi-page website for Kin-G Technology & Consultancy Pvt. Ltd., built with React, TypeScript, and Tailwind CSS.
+A modern, responsive multi-page website for Kin-G Technology  Pvt. Ltd., built with React, TypeScript, and Tailwind CSS.
 
 ## Features
 

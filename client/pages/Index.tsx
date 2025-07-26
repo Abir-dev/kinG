@@ -101,7 +101,7 @@ export default function Index() {
               viewport={{ once: true }}
               className="text-muted-foreground mb-2"
             >
-              © 2025 Kin-G Technology & Consultancy Pvt. Ltd. All rights reserved.
+              © 2025 Kin-G Technology  Pvt. Ltd. All rights reserved.
             </motion.p>
             <motion.p
               initial={{ opacity: 0 }}

@@ -222,7 +222,7 @@ export default function AboutPage() {
                 </span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                <strong className="text-neon-cyan">Kin-G Technology & Consultancy Pvt. Ltd.</strong> was born from a vision 
+                <strong className="text-neon-cyan">Kin-G Technology  Pvt. Ltd.</strong> was born from a vision 
                 to bridge the gap between traditional business practices and modern technological solutions. As the EdTech and 
                 B2B arm of SOH Group, we have been at the forefront of innovation since our inception.
               </p>
