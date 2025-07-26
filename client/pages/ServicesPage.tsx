@@ -25,20 +25,30 @@ const services = [
     description: "Professional outbound calling services with trained agents to boost your sales conversion rates and customer engagement.",
     icon: IconPhone,
     gradient: "from-neon-blue to-neon-cyan",
-    detailedDescription: "Our telecalling services are designed to maximize your sales potential through professional, trained agents who understand your business needs. We provide comprehensive inside sales support that converts leads into customers.",
+    detailedDescription: "Our telecalling services leverage advanced AI-powered dialing systems and professionally trained sales agents to maximize your sales potential. We provide comprehensive inside sales support with real-time analytics, automated lead scoring, and intelligent call routing to ensure optimal conversion rates.",
     features: [
-      "Professional Sales Agents",
-      "Call Analytics & Reporting",
-      "Lead Qualification",
-      "Follow-up Management",
-      "CRM Integration",
-      "Performance Tracking"
+      "AI-Powered Predictive Dialing",
+      "Professional Sales Agents (Certified)",
+      "Real-time Call Analytics & Reporting",
+      "Advanced Lead Qualification & Scoring",
+      "Automated Follow-up Management",
+      "Multi-CRM Integration (Salesforce, HubSpot, Zoho)",
+      "Performance Tracking & KPI Dashboards",
+      "Call Recording & Quality Assurance",
+      "A/B Testing for Scripts",
+      "Omnichannel Communication (Voice, SMS, Email)",
+      "Lead Nurturing Campaigns",
+      "Conversion Rate Optimization"
     ],
     benefits: [
       "Increased conversion rates by up to 40%",
-      "Reduced customer acquisition costs",
+      "Reduced customer acquisition costs by 35%",
       "24/7 customer support coverage",
-      "Scalable team based on demand"
+      "Scalable team based on demand",
+      "99.9% uptime guarantee",
+      "GDPR & Data Security Compliant",
+      "Multi-language support available",
+      "Custom reporting and insights"
     ],
     packages: [
       {
@@ -70,20 +80,30 @@ const services = [
     description: "Strategic lead generation campaigns to identify and capture high-quality prospects for your business.",
     icon: IconTargetArrow,
     gradient: "from-neon-purple to-neon-pink",
-    detailedDescription: "Our lead generation services utilize advanced targeting strategies and multi-channel approaches to identify and engage high-quality prospects. We focus on quality over quantity to ensure maximum ROI.",
+    detailedDescription: "Our lead generation services utilize AI-powered prospecting tools, advanced targeting algorithms, and multi-channel automation to identify and engage high-quality prospects. We combine data science with human expertise to deliver leads that convert at industry-leading rates.",
     features: [
-      "B2B Lead Mining",
-      "Prospect Research",
-      "Email Campaigns",
-      "LinkedIn Outreach",
-      "Content Marketing",
-      "Social Media Lead Gen"
+      "AI-Powered B2B Lead Mining & Enrichment",
+      "Advanced Prospect Research & Verification",
+      "Automated Email Campaign Sequences",
+      "LinkedIn Sales Navigator Integration",
+      "Content Marketing & Lead Magnets",
+      "Social Media Lead Generation",
+      "Intent Data & Behavioral Tracking",
+      "Lead Scoring & Qualification Matrix",
+      "Multi-touch Attribution Modeling",
+      "Competitor Analysis & Market Intelligence",
+      "Custom Landing Page Creation",
+      "Marketing Automation Integration"
     ],
     benefits: [
       "300% increase in qualified leads",
       "Reduced cost per lead by 50%",
       "Higher quality prospect database",
-      "Improved sales pipeline velocity"
+      "Improved sales pipeline velocity",
+      "Real-time lead validation & verification",
+      "GDPR compliant data collection",
+      "Advanced analytics & ROI tracking",
+      "Custom audience segmentation"
     ],
     packages: [
       {
@@ -115,20 +135,32 @@ const services = [
     description: "Seamless CRM integration and optimized call flow design to streamline your sales processes.",
     icon: IconDatabase,
     gradient: "from-neon-green to-neon-cyan",
-    detailedDescription: "We specialize in integrating and optimizing CRM systems to create efficient sales workflows. Our solutions ensure seamless data flow, automated processes, and improved team productivity.",
+    detailedDescription: "We specialize in enterprise-grade CRM integration and optimization, creating intelligent sales workflows that leverage AI automation, advanced analytics, and seamless third-party integrations. Our solutions transform your sales operations with smart data flow, predictive insights, and enhanced team productivity.",
     features: [
-      "CRM Configuration",
-      "Workflow Automation",
-      "Data Migration",
-      "Call Routing Setup",
-      "Integration Testing",
-      "Team Training"
+      "Multi-Platform CRM Configuration (Salesforce, HubSpot, Pipedrive, Zoho)",
+      "AI-Powered Workflow Automation",
+      "Secure Data Migration & Cleansing",
+      "Intelligent Call Routing & Distribution",
+      "API Integration & Custom Connectors",
+      "Advanced Pipeline Management",
+      "Automated Lead Scoring & Nurturing",
+      "Real-time Sync & Data Validation",
+      "Custom Dashboard & Reporting",
+      "Mobile CRM Optimization",
+      "Integration Testing & QA",
+      "Comprehensive Team Training & Support",
+      "Performance Monitoring & Optimization",
+      "Third-party Tool Integrations (Email, Calendar, VoIP)"
     ],
     benefits: [
       "50% reduction in data entry time",
-      "Improved lead tracking accuracy",
+      "Improved lead tracking accuracy by 90%",
       "Automated follow-up processes",
-      "Enhanced team collaboration"
+      "Enhanced team collaboration & visibility",
+      "Real-time performance insights",
+      "Reduced manual errors by 85%",
+      "Faster deal closure rates",
+      "Scalable architecture for growth"
     ],
     packages: [
       {
@@ -160,20 +192,32 @@ const services = [
     description: "Full-stack development services for modern, responsive websites and mobile applications.",
     icon: IconCode,
     gradient: "from-neon-cyan to-neon-purple",
-    detailedDescription: "Our development team creates cutting-edge websites and mobile applications using the latest technologies. We focus on performance, scalability, and user experience to deliver solutions that drive business growth.",
+    detailedDescription: "Our elite development team creates cutting-edge, enterprise-grade websites and mobile applications using the latest technologies and frameworks. We specialize in high-performance, scalable solutions with advanced security, AI integration, and cloud-native architecture that drive measurable business growth.",
     features: [
-      "React/Next.js Development",
-      "Mobile App Development",
-      "E-commerce Solutions",
-      "Custom Software",
-      "API Development",
-      "Cloud Deployment"
+      "Modern Frontend Development (React, Next.js, Vue.js, Angular)",
+      "Cross-Platform Mobile Apps (React Native, Flutter)",
+      "Advanced E-commerce Solutions (Shopify Plus, WooCommerce, Custom)",
+      "Custom Enterprise Software Development",
+      "RESTful & GraphQL API Development",
+      "Microservices Architecture",
+      "Cloud-Native Deployment (AWS, Azure, GCP)",
+      "Progressive Web Apps (PWA)",
+      "AI/ML Integration & Chatbots",
+      "Blockchain & Web3 Development",
+      "DevOps & CI/CD Pipeline Setup",
+      "Performance Optimization & Monitoring",
+      "Security Auditing & Penetration Testing",
+      "Third-party Integrations & Payment Gateways"
     ],
     benefits: [
-      "Fast loading, responsive designs",
-      "Scalable architecture",
-      "SEO-optimized websites",
-      "Cross-platform compatibility"
+      "Lightning-fast loading speeds (< 2 seconds)",
+      "Infinitely scalable cloud architecture",
+      "SEO-optimized for top search rankings",
+      "Cross-platform & device compatibility",
+      "99.9% uptime guarantee",
+      "Advanced security & data protection",
+      "Real-time analytics & insights",
+      "Future-proof technology stack"
     ],
     packages: [
       {
@@ -205,20 +249,32 @@ const services = [
     description: "Comprehensive social media strategy and management to build your brand presence across platforms.",
     icon: IconBrandInstagram,
     gradient: "from-neon-pink to-neon-purple",
-    detailedDescription: "Our social media experts create engaging content strategies that build brand awareness, increase engagement, and drive conversions across all major social platforms.",
+    detailedDescription: "Our social media experts leverage AI-powered content creation, advanced analytics, and data-driven strategies to build powerful brand presence across all major platforms. We combine creative storytelling with performance marketing to drive engagement, conversions, and measurable ROI.",
     features: [
-      "Content Creation",
-      "Community Management",
-      "Brand Strategy",
-      "Analytics & Reporting",
-      "Influencer Partnerships",
-      "Paid Social Advertising"
+      "AI-Powered Content Creation & Curation",
+      "Multi-Platform Management (Instagram, LinkedIn, Twitter, Facebook, TikTok, YouTube)",
+      "Advanced Community Management & Engagement",
+      "Data-Driven Brand Strategy Development",
+      "Real-time Analytics & Performance Reporting",
+      "Influencer Partnership & Campaign Management",
+      "Paid Social Advertising & Optimization",
+      "User-Generated Content Campaigns",
+      "Social Listening & Reputation Management",
+      "Video Content Production & Editing",
+      "Social Commerce Integration",
+      "Crisis Management & PR Support",
+      "Competitor Analysis & Benchmarking",
+      "Custom Hashtag Strategy & Trending Analysis"
     ],
     benefits: [
-      "5x increase in engagement",
-      "Growing follower base",
-      "Improved brand awareness",
-      "Higher conversion rates"
+      "5x increase in engagement rates",
+      "Exponential follower growth (organic & targeted)",
+      "Improved brand awareness & recognition",
+      "Higher conversion rates & ROI",
+      "Enhanced customer loyalty & retention",
+      "Real-time brand monitoring & insights",
+      "Viral content potential & reach amplification",
+      "Cross-platform audience growth"
     ],
     packages: [
       {
@@ -250,20 +306,32 @@ const services = [
     description: "Data-driven digital marketing strategies and SEO optimization to increase your online visibility.",
     icon: IconTrendingUp,
     gradient: "from-neon-blue to-neon-green",
-    detailedDescription: "Our digital marketing services combine SEO, content marketing, PPC, and analytics to create comprehensive campaigns that drive traffic, generate leads, and increase revenue.",
+    detailedDescription: "Our comprehensive digital marketing services leverage AI-powered SEO tools, advanced PPC automation, and data-driven content strategies to create high-performance campaigns that dominate search rankings, drive qualified traffic, and maximize revenue growth across all digital channels.",
     features: [
-      "SEO Optimization",
-      "Google Ads Management",
-      "Content Marketing",
-      "Performance Analytics",
-      "Conversion Optimization",
-      "Email Marketing"
+      "Advanced Technical & On-Page SEO Optimization",
+      "AI-Powered Google Ads & PPC Management",
+      "Strategic Content Marketing & Blogging",
+      "Comprehensive Performance Analytics & Reporting",
+      "Conversion Rate Optimization (CRO)",
+      "Email Marketing Automation & Segmentation",
+      "Local SEO & Google My Business Optimization",
+      "Link Building & Digital PR Campaigns",
+      "Voice Search & Mobile SEO",
+      "E-commerce SEO & Product Optimization",
+      "Competitor Analysis & Market Research",
+      "Schema Markup & Rich Snippets Implementation",
+      "Core Web Vitals & Page Speed Optimization",
+      "Multi-channel Attribution & ROI Tracking"
     ],
     benefits: [
       "200% increase in organic traffic",
       "50% reduction in cost per click",
-      "Higher search rankings",
-      "Improved ROI on ad spend"
+      "Top 3 search rankings for target keywords",
+      "Improved ROI on ad spend (300%+ ROAS)",
+      "Enhanced user experience & engagement",
+      "Increased brand visibility & authority",
+      "Higher quality lead generation",
+      "Comprehensive competitive advantage"
     ],
     packages: [
       {
@@ -318,7 +386,7 @@ export default function ServicesPage() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 px-4 dark:electrifying-bg">
+      <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -437,7 +505,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 px-4 bg-secondary/30 dark:electrifying-bg">
+      <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

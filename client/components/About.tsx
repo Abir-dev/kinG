@@ -17,7 +17,7 @@ const services = [
 
 export function About() {
   return (
-    <section className="py-20 px-4 bg-secondary/30 dark:electrifying-bg">
+    <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -26,7 +26,7 @@ export function About() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-6">
+            <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-6">
               Part of SOH Group
             </div>
 

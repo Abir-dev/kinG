@@ -148,7 +148,7 @@ export default function ContactPage() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 px-4 dark:electrifying-bg">
+      <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -383,7 +383,7 @@ export default function ContactPage() {
       </section>
 
       {/* Office Locations */}
-      <section className="py-20 px-4 bg-secondary/30 dark:electrifying-bg">
+      <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -568,7 +568,7 @@ export default function ContactPage() {
       </section>
 
       {/* Emergency Contact */}
-      <section className="py-20 px-4 bg-secondary/30 dark:electrifying-bg">
+      <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
