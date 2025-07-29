@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
-import { 
-  IconMail, 
-  IconPhone, 
-  IconMapPin, 
+import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {
+  IconMail,
+  IconPhone,
+  IconMapPin,
   IconSend,
   IconClock,
   IconBrandLinkedin,
@@ -132,6 +134,7 @@ const workingHours = [
 
 const serviceCategories = [
   "Launchpad Career Program",
+  "Career Opportunities",
   "Telecalling & Sales Support",
   "Lead Generation",
   "CRM Integration",
@@ -145,6 +148,26 @@ const serviceCategories = [
 ];
 
 export default function ContactPage() {
+  const location = useLocation();
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const state = location.state as { jobTitle?: string; subject?: string } | null;
+    if (state?.jobTitle) {
+      setSubject(`Job Application - ${state.jobTitle}`);
+      setMessage(`Hello,
+
+I am interested in applying for the ${state.jobTitle} position at Kin-G Technology. I would like to learn more about this opportunity and discuss how my skills and experience align with your requirements.
+
+Please let me know the next steps in the application process.
+
+Best regards,`);
+    } else if (state?.subject) {
+      setSubject(state.subject);
+    }
+  }, [location.state]);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -244,12 +267,24 @@ export default function ContactPage() {
                   
                   <div>
                     <label className="text-sm font-medium mb-2 block">Service Interest</label>
-                    <select className="w-full px-3 py-2 bg-background/50 border border-border/40 rounded-md focus:border-neon-cyan/50 focus:outline-none">
-                      <option value="">Select a service</option>
-                      {serviceCategories.map((category) => (
-                        <option key={category} value={category}>{category}</option>
-                      ))}
-                    </select>
+                    {subject.includes('Job Application') ? (
+                      <Input
+                        value={subject}
+                        readOnly
+                        className="bg-neon-cyan/10 border-neon-cyan/30 text-neon-cyan font-medium"
+                      />
+                    ) : (
+                      <select
+                        className="w-full px-3 py-2 bg-background/50 border border-border/40 rounded-md focus:border-neon-cyan/50 focus:outline-none"
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
+                      >
+                        <option value="">Select a service</option>
+                        {serviceCategories.map((category) => (
+                          <option key={category} value={category}>{category}</option>
+                        ))}
+                      </select>
+                    )}
                   </div>
                   
                   <div>
@@ -259,9 +294,11 @@ export default function ContactPage() {
                   
                   <div>
                     <label className="text-sm font-medium mb-2 block">Message *</label>
-                    <Textarea 
+                    <Textarea
                       placeholder="Tell us about your requirements, goals, or questions..."
-                      rows={6}
+                      rows={8}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                       className="bg-background/50 border-border/40 focus:border-neon-cyan/50"
                     />
                   </div>

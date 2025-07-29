@@ -11,6 +11,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
 import AboutPage from "./pages/AboutPage";
+import CareersPage from "./pages/CareersPage";
 import LaunchpadPage from "./pages/LaunchpadPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
@@ -26,6 +27,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<HomePage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/careers" element={<CareersPage />} />
         <Route path="/launchpad" element={<LaunchpadPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFound />} />
