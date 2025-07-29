@@ -110,7 +110,7 @@ export function Navigation() {
               size="sm"
               className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity"
             >
-              Get Started
+              Contact Us
             </Button>
           </motion.div>
 
@@ -157,7 +157,7 @@ export function Navigation() {
               size="sm"
               className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity mt-4"
             >
-              Get Started
+              Contact Us
             </Button>
           </div>
         </motion.div>

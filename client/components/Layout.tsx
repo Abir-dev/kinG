@@ -246,8 +246,8 @@ export function Layout({ children }: LayoutProps) {
               >
                 <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm text-muted-foreground">
                   <span>© 2025 Kin-G Technology Pvt. Ltd. All rights reserved.</span>
-                  <span className="hidden md:block">•</span>
-                  <span>Part of SOH Group</span>
+                  {/* <span className="hidden md:block">•</span>
+                  <span>Part of SOH Group</span> */}
                 </div>
                 
                 <div className="flex items-center space-x-6 text-sm">

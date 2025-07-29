@@ -181,7 +181,7 @@ export const Header = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
           Kin-G
         </span>
         <br />
@@ -197,7 +197,7 @@ export const Header = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        The <span className="font-semibold text-blue-600 dark:text-blue-400">EdTech and B2B arm</span> of SOH Group, delivering
+        The <span className="font-semibold text-blue-600 dark:text-blue-400">EdTech and B2B arm</span> , delivering
         comprehensive telecalling, CRM integration, development services, and our flagship{" "}
         <span className="font-semibold text-purple-600 dark:text-purple-400">Launchpad Career Development Program</span>
       </motion.p>
