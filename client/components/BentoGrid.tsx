@@ -81,6 +81,7 @@ export function BentoGrid() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
+
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
             Our{" "}
             <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">

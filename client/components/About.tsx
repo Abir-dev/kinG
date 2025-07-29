@@ -26,9 +26,6 @@ export function About() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-6">
-              Part of SOH Group
-            </div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               About{" "}
@@ -38,8 +35,7 @@ export function About() {
             </h2>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              <strong className="text-neon-cyan">Kin-G Technology  Pvt. Ltd.</strong> is the core
-              EdTech and B2B arm of SOH Group, providing comprehensive business solutions that drive growth and innovation.
+              <strong className="text-neon-cyan">Kin-G Technology  Pvt. Ltd.</strong> provides comprehensive business solutions that drive growth and innovation.
             </p>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">

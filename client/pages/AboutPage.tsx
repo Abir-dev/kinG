@@ -22,7 +22,7 @@ const companyStats = [
   {
     number: "2019",
     label: "Founded",
-    description: "Established as part of SOH Group",
+    description: "Established in 2019",
     icon: IconCalendar
   },
   {
@@ -49,7 +49,7 @@ const timeline = [
   {
     year: "2019",
     title: "Foundation",
-    description: "Kin-G Technology was established as the EdTech and B2B arm of SOH Group, focusing on innovative solutions for career development and business growth."
+    description: "Kin-G Technology was established in 2019, focusing on innovative solutions for career development and business growth."
   },
   {
     year: "2020",
@@ -168,7 +168,7 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-6">
-              Part of SOH Group
+              About Us
             </div>
             <h1 className="text-4xl md:text-7xl font-bold mb-6">
               About{" "}
@@ -177,8 +177,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Transforming businesses and careers through innovative EdTech solutions and comprehensive B2B services. 
-              We are the driving force behind SOH Group's commitment to growth and excellence.
+              Transforming businesses and careers through innovative EdTech solutions and comprehensive B2B services.
             </p>
           </motion.div>
 
@@ -223,11 +222,9 @@ export default function AboutPage() {
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                 <strong className="text-neon-cyan">Kin-G Technology  Pvt. Ltd.</strong> was born from a vision 
-                to bridge the gap between traditional business practices and modern technological solutions. As the EdTech and 
-                B2B arm of SOH Group, we have been at the forefront of innovation since our inception.
+                to bridge the gap between traditional business practices and modern technological solutions. We have been at the forefront of innovation since our inception.
               </p>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Our journey began with a simple yet powerful mission: to empower businesses with cutting-edge technology 
                 solutions while simultaneously preparing the next generation of professionals for the evolving job market.
               </p>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">

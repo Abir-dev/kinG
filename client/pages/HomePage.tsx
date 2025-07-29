@@ -98,8 +98,7 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              As the EdTech and B2B arm of SOH Group, Kin-G Technology delivers comprehensive solutions 
-              that drive business growth and accelerate career development through innovation and excellence.
+              Kin-G Technology delivers comprehensive solutions that drive business growth and accelerate career development through innovation and excellence.
             </p>
           </motion.div>
 

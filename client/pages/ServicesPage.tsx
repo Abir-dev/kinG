@@ -394,6 +394,9 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
             className="mb-16"
           >
+            <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-6">
+              Services
+            </div>
             <h1 className="text-4xl md:text-7xl font-bold mb-6">
               Our{" "}
               <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">

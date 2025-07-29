@@ -61,8 +61,7 @@ export function Layout({ children }: LayoutProps) {
                 </div>
                 
                 <p className="text-muted-foreground text-base leading-relaxed mb-6 max-w-md">
-                  The EdTech and B2B arm of SOH Group, delivering comprehensive technology solutions, 
-                  career development programs, and business consulting services.
+                  Delivering comprehensive technology solutions, career development programs, and business consulting services.
                 </p>
                 
                 {/* Stats */}
@@ -246,8 +245,6 @@ export function Layout({ children }: LayoutProps) {
               >
                 <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm text-muted-foreground">
                   <span>© 2025 Kin-G Technology Pvt. Ltd. All rights reserved.</span>
-                  {/* <span className="hidden md:block">•</span>
-                  <span>Part of SOH Group</span> */}
                 </div>
                 
                 <div className="flex items-center space-x-6 text-sm">

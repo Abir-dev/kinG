@@ -168,10 +168,6 @@ export const Header = () => {
         transition={{ duration: 0.6 }}
         className="mb-8"
       >
-        <span className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 border border-blue-200 dark:border-blue-800 text-sm font-medium text-blue-700 dark:text-blue-300">
-          <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-          Part of SOH Group
-        </span>
       </motion.div> */}
 
       {/* Main Heading */}
