@@ -6,9 +6,9 @@ import { Button } from './ui/button';
 import { ThemeToggle } from './ThemeToggle';
 
 const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
   { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Careers', href: '/careers' }, // Added Careers link  
   { name: 'Launchpad', href: '/launchpad' },
   { name: 'Contact', href: '/contact' },
 ];
@@ -37,17 +37,19 @@ export function Navigation() {
             transition={{ delay: 0.2 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-15 h-15 rounded-lg flex items-center justify-center">
-              <span className="font-bold text-sm">
-                <img src="/logo4.png" alt="Kin-G Logo" className='h-15 w-15 invert dark:invert-0' style={{ maxWidth: '60px', maxHeight: '60px' }} />
-              </span>
-            </div> 
-            <div className="flex flex-col z-20">
-              <span className="text-lg font-bold text-foreground leading-none">
-                Kin-G
-              </span>
-              <span className="text-xs text-muted-foreground leading-none">Technology</span>
-            </div>
+            <Link to="/" className="flex items-center space-x-2">
+              <div className="w-16 h-16 rounded-lg flex items-center justify-center">
+                <span className="font-bold text-sm">
+                  <img src="/logo4.png" alt="Kin-G Logo" className="w-16 h-16 invert dark:invert-0" />
+                </span>
+              </div>
+              <div className="flex flex-col z-20">
+                <span className="text-lg font-bold text-foreground leading-none">
+                  Kin-G
+                </span>
+                <span className="text-xs text-muted-foreground leading-none">Technology</span>
+              </div>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -106,12 +108,14 @@ export function Navigation() {
             className="hidden md:flex items-center space-x-4"
           >
             <ThemeToggle />
-            <Button
-              size="sm"
-              className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity"
-            >
-              Contact Us
-            </Button>
+            <Link to="/contact">
+              <Button
+                size="sm"
+                className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity"
+              >
+                Contact Us
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -153,12 +157,14 @@ export function Navigation() {
                 {item.name}
               </Link>
             ))}
-            <Button
-              size="sm"
-              className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity mt-4"
-            >
-              Contact Us
-            </Button>
+            <Link to="/contact" onClick={closeMenu}>
+              <Button
+                size="sm"
+                className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity mt-4"
+              >
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </div>
