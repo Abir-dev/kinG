@@ -15,10 +15,81 @@ const services = [
   { name: "Career Training", icon: IconBulb, color: "text-neon-pink" },
 ];
 
+import { useRef, useEffect, useState } from "react";
+
 export function About() {
+  // Timeline animation state
+  const lineRef = useRef<HTMLDivElement>(null);
+  const [lineHeight, setLineHeight] = useState(0);
+  // Dots positions (percentages of section height)
+  const dotPercents = [0, 0.33, 0.66, 1];
+  const [activeDot, setActiveDot] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!lineRef.current) return;
+      const section = lineRef.current.parentElement;
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      // Calculate scroll progress within section
+      let progress = 1 - Math.max(0, Math.min(1, rect.top / windowHeight));
+      if (rect.bottom < 0 || rect.top > windowHeight) progress = 0;
+
+      // Find which dot we are at
+      let dotIdx = 0;
+      for (let i = 0; i < dotPercents.length; i++) {
+        if (progress >= dotPercents[i]) dotIdx = i;
+      }
+      setActiveDot(dotIdx);
+
+      // Animate line to next dot
+      let nextDotPercent = dotPercents[dotIdx];
+      // If scrolling between dots, animate line between them
+      if (dotIdx < dotPercents.length - 1) {
+        const start = dotPercents[dotIdx];
+        const end = dotPercents[dotIdx + 1];
+        const localProgress = Math.max(0, Math.min(1, (progress - start) / (end - start)));
+        nextDotPercent = start + localProgress * (end - start);
+      }
+      setLineHeight(nextDotPercent * rect.height);
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
+        {/* Our Journey Timeline */}
+        <div className="relative mb-16" style={{ minHeight: 300 }}>
+          <h2 className="text-3xl font-bold mb-8">Our Journey</h2>
+          <div className="absolute left-8 top-0 h-full flex flex-col items-center" style={{ width: 32 }}>
+            {/* Glowing Dots and Animated Line */}
+            <div className="relative w-4 h-full flex flex-col items-center">
+              {dotPercents.map((percent, idx) => (
+                <>
+                  {/* Dot */}
+                  <div
+                    key={"dot-" + idx}
+                    style={{ position: "absolute", top: `calc(${percent * 100}% - 8px)` }}
+                    className={`w-4 h-4 rounded-full ${idx === 0 ? "bg-neon-cyan" : idx === dotPercents.length - 1 ? "bg-neon-purple" : "bg-neon-green"} shadow-[0_0_16px_4px_rgba(0,255,255,0.7)]`}
+                  />
+                </>
+              ))}
+              {/* Animated Line */}
+              <div
+                ref={lineRef}
+                style={{ position: "absolute", left: "50%", top: 0, transform: "translateX(-50%)", height: `${lineHeight}px`, transition: "height 0.3s cubic-bezier(.4,0,.2,1)" }}
+                className="w-1 bg-gradient-to-b from-neon-cyan to-neon-purple"
+              />
+            </div>
+          </div>
+          <div className="ml-20 pt-2">
+            <p className="text-lg text-muted-foreground">Kin-G Technology's journey is marked by innovation, growth, and a commitment to excellence. Scroll to see our story unfold!</p>
+          </div>
+        </div>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
