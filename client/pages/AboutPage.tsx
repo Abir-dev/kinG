@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  IconBuilding, 
-  IconUsers, 
-  IconTrendingUp, 
-  IconRocket, 
-  IconBrandLinkedin, 
+import {
+  IconBuilding,
+  IconUsers,
+  IconTrendingUp,
+  IconRocket,
+  IconBrandLinkedin,
   IconMail,
   IconTarget,
   IconHeart,
@@ -17,6 +17,7 @@ import {
 import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { AnimatedTestimonials } from '../components/ui/animated-testimonials';
 
 const companyStats = [
   {
@@ -78,48 +79,48 @@ const timeline = [
   }
 ];
 
-const team = [
+const teamMembers = [
   {
+    quote: "20+ years of experience in EdTech and business development. Led multiple successful ventures in the education and technology sectors.",
     name: "Rajesh Gupta",
-    role: "Chief Executive Officer",
-    bio: "20+ years of experience in EdTech and business development. Led multiple successful ventures in the education and technology sectors.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    linkedin: "#"
+    designation: "Chief Executive Officer",
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    linkedin: "https://linkedin.com/in/rajesh-gupta"
   },
   {
+    quote: "Expert in full-stack development and system architecture. Passionate about creating scalable solutions that drive business growth.",
     name: "Priya Sharma",
-    role: "Head of Technology",
-    bio: "Expert in full-stack development and system architecture. Passionate about creating scalable solutions that drive business growth.",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
-    linkedin: "#"
+    designation: "Head of Technology",
+    src: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
+    linkedin: "https://linkedin.com/in/priya-sharma"
   },
   {
+    quote: "Specializes in operational excellence and process optimization. Ensures quality delivery across all service verticals.",
     name: "Amit Kumar",
-    role: "Director of Operations",
-    bio: "Specializes in operational excellence and process optimization. Ensures quality delivery across all service verticals.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    linkedin: "#"
+    designation: "Director of Operations",
+    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    linkedin: "https://linkedin.com/in/amit-kumar"
   },
   {
+    quote: "Career counseling expert with a track record of successfully placing 1000+ professionals in their dream jobs.",
     name: "Sneha Patel",
-    role: "Head of Career Development",
-    bio: "Career counseling expert with a track record of successfully placing 1000+ professionals in their dream jobs.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-    linkedin: "#"
+    designation: "Head of Career Development",
+    src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+    linkedin: "https://linkedin.com/in/sneha-patel"
   },
   {
+    quote: "Drives business growth and client relationships. Expert in B2B sales and strategic partnerships.",
     name: "Vikram Singh",
-    role: "Business Development Head",
-    bio: "Drives business growth and client relationships. Expert in B2B sales and strategic partnerships.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
-    linkedin: "#"
+    designation: "Business Development Head",
+    src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
+    linkedin: "https://linkedin.com/in/vikram-singh"
   },
   {
+    quote: "Digital marketing strategist with expertise in SEO, social media, and performance marketing campaigns.",
     name: "Anita Reddy",
-    role: "Digital Marketing Director",
-    bio: "Digital marketing strategist with expertise in SEO, social media, and performance marketing campaigns.",
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face",
-    linkedin: "#"
+    designation: "Digital Marketing Director",
+    src: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face",
+    linkedin: "https://linkedin.com/in/anita-reddy"
   }
 ];
 
@@ -399,41 +400,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-              >
-                <Card className="group bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500 overflow-hidden">
-                  <div className="relative">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <Button size="sm" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
-                        <IconBrandLinkedin className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="text-xl">{member.name}</CardTitle>
-                    <CardDescription className="text-neon-purple font-medium">{member.role}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">{member.bio}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <AnimatedTestimonials testimonials={teamMembers} />
         </div>
       </section>
 
