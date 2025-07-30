@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   IconBuilding,
   IconUsers,
@@ -18,6 +21,12 @@ import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { AnimatedTestimonials } from '../components/ui/animated-testimonials';
+import { useGSAPAnimations } from '../hooks/useGSAPAnimations';
+
+// Register GSAP plugins
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const companyStats = [
   {
@@ -157,6 +166,123 @@ const achievements = [
 ];
 
 export default function AboutPage() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const timelineLineRef = useRef<HTMLDivElement>(null);
+  const timelineDotsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const timelineCardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  
+  // Initialize GSAP animations
+  useGSAPAnimations();
+
+  useEffect(() => {
+    if (!timelineRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Animate the main timeline line
+      gsap.fromTo(timelineLineRef.current, 
+        { 
+          scaleY: 0,
+          transformOrigin: "top center"
+        },
+        {
+          scaleY: 1,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: timelineRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: 1
+          }
+        }
+      );
+
+      // Animate cards and dots
+      timelineCardsRef.current.forEach((card, index) => {
+        if (!card) return;
+
+        const isLeft = index % 2 === 0;
+        const dot = timelineDotsRef.current[index];
+
+        // Card animations - slide from left or right
+        gsap.fromTo(card,
+          {
+            opacity: 0,
+            x: isLeft ? -150 : 150,
+            scale: 0.8
+          },
+          {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              end: "bottom 15%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+
+        // Dot glow animation with delay
+        if (dot) {
+          gsap.fromTo(dot,
+            {
+              scale: 0,
+              opacity: 0
+            },
+            {
+              scale: 1,
+              opacity: 1,
+              duration: 0.8,
+              ease: "back.out(2)",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 75%",
+                toggleActions: "play none none reverse"
+              }
+            }
+          );
+
+          // Add pulsing glow effect
+          gsap.to(dot, {
+            boxShadow: "0 0 30px rgba(6, 182, 212, 0.8), 0 0 60px rgba(6, 182, 212, 0.4)",
+            scale: 1.2,
+            duration: 2,
+            ease: "power2.inOut",
+            repeat: -1,
+            yoyo: true,
+            scrollTrigger: {
+              trigger: card,
+              start: "top 75%",
+              toggleActions: "play pause resume pause"
+            }
+          });
+        }
+      });
+
+      // Progressive line drawing effect
+      const progressLine = gsap.timeline({
+        scrollTrigger: {
+          trigger: timelineRef.current,
+          start: "top center",
+          end: "bottom center",
+          scrub: 1
+        }
+      });
+
+      progressLine.to(timelineLineRef.current, {
+        background: "linear-gradient(to bottom, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%)",
+        duration: 1
+      });
+
+    }, timelineRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -272,7 +398,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Timeline - Enhanced with GSAP */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -293,42 +419,80 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-neon-cyan to-neon-purple opacity-30"></div>
+          <div ref={timelineRef} className="relative">
+            {/* Enhanced Timeline Line */}
+            <div 
+              ref={timelineLineRef}
+              className="absolute left-1/2 transform -translate-x-1/2 w-2 h-full bg-gradient-to-b from-neon-cyan via-neon-purple to-neon-pink opacity-40 rounded-full shadow-lg"
+              style={{
+                boxShadow: '0 0 20px rgba(6, 182, 212, 0.3), 0 0 40px rgba(139, 92, 246, 0.2)'
+              }}
+            ></div>
             
-            <div className="space-y-12">
+            <div className="space-y-16">
               {timeline.map((item, index) => (
-                <motion.div
+                <div
                   key={item.year}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
                   className={`flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
                 >
-                  <div className={`lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
-                    <Card className="group bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500">
-                      <CardHeader>
+                  <div 
+                    ref={el => timelineCardsRef.current[index] = el}
+                    className={`lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-16' : 'lg:pl-16'}`}
+                  >
+                    <Card className="group bg-card/60 backdrop-blur-md border-border/50 hover:border-neon-cyan/70 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-neon-cyan/20">
+                      <CardHeader className="pb-4">
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-full flex items-center justify-center text-white font-bold">
+                          <div className="w-14 h-14 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                             {item.year.slice(-2)}
                           </div>
                           <div>
-                            <CardTitle className="text-xl">{item.title}</CardTitle>
-                            <div className="text-sm text-neon-cyan font-medium">{item.year}</div>
+                            <CardTitle className="text-xl group-hover:text-neon-cyan transition-colors duration-300">
+                              {item.title}
+                            </CardTitle>
+                            <div className="text-sm text-neon-cyan font-medium bg-neon-cyan/10 px-2 py-1 rounded-full inline-block mt-1">
+                              {item.year}
+                            </div>
                           </div>
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <CardDescription className="text-base">{item.description}</CardDescription>
+                        <CardDescription className="text-base leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
+                          {item.description}
+                        </CardDescription>
                       </CardContent>
                     </Card>
                   </div>
                   
-                  <div className="hidden lg:block w-4 h-4 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-full border-4 border-background relative z-10"></div>
+                  {/* Enhanced Timeline Dots */}
+                  <div 
+                    ref={el => timelineDotsRef.current[index] = el}
+                    className="hidden lg:block w-8 h-8 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-full border-4 border-background relative z-10 shadow-lg"
+                    style={{
+                      boxShadow: '0 0 20px rgba(6, 182, 212, 0.6), 0 0 40px rgba(139, 92, 246, 0.4)'
+                    }}
+                  >
+                    {/* Inner glow dot */}
+                    <div className="absolute inset-1 bg-white rounded-full opacity-80"></div>
+                  </div>
                   
                   <div className="lg:w-1/2"></div>
-                </motion.div>
+                </div>
+              ))}
+            </div>
+
+            {/* Floating particles for extra visual appeal */}
+            <div className="absolute inset-0 pointer-events-none">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-2 h-2 bg-neon-cyan/30 rounded-full animate-pulse"
+                  style={{
+                    left: `${20 + i * 15}%`,
+                    top: `${10 + i * 15}%`,
+                    animationDelay: `${i * 0.5}s`,
+                    animationDuration: `${2 + i * 0.5}s`
+                  }}
+                ></div>
               ))}
             </div>
           </div>
