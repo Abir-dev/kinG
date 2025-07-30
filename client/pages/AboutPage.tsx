@@ -90,46 +90,81 @@ const timeline = [
 
 const teamMembers = [
   {
-    quote: "20+ years of experience in EdTech and business development. Led multiple successful ventures in the education and technology sectors.",
-    name: "Rajesh Gupta",
-    designation: "Chief Executive Officer",
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    linkedin: "https://linkedin.com/in/rajesh-gupta"
+    quote: "Visionary leader driving Kin-G Technology's growth and innovation.",
+    name: "Soumodip Dey",
+    designation: "Founder/CEO",
+    src: "/images/Soumodip.jpeg",
+    linkedin: "https://linkedin.com/in/soumodip-dey"
   },
   {
-    quote: "Expert in full-stack development and system architecture. Passionate about creating scalable solutions that drive business growth.",
-    name: "Priya Sharma",
-    designation: "Head of Technology",
-    src: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
-    linkedin: "https://linkedin.com/in/priya-sharma"
+    quote: "Strategic thinker and B2B expert, leading partnerships and business expansion.",
+    name: "Ayushmita Das",
+    designation: "Co-Founder/B2B Head",
+    src: "/images/Ayushmita.jpeg",
+    linkedin: "https://linkedin.com/in/ayushmita-das"
   },
   {
-    quote: "Specializes in operational excellence and process optimization. Ensures quality delivery across all service verticals.",
-    name: "Amit Kumar",
-    designation: "Director of Operations",
-    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    linkedin: "https://linkedin.com/in/amit-kumar"
+    quote: "Driving sales excellence and business growth with a client-first approach.",
+    name: "Himadri Barua",
+    designation: "Assistant Business President (Sales)",
+    src: "/images/Himadri.jpeg",
+    linkedin: "https://linkedin.com/in/himadri-barua"
   },
   {
-    quote: "Career counseling expert with a track record of successfully placing 1000+ professionals in their dream jobs.",
-    name: "Sneha Patel",
-    designation: "Head of Career Development",
-    src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-    linkedin: "https://linkedin.com/in/sneha-patel"
+    quote: "Full stack developer and technical lead, architecting scalable solutions.",
+    name: "Abir Lal Banerjee",
+    designation: "Full stack Developer / Technical Project Lead",
+    src: "/images/Abir.png",
+    linkedin: "https://linkedin.com/in/abir-lal-banerjee"
   },
   {
-    quote: "Drives business growth and client relationships. Expert in B2B sales and strategic partnerships.",
-    name: "Vikram Singh",
-    designation: "Business Development Head",
-    src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
-    linkedin: "https://linkedin.com/in/vikram-singh"
+    quote: "Technology visionary, leading innovation and product development.",
+    name: "Sourav",
+    designation: "CTO (Chief Technology Officer)",
+    src: "/images/Sourav.jpeg",
+    linkedin: "https://linkedin.com/in/sourav-cto"
   },
   {
-    quote: "Digital marketing strategist with expertise in SEO, social media, and performance marketing campaigns.",
-    name: "Anita Reddy",
-    designation: "Digital Marketing Director",
-    src: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face",
-    linkedin: "https://linkedin.com/in/anita-reddy"
+    quote: "Expert in B2B sales, leading teams to deliver outstanding results.",
+    name: "Payel",
+    designation: "Team Leader B2B (Sales)",
+    src: "/images/Payel.jpeg",
+    linkedin: "https://linkedin.com/in/payel-b2b"
+  },
+  {
+    quote: "Creative force behind user experiences and interface design.",
+    name: "Tanwishtha",
+    designation: "UX/UI Designer",
+    src: "/images/Tanwistha.jpeg",
+    linkedin: "https://linkedin.com/in/tanwishtha-uiux"
+  },
+  {
+    quote: "Brand strategist and communications expert, shaping Kin-G's public image.",
+    name: "Uditi",
+    designation: "Brand & Communications Head",
+    src: "/images/Uditi.jpeg",
+    linkedin: "https://linkedin.com/in/uditi-brand"
+  },
+  {
+    quote: "Marketing leader and SEO specialist, driving digital growth.",
+    name: "Avishikta",
+    designation: "CMO (Chief Marketing Officer) / SEO",
+    src: "/images/Avishikta.jpeg",
+    linkedin: "https://linkedin.com/in/avishikta-cmo"
+  },
+  {
+    quote: "Sales manager ensuring operational excellence and client satisfaction.",
+    name: "Deboshmita",
+    designation: "General Manager (Sales)",
+    src: "/images/Deboshmita.jpeg",
+    linkedin: "https://linkedin.com/in/deboshmita-sales"
+  },
+  {
+    quote: "Product management expert and course trainer, empowering future leaders.",
+    name: "Indrajit Das",
+    designation: "Course Trainer (Product Management Head)",
+    src: "/images/Indrajit.jpeg",
+    linkedin: "https://linkedin.com/in/indrajit-das"
   }
 ];
 
