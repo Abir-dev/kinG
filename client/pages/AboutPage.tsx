@@ -128,7 +128,7 @@ const teamMembers = [
     quote: "Expert in B2B sales, leading teams to deliver outstanding results.",
     name: "Payel",
     designation: "Team Leader B2B (Sales)",
-    src: "/images/Payel.jpeg",
+    src: "/images/Sayoni.jpeg",
     linkedin: "https://linkedin.com/in/payel-b2b"
   },
   {
