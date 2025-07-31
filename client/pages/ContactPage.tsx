@@ -194,7 +194,7 @@ Best regards,`);
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactMethods.map((method, index) => (
               <motion.div
                 key={method.title}
@@ -223,7 +223,7 @@ Best regards,`);
                 </Card>
               </motion.div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -336,39 +336,31 @@ Best regards,`);
               viewport={{ once: true }}
               className="space-y-8"
             >
-              {/* Departments */}
+              {/* Location Details */}
               <div>
-                <h3 className="text-2xl font-bold mb-6">Department Contacts</h3>
-                <div className="space-y-4">
-                  {departments.map((dept, index) => (
-                    <motion.div
-                      key={dept.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-start space-x-4 p-4 rounded-lg bg-card/30 backdrop-blur-sm border border-border/40 hover:bg-card/50 transition-colors"
-                    >
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center flex-shrink-0">
-                        <dept.icon className="h-5 w-5 text-white" />
+                <h3 className="text-2xl font-bold mb-6">Our Location</h3>
+                <Card className="bg-card/30 backdrop-blur-sm border-border/40">
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <IconMapPin className="h-6 w-6 text-neon-cyan" />
+                      <span className="font-semibold">Mumbai, Maharashtra, India</span>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <IconPhone className="h-5 w-5 text-neon-purple" />
+                        <a href="tel:+918910481993" className="text-neon-purple hover:underline">+91 89104 81993</a>
                       </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold mb-1">{dept.name}</h4>
-                        <p className="text-sm text-muted-foreground mb-2">{dept.description}</p>
-                        <div className="space-y-1 text-sm">
-                          <div className="flex items-center space-x-2">
-                            <IconMail className="h-4 w-4 text-neon-cyan" />
-                            <a href={`mailto:${dept.email}`} className="text-neon-cyan hover:underline">{dept.email}</a>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <IconPhone className="h-4 w-4 text-neon-purple" />
-                            <a href={`tel:${dept.phone}`} className="text-neon-purple hover:underline">{dept.phone}</a>
-                          </div>
-                        </div>
+                      <div className="flex items-center space-x-2">
+                        <IconMail className="h-5 w-5 text-neon-cyan" />
+                        <a href="mailto:info@kingtechnology.com" className="text-neon-cyan hover:underline">info@kingtechnology.com</a>
                       </div>
-                    </motion.div>
-                  ))}
-                </div>
+                      <div className="flex items-center space-x-2">
+                        <IconBrandInstagram className="h-5 w-5 text-pink-500" />
+                        <a href="https://www.instagram.com/kin.g.tech?igsh=dGdhZHdybmg0Z2Ri" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:underline">@kin.g.tech</a>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
               {/* Working Hours */}
@@ -396,34 +388,13 @@ Best regards,`);
                   </CardContent>
                 </Card>
               </div>
-
-              {/* Social Media */}
-              <div>
-                <h3 className="text-2xl font-bold mb-6">Follow Us</h3>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => (
-                    <motion.a
-                      key={social.name}
-                      href={social.url}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      whileHover={{ scale: 1.1 }}
-                      viewport={{ once: true }}
-                      className="w-12 h-12 rounded-lg bg-card/30 backdrop-blur-sm border border-border/40 hover:border-neon-cyan/50 flex items-center justify-center transition-all duration-300"
-                    >
-                      <social.icon className={`h-6 w-6 ${social.color}`} />
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Office Locations */}
-      <section className="py-20 px-4">
+
+      {/* <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -504,7 +475,7 @@ Best regards,`);
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ Section */}
       <section className="py-20 px-4">
@@ -608,7 +579,7 @@ Best regards,`);
       </section>
 
       {/* Emergency Contact */}
-      <section className="py-20 px-4">
+      {/* <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -653,7 +624,7 @@ Best regards,`);
             </Card>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </Layout>
   );
 }
