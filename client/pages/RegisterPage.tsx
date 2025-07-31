@@ -158,11 +158,10 @@ export default function RegisterPage() {
                         <select
                           value={selectedCourse}
                           onChange={e => setSelectedCourse(e.target.value)}
-                          className="w-full bg-background/60 border border-neon-cyan/30 text-neon-cyan font-medium rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neon-cyan/50 transition-colors duration-200"
-                          style={{ backgroundColor: 'var(--background, #18181b)', color: 'var(--neon-cyan, #00fff7)' }}
+                          className="w-full bg-card dark:bg-background border border-neon-cyan/30 text-black dark:text-neon-cyan font-medium rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neon-cyan/50 transition-colors duration-200"
                         >
                           {courseOptions.map(course => (
-                            <option key={course} value={course} className="bg-card text-neon-cyan dark:bg-background dark:text-neon-cyan">{course}</option>
+                            <option key={course} value={course} className="bg-card dark:bg-background text-black dark:text-neon-cyan">{course}</option>
                           ))}
                         </select>
                       </div>
