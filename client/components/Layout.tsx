@@ -172,7 +172,7 @@ export function Layout({ children }: LayoutProps) {
                   {/* Social Media Links */}
                   <div className="flex flex-col space-y-3">
                     <motion.a
-                      href="https://facebook.com/kingtechnology"
+                      href="https://www.facebook.com/share/1LMHJULrar/?mibextid=wwXIfr"
                       target="_blank"
                       rel="noopener noreferrer"
                       initial={{ opacity: 0, x: -10 }}
@@ -191,7 +191,7 @@ export function Layout({ children }: LayoutProps) {
                     </motion.a>
                     
                     <motion.a
-                      href="https://instagram.com/kingtechnology"
+                      href="https://www.instagram.com/kin.g.tech?igsh=bDJmNjZyeXhyMDA4&utm_source=qr"
                       target="_blank"
                       rel="noopener noreferrer"
                       initial={{ opacity: 0, x: -10 }}
