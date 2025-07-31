@@ -30,11 +30,13 @@ export default async function handler(req, res) {
       'Recipient': recipient,
     } = fields;
 
-    // Setup nodemailer transporter
-    const transporter = nodemailer.createTransport({
-      service: 'gmail', // or your SMTP provider
+    // Setup nodemailer transporter for Hostinger
+    const transporter = nodemailer.createTransporter({
+      host: process.env.MAIL_HOST,
+      port: parseInt(process.env.MAIL_PORT),
+      secure: process.env.MAIL_SECURE === 'true',
       auth: {
-        user: process.env.MAIL_USER, // e.g. admin@kingtechs.in
+        user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
       },
     });
