@@ -10,6 +10,7 @@ const navItems = [
   { name: 'Services', href: '/services' },
   { name: 'Careers', href: '/careers' }, // Added Careers link  
   { name: 'Launchpad', href: '/launchpad' },
+  { name: 'Register', href: '/register' },
 ];
 
 export function Navigation() {
