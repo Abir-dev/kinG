@@ -189,8 +189,8 @@ export default function RegisterPage() {
                 </Card>
               </div>
             </div>
-            {/* Right: Image Placeholder */}
-            <div className="w-full h-full flex items-stretch justify-center">
+            {/* Right: Image Placeholder (hidden on mobile) */}
+            <div className="hidden md:flex w-full h-full items-stretch justify-center">
               <div className="w-full h-full overflow-hidden bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10 flex items-center justify-center">
                 <img
                   src="/placeholder.svg"
