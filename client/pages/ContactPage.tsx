@@ -28,8 +28,8 @@ const contactMethods = [
     icon: IconMail,
     title: "Email",
     description: "Send us a detailed message",
-    contact: "info@kingtechs.in",
-    action: "mailto:info@kingtechs.in",
+    contact: "admin@kingtechs.in",
+    action: "mailto:admin@kingtechs.in",
     gradient: "from-neon-cyan to-neon-blue",
     response: "Response within 2 hours"
   },
@@ -86,7 +86,7 @@ const departments = [
   },
   {
     name: "General Inquiries",
-    email: "info@kingtechs.in",
+    email: "admin@kingtechs.in",
     phone: "+91 89104 81993",
     description: "General questions and information",
     icon: IconBuilding
@@ -352,7 +352,7 @@ Best regards,`);
                       </div>
                       <div className="flex items-center space-x-2">
                         <IconMail className="h-5 w-5 text-neon-cyan" />
-                        <a href="mailto:info@kingtechs.in" className="text-neon-cyan hover:underline">info@kingtechs.in</a>
+                        <a href="mailto:admin@kingtechs.in" className="text-neon-cyan hover:underline">admin@kingtechs.in</a>
                       </div>
                       <div className="flex items-center space-x-2">
                         <IconBrandInstagram className="h-5 w-5 text-pink-500" />

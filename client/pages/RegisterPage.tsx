@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
@@ -15,6 +16,7 @@ const courses = [
 ];
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [paymentFile, setPaymentFile] = useState<File | null>(null);
   const [sending, setSending] = useState(false);
@@ -80,6 +82,7 @@ export default function RegisterPage() {
                   });
                   setSuccess(true);
                   setShowModal(false);
+                  navigate('/success');
                 } catch (err) {
                   setError('Failed to send. Please try again.');
                 } finally {

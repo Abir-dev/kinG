@@ -1,4 +1,5 @@
 import RegisterPage from './pages/RegisterPage';
+import SuccessPage from './pages/SuccessPage';
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
@@ -32,6 +33,7 @@ function AnimatedRoutes() {
         <Route path="/launchpad" element={<LaunchpadPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/success" element={<SuccessPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
