@@ -10,7 +10,6 @@ const navItems = [
   { name: 'Services', href: '/services' },
   { name: 'Careers', href: '/careers' }, // Added Careers link  
   { name: 'Launchpad', href: '/launchpad' },
-  { name: 'Contact', href: '/contact' },
 ];
 
 export function Navigation() {
@@ -160,7 +159,7 @@ export function Navigation() {
             <Link to="/contact" onClick={closeMenu}>
               <Button
                 size="sm"
-                className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity mt-4"
+                className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity"
               >
                 Contact Us
               </Button>
