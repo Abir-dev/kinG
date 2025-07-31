@@ -207,7 +207,7 @@ export default function Index() {
                     </motion.a>
                     
                     <motion.a
-                      href="https://instagram.com/kingtechnology"
+                      href="https://www.instagram.com/kin.g.tech?igsh=dGdhZHdybmg0Z2Ri"
                       target="_blank"
                       rel="noopener noreferrer"
                       initial={{ opacity: 0, x: -10 }}
@@ -260,7 +260,7 @@ export default function Index() {
                 className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
               >
                 <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm text-muted-foreground">
-                  <span>© 2025 Kin-G Technology Pvt. Ltd. All rights reserved.</span>
+                  <span>© 2025 Kin-G Technology Pvt. Ltd. All rights reserved. | Phone: +91 89104 81993</span>
                 </div>
                 
                 <div className="flex items-center space-x-6 text-sm">

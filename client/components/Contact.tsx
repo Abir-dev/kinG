@@ -15,7 +15,7 @@ const contactInfo = [
   {
     icon: IconPhone,
     title: "Phone",
-    content: "+91 98765 43210",
+    content: "+91 89104 81993",
     gradient: "from-neon-purple to-neon-pink"
   },
   {

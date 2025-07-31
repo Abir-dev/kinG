@@ -37,8 +37,8 @@ const contactMethods = [
     icon: IconPhone,
     title: "Phone",
     description: "Call us directly",
-    contact: "+91 98765 43210",
-    action: "tel:+919876543210",
+    contact: "+91 89104 81993",
+    action: "tel:+918910481993",
     gradient: "from-neon-purple to-neon-pink",
     response: "Available 9 AM - 8 PM IST"
   },
@@ -55,8 +55,8 @@ const contactMethods = [
     icon: IconMessageCircle,
     title: "WhatsApp",
     description: "Quick messaging support",
-    contact: "+91 98765 43210",
-    action: "https://wa.me/919876543210",
+    contact: "+91 89104 81993",
+    action: "https://wa.me/918910481993",
     gradient: "from-neon-pink to-neon-purple",
     response: "Instant responses"
   }
@@ -87,7 +87,7 @@ const departments = [
   {
     name: "General Inquiries",
     email: "info@kingtechnology.com",
-    phone: "+91 98765 43210",
+    phone: "+91 89104 81993",
     description: "General questions and information",
     icon: IconBuilding
   }
@@ -123,7 +123,7 @@ const locations = [
 const socialLinks = [
   { icon: IconBrandLinkedin, name: "LinkedIn", url: "#", color: "text-blue-500" },
   { icon: IconBrandTwitter, name: "Twitter", url: "#", color: "text-blue-400" },
-  { icon: IconBrandInstagram, name: "Instagram", url: "#", color: "text-pink-500" }
+  { icon: IconBrandInstagram, name: "Instagram", url: "https://www.instagram.com/kin.g.tech?igsh=dGdhZHdybmg0Z2Ri", color: "text-pink-500" }
 ];
 
 const workingHours = [
