@@ -72,6 +72,7 @@ export default function RegisterPage() {
                   formData.append('Year of Passout', passoutYear);
                   formData.append('Stream', stream);
                   formData.append('College', college);
+                  formData.append('Recipient', 'admin@kingtechs.in');
                   if (paymentFile) {
                     formData.append('Payment Receipt', paymentFile);
                   }
