@@ -9,7 +9,7 @@ const contactInfo = [
   {
     icon: IconMail,
     title: "Email",
-    content: "info@kingtechnology.com",
+    content: "info@kingtechs.in",
     gradient: "from-neon-cyan to-neon-blue"
   },
   {
