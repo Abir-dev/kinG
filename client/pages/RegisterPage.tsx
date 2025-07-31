@@ -193,7 +193,7 @@ export default function RegisterPage() {
             <div className="hidden md:flex w-full h-full items-stretch justify-center">
               <div className="w-full h-full overflow-hidden bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10 flex items-center justify-center">
                 <img
-                  src="/placeholder.svg"
+                  src="/images/register.jpeg"
                   alt="Course Registration Placeholder"
                   className="object-cover w-full h-full opacity-80"
                 />
