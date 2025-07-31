@@ -177,7 +177,7 @@ Best regards,`);
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-16"
+            className="mb-1"
           >
             <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-6">
               Contact Us
@@ -296,7 +296,7 @@ Best regards,`);
                   </div>
                   
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Message *</label>
+                    <label className="text-sm font-medium mb-1 block">Message *</label>
                     <Textarea
                       placeholder="Tell us about your requirements, goals, or questions..."
                       rows={8}
