@@ -160,18 +160,118 @@ export default function RegisterPage() {
                         <Input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="you@example.com" required className="bg-background/50 border-border/40 focus:border-neon-cyan/50" />
                       </div>
                       <div className="md:col-span-2">
-                        <label className="text-sm font-medium mb-2 block">Registration Type *</label>
-                        <select
-                          value={registrationType}
-                          onChange={e => setRegistrationType(e.target.value)}
-                          required
-                          className="w-full bg-card dark:bg-background border border-neon-cyan/30 text-black dark:text-neon-cyan font-medium rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neon-cyan/50 transition-colors duration-200"
-                        >
-                          <option value="Registration for workshop" className="bg-card dark:bg-background text-black dark:text-neon-cyan">Registration for workshop</option>
-                          <option value="Registration for Course" className="bg-card dark:bg-background text-black dark:text-neon-cyan">Registration for Course</option>
-                          <option value="Registration for AlgoBridge" className="bg-card dark:bg-background text-black dark:text-neon-cyan">Registration for AlgoBridge</option>
-                        </select>
+                      <label className="text-sm font-medium mb-4 block">Registration For *</label>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {/* Workshop Option */}
+                      <div 
+                      className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
+                      registrationType === 'Registration for workshop' 
+                        ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
+                        : 'border-border/40 hover:border-neon-cyan/50'
+                      }`}
+                      onClick={() => setRegistrationType('Registration for workshop')}
+                      >
+                      <input
+                        type="radio"
+                        id="workshop"
+                          name="registrationType"
+                          value="Registration for workshop"
+                        checked={registrationType === 'Registration for workshop'}
+                      onChange={() => {}}
+                      className="sr-only"
+                      required
+                      />
+                      <div className="flex flex-col items-center text-center space-y-3">
+                      <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
+                        registrationType === 'Registration for workshop'
+                            ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
+                            : 'border-border/60'
+                          }`}>
+                            {registrationType === 'Registration for workshop' && (
+                            <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
+                        )}
                       </div>
+                      <span className={`font-medium transition-colors duration-300 ${
+                        registrationType === 'Registration for workshop' ? 'text-neon-cyan' : 'text-foreground'
+                      }`}>
+                        Workshop
+                      </span>
+                      </div>
+                      </div>
+
+                        {/* Course Option */}
+                          <div 
+                             className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
+                               registrationType === 'Registration for Course' 
+                                 ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
+                                 : 'border-border/40 hover:border-neon-cyan/50'
+                             }`}
+                             onClick={() => setRegistrationType('Registration for Course')}
+                           >
+                             <input
+                               type="radio"
+                               id="course"
+                               name="registrationType"
+                               value="Registration for Course"
+                               checked={registrationType === 'Registration for Course'}
+                               onChange={() => {}}
+                               className="sr-only"
+                             />
+                             <div className="flex flex-col items-center text-center space-y-3">
+                               <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
+                                 registrationType === 'Registration for Course'
+                                   ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
+                                   : 'border-border/60'
+                               }`}>
+                                 {registrationType === 'Registration for Course' && (
+                                   <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
+                                 )}
+                               </div>
+                               <span className={`font-medium transition-colors duration-300 ${
+                                 registrationType === 'Registration for Course' ? 'text-neon-cyan' : 'text-foreground'
+                               }`}>
+                                 Course
+                               </span>
+                             </div>
+                           </div>
+
+                           {/* AlgoBridge Option */}
+                           <div 
+                             className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
+                               registrationType === 'Registration for AlgoBridge' 
+                                 ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
+                                 : 'border-border/40 hover:border-neon-cyan/50'
+                             }`}
+                             onClick={() => setRegistrationType('Registration for AlgoBridge')}
+                           >
+                             <input
+                               type="radio"
+                               id="algobridge"
+                               name="registrationType"
+                               value="Registration for AlgoBridge"
+                               checked={registrationType === 'Registration for AlgoBridge'}
+                               onChange={() => {}}
+                               className="sr-only"
+                             />
+                             <div className="flex flex-col items-center text-center space-y-3">
+                               <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
+                                 registrationType === 'Registration for AlgoBridge'
+                                   ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
+                                   : 'border-border/60'
+                               }`}>
+                                 {registrationType === 'Registration for AlgoBridge' && (
+                                   <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
+                                 )}
+                               </div>
+                               <span className={`font-medium transition-colors duration-300 ${
+                                 registrationType === 'Registration for AlgoBridge' ? 'text-neon-cyan' : 'text-foreground'
+                               }`}>
+                                 Algo Course
+                               </span>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
                       {registrationType === 'Registration for Course' && (
                         <div className="md:col-span-2">
                           <label className="text-sm font-medium mb-2 block">Select Course *</label>
