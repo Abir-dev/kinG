@@ -25,6 +25,7 @@ export default async function handler(req, res) {
       'Email ID': email,
       'Registration Type': registrationType,
       'Course': course,
+      'Course Pricing': coursePricing,
       'Year of Passout': passoutYear,
       'Stream': stream,
       'College': college,
@@ -60,6 +61,7 @@ export default async function handler(req, res) {
                 <tr><td style="padding: 8px 0; font-weight: bold; color: #374151;">Email ID:</td><td style="padding: 8px 0; color: #6b7280;">${email}</td></tr>
                 <tr><td style="padding: 8px 0; font-weight: bold; color: #374151;">Registration Type:</td><td style="padding: 8px 0; color: #6b7280;">${registrationType}</td></tr>
                 ${course && course !== 'N/A' ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #374151;">Course:</td><td style="padding: 8px 0; color: #6b7280;">${course}</td></tr>` : ''}
+                ${coursePricing && coursePricing !== 'N/A' ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #374151;">Course Pricing:</td><td style="padding: 8px 0; color: #6b7280;">${coursePricing}</td></tr>` : ''}
                 <tr><td style="padding: 8px 0; font-weight: bold; color: #374151;">Year of Passout:</td><td style="padding: 8px 0; color: #6b7280;">${passoutYear}</td></tr>
                 <tr><td style="padding: 8px 0; font-weight: bold; color: #374151;">Stream:</td><td style="padding: 8px 0; color: #6b7280;">${stream}</td></tr>
                 <tr><td style="padding: 8px 0; font-weight: bold; color: #374151;">College:</td><td style="padding: 8px 0; color: #6b7280;">${college}</td></tr>

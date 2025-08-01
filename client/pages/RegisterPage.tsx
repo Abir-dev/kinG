@@ -32,6 +32,7 @@ export default function RegisterPage() {
     'Freelancing & Portfolio building',
   ];
   const [registrationType, setRegistrationType] = useState('');
+  const [coursePricing, setCoursePricing] = useState('');
   const [selectedCourse, setSelectedCourse] = useState(courseOptions[0]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -71,6 +72,7 @@ export default function RegisterPage() {
                   formData.append('Email ID', email);
                   formData.append('Registration Type', registrationType);
                   formData.append('Course', registrationType === 'Registration for Course' ? selectedCourse : 'N/A');
+                  formData.append('Course Pricing', registrationType === 'Registration for Course' ? coursePricing : 'N/A');
                   formData.append('Year of Passout', passoutYear);
                   formData.append('Stream', stream);
                   formData.append('College', college);
@@ -118,7 +120,7 @@ export default function RegisterPage() {
         <section className="py-0 px-0">
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 min-h-screen">
             {/* Left: Form */}
-            <div className="flex flex-col justify-start items-start px-8 py-0 h-full min-h-screen">
+            <div className="flex flex-col justify-start items-start px-8 py-0 min-h-screen">
               <div className="w-full max-w-xl">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -138,6 +140,214 @@ export default function RegisterPage() {
                     Select your desired program and complete your registration. Secure your spot and accelerate your career with Kin-G Technology.
                   </p>
                 </motion.div>
+                
+                {/* Registration Type Selection - Above Form */}
+                <div className="mb-6">
+                  <label className="text-sm font-medium mb-4 block">Registration Type *</label>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* Workshop Option */}
+                    <div 
+                      className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
+                        registrationType === 'Registration for workshop' 
+                          ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
+                          : 'border-border/40 hover:border-neon-cyan/50'
+                      }`}
+                      onClick={() => setRegistrationType('Registration for workshop')}
+                    >
+                      <input
+                        type="radio"
+                        id="workshop"
+                        name="registrationType"
+                        value="Registration for workshop"
+                        checked={registrationType === 'Registration for workshop'}
+                        onChange={() => {}}
+                        className="sr-only"
+                        required
+                      />
+                      <div className="flex flex-col items-center text-center space-y-3">
+                        <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
+                          registrationType === 'Registration for workshop'
+                            ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
+                            : 'border-border/60'
+                        }`}>
+                          {registrationType === 'Registration for workshop' && (
+                            <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
+                          )}
+                        </div>
+                        <span className={`font-medium transition-colors duration-300 ${
+                          registrationType === 'Registration for workshop' ? 'text-neon-cyan' : 'text-foreground'
+                        }`}>
+                          Workshop
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Course Option */}
+                    <div 
+                      className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
+                        registrationType === 'Registration for Course' 
+                          ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
+                          : 'border-border/40 hover:border-neon-cyan/50'
+                      }`}
+                      onClick={() => setRegistrationType('Registration for Course')}
+                    >
+                      <input
+                        type="radio"
+                        id="course"
+                        name="registrationType"
+                        value="Registration for Course"
+                        checked={registrationType === 'Registration for Course'}
+                        onChange={() => {}}
+                        className="sr-only"
+                      />
+                      <div className="flex flex-col items-center text-center space-y-3">
+                        <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
+                          registrationType === 'Registration for Course'
+                            ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
+                            : 'border-border/60'
+                        }`}>
+                          {registrationType === 'Registration for Course' && (
+                            <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
+                          )}
+                        </div>
+                        <span className={`font-medium transition-colors duration-300 ${
+                          registrationType === 'Registration for Course' ? 'text-neon-cyan' : 'text-foreground'
+                        }`}>
+                          Course
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* AlgoBridge Option */}
+                    <div 
+                      className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
+                        registrationType === 'Registration for AlgoBridge' 
+                          ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
+                          : 'border-border/40 hover:border-neon-cyan/50'
+                      }`}
+                      onClick={() => setRegistrationType('Registration for AlgoBridge')}
+                    >
+                      <input
+                        type="radio"
+                        id="algobridge"
+                        name="registrationType"
+                        value="Registration for AlgoBridge"
+                        checked={registrationType === 'Registration for AlgoBridge'}
+                        onChange={() => {}}
+                        className="sr-only"
+                      />
+                      <div className="flex flex-col items-center text-center space-y-3">
+                        <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
+                          registrationType === 'Registration for AlgoBridge'
+                            ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
+                            : 'border-border/60'
+                        }`}>
+                          {registrationType === 'Registration for AlgoBridge' && (
+                            <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
+                          )}
+                        </div>
+                        <span className={`font-medium transition-colors duration-300 ${
+                          registrationType === 'Registration for AlgoBridge' ? 'text-neon-cyan' : 'text-foreground'
+                        }`}>
+                          AlgoBridge Contest
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Course Pricing - Show only when Course is selected */}
+                {registrationType === 'Registration for Course' && (
+                  <div className="mb-6">
+                    <label className="text-sm font-medium mb-4 block">Course Pricing *</label>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {/* Basic Plan */}
+                      <div 
+                        className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
+                          coursePricing === 'Basic - ₹1299' 
+                            ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
+                            : 'border-border/40 hover:border-neon-cyan/50'
+                        }`}
+                        onClick={() => setCoursePricing('Basic - ₹1299')}
+                      >
+                        <div className="flex flex-col items-center text-center space-y-2">
+                          <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
+                            coursePricing === 'Basic - ₹1299'
+                              ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
+                              : 'border-border/60'
+                          }`}>
+                            {coursePricing === 'Basic - ₹1299' && (
+                              <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
+                            )}
+                          </div>
+                          <span className={`font-bold transition-colors duration-300 ${
+                            coursePricing === 'Basic - ₹1299' ? 'text-neon-cyan' : 'text-foreground'
+                          }`}>
+                            Basic
+                          </span>
+                          <span className="text-2xl font-bold text-neon-cyan">₹1299</span>
+                        </div>
+                      </div>
+
+                      {/* Pro Plan */}
+                      <div 
+                        className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
+                          coursePricing === 'Pro - ₹3999' 
+                            ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
+                            : 'border-border/40 hover:border-neon-cyan/50'
+                        }`}
+                        onClick={() => setCoursePricing('Pro - ₹3999')}
+                      >
+                        <div className="flex flex-col items-center text-center space-y-2">
+                          <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
+                            coursePricing === 'Pro - ₹3999'
+                              ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
+                              : 'border-border/60'
+                          }`}>
+                            {coursePricing === 'Pro - ₹3999' && (
+                              <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
+                            )}
+                          </div>
+                          <span className={`font-bold transition-colors duration-300 ${
+                            coursePricing === 'Pro - ₹3999' ? 'text-neon-cyan' : 'text-foreground'
+                          }`}>
+                            Pro
+                          </span>
+                          <span className="text-2xl font-bold text-neon-cyan">₹3999</span>
+                        </div>
+                      </div>
+
+                      {/* Ultimate Plan */}
+                      <div 
+                        className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
+                          coursePricing === 'Ultimate - ₹7999' 
+                            ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
+                            : 'border-border/40 hover:border-neon-cyan/50'
+                        }`}
+                        onClick={() => setCoursePricing('Ultimate - ₹7999')}
+                      >
+                        <div className="flex flex-col items-center text-center space-y-2">
+                          <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
+                            coursePricing === 'Ultimate - ₹7999'
+                              ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
+                              : 'border-border/60'
+                          }`}>
+                            {coursePricing === 'Ultimate - ₹7999' && (
+                              <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
+                            )}
+                          </div>
+                          <span className={`font-bold transition-colors duration-300 ${
+                            coursePricing === 'Ultimate - ₹7999' ? 'text-neon-cyan' : 'text-foreground'
+                          }`}>
+                            Ultimate
+                          </span>
+                          <span className="text-2xl font-bold text-neon-cyan">₹7999</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <Card className="bg-card/50 backdrop-blur-sm border-border/40 shadow-lg text-left">
                   <CardHeader>
                     <CardTitle className="text-2xl font-bold mb-2">Program Registration</CardTitle>
@@ -159,119 +369,7 @@ export default function RegisterPage() {
                         <label className="text-sm font-medium mb-2 block">Email ID *</label>
                         <Input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="you@example.com" required className="bg-background/50 border-border/40 focus:border-neon-cyan/50" />
                       </div>
-                      <div className="md:col-span-2">
-                      <label className="text-sm font-medium mb-4 block">Registration For *</label>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      {/* Workshop Option */}
-                      <div 
-                      className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
-                      registrationType === 'Registration for workshop' 
-                        ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
-                        : 'border-border/40 hover:border-neon-cyan/50'
-                      }`}
-                      onClick={() => setRegistrationType('Registration for workshop')}
-                      >
-                      <input
-                        type="radio"
-                        id="workshop"
-                          name="registrationType"
-                          value="Registration for workshop"
-                        checked={registrationType === 'Registration for workshop'}
-                      onChange={() => {}}
-                      className="sr-only"
-                      required
-                      />
-                      <div className="flex flex-col items-center text-center space-y-3">
-                      <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
-                        registrationType === 'Registration for workshop'
-                            ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
-                            : 'border-border/60'
-                          }`}>
-                            {registrationType === 'Registration for workshop' && (
-                            <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
-                        )}
-                      </div>
-                      <span className={`font-medium transition-colors duration-300 ${
-                        registrationType === 'Registration for workshop' ? 'text-neon-cyan' : 'text-foreground'
-                      }`}>
-                        Workshop
-                      </span>
-                      </div>
-                      </div>
-
-                        {/* Course Option */}
-                          <div 
-                             className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
-                               registrationType === 'Registration for Course' 
-                                 ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
-                                 : 'border-border/40 hover:border-neon-cyan/50'
-                             }`}
-                             onClick={() => setRegistrationType('Registration for Course')}
-                           >
-                             <input
-                               type="radio"
-                               id="course"
-                               name="registrationType"
-                               value="Registration for Course"
-                               checked={registrationType === 'Registration for Course'}
-                               onChange={() => {}}
-                               className="sr-only"
-                             />
-                             <div className="flex flex-col items-center text-center space-y-3">
-                               <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
-                                 registrationType === 'Registration for Course'
-                                   ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
-                                   : 'border-border/60'
-                               }`}>
-                                 {registrationType === 'Registration for Course' && (
-                                   <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
-                                 )}
-                               </div>
-                               <span className={`font-medium transition-colors duration-300 ${
-                                 registrationType === 'Registration for Course' ? 'text-neon-cyan' : 'text-foreground'
-                               }`}>
-                                 Course
-                               </span>
-                             </div>
-                           </div>
-
-                           {/* AlgoBridge Option */}
-                           <div 
-                             className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
-                               registrationType === 'Registration for AlgoBridge' 
-                                 ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
-                                 : 'border-border/40 hover:border-neon-cyan/50'
-                             }`}
-                             onClick={() => setRegistrationType('Registration for AlgoBridge')}
-                           >
-                             <input
-                               type="radio"
-                               id="algobridge"
-                               name="registrationType"
-                               value="Registration for AlgoBridge"
-                               checked={registrationType === 'Registration for AlgoBridge'}
-                               onChange={() => {}}
-                               className="sr-only"
-                             />
-                             <div className="flex flex-col items-center text-center space-y-3">
-                               <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
-                                 registrationType === 'Registration for AlgoBridge'
-                                   ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
-                                   : 'border-border/60'
-                               }`}>
-                                 {registrationType === 'Registration for AlgoBridge' && (
-                                   <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
-                                 )}
-                               </div>
-                               <span className={`font-medium transition-colors duration-300 ${
-                                 registrationType === 'Registration for AlgoBridge' ? 'text-neon-cyan' : 'text-foreground'
-                               }`}>
-                                 Algo Course
-                               </span>
-                             </div>
-                           </div>
-                         </div>
-                       </div>
+                      
                       {registrationType === 'Registration for Course' && (
                         <div className="md:col-span-2">
                           <label className="text-sm font-medium mb-2 block">Select Course *</label>
@@ -309,7 +407,7 @@ export default function RegisterPage() {
                           phone.trim() &&
                           email.trim() &&
                           registrationType.trim() &&
-                          (registrationType !== 'Registration for Course' || selectedCourse.trim()) &&
+                          (registrationType !== 'Registration for Course' || (selectedCourse.trim() && coursePricing.trim())) &&
                           passoutYear.trim() &&
                           stream.trim() &&
                           college.trim()
@@ -325,12 +423,13 @@ export default function RegisterPage() {
               </div>
             </div>
             {/* Right: Image Placeholder (hidden on mobile) */}
-            <div className="hidden md:flex w-full items-stretch justify-center">
-              <div className="w-full overflow-hidden bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10 flex items-center justify-center h-full">
+            <div className="hidden md:flex w-full items-stretch">
+              <div className="w-full overflow-hidden bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10 flex items-center justify-center">
                 <img
                   src="/images/launchpad.jpeg"
                   alt="Course Registration Placeholder"
-                  className="object-cover w-full h-full opacity-80"
+                  className="w-full h-full object-cover opacity-80"
+                  style={{ minHeight: '100vh', objectPosition: 'center' }}
                 />
               </div>
             </div>
