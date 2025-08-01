@@ -31,6 +31,7 @@ export default function RegisterPage() {
     'Web development',
     'Freelancing & Portfolio building',
   ];
+  const [registrationType, setRegistrationType] = useState('');
   const [selectedCourse, setSelectedCourse] = useState(courseOptions[0]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -68,7 +69,8 @@ export default function RegisterPage() {
                   formData.append('Full Name', name);
                   formData.append('Phone Number', phone);
                   formData.append('Email ID', email);
-                  formData.append('Course', selectedCourse);
+                  formData.append('Registration Type', registrationType);
+                  formData.append('Course', registrationType === 'Registration for Course' ? selectedCourse : 'N/A');
                   formData.append('Year of Passout', passoutYear);
                   formData.append('Stream', stream);
                   formData.append('College', college);
@@ -130,16 +132,16 @@ export default function RegisterPage() {
                     </span>
                   </div>
                   <h1 className="text-2xl md:text-4xl font-bold mb-3">
-                    Register for a <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent neon-text-glow">Course</span>
+                    Register for <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent neon-text-glow">Programs</span>
                   </h1>
                   <p className="text-base text-muted-foreground max-w-xl">
-                    Select your desired course and complete your registration. Secure your spot and accelerate your career with Kin-G Technology.
+                    Select your desired program and complete your registration. Secure your spot and accelerate your career with Kin-G Technology.
                   </p>
                 </motion.div>
                 <Card className="bg-card/50 backdrop-blur-sm border-border/40 shadow-lg text-left">
                   <CardHeader>
-                    <CardTitle className="text-2xl font-bold mb-2">Course Registration</CardTitle>
-                    <CardDescription>Select a course and fill in your details to proceed to payment.</CardDescription>
+                    <CardTitle className="text-2xl font-bold mb-2">Program Registration</CardTitle>
+                    <CardDescription>Select your program type and fill in your details to proceed to payment.</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     {/* Full Name - single column */}
@@ -157,19 +159,34 @@ export default function RegisterPage() {
                         <label className="text-sm font-medium mb-2 block">Email ID *</label>
                         <Input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="you@example.com" required className="bg-background/50 border-border/40 focus:border-neon-cyan/50" />
                       </div>
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">Select Course *</label>
+                      <div className="md:col-span-2">
+                        <label className="text-sm font-medium mb-2 block">Registration Type *</label>
                         <select
-                          value={selectedCourse}
-                          onChange={e => setSelectedCourse(e.target.value)}
+                          value={registrationType}
+                          onChange={e => setRegistrationType(e.target.value)}
                           required
                           className="w-full bg-card dark:bg-background border border-neon-cyan/30 text-black dark:text-neon-cyan font-medium rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neon-cyan/50 transition-colors duration-200"
                         >
-                          {courseOptions.map(course => (
-                            <option key={course} value={course} className="bg-card dark:bg-background text-black dark:text-neon-cyan">{course}</option>
-                          ))}
+                          <option value="Registration for workshop" className="bg-card dark:bg-background text-black dark:text-neon-cyan">Registration for workshop</option>
+                          <option value="Registration for Course" className="bg-card dark:bg-background text-black dark:text-neon-cyan">Registration for Course</option>
+                          <option value="Registration for AlgoBridge" className="bg-card dark:bg-background text-black dark:text-neon-cyan">Registration for AlgoBridge</option>
                         </select>
                       </div>
+                      {registrationType === 'Registration for Course' && (
+                        <div className="md:col-span-2">
+                          <label className="text-sm font-medium mb-2 block">Select Course *</label>
+                          <select
+                            value={selectedCourse}
+                            onChange={e => setSelectedCourse(e.target.value)}
+                            required
+                            className="w-full bg-card dark:bg-background border border-neon-cyan/30 text-black dark:text-neon-cyan font-medium rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neon-cyan/50 transition-colors duration-200"
+                          >
+                            {courseOptions.map(course => (
+                              <option key={course} value={course} className="bg-card dark:bg-background text-black dark:text-neon-cyan">{course}</option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
                       <div>
                         <label className="text-sm font-medium mb-2 block">Year of Passout *</label>
                         <Input value={passoutYear} onChange={e => setPassoutYear(e.target.value)} placeholder="e.g. 2025" required className="bg-background/50 border-border/40 focus:border-neon-cyan/50" />
@@ -191,7 +208,8 @@ export default function RegisterPage() {
                           name.trim() &&
                           phone.trim() &&
                           email.trim() &&
-                          selectedCourse.trim() &&
+                          registrationType.trim() &&
+                          (registrationType !== 'Registration for Course' || selectedCourse.trim()) &&
                           passoutYear.trim() &&
                           stream.trim() &&
                           college.trim()
@@ -207,10 +225,10 @@ export default function RegisterPage() {
               </div>
             </div>
             {/* Right: Image Placeholder (hidden on mobile) */}
-            <div className="hidden md:flex w-full min-h-screen items-stretch justify-center">
-              <div className="w-full min-h-screen overflow-hidden bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10 flex items-center justify-center">
+            <div className="hidden md:flex w-full items-stretch justify-center">
+              <div className="w-full overflow-hidden bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10 flex items-center justify-center h-full">
                 <img
-                  src="/images/register.jpeg"
+                  src="/images/launchpad.jpeg"
                   alt="Course Registration Placeholder"
                   className="object-cover w-full h-full opacity-80"
                 />

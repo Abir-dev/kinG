@@ -12,7 +12,7 @@ export default function SuccessPage() {
       <img
         src="/success.gif"
         alt="Success"
-        className="w-64 h-64 object-contain mb-8 drop-shadow-xl rounded-xl"
+        className="w-124 h-64 object-contain mb-8 drop-shadow-xl rounded-xl justify-center items-center"
       />
       <h1 className="text-3xl md:text-5xl font-bold text-neon-cyan mb-4 text-center">
         Registration Successful!
