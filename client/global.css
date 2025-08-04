@@ -306,6 +306,55 @@
     transform: translateY(-8px);
   }
 
+  /* Moving Cards Animations */
+  @keyframes card-float {
+    0%, 100% { 
+      transform: translateY(0px) scale(1); 
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    50% { 
+      transform: translateY(-5px) scale(1.02); 
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  @keyframes brand-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.2), 0 0 20px hsl(var(--neon-cyan) / 0.1);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.4), 0 0 40px hsl(var(--neon-cyan) / 0.2), 0 0 60px hsl(var(--neon-cyan) / 0.1);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .card-float-animation {
+    animation: card-float 4s ease-in-out infinite;
+  }
+
+  .brand-glow-animation {
+    animation: brand-glow 3s ease-in-out infinite;
+  }
+
+  .shimmer-effect {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--neon-cyan) / 0.1),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
   /* Enhanced smooth scroll behavior */
   html {
     scroll-behavior: smooth;

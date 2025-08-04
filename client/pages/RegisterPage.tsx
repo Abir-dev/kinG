@@ -117,321 +117,355 @@ export default function RegisterPage() {
         </div>
       )}
       <Layout>
-        <section className="py-0 px-0">
-          <div className="w-full grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-            {/* Left: Form */}
-            <div className="flex flex-col justify-start items-start px-8 py-0 min-h-screen">
-              <div className="w-full max-w-xl">
+        {/* Modern Minimalist Hero Section */}
+        <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/20">
+          <div className="max-w-6xl mx-auto px-6 py-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              
+              {/* Left Side - Content */}
+              <motion.div 
+                className="space-y-8"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="space-y-4">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-neon-cyan/10 border border-neon-cyan/20 rounded-full text-sm font-medium text-neon-cyan">
+                    <div className="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></div>
+                    Admissions Open 2024
+                  </div>
+                  
+                  <h1 className="text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[0.9] tracking-tight">
+                    Build Your
+                    <br />
+                    <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
+                      Tech Career
+                    </span>
+                  </h1>
+                  
+                  <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-lg">
+                    Join thousands of successful graduates who transformed their careers with our industry-focused programs.
+                  </p>
+                </div>
+                
+                {/* Quick Stats */}
+                <div className="flex items-center gap-8">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-neon-cyan">1000+</div>
+                    <div className="text-sm text-muted-foreground">Graduates</div>
+                  </div>
+                  <div className="w-px h-12 bg-border"></div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-neon-purple">95%</div>
+                    <div className="text-sm text-muted-foreground">Placement Rate</div>
+                  </div>
+                  <div className="w-px h-12 bg-border"></div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-neon-cyan">4.8★</div>
+                    <div className="text-sm text-muted-foreground">Student Rating</div>
+                  </div>
+                </div>
+                
+                {/* CTA Button */}
+                <div className="pt-4">
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => {
+                      document.querySelector('#registration-form')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Start Your Journey
+                  </Button>
+                </div>
+              </motion.div>
+              
+              {/* Right Side - Visual */}
+              <motion.div 
+                className="relative lg:pl-12"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className="relative">
+                  {/* Main Card */}
+                  <div className="bg-card border border-border/40 rounded-2xl p-8 shadow-2xl backdrop-blur-sm">
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">KG</span>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold">Kin-G Technology</h3>
+                          <p className="text-sm text-muted-foreground">Premium Education Platform</p>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
+                          <span className="text-sm font-medium">Web Development</span>
+                          <span className="text-neon-cyan font-semibold">₹1,299</span>
+                        </div>
+                        <div className="flex items-center justify-between p-3 bg-neon-purple/10 rounded-lg border border-neon-purple/20">
+                          <span className="text-sm font-medium">Launchpad Program</span>
+                          <span className="text-neon-purple font-semibold">₹3,999</span>
+                        </div>
+                        <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
+                          <span className="text-sm font-medium">AlgoBridge Contest</span>
+                          <span className="text-neon-cyan font-semibold">₹199</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Floating Elements */}
+                  <div className="absolute -top-4 -right-4 w-20 h-20 bg-neon-cyan/20 rounded-full blur-2xl"></div>
+                  <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-neon-purple/20 rounded-full blur-2xl"></div>
+                </div>
+              </motion.div>
+              
+            </div>
+          </div>
+        </section>
+        
+        {/* Registration Form Section */}
+        <section id="registration-form" className="min-h-screen bg-gradient-to-br from-background via-background/95 to-muted/10 relative">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-20 left-20 w-64 h-64 bg-neon-cyan rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 right-20 w-80 h-80 bg-neon-purple rounded-full blur-3xl"></div>
+          </div>
+          
+          <div className="relative grid lg:grid-cols-2">
+            {/* Left Side - Form */}
+            <div className="bg-card/5 backdrop-blur-sm border-r border-border/10">
+              <div className="p-8">
+                {/* Header */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="mb-6 text-left"
+                  className="mb-8"
                 >
-                  <div className="w-full flex justify-center mb-3">
-                    <span className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mt-6">
-                      Register
-                    </span>
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="w-2 h-8 bg-gradient-to-b from-neon-cyan to-neon-purple rounded-full"></div>
+                    <div>
+                      <h1 className="text-3xl font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
+                        Ready to Get Started?
+                      </h1>
+                      <p className="text-muted-foreground text-lg">Complete your registration in a few simple steps</p>
+                    </div>
                   </div>
-                  <h1 className="text-2xl md:text-4xl font-bold mb-3">
-                    Register for <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent neon-text-glow">Programs</span>
-                  </h1>
-                  <p className="text-base text-muted-foreground max-w-xl">
-                    Select your desired program and complete your registration. Secure your spot and accelerate your career with Kin-G Technology.
-                  </p>
                 </motion.div>
                 
-                {/* Registration Type Selection - Above Form */}
-                <div className="mb-6">
-                  <label className="text-sm font-medium mb-4 block">Registration Type *</label>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Workshop Option */}
-                    <div 
-                      className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
-                        registrationType === 'Registration for workshop' 
-                          ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
-                          : 'border-border/40 hover:border-neon-cyan/50'
-                      }`}
-                      onClick={() => setRegistrationType('Registration for workshop')}
-                    >
-                      <input
-                        type="radio"
-                        id="workshop"
-                        name="registrationType"
-                        value="Registration for workshop"
-                        checked={registrationType === 'Registration for workshop'}
-                        onChange={() => {}}
-                        className="sr-only"
-                        required
-                      />
-                      <div className="flex flex-col items-center text-center space-y-3">
-                        <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
-                          registrationType === 'Registration for workshop'
-                            ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
-                            : 'border-border/60'
-                        }`}>
-                          {registrationType === 'Registration for workshop' && (
-                            <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
-                          )}
-                        </div>
-                        <span className={`font-medium transition-colors duration-300 ${
-                          registrationType === 'Registration for workshop' ? 'text-neon-cyan' : 'text-foreground'
-                        }`}>
-                          Workshop
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Course Option */}
-                    <div 
-                      className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
-                        registrationType === 'Registration for Course' 
-                          ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
-                          : 'border-border/40 hover:border-neon-cyan/50'
-                      }`}
-                      onClick={() => setRegistrationType('Registration for Course')}
-                    >
-                      <input
-                        type="radio"
-                        id="course"
-                        name="registrationType"
-                        value="Registration for Course"
-                        checked={registrationType === 'Registration for Course'}
-                        onChange={() => {}}
-                        className="sr-only"
-                      />
-                      <div className="flex flex-col items-center text-center space-y-3">
-                        <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
-                          registrationType === 'Registration for Course'
-                            ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
-                            : 'border-border/60'
-                        }`}>
-                          {registrationType === 'Registration for Course' && (
-                            <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
-                          )}
-                        </div>
-                        <span className={`font-medium transition-colors duration-300 ${
-                          registrationType === 'Registration for Course' ? 'text-neon-cyan' : 'text-foreground'
-                        }`}>
-                          Course
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* AlgoBridge Option */}
-                    <div 
-                      className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
-                        registrationType === 'Registration for AlgoBridge' 
-                          ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
-                          : 'border-border/40 hover:border-neon-cyan/50'
-                      }`}
-                      onClick={() => setRegistrationType('Registration for AlgoBridge')}
-                    >
-                      <input
-                        type="radio"
-                        id="algobridge"
-                        name="registrationType"
-                        value="Registration for AlgoBridge"
-                        checked={registrationType === 'Registration for AlgoBridge'}
-                        onChange={() => {}}
-                        className="sr-only"
-                      />
-                      <div className="flex flex-col items-center text-center space-y-3">
-                        <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
-                          registrationType === 'Registration for AlgoBridge'
-                            ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
-                            : 'border-border/60'
-                        }`}>
-                          {registrationType === 'Registration for AlgoBridge' && (
-                            <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
-                          )}
-                        </div>
-                        <span className={`font-medium transition-colors duration-300 ${
-                          registrationType === 'Registration for AlgoBridge' ? 'text-neon-cyan' : 'text-foreground'
-                        }`}>
-                          AlgoBridge Contest
-                        </span>
-                      </div>
+                <div className="space-y-6">
+                  {/* Registration Type - Sleek Toggle */}
+                  <div>
+                    <label className="text-sm font-semibold text-foreground mb-3 block">Registration Type</label>
+                    <div className="grid grid-cols-3 gap-2 p-1 bg-muted/30 rounded-lg border border-border/50">
+                      {[
+                        { value: 'Registration for workshop', label: 'Workshop' },
+                        { value: 'Registration for Course', label: 'Course' },
+                        { value: 'Registration for AlgoBridge', label: 'AlgoBridge' }
+                      ].map((option) => (
+                        <button
+                          key={option.value}
+                          onClick={() => setRegistrationType(option.value)}
+                          className={`py-2.5 px-3 rounded-md text-sm font-medium transition-all duration-200 ${
+                            registrationType === option.value
+                              ? 'bg-gradient-to-r from-neon-cyan to-neon-purple text-white shadow-lg'
+                              : 'text-muted-foreground hover:text-foreground hover:bg-background/50'
+                          }`}
+                        >
+                          {option.label}
+                        </button>
+                      ))}
                     </div>
                   </div>
-                </div>
 
-                {/* Course Pricing - Show only when Course is selected */}
-                {registrationType === 'Registration for Course' && (
-                  <div className="mb-6">
-                    <label className="text-sm font-medium mb-4 block">Course Pricing *</label>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      {/* Basic Plan */}
-                      <div 
-                        className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
-                          coursePricing === 'Basic - ₹1299' 
-                            ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
-                            : 'border-border/40 hover:border-neon-cyan/50'
-                        }`}
-                        onClick={() => setCoursePricing('Basic - ₹1299')}
-                      >
-                        <div className="flex flex-col items-center text-center space-y-2">
-                          <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
-                            coursePricing === 'Basic - ₹1299'
-                              ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
-                              : 'border-border/60'
-                          }`}>
-                            {coursePricing === 'Basic - ₹1299' && (
-                              <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
-                            )}
-                          </div>
-                          <span className={`font-bold transition-colors duration-300 ${
-                            coursePricing === 'Basic - ₹1299' ? 'text-neon-cyan' : 'text-foreground'
-                          }`}>
-                            Basic
-                          </span>
-                          <span className="text-2xl font-bold text-neon-cyan">₹1299</span>
-                        </div>
-                      </div>
-
-                      {/* Pro Plan */}
-                      <div 
-                        className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
-                          coursePricing === 'Pro - ₹3999' 
-                            ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
-                            : 'border-border/40 hover:border-neon-cyan/50'
-                        }`}
-                        onClick={() => setCoursePricing('Pro - ₹3999')}
-                      >
-                        <div className="flex flex-col items-center text-center space-y-2">
-                          <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
-                            coursePricing === 'Pro - ₹3999'
-                              ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
-                              : 'border-border/60'
-                          }`}>
-                            {coursePricing === 'Pro - ₹3999' && (
-                              <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
-                            )}
-                          </div>
-                          <span className={`font-bold transition-colors duration-300 ${
-                            coursePricing === 'Pro - ₹3999' ? 'text-neon-cyan' : 'text-foreground'
-                          }`}>
-                            Pro
-                          </span>
-                          <span className="text-2xl font-bold text-neon-cyan">₹3999</span>
-                        </div>
-                      </div>
-
-                      {/* Ultimate Plan */}
-                      <div 
-                        className={`relative cursor-pointer border-2 border-dashed rounded-lg p-4 transition-all duration-300 ${
-                          coursePricing === 'Ultimate - ₹7999' 
-                            ? 'border-neon-cyan bg-neon-cyan/5 shadow-lg shadow-neon-cyan/20' 
-                            : 'border-border/40 hover:border-neon-cyan/50'
-                        }`}
-                        onClick={() => setCoursePricing('Ultimate - ₹7999')}
-                      >
-                        <div className="flex flex-col items-center text-center space-y-2">
-                          <div className={`w-6 h-6 rounded-full border-2 transition-all duration-300 ${
-                            coursePricing === 'Ultimate - ₹7999'
-                              ? 'border-neon-cyan bg-neon-cyan shadow-lg shadow-neon-cyan/50'
-                              : 'border-border/60'
-                          }`}>
-                            {coursePricing === 'Ultimate - ₹7999' && (
-                              <div className="w-full h-full rounded-full bg-neon-cyan animate-pulse"></div>
-                            )}
-                          </div>
-                          <span className={`font-bold transition-colors duration-300 ${
-                            coursePricing === 'Ultimate - ₹7999' ? 'text-neon-cyan' : 'text-foreground'
-                          }`}>
-                            Ultimate
-                          </span>
-                          <span className="text-2xl font-bold text-neon-cyan">₹7999</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                <Card className="bg-card/50 backdrop-blur-sm border-border/40 shadow-lg text-left">
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-bold mb-2">Program Registration</CardTitle>
-                    <CardDescription>Select your program type and fill in your details to proceed to payment.</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    {/* Full Name - single column */}
+                  {/* Course Pricing - Clean Cards */}
+                  {registrationType === 'Registration for Course' && (
                     <div>
-                      <label className="text-sm font-medium mb-2 block">Full Name *</label>
-                      <Input value={name} onChange={e => setName(e.target.value)} placeholder="Your Name" required className="bg-background/50 border-border/40 focus:border-neon-cyan/50" />
-                    </div>
-                    {/* Other fields - two columns */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">Phone Number *</label>
-                        <Input value={phone} onChange={e => setPhone(e.target.value)} type="tel" placeholder="+91 89104 81993" required className="bg-background/50 border-border/40 focus:border-neon-cyan/50" />
+                      <label className="text-sm font-semibold text-foreground mb-3 block">Select Plan</label>
+                      <div className="grid grid-cols-3 gap-2">
+                        {[
+                          { value: 'Basic - ₹1299', label: 'Basic', price: '₹1299' },
+                          { value: 'Pro - ₹3999', label: 'Pro', price: '₹3999' },
+                          { value: 'Ultimate - ₹7999', label: 'Ultimate', price: '₹7999' }
+                        ].map((plan) => (
+                          <button
+                            key={plan.value}
+                            onClick={() => setCoursePricing(plan.value)}
+                            className={`p-3 rounded-lg border-2 transition-all duration-200 text-center ${
+                              coursePricing === plan.value
+                                ? 'border-neon-cyan bg-neon-cyan/10 text-neon-cyan'
+                                : 'border-border/40 hover:border-neon-cyan/50 hover:bg-neon-cyan/5 text-muted-foreground'
+                            }`}
+                          >
+                            <div className="font-medium text-xs">{plan.label}</div>
+                            <div className="font-bold text-sm mt-1">{plan.price}</div>
+                          </button>
+                        ))}
                       </div>
+                    </div>
+                  )}
+
+                  {/* Form Fields - Modern Glass Design */}
+                  <div className="bg-card/30 backdrop-blur-sm border border-border/40 rounded-xl p-6 shadow-lg">
+                    <div className="space-y-5">
+                      {/* Full Name */}
                       <div>
-                        <label className="text-sm font-medium mb-2 block">Email ID *</label>
-                        <Input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="you@example.com" required className="bg-background/50 border-border/40 focus:border-neon-cyan/50" />
+                        <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Full Name</label>
+                        <Input 
+                          value={name} 
+                          onChange={e => setName(e.target.value)} 
+                          placeholder="Enter your full name" 
+                          required 
+                          className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
+                        />
                       </div>
                       
+                      {/* Two Column Fields */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Phone</label>
+                          <Input 
+                            value={phone} 
+                            onChange={e => setPhone(e.target.value)} 
+                            type="tel" 
+                            placeholder="+91 12345 67890" 
+                            required 
+                            className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
+                          />
+                        </div>
+                        <div>
+                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Email</label>
+                          <Input 
+                            value={email} 
+                            onChange={e => setEmail(e.target.value)} 
+                            type="email" 
+                            placeholder="you@example.com" 
+                            required 
+                            className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Course Selection */}
                       {registrationType === 'Registration for Course' && (
-                        <div className="md:col-span-2">
-                          <label className="text-sm font-medium mb-2 block">Select Course *</label>
+                        <div>
+                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Course</label>
                           <select
                             value={selectedCourse}
                             onChange={e => setSelectedCourse(e.target.value)}
                             required
-                            className="w-full bg-card dark:bg-background border border-neon-cyan/30 text-black dark:text-neon-cyan font-medium rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neon-cyan/50 transition-colors duration-200"
+                            className="w-full bg-background/50 border border-border/50 text-foreground rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-neon-cyan/60 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
                           >
                             {courseOptions.map(course => (
-                              <option key={course} value={course} className="bg-card dark:bg-background text-black dark:text-neon-cyan">{course}</option>
+                              <option key={course} value={course} className="bg-background text-foreground">{course}</option>
                             ))}
                           </select>
                         </div>
                       )}
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">Year of Passout *</label>
-                        <Input value={passoutYear} onChange={e => setPassoutYear(e.target.value)} placeholder="e.g. 2025" required className="bg-background/50 border-border/40 focus:border-neon-cyan/50" />
+                      
+                      {/* Academic Information */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Graduation Year</label>
+                          <Input 
+                            value={passoutYear} 
+                            onChange={e => setPassoutYear(e.target.value)} 
+                            placeholder="2025" 
+                            required 
+                            className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
+                          />
+                        </div>
+                        <div>
+                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Stream</label>
+                          <Input 
+                            value={stream} 
+                            onChange={e => setStream(e.target.value)} 
+                            placeholder="Computer Science" 
+                            required 
+                            className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
+                          />
+                        </div>
                       </div>
+                      
                       <div>
-                        <label className="text-sm font-medium mb-2 block">Your Stream *</label>
-                        <Input value={stream} onChange={e => setStream(e.target.value)} placeholder="e.g. Computer Science" required className="bg-background/50 border-border/40 focus:border-neon-cyan/50" />
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">Your College *</label>
-                        <Input value={college} onChange={e => setCollege(e.target.value)} placeholder="e.g. IIT Kharagpur" required className="bg-background/50 border-border/40 focus:border-neon-cyan/50" />
+                        <label className="text-sm font-medium text-foreground/90 mb-1.5 block">College/University</label>
+                        <Input 
+                          value={college} 
+                          onChange={e => setCollege(e.target.value)} 
+                          placeholder="IIT Kharagpur" 
+                          required 
+                          className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
+                        />
                       </div>
                     </div>
-                    <Button
-                      size="lg"
-                      className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan hover:scale-[1.02] py-4 text-lg font-semibold"
-                      onClick={() => {
-                        if (
-                          name.trim() &&
-                          phone.trim() &&
-                          email.trim() &&
-                          registrationType.trim() &&
-                          (registrationType !== 'Registration for Course' || (selectedCourse.trim() && coursePricing.trim())) &&
-                          passoutYear.trim() &&
-                          stream.trim() &&
-                          college.trim()
-                        ) {
-                          setShowModal(true);
-                        }
-                      }}
-                    >
-                      Proceed to Payment
-                    </Button>
-                  </CardContent>
-                </Card>
+                  </div>
+                  
+                  {/* Submit Button */}
+                  <Button
+                    size="lg"
+                    className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 text-white font-semibold py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.01] transition-all duration-300 neon-glow-cyan text-lg"
+                    onClick={() => {
+                      if (
+                        name.trim() &&
+                        phone.trim() &&
+                        email.trim() &&
+                        registrationType.trim() &&
+                        (registrationType !== 'Registration for Course' || (selectedCourse.trim() && coursePricing.trim())) &&
+                        passoutYear.trim() &&
+                        stream.trim() &&
+                        college.trim()
+                      ) {
+                        setShowModal(true);
+                      }
+                    }}
+                  >
+                    Proceed to Payment →
+                  </Button>
+                </div>
               </div>
             </div>
-            {/* Right: Image Placeholder (hidden on mobile) */}
-            <div className="hidden md:flex w-full items-stretch">
-              <div className="w-full overflow-hidden bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10 flex items-center justify-center">
-                <img
-                  src="/images/launchpad.jpeg"
-                  alt="Course Registration Placeholder"
-                  className="w-full h-full object-cover opacity-80"
-                  style={{ minHeight: '100vh', objectPosition: 'center' }}
-                />
+            
+            {/* Right Side - Enhanced Image */}
+            <div className="relative min-h-screen overflow-hidden group">
+              <img 
+                src="/images/launchpad.jpeg" 
+                alt="Launchpad Program" 
+                className="w-full h-full min-h-screen object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Overlay with gradient and content */}
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/20 via-transparent to-neon-purple/20"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              
+              {/* Floating Content */}
+              <div className="absolute bottom-8 left-8 right-8">
+                <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">Transform Your Future</h3>
+                  <p className="text-white/80 text-sm mb-4">Join thousands of successful graduates who've built amazing careers with our programs.</p>
+                  <div className="flex items-center gap-6">
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-neon-cyan">1000+</div>
+                      <div className="text-xs text-white/70">Graduates</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-neon-purple">95%</div>
+                      <div className="text-xs text-white/70">Success Rate</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-neon-cyan">4.8★</div>
+                      <div className="text-xs text-white/70">Rating</div>
+                    </div>
+                  </div>
+                </div>
               </div>
+              
+              {/* Decorative Elements */}
+              <div className="absolute top-6 right-6 w-3 h-3 bg-neon-cyan rounded-full animate-pulse"></div>
+              <div className="absolute top-20 right-12 w-2 h-2 bg-neon-purple rounded-full animate-pulse delay-1000"></div>
             </div>
           </div>
         </section>

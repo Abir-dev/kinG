@@ -1,0 +1,6 @@
+<svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="60" fill="transparent" rx="8"/>
+  <path d="M35 18c-2-2-5-2-7 0s-2 5-2 7c0 2 2 5 5 5s5-3 5-5c0-2-1-5-1-7z" fill="#FFFFFF"/>
+  <path d="M35 25c-5 0-9 4-9 9s4 9 9 9c5 0 9-4 9-9s-4-9-9-9z" fill="#FFFFFF"/>
+  <text x="55" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">Apple</text>
+</svg>
