@@ -203,16 +203,16 @@ export default function RegisterPage() {
                       
                       <div className="space-y-4">
                         <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
-                          <span className="text-sm font-medium">Web Development</span>
-                          <span className="text-neon-cyan font-semibold">₹1,299</span>
+                          <span className="text-sm font-medium">Workshops</span>
+                          <span className="text-neon-cyan font-semibold">₹26</span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-neon-purple/10 rounded-lg border border-neon-purple/20">
                           <span className="text-sm font-medium">Launchpad Program</span>
-                          <span className="text-neon-purple font-semibold">₹3,999</span>
+                          <span className="text-neon-purple font-semibold">₹7,999</span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
                           <span className="text-sm font-medium">AlgoBridge Contest</span>
-                          <span className="text-neon-cyan font-semibold">₹199</span>
+                          <span className="text-neon-cyan font-semibold">₹49</span>
                         </div>
                       </div>
                     </div>
