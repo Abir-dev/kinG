@@ -407,4 +407,24 @@
   body::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--neon-cyan) / 0.5);
   }
+  
+  /* Infinite Scroll Animation */
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-50% - var(--gap) / 2));
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll var(--animation-duration) var(--animation-direction) linear infinite;
+  }
+  
+  .scroller {
+    --gap: 1rem;
+    --animation-duration: 40s;
+    --animation-direction: forwards;
+  }
 }
