@@ -5,6 +5,8 @@ import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { Input } from '../components/ui/input';
+import emailjs from '@emailjs/browser';
+import imageCompression from 'browser-image-compression';
 
 const courses = [
   'Launchpad Career Program',
@@ -14,6 +16,16 @@ const courses = [
   'UI/UX Design',
   'Product Management',
 ];
+
+// Helper to convert file to Base64
+function toBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = error => reject(error);
+  });
+}
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -41,6 +53,15 @@ export default function RegisterPage() {
   const [stream, setStream] = useState('');
   const [college, setCollege] = useState('');
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null;
+    if (file && file.size > 1024 * 1024) { // 1MB limit
+      alert('File size must be less than 1MB');
+      return;
+    }
+    setPaymentFile(file);
+  };
+
   return (
     <>
       {showModal && (
@@ -65,26 +86,34 @@ export default function RegisterPage() {
                 setError('');
                 setSuccess(false);
                 try {
-                  // Prepare form data
-                  const formData = new FormData();
-                  formData.append('Full Name', name);
-                  formData.append('Phone Number', phone);
-                  formData.append('Email ID', email);
-                  formData.append('Registration Type', registrationType);
-                  formData.append('Course', registrationType === 'Registration for Course' ? selectedCourse : 'N/A');
-                  formData.append('Course Pricing', registrationType === 'Registration for Course' ? coursePricing : 'N/A');
-                  formData.append('Year of Passout', passoutYear);
-                  formData.append('Stream', stream);
-                  formData.append('College', college);
-                  formData.append('Recipient', 'admin@kingtechs.in');
+                  let attachmentBase64 = '';
                   if (paymentFile) {
-                    formData.append('Payment Receipt', paymentFile);
+                    // Compress the image before converting to Base64
+                    const compressedFile = await imageCompression(paymentFile, {
+                      maxSizeMB: 1,
+                      maxWidthOrHeight: 1024,
+                      useWebWorker: true,
+                    });
+                    attachmentBase64 = await toBase64(compressedFile);
                   }
-                  // Send to backend API (needs to be implemented)
-                  await fetch('/api/send-payment', {
-                    method: 'POST',
-                    body: formData,
-                  });
+                  const templateParams = {
+                    name,
+                    email,
+                    phone,
+                    registrationType,
+                    selectedCourse: registrationType === 'Registration for Course' ? selectedCourse : 'N/A',
+                    coursePricing: registrationType === 'Registration for Course' ? coursePricing : 'N/A',
+                    passoutYear,
+                    stream,
+                    college,
+                    payment_receipt: attachmentBase64,
+                  };
+                  await emailjs.send(
+                    import.meta.env.VITE_EMAILJS_SERVICE_ID!,
+                    import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
+                    templateParams,
+                    import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
+                  );
                   setSuccess(true);
                   setShowModal(false);
                   navigate('/success');
@@ -101,7 +130,7 @@ export default function RegisterPage() {
                 accept="image/*"
                 required
                 className="mb-4 block w-full border border-neon-cyan/30 rounded px-3 py-2 bg-background/60 text-neon-cyan focus:border-neon-cyan/50"
-                onChange={e => setPaymentFile(e.target.files?.[0] || null)}
+                onChange={handleFileChange}
               />
               <Button
                 type="submit"
