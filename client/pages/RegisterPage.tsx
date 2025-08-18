@@ -6,7 +6,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { Input } from '../components/ui/input';
 import emailjs from '@emailjs/browser';
-import imageCompression from 'browser-image-compression';
+// Remove imageCompression import as it's no longer needed
 
 const courses = [
   'Launchpad Career Program',
@@ -30,7 +30,8 @@ function toBase64(file: File): Promise<string> {
 export default function RegisterPage() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const [paymentFile, setPaymentFile] = useState<File | null>(null);
+  // Replace paymentFile with transactionId
+  const [transactionId, setTransactionId] = useState('');
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -62,6 +63,8 @@ export default function RegisterPage() {
     setPaymentFile(file);
   };
 
+  // Remove handleFileChange function as it's no longer needed
+
   return (
     <>
       {showModal && (
@@ -86,16 +89,7 @@ export default function RegisterPage() {
                 setError('');
                 setSuccess(false);
                 try {
-                  let attachmentBase64 = '';
-                  if (paymentFile) {
-                    // Compress the image before converting to Base64
-                    const compressedFile = await imageCompression(paymentFile, {
-                      maxSizeMB: 1,
-                      maxWidthOrHeight: 1024,
-                      useWebWorker: true,
-                    });
-                    attachmentBase64 = await toBase64(compressedFile);
-                  }
+                  // Modified to use transactionId instead of payment screenshot
                   const templateParams = {
                     name,
                     email,
@@ -106,7 +100,7 @@ export default function RegisterPage() {
                     passoutYear,
                     stream,
                     college,
-                    payment_receipt: attachmentBase64,
+                    transaction_id: transactionId, // Add transaction ID instead of payment receipt
                   };
                   await emailjs.send(
                     import.meta.env.VITE_EMAILJS_SERVICE_ID!,
@@ -124,13 +118,14 @@ export default function RegisterPage() {
                 }
               }}
             >
-              <label className="block text-sm font-medium mb-2 text-neon-cyan">Upload Payment Screenshot *</label>
-              <input
-                type="file"
-                accept="image/*"
+              <label className="block text-sm font-medium mb-2 text-neon-cyan">Transaction ID *</label>
+              <Input
+                type="text"
+                value={transactionId}
+                onChange={(e) => setTransactionId(e.target.value)}
                 required
+                placeholder="Enter your transaction ID"
                 className="mb-4 block w-full border border-neon-cyan/30 rounded px-3 py-2 bg-background/60 text-neon-cyan focus:border-neon-cyan/50"
-                onChange={handleFileChange}
               />
               <Button
                 type="submit"
@@ -502,3 +497,8 @@ export default function RegisterPage() {
     </>
   );
 }
+
+function setPaymentFile(file: File) {
+  throw new Error('Function not implemented.');
+}
+
