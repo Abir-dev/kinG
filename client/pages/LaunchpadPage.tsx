@@ -74,7 +74,7 @@ const pricingTiers = [
   },
   {
     name: "Ultimate",
-    price: "₹7,999",
+    price: "₹17,999",
     period: "+ 30% placement fee",
     description: "Premium program with guaranteed placement support and ongoing mentorship",
     icon: IconCrown,
@@ -126,53 +126,52 @@ const programFeatures = [
 
 const curriculum = [
   {
-    week: "Week 1-2",
-    title: "Foundation & Assessment",
-    topics: [
-      "Career assessment and goal setting",
-      "Industry landscape overview",
-      "Professional communication skills",
-      "Basic technical skills assessment"
+    week: "13 - Week",
+    title: "AI Accelerating mastery course",
+    prices: [
+      "21,999",
     ]
   },
   {
-    week: "Week 3-6",
-    title: "Skill Development",
-    topics: [
-      "Technical skill enhancement",
-      "Industry-specific training",
-      "Project management fundamentals",
-      "Team collaboration tools"
+    week: "13 - Week",
+    title: "Full stack development & web page building ",
+    prices: [
+      "36,999"
     ]
   },
   {
-    week: "Week 7-10",
-    title: "Real Project Experience",
-    topics: [
-      "Live project assignment",
-      "Client interaction skills",
-      "Problem-solving methodologies",
-      "Quality assurance practices"
+    week: "13 - Week",
+    title: "Stock market Algotrade with AI tools",
+    prices: [
+      "65,999"
     ]
   },
   {
-    week: "Week 11-16",
-    title: "Job Preparation",
-    topics: [
-      "Resume optimization",
-      "Interview preparation",
-      "Portfolio development",
-      "Networking strategies"
+    week: "13 - Week",
+    title: "Software development & android apps",
+    prices: [
+      "36,999"
     ]
   },
   {
-    week: "Week 17-24",
-    title: "Placement Phase",
-    topics: [
-      "Job application process",
-      "Interview rounds",
-      "Salary negotiation",
-      "Onboarding support"
+    week: "13 - Week",
+    title: "Tech support & network support",
+    prices: [
+      "21,999"
+    ]
+  },
+  {
+    week: "13 - Week",
+    title: "Finance & sales speech readiness",
+    prices: [
+      "14,999"
+    ]
+  },
+  {
+    week: "13 - Week",
+    title: "Digital marketing",
+    prices: [
+      "11,999"
     ]
   }
 ];
@@ -391,10 +390,10 @@ export default function LaunchpadPage() {
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                      {phase.topics.map((topic, topicIndex) => (
-                        <div key={topic} className="flex items-center space-x-2">
-                          <IconCheck className="h-4 w-4 text-neon-green flex-shrink-0" />
-                          <span className="text-sm text-muted-foreground">{topic}</span>
+                      {phase.prices.map((price, topicIndex) => (
+                        <div key={price} className="flex items-center justify-center space-x-2">
+                          {/* <IconCheck className="h-4 w-4 text-neon-green flex-shrink-0" /> */}
+                          <span className="text-2xl text-muted-foreground text-bold">₹{price}</span>
                         </div>
                       ))}
                     </div>
@@ -407,7 +406,7 @@ export default function LaunchpadPage() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-4">
+      {/* <section id="pricing" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -529,7 +528,7 @@ export default function LaunchpadPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Success Stories */}
       {/* <section id="success-stories" className="py-20 px-4">
