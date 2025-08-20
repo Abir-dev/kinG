@@ -126,8 +126,8 @@ const teamMembers = [
   },
   {
     name: "Payel",
-    designation: "Team Leader B2B (Sales)",
-    description: "Expert in B2B sales, leading teams to deliver outstanding results.",
+    designation: "Admin - Operation",
+    description: "Administrator and operation manager, ensuring smooth operations and efficiency.",
     image: "/images/Sayoni.jpeg",
     linkedin: "https://linkedin.com/in/payel-b2b"
   },
