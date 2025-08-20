@@ -15,12 +15,12 @@ import {
   IconBulb,
   IconShield,
   IconAward,
-  IconCalendar
+  IconCalendar,
+  IconExternalLink
 } from '@tabler/icons-react';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { AnimatedTestimonials } from '../components/ui/animated-testimonials';
 import { useGSAPAnimations } from '../hooks/useGSAPAnimations';
 
 // Register GSAP plugins
@@ -90,80 +90,80 @@ const timeline = [
 
 const teamMembers = [
   {
-    quote: "Visionary leader driving Kin-G Technology's growth and innovation.",
     name: "Soumodip Dey",
     designation: "Founder/CEO",
-    src: "/images/Soumodip.jpeg",
+    description: "Visionary leader driving Kin-G Technology's growth and innovation with strategic expertise.",
+    image: "/images/Soumodip.jpeg",
     linkedin: "https://linkedin.com/in/soumodip-dey"
   },
   {
-    quote: "Strategic thinker and B2B expert, leading partnerships and business expansion.",
     name: "Ayushmita Das",
     designation: "Co-Founder/B2B Head",
-    src: "/images/Ayushmita.jpeg",
+    description: "Strategic thinker and B2B expert, leading partnerships and business expansion.",
+    image: "/images/Ayushmita.jpeg",
     linkedin: "https://linkedin.com/in/ayushmita-das"
   },
   {
-    quote: "Driving sales excellence and business growth with a client-first approach.",
     name: "Himadri Barua",
     designation: "Assistant Business President (Sales)",
-    src: "/images/Himadri.jpeg",
+    description: "Driving sales excellence and business growth with a client-first approach.",
+    image: "/images/Himadri.jpeg",
     linkedin: "https://linkedin.com/in/himadri-barua"
   },
   {
-    quote: "Full stack developer and technical lead, architecting scalable solutions.",
     name: "Abir Lal Banerjee",
     designation: "Full stack Developer / Technical Project Lead",
-    src: "/images/Abir.png",
+    description: "Full stack developer and technical lead, architecting scalable solutions.",
+    image: "/images/Abir.png",
     linkedin: "https://linkedin.com/in/abir-lal-banerjee"
   },
   {
-    quote: "Technology visionary, leading innovation and product development.",
     name: "Sourav",
     designation: "CTO (Chief Technology Officer)",
-    src: "/images/Sourav.jpeg",
+    description: "Technology visionary, leading innovation and product development.",
+    image: "/images/Sourav.jpeg",
     linkedin: "https://linkedin.com/in/sourav-cto"
   },
   {
-    quote: "Expert in B2B sales, leading teams to deliver outstanding results.",
     name: "Payel",
     designation: "Team Leader B2B (Sales)",
-    src: "/images/Sayoni.jpeg",
+    description: "Expert in B2B sales, leading teams to deliver outstanding results.",
+    image: "/images/Sayoni.jpeg",
     linkedin: "https://linkedin.com/in/payel-b2b"
   },
   {
-    quote: "Creative force behind user experiences and interface design.",
     name: "Tanwishtha",
     designation: "UX/UI Designer",
-    src: "/images/Tanwistha.jpeg",
+    description: "Creative force behind user experiences and interface design.",
+    image: "/images/Tanwistha.jpeg",
     linkedin: "https://linkedin.com/in/tanwishtha-uiux"
   },
   {
-    quote: "Brand strategist and communications expert, shaping Kin-G's public image.",
     name: "Uditi",
     designation: "Brand & Communications Head",
-    src: "/images/Uditi.jpeg",
+    description: "Brand strategist and communications expert, shaping Kin-G's public image.",
+    image: "/images/Uditi.jpeg",
     linkedin: "https://linkedin.com/in/uditi-brand"
   },
   {
-    quote: "Marketing leader and SEO specialist, driving digital growth.",
     name: "Avishikta",
     designation: "CMO (Chief Marketing Officer) / SEO",
-    src: "/images/Avishikta.jpeg",
+    description: "Marketing leader and SEO specialist, driving digital growth.",
+    image: "/images/Avishikta.jpeg",
     linkedin: "https://linkedin.com/in/avishikta-cmo"
   },
   {
-    quote: "Sales manager ensuring operational excellence and client satisfaction.",
     name: "Deboshmita",
     designation: "General Manager (Sales)",
-    src: "/images/Deboshmita.jpeg",
+    description: "Sales manager ensuring operational excellence and client satisfaction.",
+    image: "/images/Deboshmita.jpeg",
     linkedin: "https://linkedin.com/in/deboshmita-sales"
   },
   {
-    quote: "Product management expert and course trainer, empowering future leaders.",
     name: "Indrajit Das",
     designation: "Course Trainer (Product Management Head)",
-    src: "/images/Indrajit.jpeg",
+    description: "Product management expert and course trainer, empowering future leaders.",
+    image: "/images/Indrajit.jpeg",
     linkedin: "https://linkedin.com/in/indrajit-das"
   }
 ];
@@ -578,7 +578,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Team Section - New Grid Layout */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -599,7 +599,185 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <AnimatedTestimonials testimonials={teamMembers} />
+          {/* CEO Section - Featured at Top */}
+          <div className="mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex justify-center"
+            >
+              <motion.div
+                whileHover={{ y: -15, scale: 1.05 }}
+                className="group max-w-md"
+              >
+                <Card className="h-full bg-gradient-to-br from-card/70 via-card/50 to-card/30 backdrop-blur-md border-2 border-neon-cyan/50 hover:border-neon-cyan transition-all duration-500 hover:shadow-2xl hover:shadow-neon-cyan/20 overflow-hidden">
+                  <div className="relative">
+                    {/* CEO Profile Image */}
+                    <div className="aspect-square overflow-hidden">
+                      <img
+                        src={teamMembers[0].image}
+                        alt={teamMembers[0].name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      {/* Enhanced Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      
+                      {/* CEO Badge */}
+                      <div className="absolute top-4 left-4 bg-gradient-to-r from-neon-cyan to-neon-purple px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg">
+                        FOUNDER & CEO
+                      </div>
+                    </div>
+                    
+                    {/* LinkedIn Link - Enhanced */}
+                    <motion.a
+                      href={teamMembers[0].linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-4 right-4 w-12 h-12 bg-neon-cyan/30 backdrop-blur-md rounded-full flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 shadow-lg"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <IconBrandLinkedin className="h-6 w-6" />
+                    </motion.a>
+                  </div>
+                  
+                  <CardContent className="p-8 text-center">
+                    <div className="mb-4">
+                      <h3 className="text-2xl font-bold mb-3 group-hover:text-neon-cyan transition-colors duration-300">
+                        {teamMembers[0].name}
+                      </h3>
+                      <div className="text-base font-medium text-neon-purple mb-4 bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 px-4 py-2 rounded-full inline-block border border-neon-purple/30">
+                        {teamMembers[0].designation}
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
+                        {teamMembers[0].description}
+                      </p>
+                    </div>
+                    
+                    {/* Enhanced Connect Button */}
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Button
+                        asChild
+                        className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-neon-cyan/50"
+                      >
+                        <a 
+                          href={teamMembers[0].linkedin} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2"
+                        >
+                          Connect with CEO
+                          <IconExternalLink className="h-4 w-4" />
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Rest of Team Members */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+            {teamMembers.slice(1).map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
+              >
+                <Card className="h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500 hover:shadow-xl hover:shadow-neon-cyan/10 overflow-hidden">
+                  <div className="relative">
+                    {/* Profile Image */}
+                    <div className="aspect-square overflow-hidden">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    
+                    {/* LinkedIn Link - Floating */}
+                    <motion.a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-4 right-4 w-10 h-10 bg-neon-cyan/20 backdrop-blur-md rounded-full flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <IconBrandLinkedin className="h-5 w-5" />
+                    </motion.a>
+                  </div>
+                  
+                  <CardContent className="p-6">
+                    <div className="text-center">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-neon-cyan transition-colors duration-300">
+                        {member.name}
+                      </h3>
+                      <div className="text-sm font-medium text-neon-purple mb-3 bg-neon-purple/10 px-3 py-1 rounded-full inline-block">
+                        {member.designation}
+                      </div>
+                      <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
+                        {member.description}
+                      </p>
+                    </div>
+                    
+                    {/* Connect Button */}
+                    <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="w-full border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan transition-all duration-300"
+                      >
+                        <a 
+                          href={member.linkedin} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2"
+                        >
+                          Connect
+                          <IconExternalLink className="h-4 w-4" />
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Team Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mt-16 text-center"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="group">
+                <div className="text-3xl font-bold text-neon-cyan mb-2 group-hover:scale-110 transition-transform">11+</div>
+                <div className="text-muted-foreground">Team Members</div>
+              </div>
+              <div className="group">
+                <div className="text-3xl font-bold text-neon-purple mb-2 group-hover:scale-110 transition-transform">8+</div>
+                <div className="text-muted-foreground">Departments</div>
+              </div>
+              <div className="group">
+                <div className="text-3xl font-bold text-neon-pink mb-2 group-hover:scale-110 transition-transform">5+</div>
+                <div className="text-muted-foreground">Years Experience</div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
