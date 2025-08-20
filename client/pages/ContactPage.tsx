@@ -343,7 +343,7 @@ Best regards,`);
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-3 mb-4">
                       <IconMapPin className="h-6 w-6 text-neon-cyan" />
-                      <span className="font-semibold">Mumbai, Maharashtra, India</span>
+                      <span className="font-semibold">Saltlake Sector V, Kolkata, India</span>
                     </div>
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
@@ -356,7 +356,7 @@ Best regards,`);
                       </div>
                       <div className="flex items-center space-x-2">
                         <IconBrandInstagram className="h-5 w-5 text-pink-500" />
-                        <a href="https://www.instagram.com/kin.g.tech?igsh=dGdhZHdybmg0Z2Ri" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:underline">@kin.g.tech</a>
+                        <a href="https://www.instagram.com/launchpad.kingtechs?igsh=dGdhZHdybmg0Z2Ri" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:underline">@kin.g.tech</a>
                       </div>
                     </div>
                   </CardContent>

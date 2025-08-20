@@ -324,7 +324,7 @@ export default function HomePage() {
                     <p className="text-muted-foreground mb-4 italic">"{testimonial.content}"</p>
                     <div>
                       <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                      {/* <div className="text-sm text-muted-foreground">{testimonial.role}</div> */}
                     </div>
                   </CardContent>
                 </Card>

@@ -156,7 +156,7 @@ export function Contact() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
                 <h4 className="font-semibold">Our Location</h4>
-                <p className="text-sm opacity-90">Mumbai, Maharashtra, India</p>
+                <p className="text-sm opacity-90">SaltLake Sector V, Kolkata, India</p>
               </div>
               <div className="absolute top-4 right-4 w-3 h-3 bg-neon-cyan rounded-full animate-pulse" />
             </motion.div>

@@ -191,7 +191,7 @@ export function Layout({ children }: LayoutProps) {
                     </motion.a>
                     
                     <motion.a
-                      href="https://www.instagram.com/kin.g.tech?igsh=bDJmNjZyeXhyMDA4&utm_source=qr"
+                      href="https://www.instagram.com/launchpad.kingtechs?igsh=dGdhZHdybmg0Z2Ri"
                       target="_blank"
                       rel="noopener noreferrer"
                       initial={{ opacity: 0, x: -10 }}
