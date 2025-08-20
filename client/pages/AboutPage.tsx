@@ -98,7 +98,7 @@ const teamMembers = [
   },
   {
     name: "Ayushmita Das",
-    designation: "Co-Founder/B2B Head",
+    designation: "Co-Founder/B2C Head",
     description: "Strategic thinker and B2B expert, leading partnerships and business expansion.",
     image: "/images/Ayushmita.jpeg",
     linkedin: "https://linkedin.com/in/ayushmita-das"
