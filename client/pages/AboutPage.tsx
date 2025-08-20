@@ -59,7 +59,7 @@ const timeline = [
   {
     year: "2019",
     title: "Foundation",
-    description: "Kin-G Technology was established in 2019, focusing on innovative solutions for career development and business growth."
+    description: "Kin-G Technologies was established in 2019, focusing on innovative solutions for career development and business growth."
   },
   {
     year: "2020",
@@ -73,7 +73,7 @@ const timeline = [
   },
   {
     year: "2022",
-    title: "Technology Innovation",
+    title: "Technologies Innovation",
     description: "Launched our development division, providing cutting-edge website and mobile app development services to clients."
   },
   {
@@ -92,7 +92,7 @@ const teamMembers = [
   {
     name: "Soumodip Dey",
     designation: "Founder/CEO",
-    description: "Visionary leader driving Kin-G Technology's growth and innovation with strategic expertise.",
+    description: "Visionary leader driving Kin-G Technologies's growth and innovation with strategic expertise.",
     image: "/images/Soumodip.jpeg",
     linkedin: "https://linkedin.com/in/soumodip-dey"
   },
@@ -119,8 +119,8 @@ const teamMembers = [
   },
   {
     name: "Sourav",
-    designation: "CTO (Chief Technology Officer)",
-    description: "Technology visionary, leading innovation and product development.",
+    designation: "CTO (Chief Technologies Officer)",
+    description: "Technologies visionary, leading innovation and product development.",
     image: "/images/Sourav.jpeg",
     linkedin: "https://linkedin.com/in/sourav-cto"
   },
@@ -335,7 +335,7 @@ export default function AboutPage() {
             <h1 className="text-4xl md:text-7xl font-bold mb-6">
               About{" "}
               <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
-                Kin-G Technology
+                Kin-G Technologies
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -383,7 +383,7 @@ export default function AboutPage() {
                 </span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                <strong className="text-neon-cyan">Kin-G Technology  Pvt. Ltd.</strong> was born from a vision 
+                <strong className="text-neon-cyan">Kin-G Technologies  Pvt. Ltd.</strong> was born from a vision 
                 to bridge the gap between traditional business practices and modern technological solutions. We have been at the forefront of innovation since our inception.
               </p>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
@@ -414,7 +414,7 @@ export default function AboutPage() {
               <div className="relative z-10">
                 <img
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop"
-                  alt="Kin-G Technology team collaboration"
+                  alt="Kin-G Technologies team collaboration"
                   className="rounded-2xl shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-neon-cyan/20 to-neon-purple/20 rounded-2xl" />
@@ -595,7 +595,7 @@ export default function AboutPage() {
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              The passionate professionals driving innovation and excellence at Kin-G Technology
+              The passionate professionals driving innovation and excellence at Kin-G Technologies
             </p>
           </motion.div>
 

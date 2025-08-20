@@ -32,7 +32,7 @@ const jobOpenings = [
   {
     id: 1,
     title: "Senior Full-Stack Developer",
-    department: "Technology",
+    department: "Technologies",
     location: "Remote / Hybrid",
     type: "Full-time",
     experience: "3-5 years",
@@ -79,7 +79,7 @@ const jobOpenings = [
     requirements: [
       "Proven B2B sales track record",
       "Excellent communication and negotiation skills",
-      "Experience in EdTech or technology services",
+      "Experience in EdTech or Technologies services",
       "Strong network in corporate sector",
       "Results-driven mindset"
     ],
@@ -116,7 +116,7 @@ const jobOpenings = [
     description: "Guide and mentor students through our Launchpad program. Help professionals transition into successful tech careers through personalized coaching.",
     requirements: [
       "Experience in career counseling or HR",
-      "Strong understanding of technology industry",
+      "Strong understanding of Technologies industry",
       "Excellent interpersonal and communication skills",
       "Passion for helping others succeed",
       "Certification in counseling preferred"
@@ -127,7 +127,7 @@ const jobOpenings = [
   {
     id: 6,
     title: "DevOps Engineer",
-    department: "Technology",
+    department: "Technologies",
     location: "Remote / Hybrid",
     type: "Full-time",
     experience: "3-5 years",
@@ -248,7 +248,7 @@ export default function CareersPage() {
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Join Kin-G Technology and be part of a team that's transforming businesses and careers through 
+              Join Kin-G Technologies and be part of a team that's transforming businesses and careers through 
               innovative EdTech solutions. We're looking for passionate individuals who want to make a real impact.
             </p>
           </motion.div>
@@ -293,7 +293,7 @@ export default function CareersPage() {
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              At Kin-G Technology, we've built a culture that celebrates innovation, collaboration, and personal growth
+              At Kin-G Technologies, we've built a culture that celebrates innovation, collaboration, and personal growth
             </p>
           </motion.div>
 

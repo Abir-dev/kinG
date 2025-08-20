@@ -65,21 +65,21 @@ const contactMethods = [
 const departments = [
   {
     name: "Sales & Business Development",
-    email: "sales@kingtechnology.com",
+    email: "sales@kingTechnologies.com",
     phone: "+91 98765 43211",
     description: "New partnerships and business inquiries",
     icon: IconUsers
   },
   {
     name: "Launchpad Program",
-    email: "launchpad@kingtechnology.com",
+    email: "launchpad@kingTechnologies.com",
     phone: "+91 98765 43212",
     description: "Career development and program enrollment",
     icon: IconCalendar
   },
   {
     name: "Technical Support",
-    email: "support@kingtechnology.com",
+    email: "support@kingTechnologies.com",
     phone: "+91 98765 43213",
     description: "Technical assistance and project support",
     icon: IconHeadphones
@@ -98,7 +98,7 @@ const locations = [
     city: "Mumbai (Headquarters)",
     address: "123 Business Park, Andheri East, Mumbai, Maharashtra 400069",
     phone: "+91 98765 43210",
-    email: "mumbai@kingtechnology.com",
+    email: "mumbai@kingTechnologies.com",
     image: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&h=400&fit=crop",
     description: "Our main headquarters with full service offerings"
   },
@@ -106,15 +106,15 @@ const locations = [
     city: "Bangalore",
     address: "456 Tech Hub, Electronic City, Bangalore, Karnataka 560100",
     phone: "+91 98765 43214",
-    email: "bangalore@kingtechnology.com",
+    email: "bangalore@kingTechnologies.com",
     image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=800&h=400&fit=crop",
-    description: "Technology and development center"
+    description: "Technologies and development center"
   },
   {
     city: "Pune",
     address: "789 Innovation Plaza, Hinjewadi, Pune, Maharashtra 411057",
     phone: "+91 98765 43215",
-    email: "pune@kingtechnology.com",
+    email: "pune@kingTechnologies.com",
     image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&h=400&fit=crop",
     description: "Training and career development hub"
   }
@@ -158,7 +158,7 @@ export default function ContactPage() {
       setSubject(`Job Application - ${state.jobTitle}`);
       setMessage(`Hello,
 
-I am interested in applying for the ${state.jobTitle} position at Kin-G Technology. I would like to learn more about this opportunity and discuss how my skills and experience align with your requirements.
+I am interested in applying for the ${state.jobTitle} position at Kin-G Technologies. I would like to learn more about this opportunity and discuss how my skills and experience align with your requirements.
 
 Please let me know the next steps in the application process.
 
@@ -309,7 +309,7 @@ Best regards,`);
                   <div className="flex items-start space-x-2">
                     <input type="checkbox" id="consent" className="mt-1" />
                     <label htmlFor="consent" className="text-sm text-muted-foreground">
-                      I agree to receive communications from Kin-G Technology and understand that I can unsubscribe at any time.
+                      I agree to receive communications from Kin-G Technologies and understand that I can unsubscribe at any time.
                     </label>
                   </div>
                   
@@ -611,9 +611,9 @@ Best regards,`);
                     size="lg"
                     className="border-orange-400/50 text-orange-400 hover:bg-orange-400/10"
                   >
-                    <a href="mailto:emergency@kingtechnology.com">
+                    <a href="mailto:emergency@kingTechnologies.com">
                       <IconMail className="mr-2 h-5 w-5" />
-                      emergency@kingtechnology.com
+                      emergency@kingTechnologies.com
                     </a>
                   </Button>
                 </div>

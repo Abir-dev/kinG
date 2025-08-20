@@ -43,12 +43,12 @@ export function FullScreenHero() {
                     </span>
                     <br />
                     <span className="text-foreground text-4xl md:text-5xl lg:text-6xl font-light">
-                      Technology
+                      Technologies
                     </span>
                   </h1>
                   
                   <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
-                    Delivering comprehensive technology solutions, career development programs, 
+                    Delivering comprehensive Technologies solutions, career development programs, 
                     and business consulting services to drive growth and innovation.
                   </p>
                 </div>

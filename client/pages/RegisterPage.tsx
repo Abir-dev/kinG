@@ -220,7 +220,7 @@ export default function RegisterPage() {
                           <span className="text-white font-bold text-lg">KG</span>
                         </div>
                         <div>
-                          <h3 className="font-semibold">Kin-G Technology</h3>
+                          <h3 className="font-semibold">Kin-G Technologies</h3>
                           <p className="text-sm text-muted-foreground">Premium Education Platform</p>
                         </div>
                       </div>

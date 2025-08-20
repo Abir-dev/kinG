@@ -8,7 +8,7 @@ import { ThemeToggle } from './ThemeToggle';
 const navItems = [
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
-  { name: 'Careers', href: '/careers' }, // Added Careers link  
+  // { name: 'Careers', href: '/careers' }, // Added Careers link  
   { name: 'Launchpad', href: '/launchpad' },
   { name: 'Register', href: '/register' },
 ];
@@ -47,7 +47,7 @@ export function Navigation() {
                 <span className="text-lg font-bold text-foreground leading-none">
                   Kin-G
                 </span>
-                <span className="text-xs text-muted-foreground leading-none">Technology</span>
+                <span className="text-xs text-muted-foreground leading-none">Technologies</span>
               </div>
             </Link>
           </motion.div>

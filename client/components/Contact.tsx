@@ -44,7 +44,7 @@ export function Contact() {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to accelerate your business growth or launch your career? Let's discuss how Kin-G Technology can help you succeed.
+            Ready to accelerate your business growth or launch your career? Let's discuss how Kin-G Technologies can help you succeed.
           </p>
         </motion.div>
 
@@ -114,7 +114,7 @@ export function Contact() {
             <div>
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <p className="text-muted-foreground mb-8">
-                Connect with Kin-G Technology to accelerate your business growth or launch your career.
+                Connect with Kin-G Technologies to accelerate your business growth or launch your career.
                 We're here to support your journey every step of the way.
               </p>
             </div>

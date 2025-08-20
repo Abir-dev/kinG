@@ -217,7 +217,7 @@ const services = [
       "99.9% uptime guarantee",
       "Advanced security & data protection",
       "Real-time analytics & insights",
-      "Future-proof technology stack"
+      "Future-proof Technologies stack"
     ],
     packages: [
       {
@@ -520,7 +520,7 @@ export default function ServicesPage() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Why Choose{" "}
               <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Kin-G Technology
+                Kin-G Technologies
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

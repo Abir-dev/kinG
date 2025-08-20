@@ -72,12 +72,12 @@ export default function Index() {
                     <span className="text-xl font-bold text-foreground leading-none">
                       Kin-G
                     </span>
-                    <span className="text-sm text-muted-foreground leading-none">Technology</span>
+                    <span className="text-sm text-muted-foreground leading-none">Technologies</span>
                   </div>
                 </div>
                 
                 <p className="text-muted-foreground text-base leading-relaxed mb-6 max-w-md">
-                  Delivering comprehensive technology solutions, career development programs, and business consulting services.
+                  Delivering comprehensive Technologies solutions, career development programs, and business consulting services.
                 </p>
                 
                 {/* Stats */}
@@ -226,7 +226,7 @@ export default function Index() {
                     </motion.a>
                     
                     <motion.a
-                      href="https://linkedin.com/company/kingtechnology"
+                      href="https://linkedin.com/company/kingTechnologies"
                       target="_blank"
                       rel="noopener noreferrer"
                       initial={{ opacity: 0, x: -10 }}
@@ -260,7 +260,7 @@ export default function Index() {
                 className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
               >
                 <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm text-muted-foreground">
-                  <span>© 2025 Kin-G Technology Pvt. Ltd. All rights reserved. | Phone: +91 89104 81993</span>
+                  <span>© 2025 Kin-G Technologies Pvt. Ltd. All rights reserved. | Phone: +91 89104 81993</span>
                 </div>
                 
                 <div className="flex items-center space-x-6 text-sm">

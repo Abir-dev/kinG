@@ -221,7 +221,7 @@ const faqs = [
   },
   {
     question: "What kind of projects will I work on?",
-    answer: "You'll work on real projects from our partner companies across various industries including technology, finance, healthcare, and e-commerce. These projects provide genuine work experience."
+    answer: "You'll work on real projects from our partner companies across various industries including Technologies, finance, healthcare, and e-commerce. These projects provide genuine work experience."
   },
   {
     question: "Can I join if I'm a complete beginner?",

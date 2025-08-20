@@ -49,7 +49,7 @@ const highlights = [
     features: ["Telecalling Support", "CRM Integration", "Lead Generation", "Digital Marketing"]
   },
   {
-    title: "Technology Solutions",
+    title: "Technologies Solutions",
     description: "Cutting-edge development services for modern business needs",
     features: ["Web Development", "Mobile Apps", "E-commerce Solutions", "Custom Software"]
   }
@@ -59,7 +59,7 @@ const testimonials = [
   {
     name: "Rajesh Kumar",
     role: "CEO, TechStart Solutions",
-    content: "Kin-G Technology transformed our sales process with their CRM integration. Our conversion rates increased by 40%.",
+    content: "Kin-G Technologies transformed our sales process with their CRM integration. Our conversion rates increased by 40%.",
     rating: 5
   },
   {
@@ -80,7 +80,7 @@ const brandPartners = [
   {
     name: "Microsoft",
     logo: "/images/brands/microsoft.svg", // You can replace with actual Microsoft logo
-    category: "Technology",
+    category: "Technologies",
     description: "Cloud Computing & Enterprise Solutions",
     color: "from-blue-500 to-cyan-500"
   },
@@ -130,7 +130,7 @@ const brandPartners = [
     name: "Spotify",
     logo: "/images/brands/placeholder.svg", // You can replace with actual Spotify logo
     category: "Music Streaming",
-    description: "Audio Technology & Algorithms",
+    description: "Audio Technologies & Algorithms",
     color: "from-green-500 to-emerald-500"
   },
   {
@@ -188,7 +188,7 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Kin-G Technology delivers comprehensive solutions that drive business growth and accelerate career development through innovation and excellence.
+              Kin-G Technologies delivers comprehensive solutions that drive business growth and accelerate career development through innovation and excellence.
             </p>
           </motion.div>
 
@@ -352,7 +352,7 @@ export default function HomePage() {
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join hundreds of successful businesses and thousands of career professionals who have 
-              accelerated their growth with Kin-G Technology.
+              accelerated their growth with Kin-G Technologies.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 

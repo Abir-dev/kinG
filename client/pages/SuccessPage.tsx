@@ -18,7 +18,7 @@ export default function SuccessPage() {
         Registration Successful!
       </h1>
       <p className="text-lg md:text-2xl text-muted-foreground mb-6 text-center max-w-xl">
-        Thank you for registering with Kin-G Technology.<br />
+        Thank you for registering with Kin-G Technologies.<br />
         Your payment has been received and your spot is secured.<br />
         We look forward to seeing you in the course!
       </p>

@@ -87,7 +87,7 @@ export function About() {
             </div>
           </div>
           <div className="ml-20 pt-2">
-            <p className="text-lg text-muted-foreground">Kin-G Technology's journey is marked by innovation, growth, and a commitment to excellence. Scroll to see our story unfold!</p>
+            <p className="text-lg text-muted-foreground">Kin-G Technologies's journey is marked by innovation, growth, and a commitment to excellence. Scroll to see our story unfold!</p>
           </div>
         </div>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -101,12 +101,12 @@ export function About() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               About{" "}
               <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent neon-text-glow">
-                Kin-G Technology
+                Kin-G Technologies
               </span>
             </h2>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              <strong className="text-neon-cyan">Kin-G Technology  Pvt. Ltd.</strong> provides comprehensive business solutions that drive growth and innovation.
+              <strong className="text-neon-cyan">Kin-G Technologies  Pvt. Ltd.</strong> provides comprehensive business solutions that drive growth and innovation.
             </p>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
@@ -165,7 +165,7 @@ export function About() {
             <div className="relative z-10">
               <img
                 src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop"
-                alt="Kin-G Technology office and team"
+                alt="Kin-G Technologies office and team"
                 className="rounded-2xl shadow-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-neon-cyan/20 to-neon-purple/20 rounded-2xl" />
