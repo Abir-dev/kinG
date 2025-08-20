@@ -457,7 +457,7 @@ export default function RegisterPage() {
             {/* Right Side - Enhanced Image */}
             <div className="relative min-h-screen overflow-hidden group">
               <img 
-                src="/images/launchpad.jpeg" 
+                src="/images/launchpad3.jpeg" 
                 alt="Launchpad Program" 
                 className="w-full h-full min-h-screen object-cover transition-transform duration-700 group-hover:scale-105"
               />

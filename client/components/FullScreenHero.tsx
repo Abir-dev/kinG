@@ -4,26 +4,37 @@ import { IconArrowRight, IconPhone, IconAward, IconUsers, IconTrendingUp } from 
 
 export function FullScreenHero() {
   return (
-    <section className="relative min-h-screen bg-background overflow-hidden">
-      {/* Elegant Background */}
+    <section className="relative min-h-screen overflow-hidden">
+      {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-background to-background/98"></div>
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-neon-cyan/5 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-neon-purple/5 to-transparent"></div>
+        {/* Background image from public folder */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/bg1.jpeg')" }} // <-- replace with your image name
+        />
+
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-black/30"></div>
+
+        {/* Optional neon accent overlays (keep/remove as you like) */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-neon-cyan/10 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-neon-purple/10 to-transparent"></div>
       </div>
 
+      {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
-        
         {/* Main Hero Content */}
-        <div className="flex-1 flex items-center ">
+        <div className="flex-1 flex items-center">
           <div className="w-full max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               
-              {/* Left Column - Main Content */}
+              {/* Left Column */}
               <div className="space-y-8">
                 <div className="space-y-6">
                   <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-neon-cyan/20">
-                    <span className="text-sm font-medium text-neon-cyan">EdTech & B2B Solutions Provider</span>
+                    <span className="text-sm font-medium text-neon-cyan">
+                      EdTech & B2B Solutions Provider
+                    </span>
                   </div>
                   
                   <h1 className="text-6xl md:text-7xl lg:text-8xl font-black leading-none">
@@ -42,7 +53,7 @@ export function FullScreenHero() {
                   </p>
                 </div>
 
-                {/* Service Pills */}
+                {/* Services */}
                 <div className="flex flex-wrap gap-3">
                   {[
                     "Web Development",
@@ -86,7 +97,7 @@ export function FullScreenHero() {
                 </div>
               </div>
 
-              {/* Right Column - Stats Cards */}
+              {/* Right Column - Stats */}
               <div className="space-y-6">
                 <div className="grid gap-6">
                   {[
@@ -111,7 +122,7 @@ export function FullScreenHero() {
                       icon: IconTrendingUp,
                       gradient: "from-neon-pink/20 to-neon-pink/5"
                     }
-                  ].map((stat, index) => (
+                  ].map((stat) => (
                     <div 
                       key={stat.label} 
                       className={`relative p-6 rounded-2xl bg-gradient-to-br ${stat.gradient} border border-border/50 backdrop-blur-sm hover:border-neon-cyan/30 transition-all duration-300 group`}
@@ -138,7 +149,7 @@ export function FullScreenHero() {
           </div>
         </div>
 
-        {/* Bottom Trust Indicators - Minimal */}
+        {/* Bottom Trust Indicators */}
         <div className="py-2">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center">
@@ -160,7 +171,6 @@ export function FullScreenHero() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

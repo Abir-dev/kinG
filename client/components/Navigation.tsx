@@ -107,7 +107,7 @@ export function Navigation() {
             transition={{ delay: 0.8 }}
             className="hidden md:flex items-center space-x-4"
           >
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             <Link to="/contact">
               <Button
                 size="sm"
