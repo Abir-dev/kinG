@@ -147,7 +147,7 @@ const teamMembers = [
   },
   {
     name: "Avishikta",
-    designation: "CMO (Chief Marketing Officer) / SEO",
+    designation: "SEO - Marketing",
     description: "Marketing leader and SEO specialist, driving digital growth.",
     image: "/images/Avishikta.jpeg",
     linkedin: "https://linkedin.com/in/avishikta-cmo"
