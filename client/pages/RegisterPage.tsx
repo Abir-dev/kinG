@@ -16,33 +16,7 @@ const courses = [
   'Product Management',
 ];
 
-// Razorpay interface
-interface RazorpayOptions {
-  key: string;
-  amount: number;
-  currency: string;
-  name: string;
-  description: string;
-  order_id?: string;
-  handler: (response: any) => void;
-  prefill: {
-    name: string;
-    email: string;
-    contact: string;
-  };
-  theme: {
-    color: string;
-  };
-  modal: {
-    ondismiss: () => void;
-  };
-}
-
-declare global {
-  interface Window {
-    Razorpay: any;
-  }
-}
+// Razorpay types are now imported from utils/razorpay
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -89,63 +63,56 @@ export default function RegisterPage() {
     }
   };
 
-  // Load Razorpay script
-  const loadRazorpayScript = (): Promise<boolean> => {
-    return new Promise((resolve) => {
-      const script = document.createElement('script');
-      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-      script.onload = () => resolve(true);
-      script.onerror = () => resolve(false);
-      document.body.appendChild(script);
-    });
-  };
+
 
   // Handle payment
   const handlePayment = async () => {
     setPaymentLoading(true);
+    setError('');
     
-    // Load Razorpay script
-    const isScriptLoaded = await loadRazorpayScript();
-    if (!isScriptLoaded) {
-      setError('Failed to load payment gateway. Please try again.');
-      setPaymentLoading(false);
-      return;
-    }
-
-    const amount = getPrice();
-    const options: RazorpayOptions = {
-      key: 'rzp_test_9999999999', // Replace with your Razorpay key ID
-      amount: amount * 100, // Amount in paise
-      currency: 'INR',
-      name: 'Kin-G Technologies',
-      description: `${registrationType} - ${registrationType === 'Registration for Course' ? selectedCourse : ''}`,
-      handler: async (response: any) => {
-        // Payment successful
-        console.log('Payment successful:', response);
-        await handleRegistrationSubmit(response.razorpay_payment_id);
-      },
-      prefill: {
-        name,
-        email,
-        contact: phone,
-      },
-      theme: {
-        color: '#00D9FF', // neon-cyan color
-      },
-      modal: {
-        ondismiss: () => {
-          setPaymentLoading(false);
+    try {
+      const amount = getPrice();
+      
+      // Use the new payment system
+      const { processPayment } = await import('../utils/razorpay');
+      
+      await processPayment(
+        {
+          amount,
+          description: `${registrationType} - ${registrationType === 'Registration for Course' ? selectedCourse : ''}`,
+          prefill: {
+            name,
+            email,
+            contact: phone,
+          },
+          notes: {
+            registration_type: registrationType,
+            selected_course: registrationType === 'Registration for Course' ? selectedCourse : 'N/A',
+            course_pricing: registrationType === 'Registration for Course' ? coursePricing : 'N/A',
+            passout_year: passoutYear,
+            stream,
+            college,
+          }
         },
-      },
-    };
-
-    const razorpay = new window.Razorpay(options);
-    razorpay.open();
-    setPaymentLoading(false);
+        async (paymentDetails) => {
+          // Payment successful
+          console.log('Payment successful:', paymentDetails);
+          await handleRegistrationSubmit(paymentDetails);
+        },
+        (errorMessage) => {
+          setError(errorMessage);
+        }
+      );
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Payment failed';
+      setError(errorMessage);
+    } finally {
+      setPaymentLoading(false);
+    }
   };
 
   // Handle registration submission after successful payment
-  const handleRegistrationSubmit = async (paymentId: string) => {
+  const handleRegistrationSubmit = async (paymentDetails: any) => {
     setSending(true);
     setError('');
     setSuccess(false);
@@ -161,7 +128,10 @@ export default function RegisterPage() {
         passoutYear,
         stream,
         college,
-        payment_id: paymentId,
+        payment_id: paymentDetails.id,
+        order_id: paymentDetails.order_id,
+        payment_method: paymentDetails.method,
+        payment_status: paymentDetails.status,
         amount: getPrice(),
       };
       
@@ -176,7 +146,7 @@ export default function RegisterPage() {
       setShowModal(false);
       navigate('/success');
     } catch (err) {
-      setError('Registration failed. Please contact support with your payment ID: ' + paymentId);
+      setError('Registration failed. Please contact support with your payment ID: ' + paymentDetails.id);
     } finally {
       setSending(false);
     }

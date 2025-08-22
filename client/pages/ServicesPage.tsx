@@ -424,7 +424,7 @@ export default function ServicesPage() {
   });
 
   // Handle successful payment
-  const handlePaymentSuccess = async (paymentId: string) => {
+  const handlePaymentSuccess = async (paymentDetails: any) => {
     setSending(true);
     setError('');
     setSuccess(false);
@@ -439,7 +439,10 @@ export default function ServicesPage() {
         package: selectedPackage.name,
         amount: selectedPackage.priceValue,
         requirements: 'Service package selected via website',
-        payment_id: paymentId,
+        payment_id: paymentDetails.id,
+        order_id: paymentDetails.order_id,
+        payment_method: paymentDetails.method,
+        payment_status: paymentDetails.status,
       };
       
       await emailjs.send(
@@ -453,7 +456,7 @@ export default function ServicesPage() {
       setShowModal(false);
       navigate('/success');
     } catch (err) {
-      throw new Error('Order submission failed. Please contact support with your payment ID: ' + paymentId);
+      throw new Error('Order submission failed. Please contact support with your payment ID: ' + paymentDetails.id);
     } finally {
       setSending(false);
     }
@@ -485,7 +488,6 @@ export default function ServicesPage() {
         email: customerDetails.email,
         contact: customerDetails.phone,
       },
-      theme: 'default' as const,
       notes: {
         service_id: selectedService.id,
         package_name: selectedPackage.name,

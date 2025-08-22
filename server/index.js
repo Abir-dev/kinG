@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 
 // Import routes
 import emailRoutes from './routes/email.js';
+import razorpayRoutes from './routes/razorpay.js';
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api', emailRoutes);
+app.use('/api/razorpay', razorpayRoutes);
 
 // Serve static files from the React app in production
 if (process.env.NODE_ENV === 'production') {

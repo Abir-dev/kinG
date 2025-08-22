@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loadRazorpayScript, initializeRazorpayPayment, validateRazorpayConfig, type RazorpayOptions } from '../utils/razorpay';
+import { processPayment, type VerifyPaymentResponse } from '../utils/razorpay';
 
 interface PaymentData {
   amount: number;
@@ -9,65 +9,46 @@ interface PaymentData {
     email: string;
     contact: string;
   };
+  notes?: Record<string, string>;
 }
 
 interface UseRazorpayPaymentReturn {
   initiatePayment: (data: PaymentData) => Promise<void>;
   isLoading: boolean;
   error: string | null;
+  clearError: () => void;
 }
 
 export const useRazorpayPayment = (
-  onSuccess: (paymentId: string) => Promise<void>,
+  onSuccess: (paymentDetails: VerifyPaymentResponse['payment']) => Promise<void>,
   onError?: (error: string) => void
 ): UseRazorpayPaymentReturn => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const clearError = () => setError(null);
 
   const initiatePayment = async (data: PaymentData) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      // Validate configuration
-      const { keyId } = validateRazorpayConfig();
-
-      // Load Razorpay script
-      const isScriptLoaded = await loadRazorpayScript();
-      if (!isScriptLoaded) {
-        throw new Error('Failed to load Razorpay SDK');
-      }
-
-      // Prepare payment options
-      const options: RazorpayOptions = {
-        key: keyId,
-        amount: data.amount * 100, // Convert to paise
-        currency: 'INR',
-        name: 'Kin-G Technologies',
-        description: data.description,
-        handler: async (response) => {
+      await processPayment(
+        data,
+        async (paymentDetails) => {
           try {
-            await onSuccess(response.razorpay_payment_id);
+            await onSuccess(paymentDetails);
           } catch (err) {
             const errorMessage = err instanceof Error ? err.message : 'Payment processing failed';
             setError(errorMessage);
             onError?.(errorMessage);
           }
         },
-        prefill: data.prefill,
-        theme: {
-          color: '#00D9FF', // neon-cyan color
-        },
-        modal: {
-          ondismiss: () => {
-            setIsLoading(false);
-            setError('Payment cancelled by user');
-          },
-        },
-      };
-
-      // Initialize payment
-      initializeRazorpayPayment(options);
+        (errorMessage) => {
+          setError(errorMessage);
+          onError?.(errorMessage);
+        }
+      );
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to initialize payment';
       setError(errorMessage);
@@ -81,5 +62,6 @@ export const useRazorpayPayment = (
     initiatePayment,
     isLoading,
     error,
+    clearError,
   };
 };
