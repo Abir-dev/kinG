@@ -65,3 +65,6 @@ export const useRazorpayPayment = (
     clearError,
   };
 };
+
+// Export alias for backward compatibility
+export const useServicePayment = useRazorpayPayment;

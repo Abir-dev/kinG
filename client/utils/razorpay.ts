@@ -69,11 +69,14 @@ declare global {
 }
 
 // API endpoints
-const API_BASE = '/api/razorpay';
+const API_BASE = 'http://localhost:3001/api/razorpay';
 
 // Create order on server
 export const createOrder = async (data: CreateOrderRequest): Promise<CreateOrderResponse> => {
   try {
+    console.log('Creating order with data:', data);
+    console.log('API endpoint:', `${API_BASE}/create-order`);
+    
     const response = await fetch(`${API_BASE}/create-order`, {
       method: 'POST',
       headers: {
@@ -82,14 +85,28 @@ export const createOrder = async (data: CreateOrderRequest): Promise<CreateOrder
       body: JSON.stringify(data),
     });
 
+    console.log('Response status:', response.status);
+    console.log('Response headers:', response.headers);
+
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Failed to create order');
+      let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+      try {
+        const errorData = await response.json();
+        errorMessage = errorData.error || errorMessage;
+      } catch (parseError) {
+        console.warn('Could not parse error response:', parseError);
+      }
+      throw new Error(errorMessage);
     }
 
-    return await response.json();
+    const responseData = await response.json();
+    console.log('Order created successfully:', responseData);
+    return responseData;
   } catch (error) {
     console.error('Error creating order:', error);
+    if (error instanceof TypeError && error.message.includes('fetch')) {
+      throw new Error('Network error: Please check if the backend server is running on port 3001');
+    }
     throw error;
   }
 };
@@ -156,7 +173,7 @@ export const validateRazorpayConfig = () => {
   const keyId = import.meta.env.VITE_RAZORPAY_KEY_ID;
   
   if (!keyId) {
-    throw new Error('Razorpay Key ID not found in environment variables');
+    throw new Error('Razorpay Key ID not found in environment variables. Please check VITE_RAZORPAY_KEY_ID in your .env file');
   }
 
   return { keyId };
