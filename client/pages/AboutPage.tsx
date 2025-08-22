@@ -99,9 +99,16 @@ const teamMembers = [
   {
     name: "Ayushmita Das",
     designation: "Co-Founder/B2C Head",
-    description: "Strategic thinker and B2B expert, leading partnerships and business expansion.",
+    description: "Strategic thinker and B2B & B2C expert, leading partnerships and business expansion.",
     image: "/images/Ayushmita.jpeg",
     linkedin: "https://linkedin.com/in/ayushmita-das"
+  },
+   {
+    name: "Sourav",
+    designation: "CTO (Chief Technologies Officer)",
+    description: "Technologies visionary, leading innovation and product development.",
+    image: "/images/Sourav.jpeg",
+    linkedin: "https://linkedin.com/in/sourav-cto"
   },
   {
     name: "Himadri Barua",
@@ -116,13 +123,6 @@ const teamMembers = [
     description: "Full stack developer and technical lead, architecting scalable solutions.",
     image: "/images/Abir.png",
     linkedin: "https://linkedin.com/in/abir-lal-banerjee"
-  },
-  {
-    name: "Sourav",
-    designation: "CTO (Chief Technologies Officer)",
-    description: "Technologies visionary, leading innovation and product development.",
-    image: "/images/Sourav.jpeg",
-    linkedin: "https://linkedin.com/in/sourav-cto"
   },
   {
     name: "Payel",
@@ -154,8 +154,8 @@ const teamMembers = [
   // },
   {
     name: "Deboshmita",
-    designation: "General Manager (Sales)",
-    description: "Sales manager ensuring operational excellence and client satisfaction.",
+    designation: "Trainer",
+    description: "Trainer and mentor, shaping future leaders through education.",
     image: "/images/Deboshmita.jpeg",
     linkedin: "https://linkedin.com/in/deboshmita-sales"
   },
