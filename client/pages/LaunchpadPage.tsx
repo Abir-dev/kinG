@@ -126,50 +126,50 @@ const programFeatures = [
 
 const curriculum = [
   {
-    week: "13 - Week",
+    week: "4 Months Course",
     title: "AI Accelerating mastery course",
     prices: [
-      "21,999",
+      "25,900",
     ]
   },
   {
-    week: "13 - Week",
-    title: "Full stack development & web page building ",
+    week: "4 Months Course",
+    title: "Full Stack Development & Web page building ",
     prices: [
       "36,999"
     ]
   },
   {
-    week: "13 - Week",
-    title: "Stock market Algotrade with AI tools",
+    week: "4 Months Course",
+    title: "Stock Market Algotrade with AI tools",
     prices: [
-      "65,999"
+      "55,999"
     ]
   },
   {
-    week: "13 - Week",
-    title: "Software development & android apps",
+    week: "4 Months Course",
+    title: "Software Development & Android apps",
     prices: [
       "36,999"
     ]
   },
   {
-    week: "13 - Week",
-    title: "Tech support & network support",
+    week: "4 Months Course",
+    title: "Tech Support & Network Support",
     prices: [
       "21,999"
     ]
   },
   {
-    week: "13 - Week",
-    title: "Finance & sales speech readiness",
+    week: "4 Months Course",
+    title: "Finance & Sales speech readiness",
     prices: [
       "14,999"
     ]
   },
   {
-    week: "13 - Week",
-    title: "Digital marketing",
+    week: "4 Months Course",
+    title: "Digital Marketing",
     prices: [
       "11,999"
     ]
@@ -260,7 +260,7 @@ export default function LaunchpadPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button 
+              {/* <Button 
                 asChild
                 size="lg" 
                 className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan hover:scale-105 px-8 py-4 text-lg font-semibold"
@@ -279,7 +279,7 @@ export default function LaunchpadPage() {
                 <Link to="#success-stories">
                   View Success Stories
                 </Link>
-              </Button>
+              </Button> */}
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -658,7 +658,7 @@ export default function LaunchpadPage() {
                 size="lg" 
                 className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan hover:scale-105 px-8 py-4 text-lg font-semibold"
               >
-                <Link to="/contact">
+                <Link to="/register">
                   Enroll Now
                   <IconRocket className="ml-2 h-6 w-6" />
                 </Link>

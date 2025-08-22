@@ -145,13 +145,13 @@ const teamMembers = [
     image: "/images/Uditi.jpeg",
     linkedin: "https://linkedin.com/in/uditi-brand"
   },
-  {
-    name: "Avishikta",
-    designation: "SEO - Marketing",
-    description: "Marketing leader and SEO specialist, driving digital growth.",
-    image: "/images/Avishikta.jpeg",
-    linkedin: "https://linkedin.com/in/avishikta-cmo"
-  },
+  // {
+  //   name: "Avishikta",
+  //   designation: "SEO - Marketing",
+  //   description: "Marketing leader and SEO specialist, driving digital growth.",
+  //   image: "/images/Avishikta.jpeg",
+  //   linkedin: "https://linkedin.com/in/avishikta-cmo"
+  // },
   {
     name: "Deboshmita",
     designation: "General Manager (Sales)",
@@ -680,7 +680,7 @@ export default function AboutPage() {
           </div>
 
           {/* Rest of Team Members */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
             {teamMembers.slice(1).map((member, index) => (
               <motion.div
                 key={member.name}
@@ -765,7 +765,7 @@ export default function AboutPage() {
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="group">
-                <div className="text-3xl font-bold text-neon-cyan mb-2 group-hover:scale-110 transition-transform">11+</div>
+                <div className="text-3xl font-bold text-neon-cyan mb-2 group-hover:scale-110 transition-transform">50+</div>
                 <div className="text-muted-foreground">Team Members</div>
               </div>
               <div className="group">

@@ -6,7 +6,6 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { Input } from '../components/ui/input';
 import emailjs from '@emailjs/browser';
-// Remove imageCompression import as it's no longer needed
 
 const courses = [
   'Launchpad Career Program',
@@ -17,24 +16,42 @@ const courses = [
   'Product Management',
 ];
 
-// Helper to convert file to Base64
-function toBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = error => reject(error);
-  });
+// Razorpay interface
+interface RazorpayOptions {
+  key: string;
+  amount: number;
+  currency: string;
+  name: string;
+  description: string;
+  order_id?: string;
+  handler: (response: any) => void;
+  prefill: {
+    name: string;
+    email: string;
+    contact: string;
+  };
+  theme: {
+    color: string;
+  };
+  modal: {
+    ondismiss: () => void;
+  };
+}
+
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
 }
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  // Replace paymentFile with transactionId
-  const [transactionId, setTransactionId] = useState('');
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  
   const courseOptions = [
     'IT Tech Support',
     'Inside Sales',
@@ -44,6 +61,7 @@ export default function RegisterPage() {
     'Web development',
     'Freelancing & Portfolio building',
   ];
+  
   const [registrationType, setRegistrationType] = useState('');
   const [coursePricing, setCoursePricing] = useState('');
   const [selectedCourse, setSelectedCourse] = useState(courseOptions[0]);
@@ -54,16 +72,115 @@ export default function RegisterPage() {
   const [stream, setStream] = useState('');
   const [college, setCollege] = useState('');
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] || null;
-    if (file && file.size > 1024 * 1024) { // 1MB limit
-      alert('File size must be less than 1MB');
-      return;
+  // Get price based on registration type
+  const getPrice = (): number => {
+    switch (registrationType) {
+      case 'Registration for workshop':
+        return 26;
+      case 'Registration for Course':
+        // if (coursePricing.includes('1299')) return 1299;
+        // if (coursePricing.includes('3999')) return 3999;
+        if (coursePricing.includes('17999')) return 17999;
+        return 1299; // default
+      case 'Registration for AlgoBridge':
+        return 49;
+      default:
+        return 0;
     }
-    setPaymentFile(file);
   };
 
-  // Remove handleFileChange function as it's no longer needed
+  // Load Razorpay script
+  const loadRazorpayScript = (): Promise<boolean> => {
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  // Handle payment
+  const handlePayment = async () => {
+    setPaymentLoading(true);
+    
+    // Load Razorpay script
+    const isScriptLoaded = await loadRazorpayScript();
+    if (!isScriptLoaded) {
+      setError('Failed to load payment gateway. Please try again.');
+      setPaymentLoading(false);
+      return;
+    }
+
+    const amount = getPrice();
+    const options: RazorpayOptions = {
+      key: 'rzp_test_9999999999', // Replace with your Razorpay key ID
+      amount: amount * 100, // Amount in paise
+      currency: 'INR',
+      name: 'Kin-G Technologies',
+      description: `${registrationType} - ${registrationType === 'Registration for Course' ? selectedCourse : ''}`,
+      handler: async (response: any) => {
+        // Payment successful
+        console.log('Payment successful:', response);
+        await handleRegistrationSubmit(response.razorpay_payment_id);
+      },
+      prefill: {
+        name,
+        email,
+        contact: phone,
+      },
+      theme: {
+        color: '#00D9FF', // neon-cyan color
+      },
+      modal: {
+        ondismiss: () => {
+          setPaymentLoading(false);
+        },
+      },
+    };
+
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
+    setPaymentLoading(false);
+  };
+
+  // Handle registration submission after successful payment
+  const handleRegistrationSubmit = async (paymentId: string) => {
+    setSending(true);
+    setError('');
+    setSuccess(false);
+    
+    try {
+      const templateParams = {
+        name,
+        email,
+        phone,
+        registrationType,
+        selectedCourse: registrationType === 'Registration for Course' ? selectedCourse : 'N/A',
+        coursePricing: registrationType === 'Registration for Course' ? coursePricing : 'N/A',
+        passoutYear,
+        stream,
+        college,
+        payment_id: paymentId,
+        amount: getPrice(),
+      };
+      
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID!,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
+      );
+      
+      setSuccess(true);
+      setShowModal(false);
+      navigate('/success');
+    } catch (err) {
+      setError('Registration failed. Please contact support with your payment ID: ' + paymentId);
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <>
@@ -76,70 +193,81 @@ export default function RegisterPage() {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-bold mb-4 text-center text-neon-cyan">Complete Payment</h2>
-            <div className="flex flex-col items-center mb-4">
-              <img src="/images/QR.png" alt="QR Code" className="w-48 h-48 object-contain mb-2 border border-neon-cyan/30 rounded-lg shadow neon-glow-cyan" />
-              <span className="text-sm text-muted-foreground">Scan the QR code to pay</span>
+            
+            <h2 className="text-2xl font-bold mb-6 text-center text-neon-cyan">Payment Summary</h2>
+            
+            {/* Payment Summary */}
+            <div className="w-full space-y-4 mb-6">
+              <div className="bg-background/50 border border-neon-cyan/20 rounded-lg p-4">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm text-muted-foreground">Registration Type:</span>
+                  <span className="text-sm font-medium text-neon-cyan">{registrationType}</span>
+                </div>
+                
+                {registrationType === 'Registration for Course' && (
+                  <>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm text-muted-foreground">Course:</span>
+                      <span className="text-sm font-medium text-neon-purple">{selectedCourse}</span>
+                    </div>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm text-muted-foreground">Plan:</span>
+                      <span className="text-sm font-medium text-neon-cyan">{coursePricing}</span>
+                    </div>
+                  </>
+                )}
+                
+                <div className="border-t border-neon-cyan/20 pt-2 mt-2">
+                  <div className="flex justify-between items-center">
+                    <span className="font-semibold text-neon-cyan">Total Amount:</span>
+                    <span className="text-xl font-bold text-neon-purple">₹{getPrice()}</span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Student Details */}
+              <div className="bg-background/50 border border-neon-purple/20 rounded-lg p-4">
+                <h4 className="text-sm font-semibold text-neon-purple mb-2">Student Details:</h4>
+                <div className="text-xs text-muted-foreground space-y-1">
+                  <div>Name: {name}</div>
+                  <div>Email: {email}</div>
+                  <div>Phone: {phone}</div>
+                  <div>College: {college}</div>
+                </div>
+              </div>
             </div>
-            <form
-              className="w-full"
-              onSubmit={async e => {
-                e.preventDefault();
-                setSending(true);
-                setError('');
-                setSuccess(false);
-                try {
-                  // Modified to use transactionId instead of payment screenshot
-                  const templateParams = {
-                    name,
-                    email,
-                    phone,
-                    registrationType,
-                    selectedCourse: registrationType === 'Registration for Course' ? selectedCourse : 'N/A',
-                    coursePricing: registrationType === 'Registration for Course' ? coursePricing : 'N/A',
-                    passoutYear,
-                    stream,
-                    college,
-                    transaction_id: transactionId, // Add transaction ID instead of payment receipt
-                  };
-                  await emailjs.send(
-                    import.meta.env.VITE_EMAILJS_SERVICE_ID!,
-                    import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
-                    templateParams,
-                    import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
-                  );
-                  setSuccess(true);
-                  setShowModal(false);
-                  navigate('/success');
-                } catch (err) {
-                  setError('Failed to send. Please try again.');
-                } finally {
-                  setSending(false);
-                }
-              }}
+            
+            {/* Payment Button */}
+            <Button
+              onClick={handlePayment}
+              size="lg"
+              className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan py-3 text-lg font-semibold"
+              disabled={paymentLoading || sending}
             >
-              <label className="block text-sm font-medium mb-2 text-neon-cyan">Transaction ID *</label>
-              <Input
-                type="text"
-                value={transactionId}
-                onChange={(e) => setTransactionId(e.target.value)}
-                required
-                placeholder="Enter your transaction ID"
-                className="mb-4 block w-full border border-neon-cyan/30 rounded px-3 py-2 bg-background/60 text-neon-cyan focus:border-neon-cyan/50"
-              />
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan py-3 text-lg font-semibold"
-                disabled={sending}
-              >
-                {sending ? 'Sending...' : 'Submit Registration'}
-              </Button>
-              {error && <div className="text-neon-purple mt-2 text-sm">{error}</div>}
-            </form>
+              {paymentLoading ? (
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  Loading Payment...
+                </div>
+              ) : (
+                `Pay ₹${getPrice()} via Razorpay`
+              )}
+            </Button>
+            
+            {error && (
+              <div className="text-neon-purple mt-4 text-sm text-center bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                {error}
+              </div>
+            )}
+            
+            {/* Security Note */}
+            <div className="mt-4 text-xs text-muted-foreground text-center">
+              🔒 Secure payment powered by Razorpay
+            </div>
           </div>
         </div>
       )}
+      
       <Layout>
         {/* Modern Minimalist Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/20">
@@ -313,9 +441,10 @@ export default function RegisterPage() {
                       <label className="text-sm font-semibold text-foreground mb-3 block">Select Plan</label>
                       <div className="grid grid-cols-3 gap-2">
                         {[
-                          { value: 'Basic - ₹1299', label: 'Basic', price: '₹1299' },
-                          { value: 'Pro - ₹3999', label: 'Pro', price: '₹3999' },
-                          { value: 'Ultimate - ₹7999', label: 'Ultimate', price: '₹7999' }
+                          { value: 'Basic - ₹17999', label: 'Basic', price: '₹17999' },
+                          // { value: 'Basic - ₹1299', label: 'Basic', price: '₹1299' },
+                          // { value: 'Pro - ₹3999', label: 'Pro', price: '₹3999' },
+                          // { value: 'Ultimate - ₹7999', label: 'Ultimate', price: '₹7999' }
                         ].map((plan) => (
                           <button
                             key={plan.value}
@@ -497,8 +626,3 @@ export default function RegisterPage() {
     </>
   );
 }
-
-function setPaymentFile(file: File) {
-  throw new Error('Function not implemented.');
-}
-

@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   IconPhone, 
   IconTargetArrow, 
@@ -17,6 +18,9 @@ import {
 import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Input } from '../components/ui/input';
+import { useServicePayment } from '../hooks/useRazorpayPayment';
+import emailjs from '@emailjs/browser';
 
 const services = [
   {
@@ -54,6 +58,7 @@ const services = [
       {
         name: "Basic",
         price: "₹15,000/month",
+        priceValue: 15000,
         calls: "500 calls",
         agents: "2 dedicated agents",
         hours: "8 hours/day"
@@ -61,6 +66,7 @@ const services = [
       {
         name: "Professional",
         price: "₹28,000/month",
+        priceValue: 28000,
         calls: "1000 calls",
         agents: "4 dedicated agents",
         hours: "12 hours/day"
@@ -68,6 +74,7 @@ const services = [
       {
         name: "Enterprise",
         price: "₹45,000/month",
+        priceValue: 45000,
         calls: "2000 calls",
         agents: "8 dedicated agents",
         hours: "24 hours/day"
@@ -109,6 +116,7 @@ const services = [
       {
         name: "Starter",
         price: "₹12,000/month",
+        priceValue: 12000,
         leads: "100 qualified leads",
         channels: "2 channels",
         reports: "Weekly reports"
@@ -116,6 +124,7 @@ const services = [
       {
         name: "Growth",
         price: "₹22,000/month",
+        priceValue: 22000,
         leads: "250 qualified leads",
         channels: "4 channels",
         reports: "Bi-weekly reports"
@@ -123,6 +132,7 @@ const services = [
       {
         name: "Scale",
         price: "₹35,000/month",
+        priceValue: 35000,
         leads: "500 qualified leads",
         channels: "All channels",
         reports: "Daily reports"
@@ -166,6 +176,7 @@ const services = [
       {
         name: "Basic Setup",
         price: "₹25,000",
+        priceValue: 25000,
         setup: "Basic CRM setup",
         workflows: "5 workflows",
         training: "2 hours"
@@ -173,6 +184,7 @@ const services = [
       {
         name: "Advanced",
         price: "₹45,000",
+        priceValue: 45000,
         setup: "Advanced configuration",
         workflows: "15 workflows",
         training: "8 hours"
@@ -180,6 +192,7 @@ const services = [
       {
         name: "Enterprise",
         price: "₹75,000",
+        priceValue: 75000,
         setup: "Complete integration",
         workflows: "Unlimited",
         training: "20 hours"
@@ -223,6 +236,7 @@ const services = [
       {
         name: "Website",
         price: "₹50,000",
+        priceValue: 50000,
         pages: "5-10 pages",
         features: "Basic features",
         timeline: "2-3 weeks"
@@ -230,6 +244,7 @@ const services = [
       {
         name: "E-commerce",
         price: "₹150,000",
+        priceValue: 150000,
         pages: "Full store",
         features: "Payment gateway",
         timeline: "6-8 weeks"
@@ -237,6 +252,7 @@ const services = [
       {
         name: "Custom App",
         price: "₹300,000",
+        priceValue: 300000,
         pages: "Mobile + Web",
         features: "Advanced features",
         timeline: "12-16 weeks"
@@ -280,6 +296,7 @@ const services = [
       {
         name: "Basic",
         price: "₹15,000/month",
+        priceValue: 15000,
         posts: "15 posts/month",
         platforms: "2 platforms",
         management: "Basic management"
@@ -287,6 +304,7 @@ const services = [
       {
         name: "Professional",
         price: "₹30,000/month",
+        priceValue: 30000,
         posts: "30 posts/month",
         platforms: "4 platforms",
         management: "Full management"
@@ -294,6 +312,7 @@ const services = [
       {
         name: "Premium",
         price: "₹50,000/month",
+        priceValue: 50000,
         posts: "60 posts/month",
         platforms: "All platforms",
         management: "Complete strategy"
@@ -337,6 +356,7 @@ const services = [
       {
         name: "SEO Basic",
         price: "₹20,000/month",
+        priceValue: 20000,
         keywords: "20 keywords",
         content: "4 articles",
         reports: "Monthly"
@@ -344,6 +364,7 @@ const services = [
       {
         name: "Growth Pack",
         price: "₹40,000/month",
+        priceValue: 40000,
         keywords: "50 keywords",
         content: "8 articles",
         reports: "Bi-weekly"
@@ -351,6 +372,7 @@ const services = [
       {
         name: "Enterprise",
         price: "₹75,000/month",
+        priceValue: 75000,
         keywords: "100+ keywords",
         content: "16 articles",
         reports: "Weekly"
@@ -383,8 +405,192 @@ const whyChooseUs = [
 ];
 
 export default function ServicesPage() {
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+  
+  // Form states
+  const [selectedService, setSelectedService] = useState<any>(null);
+  const [selectedPackage, setSelectedPackage] = useState<any>(null);
+
+  // Customer details for demo (in real app, you'd collect these)
+  const [customerDetails, setCustomerDetails] = useState({
+    name: 'Demo Customer',
+    email: 'customer@example.com',
+    phone: '+919999999999',
+    company: 'Demo Company'
+  });
+
+  // Handle successful payment
+  const handlePaymentSuccess = async (paymentId: string) => {
+    setSending(true);
+    setError('');
+    setSuccess(false);
+    
+    try {
+      const templateParams = {
+        name: customerDetails.name,
+        email: customerDetails.email,
+        phone: customerDetails.phone,
+        company: customerDetails.company,
+        service: selectedService.title,
+        package: selectedPackage.name,
+        amount: selectedPackage.priceValue,
+        requirements: 'Service package selected via website',
+        payment_id: paymentId,
+      };
+      
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID!,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
+      );
+      
+      setSuccess(true);
+      setShowModal(false);
+      navigate('/success');
+    } catch (err) {
+      throw new Error('Order submission failed. Please contact support with your payment ID: ' + paymentId);
+    } finally {
+      setSending(false);
+    }
+  };
+
+  // Handle payment errors
+  const handlePaymentError = (error: string) => {
+    setError(error);
+    console.error('Service payment error:', error);
+  };
+
+  // Initialize payment hook
+  const { initiatePayment, isLoading: paymentLoading, error: paymentError, clearError } = useServicePayment(
+    handlePaymentSuccess,
+    handlePaymentError
+  );
+
+  // Handle payment
+  const handlePayment = async () => {
+    // Clear any previous errors
+    clearError();
+    setError('');
+
+    const paymentData = {
+      amount: selectedPackage.priceValue,
+      description: `${selectedService.title} - ${selectedPackage.name} Package`,
+      prefill: {
+        name: customerDetails.name,
+        email: customerDetails.email,
+        contact: customerDetails.phone,
+      },
+      theme: 'default' as const,
+      notes: {
+        service_id: selectedService.id,
+        package_name: selectedPackage.name,
+        company: customerDetails.company,
+      }
+    };
+
+    await initiatePayment(paymentData);
+  };
+
+  // Handle package selection
+  const handlePackageSelect = (service: any, packageItem: any) => {
+    setSelectedService(service);
+    setSelectedPackage(packageItem);
+    setShowModal(true);
+    clearError();
+    setError('');
+  };
+
+  // Combined error display
+  const displayError = error || paymentError;
+
   return (
     <Layout>
+      {/* Payment Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-lg bg-black/40">
+          <div className="bg-card/80 backdrop-blur-xl border border-neon-cyan/30 shadow-2xl rounded-xl p-8 w-full max-w-md relative flex flex-col items-center">
+            <button
+              className="absolute top-2 right-2 text-2xl text-neon-cyan hover:text-neon-purple transition"
+              onClick={() => {
+                setShowModal(false);
+                clearError();
+                setError('');
+              }}
+            >
+              &times;
+            </button>
+            
+            <h2 className="text-2xl font-bold mb-6 text-center text-neon-cyan">Service Payment</h2>
+            
+            {/* Service Summary */}
+            <div className="w-full space-y-4 mb-6">
+              <div className="bg-background/50 border border-neon-cyan/20 rounded-lg p-4">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm text-muted-foreground">Service:</span>
+                  <span className="text-sm font-medium text-neon-cyan">{selectedService?.title}</span>
+                </div>
+                
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm text-muted-foreground">Package:</span>
+                  <span className="text-sm font-medium text-neon-purple">{selectedPackage?.name}</span>
+                </div>
+                
+                <div className="border-t border-neon-cyan/20 pt-2 mt-2">
+                  <div className="flex justify-between items-center">
+                    <span className="font-semibold text-neon-cyan">Total Amount:</span>
+                    <span className="text-xl font-bold text-neon-purple">{selectedPackage?.price}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Customer Details Preview */}
+              <div className="bg-background/50 border border-neon-purple/20 rounded-lg p-4">
+                <h4 className="text-sm font-semibold text-neon-purple mb-2">Customer Details:</h4>
+                <div className="text-xs text-muted-foreground space-y-1">
+                  <div>Name: {customerDetails.name}</div>
+                  <div>Email: {customerDetails.email}</div>
+                  <div>Phone: {customerDetails.phone}</div>
+                  <div>Company: {customerDetails.company}</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Payment Button */}
+            <Button
+              onClick={handlePayment}
+              size="lg"
+              className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan py-3 text-lg font-semibold"
+              disabled={paymentLoading || sending}
+            >
+              {paymentLoading ? (
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  Processing Payment...
+                </div>
+              ) : (
+                `Pay ${selectedPackage?.price} via Razorpay`
+              )}
+            </Button>
+            
+            {displayError && (
+              <div className="text-red-400 mt-4 text-sm text-center bg-red-500/10 border border-red-500/20 rounded-lg p-3 w-full">
+                {displayError}
+              </div>
+            )}
+            
+            {/* Security Note */}
+            <div className="mt-4 text-xs text-muted-foreground text-center">
+              🔒 Secure payment powered by Razorpay
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
@@ -439,7 +645,7 @@ export default function ServicesPage() {
                     <div>
                       <h3 className="text-xl font-semibold mb-3 text-neon-cyan">Key Features</h3>
                       <ul className="space-y-2">
-                        {service.features.map((feature, idx) => (
+                        {service.features.slice(0, 6).map((feature, idx) => (
                           <li key={feature} className="flex items-center text-sm text-muted-foreground">
                             <IconCheck className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
                             {feature}
@@ -451,7 +657,7 @@ export default function ServicesPage() {
                     <div>
                       <h3 className="text-xl font-semibold mb-3 text-neon-purple">Benefits</h3>
                       <ul className="space-y-2">
-                        {service.benefits.map((benefit, idx) => (
+                        {service.benefits.slice(0, 6).map((benefit, idx) => (
                           <li key={benefit} className="flex items-center text-sm text-muted-foreground">
                             <IconCheck className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
                             {benefit}
@@ -485,9 +691,9 @@ export default function ServicesPage() {
                           </div>
                         </CardHeader>
                         <CardContent>
-                          <div className="space-y-2 text-sm text-muted-foreground">
+                          <div className="space-y-2 text-sm text-muted-foreground mb-4">
                             {Object.entries(pkg).map(([key, value]) => {
-                              if (key === 'name' || key === 'price') return null;
+                              if (key === 'name' || key === 'price' || key === 'priceValue') return null;
                               return (
                                 <div key={key} className="flex justify-between">
                                   <span className="capitalize">{key.replace(/([A-Z])/g, ' $1')}:</span>
@@ -496,6 +702,13 @@ export default function ServicesPage() {
                               );
                             })}
                           </div>
+                          <Button
+                            onClick={() => handlePackageSelect(service, pkg)}
+                            className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 transition-all duration-300`}
+                            size="sm"
+                          >
+                            Select Package
+                          </Button>
                         </CardContent>
                       </Card>
                     ))}
