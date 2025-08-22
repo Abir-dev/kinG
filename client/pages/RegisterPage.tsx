@@ -330,7 +330,7 @@ export default function RegisterPage() {
                         </div>
                         <div className="flex items-center justify-between p-3 bg-neon-purple/10 rounded-lg border border-neon-purple/20">
                           <span className="text-sm font-medium">Launchpad Program</span>
-                          <span className="text-neon-purple font-semibold">₹17,999</span>
+                          <span className="text-neon-purple font-semibold">₹25,900</span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
                           <span className="text-sm font-medium">AlgoBridge Contest</span>

@@ -48,7 +48,7 @@ const pricingTiers = [
   },
   {
     name: "Ultimate",
-    price: "₹17,999",
+    price: "₹25,900",
     period: "+ 30% placement fee",
     description: "Premium program with guaranteed placement support and ongoing mentorship",
     icon: IconCrown,
