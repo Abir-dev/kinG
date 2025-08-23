@@ -12,6 +12,8 @@ export const config = {
   server: {
     port: import.meta.env.PORT || 3001,
     nodeEnv: import.meta.env.NODE_ENV || 'development',
+    // Backend API URL - use environment variable or fallback to localhost for development
+    apiUrl: import.meta.env.VITE_BACKEND_API_URL || 'http://localhost:3001',
   },
 };
 
@@ -40,3 +42,10 @@ export const isDevelopment = config.server.nodeEnv === 'development';
 
 // Check if we're in production mode
 export const isProduction = config.server.nodeEnv === 'production';
+
+// Helper function to get the full API URL
+export const getApiUrl = (endpoint: string): string => {
+  // Remove leading slash if present
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+  return `${config.server.apiUrl}/${cleanEndpoint}`;
+};

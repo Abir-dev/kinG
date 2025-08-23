@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: kin-g-lms-backend
+    env: node
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: MAIL_HOST
+        value: smtp.hostinger.com
+      - key: MAIL_PORT
+        value: 465
+      - key: MAIL_SECURE
+        value: true
+      - key: MAIL_USER
+        sync: false
+      - key: MAIL_PASS
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://test-kin-g.onrender.com

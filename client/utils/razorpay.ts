@@ -1,3 +1,5 @@
+import { getApiUrl } from '../config/env';
+
 // Razorpay Types
 export interface RazorpayOptions {
   key: string;
@@ -68,8 +70,8 @@ declare global {
   }
 }
 
-// API endpoints
-const API_BASE = 'http://localhost:3001/api/razorpay';
+// API endpoints - now using environment configuration
+const API_BASE = getApiUrl('api/razorpay');
 
 // Create order on server
 export const createOrder = async (data: CreateOrderRequest): Promise<CreateOrderResponse> => {

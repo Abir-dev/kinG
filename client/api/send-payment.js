@@ -1,7 +1,9 @@
+import { getApiUrl } from '../config/env';
+
 // Client-side API handler for sending payment data to server
 export async function sendPaymentData(formData) {
   try {
-    const response = await fetch('/api/send-payment', {
+    const response = await fetch(getApiUrl('api/send-payment'), {
       method: 'POST',
       body: formData,
     });

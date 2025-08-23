@@ -3,9 +3,7 @@ import nodemailer from 'nodemailer';
 import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { config } from '../config.js';
 
 const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
@@ -21,16 +19,30 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ 
+  storage: storage,
+  limits: {
+    fileSize: 5 * 1024 * 1024 // 5MB limit
+  }
+});
 
-// Email configuration using Hostinger settings from .env
+// Email configuration using config
 const transporter = nodemailer.createTransport({
-  host: process.env.MAIL_HOST,       // smtp.hostinger.com
-  port: process.env.MAIL_PORT,       // 465
-  secure: process.env.MAIL_SECURE === 'true', // true
+  host: config.email.host,
+  port: config.email.port,
+  secure: config.email.secure,
   auth: {
-    user: process.env.MAIL_USER,    // admin@kingtechs.in
-    pass: process.env.MAIL_PASS      // KinG@2025
+    user: config.email.user,
+    pass: config.email.pass
+  }
+});
+
+// Verify transporter configuration
+transporter.verify(function(error, success) {
+  if (error) {
+    console.error('SMTP connection error:', error);
+  } else {
+    console.log('✅ SMTP server is ready to send emails');
   }
 });
 
@@ -40,10 +52,21 @@ router.post('/send-payment', upload.single('Payment Receipt'), async (req, res) 
     const formData = req.body;
     const file = req.file;
     
+    // Validate required fields
+    const requiredFields = ['Full Name', 'Phone Number', 'Email ID', 'Registration Type', 'Course'];
+    const missingFields = requiredFields.filter(field => !formData[field]);
+    
+    if (missingFields.length > 0) {
+      return res.status(400).json({ 
+        success: false, 
+        message: `Missing required fields: ${missingFields.join(', ')}` 
+      });
+    }
+    
     // Prepare email content
     const mailOptions = {
-      from: process.env.MAIL_USER, // admin@kingtechs.in
-      to: process.env.MAIL_USER,   // admin@kingtechs.in (sending to yourself)
+      from: config.email.user,
+      to: config.email.user, // sending to yourself
       subject: `New Registration: ${formData['Full Name']}`,
       html: `
         <h2>New Registration Details</h2>
@@ -52,10 +75,11 @@ router.post('/send-payment', upload.single('Payment Receipt'), async (req, res) 
         <p><strong>Email ID:</strong> ${formData['Email ID']}</p>
         <p><strong>Registration Type:</strong> ${formData['Registration Type']}</p>
         <p><strong>Course:</strong> ${formData['Course']}</p>
-        <p><strong>Course Pricing:</strong> ${formData['Course Pricing']}</p>
-        <p><strong>Year of Passout:</strong> ${formData['Year of Passout']}</p>
-        <p><strong>Stream:</strong> ${formData['Stream']}</p>
-        <p><strong>College:</strong> ${formData['College']}</p>
+        <p><strong>Course Pricing:</strong> ${formData['Course Pricing'] || 'N/A'}</p>
+        <p><strong>Year of Passout:</strong> ${formData['Year of Passout'] || 'N/A'}</p>
+        <p><strong>Stream:</strong> ${formData['Stream'] || 'N/A'}</p>
+        <p><strong>College:</strong> ${formData['College'] || 'N/A'}</p>
+        <p><strong>Submission Time:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
       `,
       attachments: file ? [
         {
@@ -66,12 +90,53 @@ router.post('/send-payment', upload.single('Payment Receipt'), async (req, res) 
     };
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('✅ Email sent successfully:', info.messageId);
     
-    res.status(200).json({ success: true, message: 'Registration data sent successfully' });
+    res.status(200).json({ 
+      success: true, 
+      message: 'Registration data sent successfully',
+      messageId: info.messageId
+    });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ success: false, message: 'Failed to send registration data' });
+    console.error('❌ Error sending email:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to send registration data',
+      error: config.nodeEnv === 'development' ? error.message : 'Internal server error'
+    });
+  }
+});
+
+// GET endpoint to test email configuration
+router.get('/test-email', async (req, res) => {
+  try {
+    const testMailOptions = {
+      from: config.email.user,
+      to: config.email.user,
+      subject: 'Test Email - KinG LMS Server',
+      html: `
+        <h2>Test Email</h2>
+        <p>This is a test email to verify the server configuration.</p>
+        <p><strong>Server:</strong> ${config.email.host}:${config.email.port}</p>
+        <p><strong>User:</strong> ${config.email.user}</p>
+        <p><strong>Time:</strong> ${new Date().toISOString()}</p>
+      `
+    };
+
+    const info = await transporter.sendMail(testMailOptions);
+    res.status(200).json({ 
+      success: true, 
+      message: 'Test email sent successfully',
+      messageId: info.messageId
+    });
+  } catch (error) {
+    console.error('❌ Test email failed:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Test email failed',
+      error: config.nodeEnv === 'development' ? error.message : 'Internal server error'
+    });
   }
 });
 
