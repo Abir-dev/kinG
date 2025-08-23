@@ -580,7 +580,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section - New Grid Layout */}
+      {/* Team Section - Updated Layout with CEO and Co-Founder Side by Side */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -601,20 +601,21 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          {/* CEO Section - Featured at Top */}
+          {/* Founders Section - CEO and Co-Founder Side by Side */}
           <div className="mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="flex justify-center"
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
             >
+              {/* CEO - Soumodip Dey */}
               <motion.div
-                whileHover={{ y: -15, scale: 1.05 }}
-                className="group max-w-md"
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
               >
-                <Card className="h-full bg-gradient-to-br from-card/70 via-card/50 to-card/30 backdrop-blur-md border-2 border-neon-cyan/50 hover:border-neon-cyan transition-all duration-500 hover:shadow-2xl hover:shadow-neon-cyan/20 overflow-hidden">
+                <Card className="h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500 hover:shadow-xl hover:shadow-neon-cyan/10 overflow-hidden">
                   <div className="relative">
                     {/* CEO Profile Image */}
                     <div className="aspect-square overflow-hidden">
@@ -623,46 +624,48 @@ export default function AboutPage() {
                         alt={teamMembers[0].name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      {/* Enhanced Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       
                       {/* CEO Badge */}
-                      <div className="absolute top-4 left-4 bg-gradient-to-r from-neon-cyan to-neon-purple px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg">
+                      <div className="absolute top-4 left-4 bg-gradient-to-r from-neon-cyan to-neon-purple px-2 py-1 rounded-full text-xs font-bold text-white shadow-lg">
                         FOUNDER & CEO
                       </div>
                     </div>
                     
-                    {/* LinkedIn Link - Enhanced */}
+                    {/* LinkedIn Link - Floating */}
                     <motion.a
                       href={teamMembers[0].linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute top-4 right-4 w-12 h-12 bg-neon-cyan/30 backdrop-blur-md rounded-full flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 shadow-lg"
+                      className="absolute top-4 right-4 w-10 h-10 bg-neon-cyan/20 backdrop-blur-md rounded-full flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110"
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <IconBrandLinkedin className="h-6 w-6" />
+                      <IconBrandLinkedin className="h-5 w-5" />
                     </motion.a>
                   </div>
                   
-                  <CardContent className="p-8 text-center">
-                    <div className="mb-4">
-                      <h3 className="text-2xl font-bold mb-3 group-hover:text-neon-cyan transition-colors duration-300">
+                  <CardContent className="p-6">
+                    <div className="text-center">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-neon-cyan transition-colors duration-300">
                         {teamMembers[0].name}
                       </h3>
-                      <div className="text-base font-medium text-neon-purple mb-4 bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 px-4 py-2 rounded-full inline-block border border-neon-purple/30">
+                      <div className="text-sm font-medium text-neon-cyan mb-3 bg-neon-cyan/10 px-3 py-1 rounded-full inline-block">
                         {teamMembers[0].designation}
                       </div>
-                      <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
+                      <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
                         {teamMembers[0].description}
                       </p>
                     </div>
                     
-                    {/* Enhanced Connect Button */}
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* Connect Button */}
+                    <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <Button
                         asChild
-                        className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-neon-cyan/50"
+                        variant="outline"
+                        size="sm"
+                        className="w-full border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan transition-all duration-300"
                       >
                         <a 
                           href={teamMembers[0].linkedin} 
@@ -670,7 +673,79 @@ export default function AboutPage() {
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-2"
                         >
-                          Connect with CEO
+                          Connect
+                          <IconExternalLink className="h-4 w-4" />
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              {/* Co-Founder - Ayushmita Das */}
+              <motion.div
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
+              >
+                <Card className="h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500 hover:shadow-xl hover:shadow-neon-purple/10 overflow-hidden">
+                  <div className="relative">
+                    {/* Co-Founder Profile Image */}
+                    <div className="aspect-square overflow-hidden">
+                      <img
+                        src={teamMembers[1].image}
+                        alt={teamMembers[1].name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      
+                      {/* Co-Founder Badge */}
+                      <div className="absolute top-4 left-4 bg-gradient-to-r from-neon-purple to-neon-pink px-2 py-1 rounded-full text-xs font-bold text-white shadow-lg">
+                        CO-FOUNDER
+                      </div>
+                    </div>
+                    
+                    {/* LinkedIn Link - Floating */}
+                    <motion.a
+                      href={teamMembers[1].linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-4 right-4 w-10 h-10 bg-neon-purple/20 backdrop-blur-md rounded-full flex items-center justify-center text-neon-purple hover:bg-neon-purple hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <IconBrandLinkedin className="h-5 w-5" />
+                    </motion.a>
+                  </div>
+                  
+                  <CardContent className="p-6">
+                    <div className="text-center">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-neon-purple transition-colors duration-300">
+                        {teamMembers[1].name}
+                      </h3>
+                      <div className="text-sm font-medium text-neon-purple mb-3 bg-neon-purple/10 px-3 py-1 rounded-full inline-block">
+                        {teamMembers[1].designation}
+                      </div>
+                      <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
+                        {teamMembers[1].description}
+                      </p>
+                    </div>
+                    
+                    {/* Connect Button */}
+                    <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="w-full border-neon-purple/50 text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300"
+                      >
+                        <a 
+                          href={teamMembers[1].linkedin} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2"
+                        >
+                          Connect
                           <IconExternalLink className="h-4 w-4" />
                         </a>
                       </Button>
@@ -682,13 +757,13 @@ export default function AboutPage() {
           </div>
 
           {/* Rest of Team Members */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
-            {teamMembers.slice(1).map((member, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {teamMembers.slice(2).map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                transition={{ duration: 0.5, delay: (index + 2) * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10, scale: 1.02 }}
                 className="group"
