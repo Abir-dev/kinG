@@ -57,21 +57,21 @@ const highlights = [
 
 const testimonials = [
   {
-    name: "Rajesh Kumar",
+    name: "Wasim Ali",
     role: "CEO, TechStart Solutions",
-    content: "Kin-G Technologies transformed our sales process with their CRM integration. Our conversion rates increased by 40%.",
+    content: "Their team was knowledgeable, responsive, and helped us achieve our goals.",
     rating: 5
   },
   {
-    name: "Priya Sharma",
+    name: "NILESH DUBEY",
     role: "Software Developer",
-    content: "The Launchpad program gave me real project experience. I landed my dream job within 3 months of completion.",
+    content: "Best courses at Best price ❤",
     rating: 5
   },
   {
-    name: "Amit Patel",
+    name: "Monishankar Banerjee",
     role: "Marketing Director, GrowthCorp",
-    content: "Their digital marketing strategies helped us achieve 3x growth in lead generation. Exceptional team!",
+    content: "Good company for B2B sales, IT support, and digital design solutions. They partner with local and global organizations to help individuals in practical ways to help with skill development.",
     rating: 5
   }
 ];
