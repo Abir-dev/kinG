@@ -29,13 +29,14 @@ export default function RegisterPage() {
   const [paymentLoading, setPaymentLoading] = useState(false);
   
   const courseOptions = [
-    'IT Tech Support',
-    'Inside Sales',
-    'Marketing & SEO',
-    'Graphics Designing',
-    'Stock market AI',
-    'Web development',
-    'Freelancing & Portfolio building',
+  'AI Accelerating Mastery Course',
+  'Full Stack Development',
+  'Digital Marketing',
+  'Software Development & Android apps',
+  'Finance & Sales Speech Readiness',
+  'UI/UX Design',
+  'Freelancing & Portfolio building',
+  'Stock market Algotrade with AI Tools',
   ];
   
   const [registrationType, setRegistrationType] = useState('');
@@ -336,7 +337,7 @@ export default function RegisterPage() {
                         </div>
                         <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
                           <span className="text-sm font-medium">AlgoBridge Contest</span>
-                          <span className="text-neon-cyan font-semibold">₹49</span>
+                          <span className="text-neon-cyan font-semibold">₹9</span>
                         </div>
                       </div>
                     </div>
