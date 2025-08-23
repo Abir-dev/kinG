@@ -32,7 +32,8 @@
     "motion": "^12.23.12",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.5",
-    "razorpay": "^2.9.6"
+    "razorpay": "^2.9.6",
+    "vercel": "^46.0.2"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.9.0",
