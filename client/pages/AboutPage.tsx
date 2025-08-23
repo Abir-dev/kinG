@@ -415,9 +415,9 @@ export default function AboutPage() {
             >
               <div className="relative z-10">
                 <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop"
+                  src="/images/about1.jpeg"
                   alt="Kin-G Technologies team collaboration"
-                  className="rounded-2xl shadow-2xl"
+                  className="rounded-2xl shadow-2xl w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-neon-cyan/20 to-neon-purple/20 rounded-2xl" />
               </div>
