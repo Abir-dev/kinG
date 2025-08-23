@@ -8,12 +8,14 @@ import { Input } from '../components/ui/input';
 import emailjs from '@emailjs/browser';
 
 const courses = [
-  'Launchpad Career Program',
+  'AI Accelerating Mastery Course',
   'Full Stack Development',
   'Digital Marketing',
-  'B2B Sales Mastery',
+  'Software Development & Android apps',
+  'Finance & Sales Speech Readiness',
   'UI/UX Design',
-  'Product Management',
+  'Freelancing & Portfolio building',
+  'Stock market Algotrade with AI Tools',
 ];
 
 // Razorpay types are now imported from utils/razorpay
@@ -54,10 +56,10 @@ export default function RegisterPage() {
       case 'Registration for Course':
         // if (coursePricing.includes('1299')) return 1299;
         // if (coursePricing.includes('3999')) return 3999;
-        if (coursePricing.includes('17999')) return 17999;
+        if (coursePricing.includes('25900')) return 25900;
         return 1299; // default
       case 'Registration for AlgoBridge':
-        return 49;
+        return 9;
       default:
         return 0;
     }
@@ -411,7 +413,7 @@ export default function RegisterPage() {
                       <label className="text-sm font-semibold text-foreground mb-3 block">Select Plan</label>
                       <div className="grid grid-cols-3 gap-2">
                         {[
-                          { value: 'Basic - ₹17999', label: 'Basic', price: '₹17999' },
+                          { value: 'Basic - ₹25,900', label: 'Basic', price: '₹25,900' },
                           // { value: 'Basic - ₹1299', label: 'Basic', price: '₹1299' },
                           // { value: 'Pro - ₹3999', label: 'Pro', price: '₹3999' },
                           // { value: 'Ultimate - ₹7999', label: 'Ultimate', price: '₹7999' }

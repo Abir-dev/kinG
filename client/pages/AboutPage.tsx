@@ -98,12 +98,13 @@ const teamMembers = [
   },
   {
     name: "Ayushmita Das",
-    designation: "Co-Founder/B2C Head",
+    designation: "Co-Founder/B2C-B2B Head",
     description: "Strategic thinker and B2B & B2C expert, leading partnerships and business expansion.",
     image: "/images/Ayushmita.jpeg",
     linkedin: "https://linkedin.com/in/ayushmita-das"
   },
-   {
+
+  {
     name: "Sourav",
     designation: "CTO (Chief Technologies Officer)",
     description: "Technologies visionary, leading innovation and product development.",
@@ -112,10 +113,17 @@ const teamMembers = [
   },
   {
     name: "Himadri Barua",
-    designation: "Assistant Business President (Sales)",
+    designation: "Business President (Sales)",
     description: "Driving sales excellence and business growth with a client-first approach.",
     image: "/images/Himadri.jpeg",
     linkedin: "https://linkedin.com/in/himadri-barua"
+  },
+  {
+    name: "Uditi",
+    designation: "Brand & Communications Head",
+    description: "Brand strategist and communications expert, shaping Kin-G's public image.",
+    image: "/images/Uditi.jpeg",
+    linkedin: "https://linkedin.com/in/uditi-brand"
   },
   {
     name: "Abir Lal Banerjee",
@@ -138,13 +146,7 @@ const teamMembers = [
     image: "/images/Tanwistha.jpeg",
     linkedin: "https://linkedin.com/in/tanwishtha-uiux"
   },
-  {
-    name: "Uditi",
-    designation: "Brand & Communications Head",
-    description: "Brand strategist and communications expert, shaping Kin-G's public image.",
-    image: "/images/Uditi.jpeg",
-    linkedin: "https://linkedin.com/in/uditi-brand"
-  },
+  
   // {
   //   name: "Avishikta",
   //   designation: "SEO - Marketing",

@@ -127,28 +127,28 @@ const programFeatures = [
 const curriculum = [
   {
     week: "4 Months Course",
-    title: "AI Accelerating mastery course",
+    title: "AI Accelerating Mastery Course",
     prices: [
       "25,900",
     ]
   },
   {
     week: "4 Months Course",
-    title: "Full Stack Development & Web page building ",
+    title: "Full Stack Development & Web Page Building ",
     prices: [
       "36,999"
     ]
   },
   {
     week: "4 Months Course",
-    title: "Stock Market Algotrade with AI tools",
+    title: "Stock Market Algotrade with AI Tools",
     prices: [
       "55,999"
     ]
   },
   {
     week: "4 Months Course",
-    title: "Software Development & Android apps",
+    title: "Software Development & Android Apps",
     prices: [
       "36,999"
     ]
@@ -162,7 +162,7 @@ const curriculum = [
   },
   {
     week: "4 Months Course",
-    title: "Finance & Sales speech readiness",
+    title: "Finance & Sales Speech Readiness",
     prices: [
       "14,999"
     ]
