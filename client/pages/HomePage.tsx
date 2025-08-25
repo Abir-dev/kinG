@@ -236,6 +236,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <LogoCardsSection />
+
       {/* Achievements Section */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -281,7 +283,7 @@ export default function HomePage() {
       </section>
 
       {/* Replace the Brand Partners Section with our new LogoCardsSection */}
-      <LogoCardsSection />
+      
 
       {/* Testimonials Section */}
       <section className="py-20 px-4">

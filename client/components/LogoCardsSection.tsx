@@ -4,16 +4,29 @@ import { InfiniteMovingCards } from "./InfiniteMovingCards";
 
 export const LogoCardsSection = () => {
   // Create an array of logo card items
+  // const logoCards = [
+  //   { id: 1, imagePath: "/logocards/logocard1.jpeg" },
+  //   { id: 2, imagePath: "/logocards/logocard2.jpeg" },
+  //   { id: 3, imagePath: "/logocards/logocard3.jpeg" },
+  //   { id: 4, imagePath: "/logocards/logocard4.jpeg" },
+  //   { id: 5, imagePath: "/logocards/logocard5.jpeg" },
+  //   { id: 6, imagePath: "/logocards/logocard6.jpeg" },
+  //   { id: 7, imagePath: "/logocards/logocard7.jpeg" },
+  //   { id: 8, imagePath: "/logocards/logocard8.jpeg" },
+  // ];
+
   const logoCards = [
-    { id: 1, imagePath: "/logocards/logocard1.jpeg" },
-    { id: 2, imagePath: "/logocards/logocard2.jpeg" },
-    { id: 3, imagePath: "/logocards/logocard3.jpeg" },
-    { id: 4, imagePath: "/logocards/logocard4.jpeg" },
-    { id: 5, imagePath: "/logocards/logocard5.jpeg" },
-    { id: 6, imagePath: "/logocards/logocard6.jpeg" },
-    { id: 7, imagePath: "/logocards/logocard7.jpeg" },
-    { id: 8, imagePath: "/logocards/logocard8.jpeg" },
-  ];
+       { id: 1, imagePath: "/logocards/LC1.png" },
+    { id: 2, imagePath: "/logocards/LC2.png" },
+    { id: 3, imagePath: "/logocards/LC3.png" },
+    { id: 4, imagePath: "/logocards/LC4.png" },
+    { id: 5, imagePath: "/logocards/LC5.png" },
+    { id: 6, imagePath: "/logocards/LC6.png" },
+    { id: 7, imagePath: "/logocards/LC7.png" },
+    { id: 8, imagePath: "/logocards/LC8.png" },
+    { id: 9, imagePath: "/logocards/LC9.png" },
+    { id: 10, imagePath: "/logocards/LC10.png" },
+  ]
 
   // Format the items for the InfiniteMovingCards component
   const formattedItems = logoCards.map((card) => ({
