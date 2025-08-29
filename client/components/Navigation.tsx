@@ -110,8 +110,9 @@ export function Navigation() {
             {/* <ThemeToggle /> */}
             <Link to="/contact">
               <Button
+              variant="outline"
                 size="sm"
-                className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity"
+                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
               >
                 Contact Us
               </Button>
@@ -159,8 +160,9 @@ export function Navigation() {
             ))}
             <Link to="/contact" onClick={closeMenu}>
               <Button
+              variant="outline"
                 size="sm"
-                className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity"
+                className="w-full border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
               >
                 Contact Us
               </Button>

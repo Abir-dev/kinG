@@ -13,7 +13,8 @@ import {
   IconCheck,
   IconUsers,
   IconClock,
-  IconShield
+  IconShield,
+  IconPoint
 } from '@tabler/icons-react';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
@@ -551,7 +552,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Customer Details Preview */}
-              <div className="bg-background/50 border border-neon-purple/20 rounded-lg p-4">
+              {/* <div className="bg-background/50 border border-neon-purple/20 rounded-lg p-4">
                 <h4 className="text-sm font-semibold text-neon-purple mb-2">Customer Details:</h4>
                 <div className="text-xs text-muted-foreground space-y-1">
                   <div>Name: {customerDetails.name}</div>
@@ -559,14 +560,15 @@ export default function ServicesPage() {
                   <div>Phone: {customerDetails.phone}</div>
                   <div>Company: {customerDetails.company}</div>
                 </div>
-              </div>
+              </div> */}
             </div>
             
             {/* Payment Button */}
             <Button
               onClick={handlePayment}
+              variant="outline"
               size="lg"
-              className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan py-3 text-lg font-semibold"
+              className="w-full border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
               disabled={paymentLoading || sending}
             >
               {paymentLoading ? (
@@ -620,7 +622,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 px-4">
+      <section className="py-14 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="space-y-20">
             {services.map((service, index) => (
@@ -636,8 +638,8 @@ export default function ServicesPage() {
               >
                 {/* Service Info */}
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 neon-glow-cyan`}>
-                    <service.icon className="h-8 w-8 text-white" />
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 `}>
+                    <service.icon className="h-8 w-8 text-black" />
                   </div>
                   
                   <h2 className="text-3xl md:text-4xl font-bold mb-4">{service.title}</h2>
@@ -649,7 +651,7 @@ export default function ServicesPage() {
                       <ul className="space-y-2">
                         {service.features.slice(0, 6).map((feature, idx) => (
                           <li key={feature} className="flex items-center text-sm text-muted-foreground">
-                            <IconCheck className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
+                            <IconPoint className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -661,7 +663,7 @@ export default function ServicesPage() {
                       <ul className="space-y-2">
                         {service.benefits.slice(0, 6).map((benefit, idx) => (
                           <li key={benefit} className="flex items-center text-sm text-muted-foreground">
-                            <IconCheck className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
+                            <IconPoint className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
                             {benefit}
                           </li>
                         ))}
@@ -788,8 +790,9 @@ export default function ServicesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 asChild
+                variant="outline"
                 size="lg" 
-                className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan hover:scale-105 px-8 py-4 text-lg font-semibold"
+                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/contact">
                   Contact Us Today

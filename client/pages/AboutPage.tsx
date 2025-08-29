@@ -395,9 +395,10 @@ export default function AboutPage() {
                 Today, we stand as a testament to what's possible when innovation meets dedication. With over 500 successful 
                 projects and 1000+ careers launched, we continue to set new standards in the EdTech and B2B services industry.
               </p>
-              <Button 
+              <Button
+              variant="outline" 
                 asChild
-                className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 hover:scale-105"
+                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
               >
                 <Link to="/contact">
                   Join Our Journey
@@ -479,7 +480,7 @@ export default function AboutPage() {
                     <Card className="group bg-card/60 backdrop-blur-md border-border/50 hover:border-neon-cyan/70 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-neon-cyan/20">
                       <CardHeader className="pb-4">
                         <div className="flex items-center gap-4">
-                          <div className="w-14 h-14 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                          <div className="w-14 h-14 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
                             {item.year.slice(-2)}
                           </div>
                           <div>
@@ -917,10 +918,11 @@ export default function AboutPage() {
               we're here to support your journey to success.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <Button
+              variant="outline" 
                 asChild
                 size="lg" 
-                className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan hover:scale-105 px-8 py-4 text-lg font-semibold"
+                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
               >
                 <Link to="/services">
                   Explore Our Services
