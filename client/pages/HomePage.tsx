@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IconArrowRight, IconRocket, IconUsers, IconTrendingUp, IconBuilding, IconStar, IconCheck } from '@tabler/icons-react';
+import { IconArrowRight, IconRocket, IconUsers, IconTrendingUp, IconBuilding, IconStar, IconCheck, IconPoint } from '@tabler/icons-react';
 import { Layout } from '../components/Layout';
 import { FullScreenHero } from '../components/FullScreenHero';
 import { Button } from '../components/ui/button';
@@ -172,7 +172,7 @@ export default function HomePage() {
       <FullScreenHero />
 
       {/* Company Overview */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-5">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -223,7 +223,8 @@ export default function HomePage() {
                           viewport={{ once: true }}
                           className="flex items-center text-sm text-muted-foreground"
                         >
-                          <IconCheck className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
+                          {/* <IconCheck className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" /> */}
+                          <IconPoint className="h-4 w-4 text-neon-green mr-2 flex-shrink-0"/>
                           {feature}
                         </motion.li>
                       ))}
@@ -359,8 +360,9 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 asChild
+                variant="outline"
                 size="lg" 
-                className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan hover:scale-105 px-8 py-4 text-lg font-semibold"
+                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold "
               >
                 <Link to="/services">
                   Explore Our Services

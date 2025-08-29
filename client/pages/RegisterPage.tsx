@@ -294,8 +294,9 @@ export default function RegisterPage() {
                 {/* CTA Button */}
                 <div className="pt-4">
                   <Button 
+                  variant="outline"
                     size="lg" 
-                    className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
                     onClick={() => {
                       document.querySelector('#registration-form')?.scrollIntoView({ behavior: 'smooth' });
                     }}
@@ -318,7 +319,7 @@ export default function RegisterPage() {
                     <div className="space-y-6">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full flex items-center justify-center">
-                          <span className="text-white font-bold text-lg">KG</span>
+                          <span className="text-black font-bold text-lg">KG</span>
                         </div>
                         <div>
                           <h3 className="font-semibold">Kin-G Technologies</h3>
@@ -534,7 +535,8 @@ export default function RegisterPage() {
                   {/* Submit Button */}
                   <Button
                     size="lg"
-                    className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 text-white font-semibold py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.01] transition-all duration-300 neon-glow-cyan text-lg"
+                    variant="outline"
+                    className="w-full border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold"
                     onClick={() => {
                       if (
                         name.trim() &&

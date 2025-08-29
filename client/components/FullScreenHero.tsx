@@ -38,10 +38,10 @@ export function FullScreenHero() {
                   </div>
                   
                   <h1 className="text-6xl md:text-7xl lg:text-8xl font-black leading-none">
-                    <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-cyan bg-clip-text text-transparent">
+                    <span className=" text-foreground px-2 rounded">
                       Kin-G
                     </span>
-                    <br />
+                    <br/>
                     <span className="text-foreground text-4xl md:text-5xl lg:text-6xl font-light">
                       Technologies
                     </span>
@@ -75,8 +75,9 @@ export function FullScreenHero() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button 
                     asChild
+                    variant="outline" 
                     size="lg" 
-                    className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-opacity px-8 py-4 text-lg font-semibold rounded-xl"
+                    className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
                   >
                     <Link to="/services">
                       Explore Our Services

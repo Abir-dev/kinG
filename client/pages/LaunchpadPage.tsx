@@ -377,9 +377,10 @@ export default function LaunchpadPage() {
                 viewport={{ once: true }}
               >
                 <Card className="group bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500">
+                  <div className='flex items-center justify-between w-full'>
                   <CardHeader>
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-neon-purple to-neon-pink rounded-full flex items-center justify-center text-white font-bold">
+                      <div className="w-12 h-12 bg-gradient-to-br from-neon-purple to-neon-pink rounded-full flex items-center justify-center text-black font-bold">
                         {index + 1}
                       </div>
                       <div>
@@ -391,13 +392,14 @@ export default function LaunchpadPage() {
                   <CardContent>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                       {phase.prices.map((price, topicIndex) => (
-                        <div key={price} className="flex items-center justify-center space-x-2">
+                        <div key={price} className="flex items-center justify-end ">
                           {/* <IconCheck className="h-4 w-4 text-neon-green flex-shrink-0" /> */}
                           <span className="text-2xl text-muted-foreground text-bold">₹{price}</span>
                         </div>
                       ))}
                     </div>
                   </CardContent>
+                  </div>
                 </Card>
               </motion.div>
             ))}
@@ -655,8 +657,9 @@ export default function LaunchpadPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 asChild
+                variant="outline"
                 size="lg" 
-                className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan hover:scale-105 px-8 py-4 text-lg font-semibold"
+                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/register">
                   Enroll Now

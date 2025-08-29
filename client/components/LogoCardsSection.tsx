@@ -37,7 +37,7 @@ export const LogoCardsSection = () => {
   }));
 
   return (
-    <section className="py-24 px-4 relative overflow-hidden">
+    <section className="py-0.5 px-4 relative overflow-hidden">
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-muted/10">
         <div className="absolute top-20 left-20 w-72 h-72 bg-neon-cyan/8 rounded-full blur-3xl animate-pulse"></div>

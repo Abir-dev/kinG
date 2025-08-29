@@ -354,7 +354,7 @@ export default function CareersPage() {
                 <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500">
                   <CardContent className="p-6">
                     <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${benefit.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                      <benefit.icon className="h-6 w-6 text-white" />
+                      <benefit.icon className="h-6 w-6 text-black" />
                     </div>
                     <h3 className="text-lg font-semibold mb-3">{benefit.title}</h3>
                     <p className="text-muted-foreground text-sm">{benefit.description}</p>
@@ -484,8 +484,9 @@ export default function CareersPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 asChild
+                variant="outline"
                 size="lg" 
-                className="bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan hover:scale-105 px-8 py-4 text-lg font-semibold"
+                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/contact" state={{ subject: "General Application" }}>
                   Send Your Resume
