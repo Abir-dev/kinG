@@ -23,18 +23,18 @@ export function Navigation() {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8 }}
+      // initial={{ y: -100 }}
+      // animate={{ y: 0 }}
+      // transition={{ duration: 0.8 }}
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40"
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            // initial={{ opacity: 0 }}
+            // animate={{ opacity: 1 }}
+            // transition={{ delay: 0.2 }}
             className="flex items-center space-x-2"
           >
             <Link to="/" className="flex items-center space-x-2">
@@ -54,17 +54,17 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
+            // initial={{ opacity: 0 }}
+            // animate={{ opacity: 1 }}
+            // transition={{ delay: 0.4 }}
             className="hidden md:flex items-center space-x-8"
           >
             {navItems.map((item, index) => (
               <motion.div
                 key={item.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 + index * 0.1 }}
+                // initial={{ opacity: 0, y: -20 }}
+                // animate={{ opacity: 1, y: 0 }}
+                // transition={{ delay: 0.6 + index * 0.1 }}
               >
                 <Link
                   to={item.href}
@@ -82,17 +82,17 @@ export function Navigation() {
                     <motion.div
                       layoutId="activeTab"
                       className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-neon-cyan to-neon-purple"
-                      initial={{ opacity: 0, scaleX: 0 }}
-                      animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
+                      // initial={{ opacity: 0, scaleX: 0 }}
+                      // animate={{ opacity: 1, scaleX: 1 }}
+                      // transition={{ duration: 0.3 }}
                     />
                   )}
                   {location.pathname !== item.href && (
                     <motion.div
                       className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-neon-cyan to-neon-purple opacity-0 group-hover:opacity-50"
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.2 }}
+                      // initial={{ scaleX: 0 }}
+                      // whileHover={{ scaleX: 1 }}
+                      // transition={{ duration: 0.2 }}
                     />
                   )}
                 </Link>
@@ -102,9 +102,9 @@ export function Navigation() {
 
           {/* Desktop Actions */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
+            // initial={{ opacity: 0 }}
+            // animate={{ opacity: 1 }}
+            // transition={{ delay: 0.8 }}
             className="hidden md:flex items-center space-x-4"
           >
             {/* <ThemeToggle /> */}
@@ -112,7 +112,7 @@ export function Navigation() {
               <Button
               variant="outline"
                 size="sm"
-                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
+                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-4 py-4 text-sm rounded-2xl"
               >
                 Contact Us
               </Button>
@@ -158,9 +158,9 @@ export function Navigation() {
                 {item.name}
               </Link>
             ))}
-            <Link to="/contact" onClick={closeMenu}>
+            <Link to="/contact" onClick={closeMenu} className="mt-4 block w-full">
               <Button
-              variant="outline"
+                variant="outline"
                 size="sm"
                 className="w-full border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
               >

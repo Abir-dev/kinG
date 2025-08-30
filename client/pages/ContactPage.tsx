@@ -313,8 +313,9 @@ Best regards,`);
                   </div>
                   
                   <Button 
+                    variant="outline"
                     size="lg" 
-                    className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan hover:scale-[1.02] py-6 text-lg font-semibold"
+                    className=" w-full border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-4 py-4 text-lg rounded-2xl"
                   >
                     <IconSend className="mr-2 h-5 w-5" />
                     Send Message
