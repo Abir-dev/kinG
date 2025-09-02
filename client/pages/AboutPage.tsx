@@ -94,14 +94,14 @@ const teamMembers = [
     designation: "Founder/CEO",
     description: "Visionary leader driving Kin-G Technologies's growth and innovation with strategic expertise.",
     image: "/images/Soumodip.jpeg",
-    linkedin: "https://linkedin.com/in/soumodip-dey"
+    linkedin: "https://www.linkedin.com/in/soumodip-dey-73b9092ba?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
   },
   {
     name: "Ayushmita Das",
     designation: "Co-Founder/B2C-B2B Head",
     description: "Strategic thinker and B2B & B2C expert, leading partnerships and business expansion.",
     image: "/images/Ayushmita.jpeg",
-    linkedin: "https://linkedin.com/in/ayushmita-das"
+    linkedin: "https://www.linkedin.com/in/ayushmita-das-985723351/"
   },
 
   {
@@ -116,7 +116,7 @@ const teamMembers = [
     designation: "Business President (Sales)",
     description: "Driving sales excellence and business growth with a client-first approach.",
     image: "/images/Himadri.jpeg",
-    linkedin: "https://linkedin.com/in/himadri-barua"
+    linkedin: "https://www.linkedin.com/in/himadri-barua-4a3429149?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
   },
   {
     name: "Uditi",
@@ -139,13 +139,13 @@ const teamMembers = [
     image: "/images/Sayoni.jpeg",
     linkedin: "https://linkedin.com/in/payel-b2b"
   },
-  {
-    name: "Tanwishtha",
-    designation: "UX/UI Designer",
-    description: "Creative force behind user experiences and interface design.",
-    image: "/images/Tanwistha.jpeg",
-    linkedin: "https://linkedin.com/in/tanwishtha-uiux"
-  },
+  // {
+  //   name: "Tanwishtha",
+  //   designation: "UX/UI Designer",
+  //   description: "Creative force behind user experiences and interface design.",
+  //   image: "/images/Tanwistha.jpeg",
+  //   linkedin: "https://linkedin.com/in/tanwishtha-uiux"
+  // },
   
   // {
   //   name: "Avishikta",
@@ -758,7 +758,7 @@ export default function AboutPage() {
           </div>
 
           {/* Rest of Team Members */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
             {teamMembers.slice(2).map((member, index) => (
               <motion.div
                 key={member.name}
@@ -809,7 +809,7 @@ export default function AboutPage() {
                     </div>
                     
                     {/* Connect Button */}
-                    <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <Button
                         asChild
                         variant="outline"
@@ -826,7 +826,7 @@ export default function AboutPage() {
                           <IconExternalLink className="h-4 w-4" />
                         </a>
                       </Button>
-                    </div>
+                    </div> */}
                   </CardContent>
                 </Card>
               </motion.div>
