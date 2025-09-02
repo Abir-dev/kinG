@@ -91,10 +91,10 @@ export const LogoCardsSection = () => {
           className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-20"
         >
           {[
-            { number: "50+", label: "Global Partners", color: "text-neon-cyan" },
+            { number: "10+", label: "Global Partners", color: "text-neon-cyan" },
             { number: "98%", label: "Success Rate", color: "text-neon-purple" },
             { number: "24/7", label: "Support", color: "text-neon-pink" },
-            { number: "100M+", label: "Users Served", color: "text-neon-cyan" }
+            { number: "100+", label: "Users Served", color: "text-neon-cyan" }
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

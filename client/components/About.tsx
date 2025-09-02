@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { IconBuilding, IconUsers, IconTrendingUp, IconRocket, IconBrandLinkedin, IconPhone, IconCode, IconBulb } from '@tabler/icons-react';
 
 const stats = [
-  { number: "500+", label: "Projects Delivered", icon: IconRocket },
-  { number: "1000+", label: "Careers Launched", icon: IconUsers },
+  { number: "50+", label: "Projects Delivered", icon: IconRocket },
+  { number: "100+", label: "Careers Launched", icon: IconUsers },
   { number: "50+", label: "Enterprise Clients", icon: IconBuilding },
   { number: "95%", label: "Placement Success", icon: IconTrendingUp },
 ];
