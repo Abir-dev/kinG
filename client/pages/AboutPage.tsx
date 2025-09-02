@@ -105,10 +105,10 @@ const teamMembers = [
   },
 
   {
-    name: "Sourav",
+    name: "Sourabh",
     designation: "CTO (Chief Technologies Officer)",
     description: "Technologies visionary, leading innovation and product development.",
-    image: "/images/Sourav.jpeg",
+    image: "/images/profile.svg",
     linkedin: "https://linkedin.com/in/sourav-cto"
   },
   {
@@ -154,13 +154,13 @@ const teamMembers = [
   //   image: "/images/Avishikta.jpeg",
   //   linkedin: "https://linkedin.com/in/avishikta-cmo"
   // },
-  {
-    name: "Deboshmita",
-    designation: "Trainer",
-    description: "Trainer and mentor, shaping future leaders through education.",
-    image: "/images/Deboshmita.jpeg",
-    linkedin: "https://linkedin.com/in/deboshmita-sales"
-  },
+  // {
+  //   name: "Deboshmita",
+  //   designation: "Trainer",
+  //   description: "Trainer and mentor, shaping future leaders through education.",
+  //   image: "/images/Deboshmita.jpeg",
+  //   linkedin: "https://linkedin.com/in/deboshmita-sales"
+  // },
   {
     name: "Indrajit Das",
     designation: "Course Trainer (Product Management Head)",
