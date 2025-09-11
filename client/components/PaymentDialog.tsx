@@ -1,9 +1,15 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
-import { Button } from './ui/button';
-import { Checkbox } from './ui/checkbox';
-import { IconCheck } from '@tabler/icons-react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "./ui/dialog";
+import { Button } from "./ui/button";
+import { Checkbox } from "./ui/checkbox";
+import { IconCheck } from "@tabler/icons-react";
 
 interface PaymentDialogProps {
   isOpen: boolean;
@@ -18,12 +24,24 @@ interface PaymentDialogProps {
   onProceed: () => void;
 }
 
-export function PaymentDialog({ isOpen, onClose, planDetails, onProceed }: PaymentDialogProps) {
+export function PaymentDialog({
+  isOpen,
+  onClose,
+  planDetails,
+  onProceed,
+}: PaymentDialogProps) {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [shippingAccepted, setShippingAccepted] = useState(false);
+  const [refundAccepted, setRefundAccepted] = useState(false);
 
   const handleProceed = () => {
-    if (termsAccepted && privacyAccepted) {
+    if (
+      termsAccepted &&
+      privacyAccepted &&
+      shippingAccepted &&
+      refundAccepted
+    ) {
       onProceed();
     }
   };
@@ -36,7 +54,8 @@ export function PaymentDialog({ isOpen, onClose, planDetails, onProceed }: Payme
             Confirm Your {planDetails.name} Plan
           </DialogTitle>
           <DialogDescription>
-            Please review your selected plan details and accept our terms before proceeding
+            Please review your selected plan details and accept our terms before
+            proceeding
           </DialogDescription>
           <p className="mt-2 text-sm text-muted-foreground">
             {planDetails.description}
@@ -70,18 +89,20 @@ export function PaymentDialog({ isOpen, onClose, planDetails, onProceed }: Payme
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="flex items-center gap-2">
-                <Checkbox 
-                  id="terms" 
+                <Checkbox
+                  id="terms"
                   checked={termsAccepted}
-                  onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    setTermsAccepted(checked as boolean)
+                  }
                 />
-                <label 
-                  htmlFor="terms" 
+                <label
+                  htmlFor="terms"
                   className="text-sm text-muted-foreground"
                 >
                   I agree to the{" "}
-                  <Link 
-                    to="/terms-of-service" 
+                  <Link
+                    to="/terms-of-service"
                     target="_blank"
                     className="text-neon-purple hover:text-neon-pink underline"
                   >
@@ -93,22 +114,74 @@ export function PaymentDialog({ isOpen, onClose, planDetails, onProceed }: Payme
 
             <div className="flex items-center space-x-2">
               <div className="flex items-center gap-2">
-                <Checkbox 
-                  id="privacy" 
+                <Checkbox
+                  id="privacy"
                   checked={privacyAccepted}
-                  onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    setPrivacyAccepted(checked as boolean)
+                  }
                 />
-                <label 
-                  htmlFor="privacy" 
+                <label
+                  htmlFor="privacy"
                   className="text-sm text-muted-foreground"
                 >
                   I agree to the{" "}
-                  <Link 
-                    to="/privacy-policy" 
+                  <Link
+                    to="/privacy-policy"
                     target="_blank"
                     className="text-neon-purple hover:text-neon-pink underline"
                   >
                     Privacy Policy
+                  </Link>
+                </label>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="shipping"
+                  checked={shippingAccepted}
+                  onCheckedChange={(checked) =>
+                    setShippingAccepted(checked as boolean)
+                  }
+                />
+                <label
+                  htmlFor="shipping"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/shipping-policy"
+                    target="_blank"
+                    className="text-neon-purple hover:text-neon-pink underline"
+                  >
+                    Shipping Policy
+                  </Link>
+                </label>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="refund"
+                  checked={refundAccepted}
+                  onCheckedChange={(checked) =>
+                    setRefundAccepted(checked as boolean)
+                  }
+                />
+                <label
+                  htmlFor="refund"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/refund-policy"
+                    target="_blank"
+                    className="text-neon-purple hover:text-neon-pink underline"
+                  >
+                    Refund Policy
                   </Link>
                 </label>
               </div>
@@ -122,10 +195,22 @@ export function PaymentDialog({ isOpen, onClose, planDetails, onProceed }: Payme
           </Button>
           <Button
             className={`bg-gradient-to-r from-neon-purple to-neon-pink hover:opacity-90 ${
-              !(termsAccepted && privacyAccepted) ? 'opacity-50 cursor-not-allowed' : ''
+              !(
+                termsAccepted &&
+                privacyAccepted &&
+                shippingAccepted &&
+                refundAccepted
+              )
+                ? "opacity-50 cursor-not-allowed"
+                : ""
             }`}
             onClick={handleProceed}
-            disabled={!termsAccepted || !privacyAccepted}
+            disabled={
+              !termsAccepted ||
+              !privacyAccepted ||
+              !shippingAccepted ||
+              !refundAccepted
+            }
           >
             Proceed to Payment
           </Button>

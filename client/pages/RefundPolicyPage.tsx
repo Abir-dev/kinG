@@ -36,90 +36,83 @@ import {
 } from "../components/ui/card";
 import { useGSAPAnimations } from "../hooks/useGSAPAnimations";
 
-// Privacy Policy Sections
-const privacySections = [
+// Refund & Cancellation Policy Sections
+const refundSections = [
   {
-    icon: IconUser,
-    title: "Information We Collect",
+    icon: IconFileText,
+    title: "General Policy",
     description:
-      "We collect information you provide directly to us and automatically when you visit our website.",
+      "Our refund policy is designed to be fair and transparent for all our services.",
     details: [
-      "Personal Information: Name, email address, phone number, billing/shipping address, and payment details",
-      "Non-Personal Information: Browser type, device information, IP address, and cookies for site analytics and performance",
-      "Professional information (resume, work experience, skills) for career services",
-      "Account credentials and preferences",
-      "Communication records and support interactions",
+      "All payments made for our Services are considered final unless otherwise stated in this policy",
+      "Refunds will only be granted in situations where services have not been delivered as promised or as specified below",
+      "Refund requests must be submitted in writing to our official support channel",
+      "All refund decisions are final and at the discretion of Kin-G Technologies",
     ],
   },
   {
-    icon: IconDatabase,
-    title: "How We Use Your Information",
+    icon: IconReceipt,
+    title: "Launchpad Program (Training / Guidance Services)",
     description:
-      "We use the information we collect to provide, maintain, and improve our services.",
+      "Special refund terms apply to our Launchpad career development program.",
     details: [
-      "To process and deliver your orders",
-      "To provide customer support and order updates",
-      "To improve website functionality and user experience",
-      "To send promotional offers (only if you opt-in)",
-      "To provide and deliver our career development and B2B services",
-      "To comply with legal obligations and protect our rights",
+      "Participants are eligible for a 100% refund if they apply for a refund within 30 days (1 month) of registration",
+      "After 30 days from registration, no refunds will be provided under any circumstances",
+      "Refund requests must be submitted in writing to our official support channel",
+      "Refunds are processed only for unused portions of the program",
     ],
   },
   {
-    icon: IconShield,
-    title: "Data Protection",
+    icon: IconPackage,
+    title: "Project-Based / Digital Solutions",
     description:
-      "We implement appropriate security measures to protect your personal information.",
+      "Different refund terms apply to our project-based and digital solution services.",
     details: [
-      "Payment transactions are securely encrypted through trusted gateways",
-      "We do not store sensitive payment details on our servers",
-      "Access to personal information is restricted to authorized staff only",
-      "SSL encryption for data transmission",
-      "Secure servers and databases with access controls",
-      "Regular security audits and updates",
+      "For project-based work, advance payments are non-refundable once the project has started",
+      "If a project is canceled by the client before work begins, a refund minus 25% processing fees will be issued",
+      "If we are unable to deliver the project due to internal reasons, a full refund will be processed",
+      "Project milestones and deliverables must be clearly defined in the service agreement",
     ],
   },
   {
-    icon: IconLock,
-    title: "Sharing of Information",
-    description: "We do not sell or rent your information to third parties.",
-    details: [
-      "We do not sell or rent your information",
-      "We may share limited details only with trusted third parties such as courier partners and payment processors, solely for order fulfillment",
-      "Information may be shared with potential employers as part of our career placement services",
-      "We may disclose information if required by law or to protect our rights",
-      "We never share information for marketing purposes without explicit consent",
-    ],
-  },
-  {
-    icon: IconSettings,
-    title: "Your Rights",
-    description: "You have certain rights regarding your personal information.",
-    details: [
-      "You may request access, correction, or deletion of your personal information",
-      "You may unsubscribe from promotional communications at any time",
-      "Access and update your personal information",
-      "Request data portability",
-      "Withdraw consent for data processing",
-      "File complaints with relevant authorities",
-    ],
-  },
-  {
-    icon: IconEye,
-    title: "Cookies",
+    icon: IconCreditCard,
+    title: "Payment Gateway Charges",
     description:
-      "We use cookies to enhance your browsing experience and analyze website traffic.",
+      "Transaction fees and processing charges are handled separately from refunds.",
     details: [
-      "We use cookies to personalize your browsing experience, remember preferences, and analyze traffic",
-      "You can manage or disable cookies in your browser settings",
-      "Essential cookies for basic website functionality",
-      "Analytics cookies for understanding website usage and performance",
-      "Functional cookies to remember your preferences and settings",
+      "Any transaction charges or gateway fees (Razorpay, Cashfree, etc.) are non-refundable and will be deducted from the refund amount",
+      "Processing fees are calculated based on the original payment method used",
+      "Bank transfer fees may apply for certain refund methods",
+      "Refund processing time may vary based on the payment method",
+    ],
+  },
+  {
+    icon: IconClock,
+    title: "Refund Process",
+    description:
+      "Our streamlined refund process ensures quick resolution of eligible refund requests.",
+    details: [
+      "Eligible refunds will be processed within 7–10 business days from the date of approval",
+      "Refunds will be credited to the original mode of payment only",
+      "You will receive email confirmation once the refund has been processed",
+      "Contact us if you don't receive your refund within the specified timeframe",
+    ],
+  },
+  {
+    icon: IconX,
+    title: "No Refund Conditions",
+    description: "Certain conditions exclude services from our refund policy.",
+    details: [
+      "Client dissatisfaction due to change of mind after service delivery (except Launchpad policy mentioned above)",
+      "Delay caused by the client in providing required information or approvals",
+      "Misuse of our Services or violation of Terms & Conditions",
+      "Services that have been fully delivered as per the original agreement",
+      "Custom or personalized services that cannot be resold",
     ],
   },
 ];
 
-export default function PrivacyPolicyPage() {
+export default function RefundPolicyPage() {
   // Initialize GSAP animations
   useGSAPAnimations();
 
@@ -134,18 +127,19 @@ export default function PrivacyPolicyPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-3">
-              Legal Information
+            <div className="inline-block px-4 py-2 rounded-full border border-neon-pink/30 text-sm font-medium text-neon-pink mb-3">
+              Refund Information
             </div>
             <h1 className="text-4xl md:text-7xl font-bold mb-6">
-              Privacy{" "}
-              <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
-                Policy
+              Refund &{" "}
+              <span className="bg-gradient-to-r from-neon-pink via-neon-cyan to-neon-purple bg-clip-text text-transparent neon-text-glow">
+                Cancellation Policy
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-              How we collect, use, and protect your personal information. Your
-              privacy and data security are our top priorities.
+              Fair and transparent refund practices for all our services. We
+              ensure your satisfaction with clear refund terms and quick
+              processing.
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
@@ -153,8 +147,8 @@ export default function PrivacyPolicyPage() {
                 <span>Last updated: January 2025</span>
               </div>
               <div className="flex items-center gap-2">
-                <IconShield className="h-4 w-4" />
-                <span>GDPR Compliant</span>
+                <IconRefresh className="h-4 w-4" />
+                <span>Fair & Transparent</span>
               </div>
             </div>
           </motion.div>
@@ -169,7 +163,7 @@ export default function PrivacyPolicyPage() {
             {/* <Button
               variant="outline"
               asChild
-              className="border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan transition-all duration-300"
+              className="border-neon-pink/50 text-neon-pink hover:bg-neon-pink/10 hover:border-neon-pink transition-all duration-300"
             >
               <Link to="/" className="flex items-center gap-2">
                 <IconArrowLeft className="h-4 w-4" />
@@ -190,39 +184,40 @@ export default function PrivacyPolicyPage() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <Card className="bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-300">
+            <Card className="bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-pink/50 transition-all duration-300">
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-3">
-                  <IconShield className="h-6 w-6 text-neon-cyan" />
-                  Our Privacy Commitment
+                  <IconRefresh className="h-6 w-6 text-neon-pink" />
+                  Our Refund Commitment
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
                   At{" "}
-                  <strong className="text-neon-cyan">
+                  <strong className="text-neon-pink">
                     Kin-G Technologies Pvt. Ltd.
                   </strong>
-                  , we are committed to protecting your privacy and personal
-                  information. This comprehensive privacy policy explains how we
-                  collect, use, store, and protect your data when you use our
-                  services.
+                  , we are committed to providing fair and transparent refund
+                  policies. Our refund policy is designed to protect both our
+                  clients and our business, ensuring that refunds are processed
+                  fairly and efficiently when appropriate.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  By using our services, you agree to this privacy policy. We
-                  may update this policy from time to time, and any changes will
-                  be posted on this page with a revised "Last updated" date.
+                  We understand that circumstances may change, and we strive to
+                  accommodate reasonable refund requests while maintaining the
+                  integrity of our services. All refund decisions are made with
+                  careful consideration of each individual case.
                 </p>
-                <div className="flex items-start gap-3 p-4 bg-neon-cyan/5 border border-neon-cyan/20 rounded-lg">
-                  <IconAlertCircle className="h-5 w-5 text-neon-cyan mt-0.5 flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 bg-neon-pink/5 border border-neon-pink/20 rounded-lg">
+                  <IconAlertCircle className="h-5 w-5 text-neon-pink mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-sm font-medium text-neon-cyan mb-1">
+                    <p className="text-sm font-medium text-neon-pink mb-1">
                       Important Notice
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      Please read this privacy policy carefully. If you have any
-                      questions, contact us at admin@kingtechs.in or
-                      +91-8910481993.
+                      Please read our refund policy carefully before making a
+                      purchase. Contact us at admin@kingtechs.in or
+                      +91-8910481993 for refund requests.
                     </p>
                   </div>
                 </div>
@@ -232,8 +227,8 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      {/* Privacy Policy Section */}
-      <section id="privacy-policy" className="py-16 px-4">
+      {/* Refund Policy Section */}
+      <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -243,18 +238,18 @@ export default function PrivacyPolicyPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Privacy{" "}
-              <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Policy
+              Refund{" "}
+              <span className="bg-gradient-to-r from-neon-pink to-neon-cyan bg-clip-text text-transparent">
+                Terms & Conditions
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              How we collect, use, and protect your personal information
+              Comprehensive refund terms for all our services and programs
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {privacySections.map((section, index) => (
+            {refundSections.map((section, index) => (
               <motion.div
                 key={section.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -263,13 +258,13 @@ export default function PrivacyPolicyPage() {
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
               >
-                <Card className="h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500 hover:shadow-xl hover:shadow-neon-cyan/10">
+                <Card className="h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-pink/50 transition-all duration-500 hover:shadow-xl hover:shadow-neon-pink/10">
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-12 h-12 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-lg flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gradient-to-br from-neon-pink to-neon-cyan rounded-lg flex items-center justify-center">
                         <section.icon className="h-6 w-6 text-white" />
                       </div>
-                      <CardTitle className="text-xl group-hover:text-neon-cyan transition-colors duration-300">
+                      <CardTitle className="text-xl group-hover:text-neon-pink transition-colors duration-300">
                         {section.title}
                       </CardTitle>
                     </div>
@@ -284,7 +279,7 @@ export default function PrivacyPolicyPage() {
                           key={detailIndex}
                           className="flex items-start gap-2 text-sm text-muted-foreground"
                         >
-                          <IconCheck className="h-4 w-4 text-neon-cyan mt-0.5 flex-shrink-0" />
+                          <IconCheck className="h-4 w-4 text-neon-pink mt-0.5 flex-shrink-0" />
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -306,23 +301,23 @@ export default function PrivacyPolicyPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Card className="bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-300">
+            <Card className="bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border-border/40 hover:border-neon-pink/50 transition-all duration-300">
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl mb-4">
-                  Questions About Our{" "}
-                  <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                    Privacy Policy?
+                  Questions About{" "}
+                  <span className="bg-gradient-to-r from-neon-pink to-neon-cyan bg-clip-text text-transparent">
+                    Refunds?
                   </span>
                 </CardTitle>
                 <CardDescription className="text-lg">
-                  Contact us if you have any questions about our privacy policy
-                  or data handling practices
+                  Contact us if you have any questions about our refund policy
+                  or need to request a refund
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-center space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="flex items-center justify-center gap-3 p-4 bg-neon-cyan/5 border border-neon-cyan/20 rounded-lg">
-                    <IconMail className="h-5 w-5 text-neon-cyan" />
+                  <div className="flex items-center justify-center gap-3 p-4 bg-neon-pink/5 border border-neon-pink/20 rounded-lg">
+                    <IconMail className="h-5 w-5 text-neon-pink" />
                     <div>
                       <p className="font-medium">Email</p>
                       <p className="text-sm text-muted-foreground">
@@ -330,8 +325,8 @@ export default function PrivacyPolicyPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-center gap-3 p-4 bg-neon-purple/5 border border-neon-purple/20 rounded-lg">
-                    <IconPhone className="h-5 w-5 text-neon-purple" />
+                  <div className="flex items-center justify-center gap-3 p-4 bg-neon-cyan/5 border border-neon-cyan/20 rounded-lg">
+                    <IconPhone className="h-5 w-5 text-neon-cyan" />
                     <div>
                       <p className="font-medium">Phone</p>
                       <p className="text-sm text-muted-foreground">
@@ -344,7 +339,7 @@ export default function PrivacyPolicyPage() {
                   variant="outline"
                   asChild
                   size="lg"
-                  className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
+                  className="border-2 border-neon-pink/50 bg-neon-pink/5 hover:bg-neon-pink/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
                 >
                   <Link to="/contact">
                     Contact Us

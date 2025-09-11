@@ -17,6 +17,8 @@ import CareersPage from "./pages/CareersPage";
 import LaunchpadPage from "./pages/LaunchpadPage";
 import ContactPage from "./pages/ContactPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import ShippingPolicyPage from "./pages/ShippingPolicyPage";
+import RefundPolicyPage from "./pages/RefundPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
 import NotFound from "./pages/NotFound";
 
@@ -35,6 +37,8 @@ function AnimatedRoutes() {
         <Route path="/launchpad" element={<LaunchpadPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/shipping-policy" element={<ShippingPolicyPage />} />
+        <Route path="/refund-policy" element={<RefundPolicyPage />} />
         <Route path="/terms-of-service" element={<TermsOfServicePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/success" element={<SuccessPage />} />

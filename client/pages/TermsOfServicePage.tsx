@@ -235,7 +235,7 @@ export default function TermsOfServicePage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-8"
           >
-            <Button
+            {/* <Button
               variant="outline"
               asChild
               className="border-neon-purple/50 text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300"
@@ -244,7 +244,7 @@ export default function TermsOfServicePage() {
                 <IconArrowLeft className="h-4 w-4" />
                 Back to Home
               </Link>
-            </Button>
+            </Button> */}
           </motion.div>
         </div>
       </section>

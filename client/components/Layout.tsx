@@ -283,6 +283,20 @@ export function Layout({ children }: LayoutProps) {
                     Privacy Policy
                   </motion.a>
                   <motion.a
+                    href="/shipping-policy"
+                    whileHover={{ scale: 1.05 }}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                  >
+                    Shipping Policy
+                  </motion.a>
+                  <motion.a
+                    href="/refund-policy"
+                    whileHover={{ scale: 1.05 }}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                  >
+                    Refund Policy
+                  </motion.a>
+                  <motion.a
                     href="/terms-of-service"
                     whileHover={{ scale: 1.05 }}
                     className="text-muted-foreground hover:text-primary transition-colors duration-200"
