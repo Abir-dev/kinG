@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
-import { 
-  IconPhone, 
-  IconTargetArrow, 
-  IconDatabase, 
-  IconCode, 
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  IconPhone,
+  IconTargetArrow,
+  IconDatabase,
+  IconCode,
   IconBrandInstagram,
   IconTrendingUp,
   IconRocket,
@@ -14,24 +14,32 @@ import {
   IconUsers,
   IconClock,
   IconShield,
-  IconPoint
-} from '@tabler/icons-react';
-import { Checkbox } from '../components/ui/checkbox';
-import { Layout } from '../components/Layout';
-import { Button } from '../components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Input } from '../components/ui/input';
-import { useServicePayment } from '../hooks/useRazorpayPayment';
-import emailjs from '@emailjs/browser';
+  IconPoint,
+} from "@tabler/icons-react";
+import { Checkbox } from "../components/ui/checkbox";
+import { Layout } from "../components/Layout";
+import { Button } from "../components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
+import { Input } from "../components/ui/input";
+import { useServicePayment } from "../hooks/useRazorpayPayment";
+import emailjs from "@emailjs/browser";
 
 const services = [
   {
-    id: 'telecalling',
+    id: "telecalling",
     title: "Telecalling & Inside Sales Support",
-    description: "Professional outbound calling services with trained agents to boost your sales conversion rates and customer engagement.",
+    description:
+      "Professional outbound calling services with trained agents to boost your sales conversion rates and customer engagement.",
     icon: IconPhone,
     gradient: "from-neon-blue to-neon-cyan",
-    detailedDescription: "Our telecalling services leverage advanced AI-powered dialing systems and professionally trained sales agents to maximize your sales potential. We provide comprehensive inside sales support with real-time analytics, automated lead scoring, and intelligent call routing to ensure optimal conversion rates.",
+    detailedDescription:
+      "Our telecalling services leverage advanced AI-powered dialing systems and professionally trained sales agents to maximize your sales potential. We provide comprehensive inside sales support with real-time analytics, automated lead scoring, and intelligent call routing to ensure optimal conversion rates.",
     features: [
       "AI-Powered Predictive Dialing",
       "Professional Sales Agents (Certified)",
@@ -44,7 +52,7 @@ const services = [
       "A/B Testing for Scripts",
       "Omnichannel Communication (Voice, SMS, Email)",
       "Lead Nurturing Campaigns",
-      "Conversion Rate Optimization"
+      "Conversion Rate Optimization",
     ],
     benefits: [
       "Increased conversion rates by up to 40%",
@@ -54,7 +62,7 @@ const services = [
       "99.9% uptime guarantee",
       "GDPR & Data Security Compliant",
       "Multi-language support available",
-      "Custom reporting and insights"
+      "Custom reporting and insights",
     ],
     packages: [
       {
@@ -63,7 +71,7 @@ const services = [
         priceValue: 15000,
         calls: "500 calls",
         agents: "2 dedicated agents",
-        hours: "8 hours/day"
+        hours: "8 hours/day",
       },
       {
         name: "Professional",
@@ -71,7 +79,7 @@ const services = [
         priceValue: 28000,
         calls: "1000 calls",
         agents: "4 dedicated agents",
-        hours: "12 hours/day"
+        hours: "12 hours/day",
       },
       {
         name: "Enterprise",
@@ -79,17 +87,19 @@ const services = [
         priceValue: 45000,
         calls: "2000 calls",
         agents: "8 dedicated agents",
-        hours: "24 hours/day"
-      }
-    ]
+        hours: "24 hours/day",
+      },
+    ],
   },
   {
-    id: 'lead-generation',
+    id: "lead-generation",
     title: "Lead Generation",
-    description: "Strategic lead generation campaigns to identify and capture high-quality prospects for your business.",
+    description:
+      "Strategic lead generation campaigns to identify and capture high-quality prospects for your business.",
     icon: IconTargetArrow,
     gradient: "from-neon-purple to-neon-pink",
-    detailedDescription: "Our lead generation services utilize AI-powered prospecting tools, advanced targeting algorithms, and multi-channel automation to identify and engage high-quality prospects. We combine data science with human expertise to deliver leads that convert at industry-leading rates.",
+    detailedDescription:
+      "Our lead generation services utilize AI-powered prospecting tools, advanced targeting algorithms, and multi-channel automation to identify and engage high-quality prospects. We combine data science with human expertise to deliver leads that convert at industry-leading rates.",
     features: [
       "AI-Powered B2B Lead Mining & Enrichment",
       "Advanced Prospect Research & Verification",
@@ -102,7 +112,7 @@ const services = [
       "Multi-touch Attribution Modeling",
       "Competitor Analysis & Market Intelligence",
       "Custom Landing Page Creation",
-      "Marketing Automation Integration"
+      "Marketing Automation Integration",
     ],
     benefits: [
       "300% increase in qualified leads",
@@ -112,7 +122,7 @@ const services = [
       "Real-time lead validation & verification",
       "GDPR compliant data collection",
       "Advanced analytics & ROI tracking",
-      "Custom audience segmentation"
+      "Custom audience segmentation",
     ],
     packages: [
       {
@@ -121,7 +131,7 @@ const services = [
         priceValue: 12000,
         leads: "100 qualified leads",
         channels: "2 channels",
-        reports: "Weekly reports"
+        reports: "Weekly reports",
       },
       {
         name: "Growth",
@@ -129,7 +139,7 @@ const services = [
         priceValue: 22000,
         leads: "250 qualified leads",
         channels: "4 channels",
-        reports: "Bi-weekly reports"
+        reports: "Bi-weekly reports",
       },
       {
         name: "Scale",
@@ -137,17 +147,19 @@ const services = [
         priceValue: 35000,
         leads: "500 qualified leads",
         channels: "All channels",
-        reports: "Daily reports"
-      }
-    ]
+        reports: "Daily reports",
+      },
+    ],
   },
   {
-    id: 'crm-integration',
+    id: "crm-integration",
     title: "CRM Integration & Call Flow Setup",
-    description: "Seamless CRM integration and optimized call flow design to streamline your sales processes.",
+    description:
+      "Seamless CRM integration and optimized call flow design to streamline your sales processes.",
     icon: IconDatabase,
     gradient: "from-neon-green to-neon-cyan",
-    detailedDescription: "We specialize in enterprise-grade CRM integration and optimization, creating intelligent sales workflows that leverage AI automation, advanced analytics, and seamless third-party integrations. Our solutions transform your sales operations with smart data flow, predictive insights, and enhanced team productivity.",
+    detailedDescription:
+      "We specialize in enterprise-grade CRM integration and optimization, creating intelligent sales workflows that leverage AI automation, advanced analytics, and seamless third-party integrations. Our solutions transform your sales operations with smart data flow, predictive insights, and enhanced team productivity.",
     features: [
       "Multi-Platform CRM Configuration (Salesforce, HubSpot, Pipedrive, Zoho)",
       "AI-Powered Workflow Automation",
@@ -162,7 +174,7 @@ const services = [
       "Integration Testing & QA",
       "Comprehensive Team Training & Support",
       "Performance Monitoring & Optimization",
-      "Third-party Tool Integrations (Email, Calendar, VoIP)"
+      "Third-party Tool Integrations (Email, Calendar, VoIP)",
     ],
     benefits: [
       "50% reduction in data entry time",
@@ -172,7 +184,7 @@ const services = [
       "Real-time performance insights",
       "Reduced manual errors by 85%",
       "Faster deal closure rates",
-      "Scalable architecture for growth"
+      "Scalable architecture for growth",
     ],
     packages: [
       {
@@ -181,7 +193,7 @@ const services = [
         priceValue: 25000,
         setup: "Basic CRM setup",
         workflows: "5 workflows",
-        training: "2 hours"
+        training: "2 hours",
       },
       {
         name: "Advanced",
@@ -189,7 +201,7 @@ const services = [
         priceValue: 45000,
         setup: "Advanced configuration",
         workflows: "15 workflows",
-        training: "8 hours"
+        training: "8 hours",
       },
       {
         name: "Enterprise",
@@ -197,17 +209,19 @@ const services = [
         priceValue: 75000,
         setup: "Complete integration",
         workflows: "Unlimited",
-        training: "20 hours"
-      }
-    ]
+        training: "20 hours",
+      },
+    ],
   },
   {
-    id: 'development',
+    id: "development",
     title: "Website & App Development",
-    description: "Full-stack development services for modern, responsive websites and mobile applications.",
+    description:
+      "Full-stack development services for modern, responsive websites and mobile applications.",
     icon: IconCode,
     gradient: "from-neon-cyan to-neon-purple",
-    detailedDescription: "Our elite development team creates cutting-edge, enterprise-grade websites and mobile applications using the latest technologies and frameworks. We specialize in high-performance, scalable solutions with advanced security, AI integration, and cloud-native architecture that drive measurable business growth.",
+    detailedDescription:
+      "Our elite development team creates cutting-edge, enterprise-grade websites and mobile applications using the latest technologies and frameworks. We specialize in high-performance, scalable solutions with advanced security, AI integration, and cloud-native architecture that drive measurable business growth.",
     features: [
       "Modern Frontend Development (React, Next.js, Vue.js, Angular)",
       "Cross-Platform Mobile Apps (React Native, Flutter)",
@@ -222,7 +236,7 @@ const services = [
       "DevOps & CI/CD Pipeline Setup",
       "Performance Optimization & Monitoring",
       "Security Auditing & Penetration Testing",
-      "Third-party Integrations & Payment Gateways"
+      "Third-party Integrations & Payment Gateways",
     ],
     benefits: [
       "Lightning-fast loading speeds (< 2 seconds)",
@@ -232,7 +246,7 @@ const services = [
       "99.9% uptime guarantee",
       "Advanced security & data protection",
       "Real-time analytics & insights",
-      "Future-proof Technologies stack"
+      "Future-proof Technologies stack",
     ],
     packages: [
       {
@@ -241,7 +255,7 @@ const services = [
         priceValue: 50000,
         pages: "5-10 pages",
         features: "Basic features",
-        timeline: "2-3 weeks"
+        timeline: "2-3 weeks",
       },
       {
         name: "E-commerce",
@@ -249,7 +263,7 @@ const services = [
         priceValue: 150000,
         pages: "Full store",
         features: "Payment gateway",
-        timeline: "6-8 weeks"
+        timeline: "6-8 weeks",
       },
       {
         name: "Custom App",
@@ -257,17 +271,19 @@ const services = [
         priceValue: 300000,
         pages: "Mobile + Web",
         features: "Advanced features",
-        timeline: "12-16 weeks"
-      }
-    ]
+        timeline: "12-16 weeks",
+      },
+    ],
   },
   {
-    id: 'social-media',
+    id: "social-media",
     title: "Social Media Management",
-    description: "Comprehensive social media strategy and management to build your brand presence across platforms.",
+    description:
+      "Comprehensive social media strategy and management to build your brand presence across platforms.",
     icon: IconBrandInstagram,
     gradient: "from-neon-pink to-neon-purple",
-    detailedDescription: "Our social media experts leverage AI-powered content creation, advanced analytics, and data-driven strategies to build powerful brand presence across all major platforms. We combine creative storytelling with performance marketing to drive engagement, conversions, and measurable ROI.",
+    detailedDescription:
+      "Our social media experts leverage AI-powered content creation, advanced analytics, and data-driven strategies to build powerful brand presence across all major platforms. We combine creative storytelling with performance marketing to drive engagement, conversions, and measurable ROI.",
     features: [
       "AI-Powered Content Creation & Curation",
       "Multi-Platform Management (Instagram, LinkedIn, Twitter, Facebook, TikTok, YouTube)",
@@ -282,7 +298,7 @@ const services = [
       "Social Commerce Integration",
       "Crisis Management & PR Support",
       "Competitor Analysis & Benchmarking",
-      "Custom Hashtag Strategy & Trending Analysis"
+      "Custom Hashtag Strategy & Trending Analysis",
     ],
     benefits: [
       "5x increase in engagement rates",
@@ -292,7 +308,7 @@ const services = [
       "Enhanced customer loyalty & retention",
       "Real-time brand monitoring & insights",
       "Viral content potential & reach amplification",
-      "Cross-platform audience growth"
+      "Cross-platform audience growth",
     ],
     packages: [
       {
@@ -301,7 +317,7 @@ const services = [
         priceValue: 15000,
         posts: "15 posts/month",
         platforms: "2 platforms",
-        management: "Basic management"
+        management: "Basic management",
       },
       {
         name: "Professional",
@@ -309,7 +325,7 @@ const services = [
         priceValue: 30000,
         posts: "30 posts/month",
         platforms: "4 platforms",
-        management: "Full management"
+        management: "Full management",
       },
       {
         name: "Premium",
@@ -317,17 +333,19 @@ const services = [
         priceValue: 50000,
         posts: "60 posts/month",
         platforms: "All platforms",
-        management: "Complete strategy"
-      }
-    ]
+        management: "Complete strategy",
+      },
+    ],
   },
   {
-    id: 'digital-marketing',
+    id: "digital-marketing",
     title: "Digital Marketing & SEO",
-    description: "Data-driven digital marketing strategies and SEO optimization to increase your online visibility.",
+    description:
+      "Data-driven digital marketing strategies and SEO optimization to increase your online visibility.",
     icon: IconTrendingUp,
     gradient: "from-neon-blue to-neon-green",
-    detailedDescription: "Our comprehensive digital marketing services leverage AI-powered SEO tools, advanced PPC automation, and data-driven content strategies to create high-performance campaigns that dominate search rankings, drive qualified traffic, and maximize revenue growth across all digital channels.",
+    detailedDescription:
+      "Our comprehensive digital marketing services leverage AI-powered SEO tools, advanced PPC automation, and data-driven content strategies to create high-performance campaigns that dominate search rankings, drive qualified traffic, and maximize revenue growth across all digital channels.",
     features: [
       "Advanced Technical & On-Page SEO Optimization",
       "AI-Powered Google Ads & PPC Management",
@@ -342,7 +360,7 @@ const services = [
       "Competitor Analysis & Market Research",
       "Schema Markup & Rich Snippets Implementation",
       "Core Web Vitals & Page Speed Optimization",
-      "Multi-channel Attribution & ROI Tracking"
+      "Multi-channel Attribution & ROI Tracking",
     ],
     benefits: [
       "200% increase in organic traffic",
@@ -352,7 +370,7 @@ const services = [
       "Enhanced user experience & engagement",
       "Increased brand visibility & authority",
       "Higher quality lead generation",
-      "Comprehensive competitive advantage"
+      "Comprehensive competitive advantage",
     ],
     packages: [
       {
@@ -361,7 +379,7 @@ const services = [
         priceValue: 20000,
         keywords: "20 keywords",
         content: "4 articles",
-        reports: "Monthly"
+        reports: "Monthly",
       },
       {
         name: "Growth Pack",
@@ -369,7 +387,7 @@ const services = [
         priceValue: 40000,
         keywords: "50 keywords",
         content: "8 articles",
-        reports: "Bi-weekly"
+        reports: "Bi-weekly",
       },
       {
         name: "Enterprise",
@@ -377,33 +395,33 @@ const services = [
         priceValue: 75000,
         keywords: "100+ keywords",
         content: "16 articles",
-        reports: "Weekly"
-      }
-    ]
-  }
+        reports: "Weekly",
+      },
+    ],
+  },
 ];
 
 const whyChooseUs = [
   {
     icon: IconUsers,
     title: "Expert Team",
-    description: "Industry professionals with proven track records"
+    description: "Industry professionals with proven track records",
   },
   {
     icon: IconClock,
     title: "Timely Delivery",
-    description: "Projects completed on time, every time"
+    description: "Projects completed on time, every time",
   },
   {
     icon: IconShield,
     title: "Quality Assurance",
-    description: "Rigorous testing and quality control processes"
+    description: "Rigorous testing and quality control processes",
   },
   {
     icon: IconTrendingUp,
     title: "Proven Results",
-    description: "Track record of delivering measurable outcomes"
-  }
+    description: "Track record of delivering measurable outcomes",
+  },
 ];
 
 export default function ServicesPage() {
@@ -411,28 +429,30 @@ export default function ServicesPage() {
   const [showModal, setShowModal] = useState(false);
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
-  
+  const [shippingAccepted, setShippingAccepted] = useState(false);
+  const [refundAccepted, setRefundAccepted] = useState(false);
+
   // Form states
   const [selectedService, setSelectedService] = useState<any>(null);
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
 
   // Customer details for demo (in real app, you'd collect these)
   const [customerDetails, setCustomerDetails] = useState({
-    name: 'Demo Customer',
-    email: 'customer@example.com',
-    phone: '+919999999999',
-    company: 'Demo Company'
+    name: "Demo Customer",
+    email: "customer@example.com",
+    phone: "+919999999999",
+    company: "Demo Company",
   });
 
   // Handle successful payment
   const handlePaymentSuccess = async (paymentDetails: any) => {
     setSending(true);
-    setError('');
+    setError("");
     setSuccess(false);
-    
+
     try {
       const templateParams = {
         name: customerDetails.name,
@@ -442,25 +462,28 @@ export default function ServicesPage() {
         service: selectedService.title,
         package: selectedPackage.name,
         amount: selectedPackage.priceValue,
-        requirements: 'Service package selected via website',
+        requirements: "Service package selected via website",
         payment_id: paymentDetails.id,
         order_id: paymentDetails.order_id,
         payment_method: paymentDetails.method,
         payment_status: paymentDetails.status,
       };
-      
+
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID!,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
         templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!,
       );
-      
+
       setSuccess(true);
       setShowModal(false);
-      navigate('/success');
+      navigate("/success");
     } catch (err) {
-      throw new Error('Order submission failed. Please contact support with your payment ID: ' + paymentDetails.id);
+      throw new Error(
+        "Order submission failed. Please contact support with your payment ID: " +
+          paymentDetails.id,
+      );
     } finally {
       setSending(false);
     }
@@ -469,20 +492,22 @@ export default function ServicesPage() {
   // Handle payment errors
   const handlePaymentError = (error: string) => {
     setError(error);
-    console.error('Service payment error:', error);
+    console.error("Service payment error:", error);
   };
 
   // Initialize payment hook
-  const { initiatePayment, isLoading: paymentLoading, error: paymentError, clearError } = useServicePayment(
-    handlePaymentSuccess,
-    handlePaymentError
-  );
+  const {
+    initiatePayment,
+    isLoading: paymentLoading,
+    error: paymentError,
+    clearError,
+  } = useServicePayment(handlePaymentSuccess, handlePaymentError);
 
   // Handle payment
   const handlePayment = async () => {
     // Clear any previous errors
     clearError();
-    setError('');
+    setError("");
 
     const paymentData = {
       amount: selectedPackage.priceValue,
@@ -496,7 +521,7 @@ export default function ServicesPage() {
         service_id: selectedService.id,
         package_name: selectedPackage.name,
         company: customerDetails.company,
-      }
+      },
     };
 
     await initiatePayment(paymentData);
@@ -508,7 +533,7 @@ export default function ServicesPage() {
     setSelectedPackage(packageItem);
     setShowModal(true);
     clearError();
-    setError('');
+    setError("");
     // Reset checkboxes when opening modal
     setTermsAccepted(false);
     setPrivacyAccepted(false);
@@ -528,33 +553,49 @@ export default function ServicesPage() {
               onClick={() => {
                 setShowModal(false);
                 clearError();
-                setError('');
+                setError("");
                 setTermsAccepted(false);
                 setPrivacyAccepted(false);
+                setShippingAccepted(false);
+                setRefundAccepted(false);
               }}
             >
               &times;
             </button>
-            
-            <h2 className="text-2xl font-bold mb-6 text-center text-neon-cyan">Service Payment</h2>
-            
+
+            <h2 className="text-2xl font-bold mb-6 text-center text-neon-cyan">
+              Service Payment
+            </h2>
+
             {/* Service Summary */}
             <div className="w-full space-y-4 mb-6">
               <div className="bg-background/50 border border-neon-cyan/20 rounded-lg p-4">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-muted-foreground">Service:</span>
-                  <span className="text-sm font-medium text-neon-cyan">{selectedService?.title}</span>
+                  <span className="text-sm text-muted-foreground">
+                    Service:
+                  </span>
+                  <span className="text-sm font-medium text-neon-cyan">
+                    {selectedService?.title}
+                  </span>
                 </div>
-                
+
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-muted-foreground">Package:</span>
-                  <span className="text-sm font-medium text-neon-purple">{selectedPackage?.name}</span>
+                  <span className="text-sm text-muted-foreground">
+                    Package:
+                  </span>
+                  <span className="text-sm font-medium text-neon-purple">
+                    {selectedPackage?.name}
+                  </span>
                 </div>
-                
+
                 <div className="border-t border-neon-cyan/20 pt-2 mt-2">
                   <div className="flex justify-between items-center">
-                    <span className="font-semibold text-neon-cyan">Total Amount:</span>
-                    <span className="text-xl font-bold text-neon-purple">{selectedPackage?.price}</span>
+                    <span className="font-semibold text-neon-cyan">
+                      Total Amount:
+                    </span>
+                    <span className="text-xl font-bold text-neon-purple">
+                      {selectedPackage?.price}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -570,23 +611,25 @@ export default function ServicesPage() {
                 </div>
               </div> */}
             </div>
-            
+
             {/* Terms and Privacy Policy Checkboxes */}
             <div className="w-full space-y-4 mb-6">
               <div className="flex items-center gap-2">
-                <Checkbox 
-                  id="terms" 
+                <Checkbox
+                  id="terms"
                   checked={termsAccepted}
-                  onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    setTermsAccepted(checked as boolean)
+                  }
                   className="border-neon-purple/50"
                 />
-                <label 
-                  htmlFor="terms" 
+                <label
+                  htmlFor="terms"
                   className="text-sm text-muted-foreground"
                 >
                   I agree to the{" "}
-                  <Link 
-                    to="/terms-of-service" 
+                  <Link
+                    to="/terms-of-service"
                     target="_blank"
                     className="text-neon-purple hover:text-neon-pink underline"
                   >
@@ -596,23 +639,73 @@ export default function ServicesPage() {
               </div>
 
               <div className="flex items-center gap-2">
-                <Checkbox 
-                  id="privacy" 
+                <Checkbox
+                  id="privacy"
                   checked={privacyAccepted}
-                  onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    setPrivacyAccepted(checked as boolean)
+                  }
                   className="border-neon-purple/50"
                 />
-                <label 
-                  htmlFor="privacy" 
+                <label
+                  htmlFor="privacy"
                   className="text-sm text-muted-foreground"
                 >
                   I agree to the{" "}
-                  <Link 
-                    to="/privacy-policy" 
+                  <Link
+                    to="/privacy-policy"
                     target="_blank"
                     className="text-neon-purple hover:text-neon-pink underline"
                   >
                     Privacy Policy
+                  </Link>
+                </label>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="shipping"
+                  checked={shippingAccepted}
+                  onCheckedChange={(checked) =>
+                    setShippingAccepted(checked as boolean)
+                  }
+                  className="border-neon-purple/50"
+                />
+                <label
+                  htmlFor="shipping"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/shipping-policy"
+                    target="_blank"
+                    className="text-neon-purple hover:text-neon-pink underline"
+                  >
+                    Shipping Policy
+                  </Link>
+                </label>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="refund"
+                  checked={refundAccepted}
+                  onCheckedChange={(checked) =>
+                    setRefundAccepted(checked as boolean)
+                  }
+                  className="border-neon-purple/50"
+                />
+                <label
+                  htmlFor="refund"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/refund-policy"
+                    target="_blank"
+                    className="text-neon-purple hover:text-neon-pink underline"
+                  >
+                    Refund Policy
                   </Link>
                 </label>
               </div>
@@ -624,7 +717,14 @@ export default function ServicesPage() {
               variant="outline"
               size="lg"
               className="w-full border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={paymentLoading || sending || !termsAccepted || !privacyAccepted}
+              disabled={
+                paymentLoading ||
+                sending ||
+                !termsAccepted ||
+                !privacyAccepted ||
+                !shippingAccepted ||
+                !refundAccepted
+              }
             >
               {paymentLoading ? (
                 <div className="flex items-center gap-2">
@@ -635,13 +735,13 @@ export default function ServicesPage() {
                 `Pay ${selectedPackage?.price} via Razorpay`
               )}
             </Button>
-            
+
             {displayError && (
               <div className="text-red-400 mt-4 text-sm text-center bg-red-500/10 border border-red-500/20 rounded-lg p-3 w-full">
                 {displayError}
               </div>
             )}
-            
+
             {/* Security Note */}
             <div className="mt-4 text-xs text-muted-foreground text-center">
               🔒 Secure payment powered by Razorpay
@@ -669,8 +769,9 @@ export default function ServicesPage() {
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Comprehensive EdTech and B2B solutions designed to accelerate your business growth 
-              and drive measurable results across all aspects of your operations.
+              Comprehensive EdTech and B2B solutions designed to accelerate your
+              business growth and drive measurable results across all aspects of
+              your operations.
             </p>
           </motion.div>
         </div>
@@ -688,36 +789,52 @@ export default function ServicesPage() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                  index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
                 }`}
               >
                 {/* Service Info */}
-                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 `}>
+                <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
+                  <div
+                    className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 `}
+                  >
                     <service.icon className="h-8 w-8 text-black" />
                   </div>
-                  
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4">{service.title}</h2>
-                  <p className="text-lg text-muted-foreground mb-6">{service.detailedDescription}</p>
-                  
+
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    {service.title}
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-6">
+                    {service.detailedDescription}
+                  </p>
+
                   <div className="grid md:grid-cols-2 gap-6 mb-8">
                     <div>
-                      <h3 className="text-xl font-semibold mb-3 text-neon-cyan">Key Features</h3>
+                      <h3 className="text-xl font-semibold mb-3 text-neon-cyan">
+                        Key Features
+                      </h3>
                       <ul className="space-y-2">
                         {service.features.slice(0, 6).map((feature, idx) => (
-                          <li key={feature} className="flex items-center text-sm text-muted-foreground">
+                          <li
+                            key={feature}
+                            className="flex items-center text-sm text-muted-foreground"
+                          >
                             <IconPoint className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div>
-                      <h3 className="text-xl font-semibold mb-3 text-neon-purple">Benefits</h3>
+                      <h3 className="text-xl font-semibold mb-3 text-neon-purple">
+                        Benefits
+                      </h3>
                       <ul className="space-y-2">
                         {service.benefits.slice(0, 6).map((benefit, idx) => (
-                          <li key={benefit} className="flex items-center text-sm text-muted-foreground">
+                          <li
+                            key={benefit}
+                            className="flex items-center text-sm text-muted-foreground"
+                          >
                             <IconPoint className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
                             {benefit}
                           </li>
@@ -725,8 +842,8 @@ export default function ServicesPage() {
                       </ul>
                     </div>
                   </div>
-                  
-                  <Button 
+
+                  <Button
                     asChild
                     className={`bg-gradient-to-r ${service.gradient} hover:opacity-90 transition-all duration-300 hover:scale-105`}
                   >
@@ -738,25 +855,43 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Service Packages */}
-                <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                  <h3 className="text-2xl font-bold mb-6 text-center">Service Packages</h3>
+                <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
+                  <h3 className="text-2xl font-bold mb-6 text-center">
+                    Service Packages
+                  </h3>
                   <div className="space-y-4">
                     {service.packages.map((pkg, pkgIndex) => (
-                      <Card key={pkg.name} className="group bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-300">
+                      <Card
+                        key={pkg.name}
+                        className="group bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-300"
+                      >
                         <CardHeader className="pb-3">
                           <div className="flex justify-between items-center">
-                            <CardTitle className="text-lg">{pkg.name}</CardTitle>
-                            <span className="text-2xl font-bold text-primary">{pkg.price}</span>
+                            <CardTitle className="text-lg">
+                              {pkg.name}
+                            </CardTitle>
+                            <span className="text-2xl font-bold text-primary">
+                              {pkg.price}
+                            </span>
                           </div>
                         </CardHeader>
                         <CardContent>
                           <div className="space-y-2 text-sm text-muted-foreground mb-4">
                             {Object.entries(pkg).map(([key, value]) => {
-                              if (key === 'name' || key === 'price' || key === 'priceValue') return null;
+                              if (
+                                key === "name" ||
+                                key === "price" ||
+                                key === "priceValue"
+                              )
+                                return null;
                               return (
                                 <div key={key} className="flex justify-between">
-                                  <span className="capitalize">{key.replace(/([A-Z])/g, ' $1')}:</span>
-                                  <span className="font-medium">{String(value)}</span>
+                                  <span className="capitalize">
+                                    {key.replace(/([A-Z])/g, " $1")}:
+                                  </span>
+                                  <span className="font-medium">
+                                    {String(value)}
+                                  </span>
                                 </div>
                               );
                             })}
@@ -796,7 +931,8 @@ export default function ServicesPage() {
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              We combine expertise, innovation, and dedication to deliver exceptional results for our clients
+              We combine expertise, innovation, and dedication to deliver
+              exceptional results for our clients
             </p>
           </motion.div>
 
@@ -814,7 +950,9 @@ export default function ServicesPage() {
                   <CardContent className="p-6">
                     <item.icon className="h-12 w-12 mx-auto mb-4 text-neon-cyan group-hover:scale-110 transition-transform" />
                     <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground text-sm">{item.description}</p>
+                    <p className="text-muted-foreground text-sm">
+                      {item.description}
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -840,13 +978,14 @@ export default function ServicesPage() {
               ?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's discuss your specific requirements and create a customized solution that drives your business growth.
+              Let's discuss your specific requirements and create a customized
+              solution that drives your business growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <Button
                 asChild
                 variant="outline"
-                size="lg" 
+                size="lg"
                 className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/contact">
@@ -854,15 +993,13 @@ export default function ServicesPage() {
                   <IconArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </Button>
-              <Button 
+              <Button
                 asChild
-                variant="outline" 
+                variant="outline"
                 size="lg"
                 className="border-neon-purple/50 text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300 px-8 py-4 text-lg font-semibold"
               >
-                <Link to="/launchpad">
-                  Explore Launchpad Program
-                </Link>
+                <Link to="/launchpad">Explore Launchpad Program</Link>
               </Button>
             </div>
           </motion.div>

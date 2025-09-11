@@ -1,22 +1,28 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Layout } from '../components/Layout';
-import { Button } from '../components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
-import { Input } from '../components/ui/input';
-import { Checkbox } from '../components/ui/checkbox';
-import emailjs from '@emailjs/browser';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Layout } from "../components/Layout";
+import { Button } from "../components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "../components/ui/card";
+import { Input } from "../components/ui/input";
+import { Checkbox } from "../components/ui/checkbox";
+import emailjs from "@emailjs/browser";
 
 const courses = [
-  'AI Accelerating Mastery Course',
-  'Full Stack Development',
-  'Digital Marketing',
-  'Software Development & Android apps',
-  'Finance & Sales Speech Readiness',
-  'UI/UX Design',
-  'Freelancing & Portfolio building',
-  'Stock market Algotrade with AI Tools',
+  "AI Accelerating Mastery Course",
+  "Full Stack Development",
+  "Digital Marketing",
+  "Software Development & Android apps",
+  "Finance & Sales Speech Readiness",
+  "UI/UX Design",
+  "Freelancing & Portfolio building",
+  "Stock market Algotrade with AI Tools",
 ];
 
 // Razorpay types are now imported from utils/razorpay
@@ -26,66 +32,66 @@ export default function RegisterPage() {
   const [showModal, setShowModal] = useState(false);
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [paymentLoading, setPaymentLoading] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
-  
+  const [shippingAccepted, setShippingAccepted] = useState(false);
+  const [refundAccepted, setRefundAccepted] = useState(false);
+
   const courseOptions = [
-  'AI Accelerating Mastery Course',
-  'Full Stack Development',
-  'Digital Marketing',
-  'Software Development & Android apps',
-  'Finance & Sales Speech Readiness',
-  'UI/UX Design',
-  'Freelancing & Portfolio building',
-  'Stock market Algotrade with AI Tools',
+    "AI Accelerating Mastery Course",
+    "Full Stack Development",
+    "Digital Marketing",
+    "Software Development & Android apps",
+    "Finance & Sales Speech Readiness",
+    "UI/UX Design",
+    "Freelancing & Portfolio building",
+    "Stock market Algotrade with AI Tools",
   ];
-  
-  const [registrationType, setRegistrationType] = useState('');
-  const [coursePricing, setCoursePricing] = useState('');
+
+  const [registrationType, setRegistrationType] = useState("");
+  const [coursePricing, setCoursePricing] = useState("");
   const [selectedCourse, setSelectedCourse] = useState(courseOptions[0]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [passoutYear, setPassoutYear] = useState('');
-  const [stream, setStream] = useState('');
-  const [college, setCollege] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [passoutYear, setPassoutYear] = useState("");
+  const [stream, setStream] = useState("");
+  const [college, setCollege] = useState("");
 
   // Get price based on registration type
   const getPrice = (): number => {
     switch (registrationType) {
-      case 'Registration for workshop':
+      case "Registration for workshop":
         return 26;
-      case 'Registration for Course':
+      case "Registration for Course":
         // if (coursePricing.includes('1299')) return 1299;
         // if (coursePricing.includes('3999')) return 3999;
-        if (coursePricing.includes('25900')) return 25900;
+        if (coursePricing.includes("25900")) return 25900;
         return 1299; // default
-      case 'Registration for AlgoBridge':
+      case "Registration for AlgoBridge":
         return 9;
       default:
         return 0;
     }
   };
 
-
-
   // Handle payment
   const handlePayment = async () => {
     setPaymentLoading(true);
-    setError('');
-    
+    setError("");
+
     try {
       const amount = getPrice();
-      
+
       // Use the new payment system
-      const { processPayment } = await import('../utils/razorpay');
-      
+      const { processPayment } = await import("../utils/razorpay");
+
       await processPayment(
         {
           amount,
-          description: `${registrationType} - ${registrationType === 'Registration for Course' ? selectedCourse : ''}`,
+          description: `${registrationType} - ${registrationType === "Registration for Course" ? selectedCourse : ""}`,
           prefill: {
             name,
             email,
@@ -93,24 +99,31 @@ export default function RegisterPage() {
           },
           notes: {
             registration_type: registrationType,
-            selected_course: registrationType === 'Registration for Course' ? selectedCourse : 'N/A',
-            course_pricing: registrationType === 'Registration for Course' ? coursePricing : 'N/A',
+            selected_course:
+              registrationType === "Registration for Course"
+                ? selectedCourse
+                : "N/A",
+            course_pricing:
+              registrationType === "Registration for Course"
+                ? coursePricing
+                : "N/A",
             passout_year: passoutYear,
             stream,
             college,
-          }
+          },
         },
         async (paymentDetails) => {
           // Payment successful
-          console.log('Payment successful:', paymentDetails);
+          console.log("Payment successful:", paymentDetails);
           await handleRegistrationSubmit(paymentDetails);
         },
         (errorMessage) => {
           setError(errorMessage);
-        }
+        },
       );
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Payment failed';
+      const errorMessage =
+        error instanceof Error ? error.message : "Payment failed";
       setError(errorMessage);
     } finally {
       setPaymentLoading(false);
@@ -120,17 +133,23 @@ export default function RegisterPage() {
   // Handle registration submission after successful payment
   const handleRegistrationSubmit = async (paymentDetails: any) => {
     setSending(true);
-    setError('');
+    setError("");
     setSuccess(false);
-    
+
     try {
       const templateParams = {
         name,
         email,
         phone,
         registrationType,
-        selectedCourse: registrationType === 'Registration for Course' ? selectedCourse : 'N/A',
-        coursePricing: registrationType === 'Registration for Course' ? coursePricing : 'N/A',
+        selectedCourse:
+          registrationType === "Registration for Course"
+            ? selectedCourse
+            : "N/A",
+        coursePricing:
+          registrationType === "Registration for Course"
+            ? coursePricing
+            : "N/A",
         passoutYear,
         stream,
         college,
@@ -140,19 +159,22 @@ export default function RegisterPage() {
         payment_status: paymentDetails.status,
         amount: getPrice(),
       };
-      
+
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID!,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
         templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!,
       );
-      
+
       setSuccess(true);
       setShowModal(false);
-      navigate('/success');
+      navigate("/success");
     } catch (err) {
-      setError('Registration failed. Please contact support with your payment ID: ' + paymentDetails.id);
+      setError(
+        "Registration failed. Please contact support with your payment ID: " +
+          paymentDetails.id,
+      );
     } finally {
       setSending(false);
     }
@@ -169,41 +191,61 @@ export default function RegisterPage() {
             >
               &times;
             </button>
-            
-            <h2 className="text-2xl font-bold mb-6 text-center text-neon-cyan">Payment Summary</h2>
-            
+
+            <h2 className="text-2xl font-bold mb-6 text-center text-neon-cyan">
+              Payment Summary
+            </h2>
+
             {/* Payment Summary */}
             <div className="w-full space-y-4 mb-6">
               <div className="bg-background/50 border border-neon-cyan/20 rounded-lg p-4">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-muted-foreground">Registration Type:</span>
-                  <span className="text-sm font-medium text-neon-cyan">{registrationType}</span>
+                  <span className="text-sm text-muted-foreground">
+                    Registration Type:
+                  </span>
+                  <span className="text-sm font-medium text-neon-cyan">
+                    {registrationType}
+                  </span>
                 </div>
-                
-                {registrationType === 'Registration for Course' && (
+
+                {registrationType === "Registration for Course" && (
                   <>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm text-muted-foreground">Course:</span>
-                      <span className="text-sm font-medium text-neon-purple">{selectedCourse}</span>
+                      <span className="text-sm text-muted-foreground">
+                        Course:
+                      </span>
+                      <span className="text-sm font-medium text-neon-purple">
+                        {selectedCourse}
+                      </span>
                     </div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm text-muted-foreground">Plan:</span>
-                      <span className="text-sm font-medium text-neon-cyan">{coursePricing}</span>
+                      <span className="text-sm text-muted-foreground">
+                        Plan:
+                      </span>
+                      <span className="text-sm font-medium text-neon-cyan">
+                        {coursePricing}
+                      </span>
                     </div>
                   </>
                 )}
-                
+
                 <div className="border-t border-neon-cyan/20 pt-2 mt-2">
                   <div className="flex justify-between items-center">
-                    <span className="font-semibold text-neon-cyan">Total Amount:</span>
-                    <span className="text-xl font-bold text-neon-purple">₹{getPrice()}</span>
+                    <span className="font-semibold text-neon-cyan">
+                      Total Amount:
+                    </span>
+                    <span className="text-xl font-bold text-neon-purple">
+                      ₹{getPrice()}
+                    </span>
                   </div>
                 </div>
               </div>
-              
+
               {/* Student Details */}
               <div className="bg-background/50 border border-neon-purple/20 rounded-lg p-4">
-                <h4 className="text-sm font-semibold text-neon-purple mb-2">Student Details:</h4>
+                <h4 className="text-sm font-semibold text-neon-purple mb-2">
+                  Student Details:
+                </h4>
                 <div className="text-xs text-muted-foreground space-y-1">
                   <div>Name: {name}</div>
                   <div>Email: {email}</div>
@@ -212,13 +254,20 @@ export default function RegisterPage() {
                 </div>
               </div>
             </div>
-            
+
             {/* Payment Button */}
             <Button
               onClick={handlePayment}
               size="lg"
               className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan py-3 text-lg font-semibold"
-              disabled={paymentLoading || sending || !termsAccepted || !privacyAccepted}
+              disabled={
+                paymentLoading ||
+                sending ||
+                !termsAccepted ||
+                !privacyAccepted ||
+                !shippingAccepted ||
+                !refundAccepted
+              }
             >
               {paymentLoading ? (
                 <div className="flex items-center gap-2">
@@ -229,38 +278,108 @@ export default function RegisterPage() {
                 `Pay ₹${getPrice()} via Razorpay`
               )}
             </Button>
-            
+
             {error && (
               <div className="text-neon-purple mt-4 text-sm text-center bg-red-500/10 border border-red-500/20 rounded-lg p-3">
                 {error}
               </div>
             )}
-            
+
             {/* Terms and Privacy Policy */}
             <div className="mt-6 space-y-3">
               <div className="flex items-start space-x-2">
-                <Checkbox 
-                  id="terms" 
+                <Checkbox
+                  id="terms"
                   checked={termsAccepted}
-                  onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    setTermsAccepted(checked as boolean)
+                  }
                 />
-                <label htmlFor="terms" className="text-sm text-muted-foreground">
-                  I agree to the <Link to="/terms-of-service" className="text-neon-cyan hover:text-neon-purple" target="_blank">Terms of Service</Link>
+                <label
+                  htmlFor="terms"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/terms-of-service"
+                    className="text-neon-cyan hover:text-neon-purple"
+                    target="_blank"
+                  >
+                    Terms of Service
+                  </Link>
                 </label>
               </div>
-              
+
               <div className="flex items-start space-x-2">
-                <Checkbox 
-                  id="privacy" 
+                <Checkbox
+                  id="privacy"
                   checked={privacyAccepted}
-                  onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    setPrivacyAccepted(checked as boolean)
+                  }
                 />
-                <label htmlFor="privacy" className="text-sm text-muted-foreground">
-                  I agree to the <Link to="/privacy-policy" className="text-neon-cyan hover:text-neon-purple" target="_blank">Privacy Policy</Link>
+                <label
+                  htmlFor="privacy"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/privacy-policy"
+                    className="text-neon-cyan hover:text-neon-purple"
+                    target="_blank"
+                  >
+                    Privacy Policy
+                  </Link>
+                </label>
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <Checkbox
+                  id="shipping"
+                  checked={shippingAccepted}
+                  onCheckedChange={(checked) =>
+                    setShippingAccepted(checked as boolean)
+                  }
+                />
+                <label
+                  htmlFor="shipping"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/shipping-policy"
+                    className="text-neon-cyan hover:text-neon-purple"
+                    target="_blank"
+                  >
+                    Shipping Policy
+                  </Link>
+                </label>
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <Checkbox
+                  id="refund"
+                  checked={refundAccepted}
+                  onCheckedChange={(checked) =>
+                    setRefundAccepted(checked as boolean)
+                  }
+                />
+                <label
+                  htmlFor="refund"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/refund-policy"
+                    className="text-neon-cyan hover:text-neon-purple"
+                    target="_blank"
+                  >
+                    Refund Policy
+                  </Link>
                 </label>
               </div>
             </div>
-            
+
             {/* Security Note */}
             <div className="mt-4 text-xs text-muted-foreground text-center">
               🔒 Secure payment powered by Razorpay
@@ -268,15 +387,14 @@ export default function RegisterPage() {
           </div>
         </div>
       )}
-      
+
       <Layout>
         {/* Modern Minimalist Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/20">
           <div className="max-w-6xl mx-auto px-6 py-20">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              
               {/* Left Side - Content */}
-              <motion.div 
+              <motion.div
                 className="space-y-8"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -287,7 +405,7 @@ export default function RegisterPage() {
                     <div className="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></div>
                     Admissions Open 2024
                   </div>
-                  
+
                   <h1 className="text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[0.9] tracking-tight">
                     Build Your
                     <br />
@@ -295,47 +413,62 @@ export default function RegisterPage() {
                       Tech Career
                     </span>
                   </h1>
-                  
+
                   <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-lg">
-                    Join thousands of successful graduates who transformed their careers with our industry-focused programs.
+                    Join thousands of successful graduates who transformed their
+                    careers with our industry-focused programs.
                   </p>
                 </div>
-                
+
                 {/* Quick Stats */}
                 <div className="flex items-center gap-8">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-neon-cyan">1000+</div>
-                    <div className="text-sm text-muted-foreground">Graduates</div>
+                    <div className="text-2xl font-bold text-neon-cyan">
+                      1000+
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Graduates
+                    </div>
                   </div>
                   <div className="w-px h-12 bg-border"></div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-neon-purple">95%</div>
-                    <div className="text-sm text-muted-foreground">Placement Rate</div>
+                    <div className="text-2xl font-bold text-neon-purple">
+                      95%
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Placement Rate
+                    </div>
                   </div>
                   <div className="w-px h-12 bg-border"></div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-neon-cyan">4.8★</div>
-                    <div className="text-sm text-muted-foreground">Student Rating</div>
+                    <div className="text-2xl font-bold text-neon-cyan">
+                      4.8★
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Student Rating
+                    </div>
                   </div>
                 </div>
-                
+
                 {/* CTA Button */}
                 <div className="pt-4">
-                  <Button 
-                  variant="outline"
-                    size="lg" 
+                  <Button
+                    variant="outline"
+                    size="lg"
                     className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
                     onClick={() => {
-                      document.querySelector('#registration-form')?.scrollIntoView({ behavior: 'smooth' });
+                      document
+                        .querySelector("#registration-form")
+                        ?.scrollIntoView({ behavior: "smooth" });
                     }}
                   >
                     Start Your Journey
                   </Button>
                 </div>
               </motion.div>
-              
+
               {/* Right Side - Visual */}
-              <motion.div 
+              <motion.div
                 className="relative lg:pl-12"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -347,49 +480,65 @@ export default function RegisterPage() {
                     <div className="space-y-6">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full flex items-center justify-center">
-                          <span className="text-black font-bold text-lg">KG</span>
+                          <span className="text-black font-bold text-lg">
+                            KG
+                          </span>
                         </div>
                         <div>
                           <h3 className="font-semibold">Kin-G Technologies</h3>
-                          <p className="text-sm text-muted-foreground">Premium Education Platform</p>
+                          <p className="text-sm text-muted-foreground">
+                            Premium Education Platform
+                          </p>
                         </div>
                       </div>
-                      
+
                       <div className="space-y-4">
                         <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
                           <span className="text-sm font-medium">Workshops</span>
-                          <span className="text-neon-cyan font-semibold">₹26</span>
+                          <span className="text-neon-cyan font-semibold">
+                            ₹26
+                          </span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-neon-purple/10 rounded-lg border border-neon-purple/20">
-                          <span className="text-sm font-medium">Launchpad Program</span>
-                          <span className="text-neon-purple font-semibold">₹25,900</span>
+                          <span className="text-sm font-medium">
+                            Launchpad Program
+                          </span>
+                          <span className="text-neon-purple font-semibold">
+                            ₹25,900
+                          </span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
-                          <span className="text-sm font-medium">AlgoBridge Contest</span>
-                          <span className="text-neon-cyan font-semibold">₹9</span>
+                          <span className="text-sm font-medium">
+                            AlgoBridge Contest
+                          </span>
+                          <span className="text-neon-cyan font-semibold">
+                            ₹9
+                          </span>
                         </div>
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Floating Elements */}
                   <div className="absolute -top-4 -right-4 w-20 h-20 bg-neon-cyan/20 rounded-full blur-2xl"></div>
                   <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-neon-purple/20 rounded-full blur-2xl"></div>
                 </div>
               </motion.div>
-              
             </div>
           </div>
         </section>
-        
+
         {/* Registration Form Section */}
-        <section id="registration-form" className="min-h-screen bg-gradient-to-br from-background via-background/95 to-muted/10 relative">
+        <section
+          id="registration-form"
+          className="min-h-screen bg-gradient-to-br from-background via-background/95 to-muted/10 relative"
+        >
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute top-20 left-20 w-64 h-64 bg-neon-cyan rounded-full blur-3xl"></div>
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-neon-purple rounded-full blur-3xl"></div>
           </div>
-          
+
           <div className="relative grid lg:grid-cols-2">
             {/* Left Side - Form */}
             <div className="bg-card/5 backdrop-blur-sm border-r border-border/10">
@@ -407,28 +556,38 @@ export default function RegisterPage() {
                       <h1 className="text-3xl font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
                         Ready to Get Started?
                       </h1>
-                      <p className="text-muted-foreground text-lg">Complete your registration in a few simple steps</p>
+                      <p className="text-muted-foreground text-lg">
+                        Complete your registration in a few simple steps
+                      </p>
                     </div>
                   </div>
                 </motion.div>
-                
+
                 <div className="space-y-6">
                   {/* Registration Type - Sleek Toggle */}
                   <div>
-                    <label className="text-sm font-semibold text-foreground mb-3 block">Registration Type</label>
+                    <label className="text-sm font-semibold text-foreground mb-3 block">
+                      Registration Type
+                    </label>
                     <div className="grid grid-cols-3 gap-2 p-1 bg-muted/30 rounded-lg border border-border/50">
                       {[
-                        { value: 'Registration for workshop', label: 'Workshop' },
-                        { value: 'Registration for Course', label: 'Course' },
-                        { value: 'Registration for AlgoBridge', label: 'AlgoBridge' }
+                        {
+                          value: "Registration for workshop",
+                          label: "Workshop",
+                        },
+                        { value: "Registration for Course", label: "Course" },
+                        {
+                          value: "Registration for AlgoBridge",
+                          label: "AlgoBridge",
+                        },
                       ].map((option) => (
                         <button
                           key={option.value}
                           onClick={() => setRegistrationType(option.value)}
                           className={`py-2.5 px-3 rounded-md text-sm font-medium transition-all duration-200 ${
                             registrationType === option.value
-                              ? 'bg-gradient-to-r from-neon-cyan to-neon-purple text-white shadow-lg'
-                              : 'text-muted-foreground hover:text-foreground hover:bg-background/50'
+                              ? "bg-gradient-to-r from-neon-cyan to-neon-purple text-white shadow-lg"
+                              : "text-muted-foreground hover:text-foreground hover:bg-background/50"
                           }`}
                         >
                           {option.label}
@@ -438,12 +597,18 @@ export default function RegisterPage() {
                   </div>
 
                   {/* Course Pricing - Clean Cards */}
-                  {registrationType === 'Registration for Course' && (
+                  {registrationType === "Registration for Course" && (
                     <div>
-                      <label className="text-sm font-semibold text-foreground mb-3 block">Select Plan</label>
+                      <label className="text-sm font-semibold text-foreground mb-3 block">
+                        Select Plan
+                      </label>
                       <div className="grid grid-cols-3 gap-2">
                         {[
-                          { value: 'Basic - ₹25,900', label: 'Basic', price: '₹25,900' },
+                          {
+                            value: "Basic - ₹25,900",
+                            label: "Basic",
+                            price: "₹25,900",
+                          },
                           // { value: 'Basic - ₹1299', label: 'Basic', price: '₹1299' },
                           // { value: 'Pro - ₹3999', label: 'Pro', price: '₹3999' },
                           // { value: 'Ultimate - ₹7999', label: 'Ultimate', price: '₹7999' }
@@ -453,12 +618,16 @@ export default function RegisterPage() {
                             onClick={() => setCoursePricing(plan.value)}
                             className={`p-3 rounded-lg border-2 transition-all duration-200 text-center ${
                               coursePricing === plan.value
-                                ? 'border-neon-cyan bg-neon-cyan/10 text-neon-cyan'
-                                : 'border-border/40 hover:border-neon-cyan/50 hover:bg-neon-cyan/5 text-muted-foreground'
+                                ? "border-neon-cyan bg-neon-cyan/10 text-neon-cyan"
+                                : "border-border/40 hover:border-neon-cyan/50 hover:bg-neon-cyan/5 text-muted-foreground"
                             }`}
                           >
-                            <div className="font-medium text-xs">{plan.label}</div>
-                            <div className="font-bold text-sm mt-1">{plan.price}</div>
+                            <div className="font-medium text-xs">
+                              {plan.label}
+                            </div>
+                            <div className="font-bold text-sm mt-1">
+                              {plan.price}
+                            </div>
                           </button>
                         ))}
                       </div>
@@ -470,96 +639,116 @@ export default function RegisterPage() {
                     <div className="space-y-5">
                       {/* Full Name */}
                       <div>
-                        <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Full Name</label>
-                        <Input 
-                          value={name} 
-                          onChange={e => setName(e.target.value)} 
-                          placeholder="Enter your full name" 
-                          required 
+                        <label className="text-sm font-medium text-foreground/90 mb-1.5 block">
+                          Full Name
+                        </label>
+                        <Input
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Enter your full name"
+                          required
                           className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
                         />
                       </div>
-                      
+
                       {/* Two Column Fields */}
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Phone</label>
-                          <Input 
-                            value={phone} 
-                            onChange={e => setPhone(e.target.value)} 
-                            type="tel" 
-                            placeholder="+91 12345 67890" 
-                            required 
+                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">
+                            Phone
+                          </label>
+                          <Input
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            type="tel"
+                            placeholder="+91 12345 67890"
+                            required
                             className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
                           />
                         </div>
                         <div>
-                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Email</label>
-                          <Input 
-                            value={email} 
-                            onChange={e => setEmail(e.target.value)} 
-                            type="email" 
-                            placeholder="you@example.com" 
-                            required 
+                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">
+                            Email
+                          </label>
+                          <Input
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            type="email"
+                            placeholder="you@example.com"
+                            required
                             className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
                           />
                         </div>
                       </div>
 
                       {/* Course Selection */}
-                      {registrationType === 'Registration for Course' && (
+                      {registrationType === "Registration for Course" && (
                         <div>
-                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Course</label>
+                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">
+                            Course
+                          </label>
                           <select
                             value={selectedCourse}
-                            onChange={e => setSelectedCourse(e.target.value)}
+                            onChange={(e) => setSelectedCourse(e.target.value)}
                             required
                             className="w-full bg-background/50 border border-border/50 text-foreground rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-neon-cyan/60 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
                           >
-                            {courseOptions.map(course => (
-                              <option key={course} value={course} className="bg-background text-foreground">{course}</option>
+                            {courseOptions.map((course) => (
+                              <option
+                                key={course}
+                                value={course}
+                                className="bg-background text-foreground"
+                              >
+                                {course}
+                              </option>
                             ))}
                           </select>
                         </div>
                       )}
-                      
+
                       {/* Academic Information */}
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Graduation Year</label>
-                          <Input 
-                            value={passoutYear} 
-                            onChange={e => setPassoutYear(e.target.value)} 
-                            placeholder="2025" 
-                            required 
+                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">
+                            Graduation Year
+                          </label>
+                          <Input
+                            value={passoutYear}
+                            onChange={(e) => setPassoutYear(e.target.value)}
+                            placeholder="2025"
+                            required
                             className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
                           />
                         </div>
                         <div>
-                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">Stream</label>
-                          <Input 
-                            value={stream} 
-                            onChange={e => setStream(e.target.value)} 
-                            placeholder="Computer Science" 
-                            required 
+                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">
+                            Stream
+                          </label>
+                          <Input
+                            value={stream}
+                            onChange={(e) => setStream(e.target.value)}
+                            placeholder="Computer Science"
+                            required
                             className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
                           />
                         </div>
                       </div>
-                      
+
                       <div>
-                        <label className="text-sm font-medium text-foreground/90 mb-1.5 block">College/University</label>
-                        <Input 
-                          value={college} 
-                          onChange={e => setCollege(e.target.value)} 
-                          placeholder="IIT Kharagpur" 
-                          required 
+                        <label className="text-sm font-medium text-foreground/90 mb-1.5 block">
+                          College/University
+                        </label>
+                        <Input
+                          value={college}
+                          onChange={(e) => setCollege(e.target.value)}
+                          placeholder="IIT Kharagpur"
+                          required
                           className="bg-background/50 border-border/50 focus:border-neon-cyan/60 focus:ring-neon-cyan/20 rounded-lg h-10 text-sm"
                         />
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Submit Button */}
                   <Button
                     size="lg"
@@ -571,7 +760,8 @@ export default function RegisterPage() {
                         phone.trim() &&
                         email.trim() &&
                         registrationType.trim() &&
-                        (registrationType !== 'Registration for Course' || (selectedCourse.trim() && coursePricing.trim())) &&
+                        (registrationType !== "Registration for Course" ||
+                          (selectedCourse.trim() && coursePricing.trim())) &&
                         passoutYear.trim() &&
                         stream.trim() &&
                         college.trim()
@@ -585,40 +775,51 @@ export default function RegisterPage() {
                 </div>
               </div>
             </div>
-            
+
             {/* Right Side - Enhanced Image */}
             <div className="relative min-h-screen overflow-hidden group">
-              <img 
-                src="/images/launchpad3.jpeg" 
-                alt="Launchpad Program" 
+              <img
+                src="/images/launchpad3.jpeg"
+                alt="Launchpad Program"
                 className="w-full h-full min-h-screen object-cover transition-transform duration-700 group-hover:scale-105"
               />
               {/* Overlay with gradient and content */}
               <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/20 via-transparent to-neon-purple/20"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              
+
               {/* Floating Content */}
               <div className="absolute bottom-8 left-8 right-8">
                 <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6 text-white">
-                  <h3 className="text-xl font-bold mb-2">Transform Your Future</h3>
-                  <p className="text-white/80 text-sm mb-4">Join thousands of successful graduates who've built amazing careers with our programs.</p>
+                  <h3 className="text-xl font-bold mb-2">
+                    Transform Your Future
+                  </h3>
+                  <p className="text-white/80 text-sm mb-4">
+                    Join thousands of successful graduates who've built amazing
+                    careers with our programs.
+                  </p>
                   <div className="flex items-center gap-6">
                     <div className="text-center">
-                      <div className="text-lg font-bold text-neon-cyan">1000+</div>
+                      <div className="text-lg font-bold text-neon-cyan">
+                        1000+
+                      </div>
                       <div className="text-xs text-white/70">Graduates</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg font-bold text-neon-purple">95%</div>
+                      <div className="text-lg font-bold text-neon-purple">
+                        95%
+                      </div>
                       <div className="text-xs text-white/70">Success Rate</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg font-bold text-neon-cyan">4.8★</div>
+                      <div className="text-lg font-bold text-neon-cyan">
+                        4.8★
+                      </div>
                       <div className="text-xs text-white/70">Rating</div>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               {/* Decorative Elements */}
               <div className="absolute top-6 right-6 w-3 h-3 bg-neon-cyan rounded-full animate-pulse"></div>
               <div className="absolute top-20 right-12 w-2 h-2 bg-neon-purple rounded-full animate-pulse delay-1000"></div>

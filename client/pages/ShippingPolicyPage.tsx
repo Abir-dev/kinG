@@ -36,90 +36,82 @@ import {
 } from "../components/ui/card";
 import { useGSAPAnimations } from "../hooks/useGSAPAnimations";
 
-// Privacy Policy Sections
-const privacySections = [
+// Shipping Policy Sections
+const shippingSections = [
   {
-    icon: IconUser,
-    title: "Information We Collect",
+    icon: IconClock,
+    title: "Processing Time",
     description:
-      "We collect information you provide directly to us and automatically when you visit our website.",
+      "Orders are processed within 1–3 business days (excluding weekends and holidays).",
     details: [
-      "Personal Information: Name, email address, phone number, billing/shipping address, and payment details",
-      "Non-Personal Information: Browser type, device information, IP address, and cookies for site analytics and performance",
-      "Professional information (resume, work experience, skills) for career services",
-      "Account credentials and preferences",
-      "Communication records and support interactions",
+      "Orders are processed within 1–3 business days (excluding weekends and holidays)",
+      "You will receive a confirmation email with tracking details once your order has been shipped",
+      "Processing time may vary during peak seasons or holidays",
     ],
   },
   {
-    icon: IconDatabase,
-    title: "How We Use Your Information",
+    icon: IconTruck,
+    title: "Shipping Methods & Delivery",
     description:
-      "We use the information we collect to provide, maintain, and improve our services.",
+      "We offer various shipping options to meet your delivery needs.",
     details: [
-      "To process and deliver your orders",
-      "To provide customer support and order updates",
-      "To improve website functionality and user experience",
-      "To send promotional offers (only if you opt-in)",
-      "To provide and deliver our career development and B2B services",
-      "To comply with legal obligations and protect our rights",
+      "Standard Shipping: 3-7 business days",
+      "Express Shipping: 1-3 business days (if applicable)",
+      "Delivery timelines may vary based on your location and courier partner",
+      "Free shipping may be offered on selected products or minimum order value",
     ],
   },
   {
-    icon: IconShield,
-    title: "Data Protection",
+    icon: IconCreditCard,
+    title: "Shipping Charges",
     description:
-      "We implement appropriate security measures to protect your personal information.",
+      "Shipping charges are calculated based on your location and selected shipping method.",
     details: [
-      "Payment transactions are securely encrypted through trusted gateways",
-      "We do not store sensitive payment details on our servers",
-      "Access to personal information is restricted to authorized staff only",
-      "SSL encryption for data transmission",
-      "Secure servers and databases with access controls",
-      "Regular security audits and updates",
+      "Shipping charges will be calculated and displayed at checkout",
+      "Free shipping may be offered on selected products or minimum order value",
+      "International shipping charges vary by destination",
+      "Additional charges may apply for remote locations",
     ],
   },
   {
-    icon: IconLock,
-    title: "Sharing of Information",
-    description: "We do not sell or rent your information to third parties.",
-    details: [
-      "We do not sell or rent your information",
-      "We may share limited details only with trusted third parties such as courier partners and payment processors, solely for order fulfillment",
-      "Information may be shared with potential employers as part of our career placement services",
-      "We may disclose information if required by law or to protect our rights",
-      "We never share information for marketing purposes without explicit consent",
-    ],
-  },
-  {
-    icon: IconSettings,
-    title: "Your Rights",
-    description: "You have certain rights regarding your personal information.",
-    details: [
-      "You may request access, correction, or deletion of your personal information",
-      "You may unsubscribe from promotional communications at any time",
-      "Access and update your personal information",
-      "Request data portability",
-      "Withdraw consent for data processing",
-      "File complaints with relevant authorities",
-    ],
-  },
-  {
-    icon: IconEye,
-    title: "Cookies",
+    icon: IconPackage,
+    title: "Order Tracking",
     description:
-      "We use cookies to enhance your browsing experience and analyze website traffic.",
+      "Track your order from dispatch to delivery with real-time updates.",
     details: [
-      "We use cookies to personalize your browsing experience, remember preferences, and analyze traffic",
-      "You can manage or disable cookies in your browser settings",
-      "Essential cookies for basic website functionality",
-      "Analytics cookies for understanding website usage and performance",
-      "Functional cookies to remember your preferences and settings",
+      "You will receive a tracking number via email/SMS once your package has been dispatched",
+      "Real-time tracking updates through our website or courier partner's platform",
+      "Delivery notifications and estimated delivery times",
+      "Contact support for any tracking-related queries",
+    ],
+  },
+  {
+    icon: IconAlertCircle,
+    title: "Delays & Issues",
+    description:
+      "We handle delays and shipping issues with care and transparency.",
+    details: [
+      "We are not responsible for delays caused by courier partners, customs, natural calamities, or unforeseen circumstances",
+      "Please ensure your shipping details are correct - we are not responsible for lost packages due to incorrect or incomplete addresses",
+      "Contact us immediately if you experience any shipping issues",
+      "We will work with courier partners to resolve delivery problems",
+    ],
+  },
+  {
+    icon: IconWorld,
+    title: "International Shipping",
+    description:
+      "International shipping is available to select countries with additional considerations.",
+    details: [
+      "International shipping is available to select countries",
+      "Customs duties, taxes, or import charges (if any) are the customer's responsibility",
+      "Delivery times may be extended for international orders",
+      "Some products may have shipping restrictions to certain countries",
     ],
   },
 ];
 
-export default function PrivacyPolicyPage() {
+export default function ShippingPolicyPage() {
   // Initialize GSAP animations
   useGSAPAnimations();
 
@@ -134,18 +126,19 @@ export default function PrivacyPolicyPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-3">
-              Legal Information
+            <div className="inline-block px-4 py-2 rounded-full border border-neon-purple/30 text-sm font-medium text-neon-purple mb-3">
+              Shipping Information
             </div>
             <h1 className="text-4xl md:text-7xl font-bold mb-6">
-              Privacy{" "}
-              <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
+              Shipping{" "}
+              <span className="bg-gradient-to-r from-neon-purple via-neon-pink to-neon-cyan bg-clip-text text-transparent neon-text-glow">
                 Policy
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-              How we collect, use, and protect your personal information. Your
-              privacy and data security are our top priorities.
+              Comprehensive shipping information covering delivery terms,
+              tracking, and international shipping. Your orders are handled with
+              care and delivered efficiently.
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
@@ -153,8 +146,8 @@ export default function PrivacyPolicyPage() {
                 <span>Last updated: January 2025</span>
               </div>
               <div className="flex items-center gap-2">
-                <IconShield className="h-4 w-4" />
-                <span>GDPR Compliant</span>
+                <IconTruck className="h-4 w-4" />
+                <span>Fast & Reliable</span>
               </div>
             </div>
           </motion.div>
@@ -169,7 +162,7 @@ export default function PrivacyPolicyPage() {
             {/* <Button
               variant="outline"
               asChild
-              className="border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan transition-all duration-300"
+              className="border-neon-purple/50 text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300"
             >
               <Link to="/" className="flex items-center gap-2">
                 <IconArrowLeft className="h-4 w-4" />
@@ -190,39 +183,40 @@ export default function PrivacyPolicyPage() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <Card className="bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-300">
+            <Card className="bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-300">
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-3">
-                  <IconShield className="h-6 w-6 text-neon-cyan" />
-                  Our Privacy Commitment
+                  <IconTruck className="h-6 w-6 text-neon-purple" />
+                  Our Shipping Commitment
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
                   At{" "}
-                  <strong className="text-neon-cyan">
+                  <strong className="text-neon-purple">
                     Kin-G Technologies Pvt. Ltd.
                   </strong>
-                  , we are committed to protecting your privacy and personal
-                  information. This comprehensive privacy policy explains how we
-                  collect, use, store, and protect your data when you use our
-                  services.
+                  , we are committed to delivering your orders safely and
+                  efficiently. Our shipping policy ensures transparent delivery
+                  terms, reliable tracking, and excellent customer service
+                  throughout the shipping process.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  By using our services, you agree to this privacy policy. We
-                  may update this policy from time to time, and any changes will
-                  be posted on this page with a revised "Last updated" date.
+                  We work with trusted courier partners to ensure your orders
+                  reach you in perfect condition and within the promised
+                  timeframe. All shipping charges are calculated transparently
+                  and displayed at checkout.
                 </p>
-                <div className="flex items-start gap-3 p-4 bg-neon-cyan/5 border border-neon-cyan/20 rounded-lg">
-                  <IconAlertCircle className="h-5 w-5 text-neon-cyan mt-0.5 flex-shrink-0" />
+                <div className="flex items-start gap-3 p-4 bg-neon-purple/5 border border-neon-purple/20 rounded-lg">
+                  <IconAlertCircle className="h-5 w-5 text-neon-purple mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-sm font-medium text-neon-cyan mb-1">
+                    <p className="text-sm font-medium text-neon-purple mb-1">
                       Important Notice
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      Please read this privacy policy carefully. If you have any
-                      questions, contact us at admin@kingtechs.in or
-                      +91-8910481993.
+                      Please ensure your shipping address is correct and
+                      complete. Contact us at admin@kingtechs.in or
+                      +91-8910481993 for any shipping queries.
                     </p>
                   </div>
                 </div>
@@ -232,8 +226,8 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      {/* Privacy Policy Section */}
-      <section id="privacy-policy" className="py-16 px-4">
+      {/* Shipping Policy Section */}
+      <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -243,18 +237,19 @@ export default function PrivacyPolicyPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Privacy{" "}
-              <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Policy
+              Shipping{" "}
+              <span className="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
+                Information
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              How we collect, use, and protect your personal information
+              Complete details about our shipping process, delivery times, and
+              tracking
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {privacySections.map((section, index) => (
+            {shippingSections.map((section, index) => (
               <motion.div
                 key={section.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -263,13 +258,13 @@ export default function PrivacyPolicyPage() {
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
               >
-                <Card className="h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500 hover:shadow-xl hover:shadow-neon-cyan/10">
+                <Card className="h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500 hover:shadow-xl hover:shadow-neon-purple/10">
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-12 h-12 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-lg flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gradient-to-br from-neon-purple to-neon-pink rounded-lg flex items-center justify-center">
                         <section.icon className="h-6 w-6 text-white" />
                       </div>
-                      <CardTitle className="text-xl group-hover:text-neon-cyan transition-colors duration-300">
+                      <CardTitle className="text-xl group-hover:text-neon-purple transition-colors duration-300">
                         {section.title}
                       </CardTitle>
                     </div>
@@ -284,7 +279,7 @@ export default function PrivacyPolicyPage() {
                           key={detailIndex}
                           className="flex items-start gap-2 text-sm text-muted-foreground"
                         >
-                          <IconCheck className="h-4 w-4 text-neon-cyan mt-0.5 flex-shrink-0" />
+                          <IconCheck className="h-4 w-4 text-neon-purple mt-0.5 flex-shrink-0" />
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -306,23 +301,23 @@ export default function PrivacyPolicyPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Card className="bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-300">
+            <Card className="bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-300">
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl mb-4">
-                  Questions About Our{" "}
-                  <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                    Privacy Policy?
+                  Questions About{" "}
+                  <span className="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
+                    Shipping?
                   </span>
                 </CardTitle>
                 <CardDescription className="text-lg">
-                  Contact us if you have any questions about our privacy policy
-                  or data handling practices
+                  Contact us if you have any questions about shipping, delivery,
+                  or tracking
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-center space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="flex items-center justify-center gap-3 p-4 bg-neon-cyan/5 border border-neon-cyan/20 rounded-lg">
-                    <IconMail className="h-5 w-5 text-neon-cyan" />
+                  <div className="flex items-center justify-center gap-3 p-4 bg-neon-purple/5 border border-neon-purple/20 rounded-lg">
+                    <IconMail className="h-5 w-5 text-neon-purple" />
                     <div>
                       <p className="font-medium">Email</p>
                       <p className="text-sm text-muted-foreground">
@@ -330,8 +325,8 @@ export default function PrivacyPolicyPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-center gap-3 p-4 bg-neon-purple/5 border border-neon-purple/20 rounded-lg">
-                    <IconPhone className="h-5 w-5 text-neon-purple" />
+                  <div className="flex items-center justify-center gap-3 p-4 bg-neon-pink/5 border border-neon-pink/20 rounded-lg">
+                    <IconPhone className="h-5 w-5 text-neon-pink" />
                     <div>
                       <p className="font-medium">Phone</p>
                       <p className="text-sm text-muted-foreground">
