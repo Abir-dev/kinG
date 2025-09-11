@@ -1,5 +1,5 @@
-import RegisterPage from './pages/RegisterPage';
-import SuccessPage from './pages/SuccessPage';
+import RegisterPage from "./pages/RegisterPage";
+import SuccessPage from "./pages/SuccessPage";
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
@@ -16,6 +16,8 @@ import AboutPage from "./pages/AboutPage";
 import CareersPage from "./pages/CareersPage";
 import LaunchpadPage from "./pages/LaunchpadPage";
 import ContactPage from "./pages/ContactPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsOfServicePage from "./pages/TermsOfServicePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,8 @@ function AnimatedRoutes() {
         <Route path="/careers" element={<CareersPage />} />
         <Route path="/launchpad" element={<LaunchpadPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-of-service" element={<TermsOfServicePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="*" element={<NotFound />} />
