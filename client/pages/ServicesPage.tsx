@@ -16,6 +16,7 @@ import {
   IconShield,
   IconPoint
 } from '@tabler/icons-react';
+import { Checkbox } from '../components/ui/checkbox';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -411,6 +412,8 @@ export default function ServicesPage() {
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   
   // Form states
   const [selectedService, setSelectedService] = useState<any>(null);
@@ -506,6 +509,9 @@ export default function ServicesPage() {
     setShowModal(true);
     clearError();
     setError('');
+    // Reset checkboxes when opening modal
+    setTermsAccepted(false);
+    setPrivacyAccepted(false);
   };
 
   // Combined error display
@@ -523,6 +529,8 @@ export default function ServicesPage() {
                 setShowModal(false);
                 clearError();
                 setError('');
+                setTermsAccepted(false);
+                setPrivacyAccepted(false);
               }}
             >
               &times;
@@ -563,13 +571,60 @@ export default function ServicesPage() {
               </div> */}
             </div>
             
+            {/* Terms and Privacy Policy Checkboxes */}
+            <div className="w-full space-y-4 mb-6">
+              <div className="flex items-center gap-2">
+                <Checkbox 
+                  id="terms" 
+                  checked={termsAccepted}
+                  onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
+                  className="border-neon-purple/50"
+                />
+                <label 
+                  htmlFor="terms" 
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link 
+                    to="/terms-of-service" 
+                    target="_blank"
+                    className="text-neon-purple hover:text-neon-pink underline"
+                  >
+                    Terms of Service
+                  </Link>
+                </label>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Checkbox 
+                  id="privacy" 
+                  checked={privacyAccepted}
+                  onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
+                  className="border-neon-purple/50"
+                />
+                <label 
+                  htmlFor="privacy" 
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link 
+                    to="/privacy-policy" 
+                    target="_blank"
+                    className="text-neon-purple hover:text-neon-pink underline"
+                  >
+                    Privacy Policy
+                  </Link>
+                </label>
+              </div>
+            </div>
+
             {/* Payment Button */}
             <Button
               onClick={handlePayment}
               variant="outline"
               size="lg"
-              className="w-full border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
-              disabled={paymentLoading || sending}
+              className="w-full border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={paymentLoading || sending || !termsAccepted || !privacyAccepted}
             >
               {paymentLoading ? (
                 <div className="flex items-center gap-2">

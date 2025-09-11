@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { Input } from '../components/ui/input';
+import { Checkbox } from '../components/ui/checkbox';
 import emailjs from '@emailjs/browser';
 
 const courses = [
@@ -27,6 +28,8 @@ export default function RegisterPage() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
   const [paymentLoading, setPaymentLoading] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   
   const courseOptions = [
   'AI Accelerating Mastery Course',
@@ -215,7 +218,7 @@ export default function RegisterPage() {
               onClick={handlePayment}
               size="lg"
               className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan py-3 text-lg font-semibold"
-              disabled={paymentLoading || sending}
+              disabled={paymentLoading || sending || !termsAccepted || !privacyAccepted}
             >
               {paymentLoading ? (
                 <div className="flex items-center gap-2">
@@ -232,6 +235,31 @@ export default function RegisterPage() {
                 {error}
               </div>
             )}
+            
+            {/* Terms and Privacy Policy */}
+            <div className="mt-6 space-y-3">
+              <div className="flex items-start space-x-2">
+                <Checkbox 
+                  id="terms" 
+                  checked={termsAccepted}
+                  onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
+                />
+                <label htmlFor="terms" className="text-sm text-muted-foreground">
+                  I agree to the <Link to="/terms-of-service" className="text-neon-cyan hover:text-neon-purple" target="_blank">Terms of Service</Link>
+                </label>
+              </div>
+              
+              <div className="flex items-start space-x-2">
+                <Checkbox 
+                  id="privacy" 
+                  checked={privacyAccepted}
+                  onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
+                />
+                <label htmlFor="privacy" className="text-sm text-muted-foreground">
+                  I agree to the <Link to="/privacy-policy" className="text-neon-cyan hover:text-neon-purple" target="_blank">Privacy Policy</Link>
+                </label>
+              </div>
+            </div>
             
             {/* Security Note */}
             <div className="mt-4 text-xs text-muted-foreground text-center">

@@ -1,9 +1,28 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { IconCheck, IconStar, IconRocket, IconCrown, IconTrophy } from '@tabler/icons-react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { PaymentDialog } from './PaymentDialog';
 
-const pricingTiers = [
+interface PricingTier {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  icon: React.ElementType;
+  gradient: string;
+  features: string[];
+  popular: boolean;
+  ctaText: string;
+}
+
+interface PricingCardProps extends PricingTier {
+  index: number;
+  onSelect: (plan: PricingTier) => void;
+}
+
+const pricingTiers: PricingTier[] = [
   {
     name: "Basic",
     price: "₹1,299",
@@ -73,6 +92,21 @@ const pricingTiers = [
 ];
 
 export function LaunchpadPricing() {
+  const [selectedPlan, setSelectedPlan] = useState<PricingTier | null>(null);
+
+  const handlePlanSelection = (plan: PricingTier) => {
+    setSelectedPlan(plan);
+  };
+
+  const handleDialogClose = () => {
+    setSelectedPlan(null);
+  };
+
+  const handlePaymentProceed = () => {
+    // TODO: Implement payment logic
+    console.log('Proceeding to payment for plan:', selectedPlan?.name);
+  };
+
   return (
     <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
@@ -96,7 +130,12 @@ export function LaunchpadPricing() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {pricingTiers.map((tier, index) => (
-            <PricingCard key={tier.name} {...tier} index={index} />
+            <PricingCard 
+              key={tier.name} 
+              {...tier} 
+              index={index} 
+              onSelect={handlePlanSelection} 
+            />
           ))}
         </div>
 
@@ -117,6 +156,16 @@ export function LaunchpadPricing() {
           </div>
         </motion.div>
       </div>
+
+      {/* Payment Dialog */}
+      {selectedPlan && (
+        <PaymentDialog
+          isOpen={!!selectedPlan}
+          onClose={handleDialogClose}
+          planDetails={selectedPlan}
+          onProceed={handlePaymentProceed}
+        />
+      )}
     </section>
   );
 }
@@ -144,7 +193,8 @@ function PricingCard({
   features, 
   popular, 
   ctaText, 
-  index 
+  index,
+  onSelect 
 }: PricingCardProps) {
   return (
     <motion.div
@@ -208,6 +258,17 @@ function PricingCard({
                 ? 'bg-gradient-to-r from-neon-purple to-neon-pink hover:opacity-90 neon-glow-purple' 
                 : 'bg-gradient-to-r from-neon-cyan to-neon-blue hover:opacity-90 hover:neon-glow-cyan'
             }`}
+            onClick={() => onSelect({
+              name,
+              price,
+              period,
+              description,
+              icon: Icon,
+              gradient,
+              features,
+              popular,
+              ctaText
+            })}
           >
             {ctaText}
           </Button>

@@ -29,33 +29,33 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Badge } from '../components/ui/badge';
 
 const jobOpenings = [
-  {
-    id: 1,
-    title: "Senior Full-Stack Developer",
-    department: "Technologies",
-    location: "Remote / Hybrid",
-    type: "Full-time",
-    experience: "3-5 years",
-    salary: "₹8,00,000 - ₹15,00,000",
-    description: "Join our development team to build cutting-edge web applications using React, Node.js, and cloud technologies. Work on exciting projects for enterprise clients.",
-    requirements: [
-      "Strong proficiency in React, Node.js, and TypeScript",
-      "Experience with cloud platforms (AWS/Azure)",
-      "Knowledge of microservices architecture",
-      "Excellent problem-solving skills",
-      "Strong communication and teamwork abilities"
-    ],
-    gradient: "from-neon-cyan to-neon-blue",
-    icon: IconCode
-  },
+  // {
+  //   id: 1,
+  //   title: "Senior Full-Stack Developer",
+  //   department: "Technologies",
+  //   location: "Remote / Hybrid",
+  //   type: "Full-time",
+  //   experience: "3-5 years",
+  //   salary: "₹8,00,000 - ₹15,00,000",
+  //   description: "Join our development team to build cutting-edge web applications using React, Node.js, and cloud technologies. Work on exciting projects for enterprise clients.",
+  //   requirements: [
+  //     "Strong proficiency in React, Node.js, and TypeScript",
+  //     "Experience with cloud platforms (AWS/Azure)",
+  //     "Knowledge of microservices architecture",
+  //     "Excellent problem-solving skills",
+  //     "Strong communication and teamwork abilities"
+  //   ],
+  //   gradient: "from-neon-cyan to-neon-blue",
+  //   icon: IconCode
+  // },
   {
     id: 2,
     title: "Digital Marketing Specialist",
     department: "Marketing",
-    location: "Mumbai / Remote",
+    location: "Remote",
     type: "Full-time",
-    experience: "2-4 years",
-    salary: "₹5,00,000 - ₹10,00,000",
+    experience: "0-3 years",
+    salary: "1,20,000 - 1,80,000",
     description: "Drive our digital marketing initiatives across multiple channels. Create and execute data-driven campaigns that deliver exceptional ROI for our B2B clients.",
     requirements: [
       "Experience with Google Ads, Facebook Ads, and LinkedIn Ads",
@@ -69,12 +69,12 @@ const jobOpenings = [
   },
   {
     id: 3,
-    title: "Business Development Manager",
+    title: "Business Development Manager (BDM)",
     department: "Sales",
-    location: "Delhi / Mumbai",
+    location: "Remote",
     type: "Full-time",
-    experience: "3-6 years",
-    salary: "₹6,00,000 - ₹12,00,000",
+    experience: "0-3 years",
+    salary: "5,00,000 - 8,00,000",
     description: "Lead our B2B sales initiatives and build strategic partnerships. Drive revenue growth through relationship building and innovative sales strategies.",
     requirements: [
       "Proven B2B sales track record",
@@ -90,10 +90,10 @@ const jobOpenings = [
     id: 4,
     title: "UI/UX Designer",
     department: "Design",
-    location: "Remote / Hybrid",
+    location: "Remote",
     type: "Full-time",
-    experience: "2-4 years",
-    salary: "₹4,50,000 - ₹9,00,000",
+    experience: "0-3 years",
+    salary: "₹1,50,000 - ₹3,00,000",
     description: "Create intuitive and visually stunning user experiences for our web and mobile applications. Work closely with development teams to bring designs to life.",
     requirements: [
       "Proficiency in Figma, Adobe Creative Suite",
@@ -107,12 +107,12 @@ const jobOpenings = [
   },
   {
     id: 5,
-    title: "Career Development Counselor",
+    title: "Business Development Associate (BDA)",
     department: "Education",
-    location: "Mumbai / Pune",
+    location: "Remote",
     type: "Full-time",
-    experience: "2-5 years",
-    salary: "₹4,00,000 - ₹8,00,000",
+    experience: "0-3 years",
+    salary: "₹3,00,000 - ₹6,00,000",
     description: "Guide and mentor students through our Launchpad program. Help professionals transition into successful tech careers through personalized coaching.",
     requirements: [
       "Experience in career counseling or HR",
@@ -126,12 +126,12 @@ const jobOpenings = [
   },
   {
     id: 6,
-    title: "DevOps Engineer",
+    title: "Operation Engineer",
     department: "Technologies",
-    location: "Remote / Hybrid",
+    location: "Remote",
     type: "Full-time",
-    experience: "3-5 years",
-    salary: "₹7,00,000 - ₹14,00,000",
+    experience: "0-3 years",
+    salary: "₹1,20,000 - ₹1,80,000",
     description: "Build and maintain our cloud infrastructure. Implement CI/CD pipelines and ensure scalable, secure deployment processes for our applications.",
     requirements: [
       "Experience with AWS/Azure cloud platforms",
@@ -143,6 +143,25 @@ const jobOpenings = [
     gradient: "from-neon-blue to-neon-purple",
     icon: IconRocket
   }
+  // {
+  //   id: 7,
+  //   title: "DevOps Engineer",
+  //   department: "Technologies",
+  //   location: "Remote / Hybrid",
+  //   type: "Full-time",
+  //   experience: "3-5 years",
+  //   salary: "₹7,00,000 - ₹14,00,000",
+  //   description: "Build and maintain our cloud infrastructure. Implement CI/CD pipelines and ensure scalable, secure deployment processes for our applications.",
+  //   requirements: [
+  //     "Experience with AWS/Azure cloud platforms",
+  //     "Proficiency in Docker, Kubernetes, and CI/CD tools",
+  //     "Knowledge of Infrastructure as Code (Terraform)",
+  //     "Strong scripting skills (Python, Bash)",
+  //     "Security-first mindset"
+  //   ],
+  //   gradient: "from-neon-blue to-neon-purple",
+  //   icon: IconRocket
+  // }
 ];
 
 const benefits = [
