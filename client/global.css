@@ -407,6 +407,16 @@
   body::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--neon-cyan) / 0.5);
   }
+
+  /* Hide scrollbar for testimonials */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
   
   /* Infinite Scroll Animation */
   @keyframes scroll {

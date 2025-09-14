@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { IconArrowRight, IconRocket, IconUsers, IconTrendingUp, IconBuilding, IconStar, IconCheck, IconPoint } from '@tabler/icons-react';
+import { IconArrowRight, IconRocket, IconUsers, IconTrendingUp, IconBuilding, IconStar, IconCheck, IconPoint, IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { Layout } from '../components/Layout';
 import { FullScreenHero } from '../components/FullScreenHero';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { sectionVariants, staggerContainer, fadeInUp, scaleIn, slideInLeft, slideInRight } from '../components/PageTransition';
 import { LogoCardsSection } from '@/components/LogoCardsSection';
+import LaunchPadSection from '@/components/LaunchPadSection';
+
 
 
 const achievements = [
@@ -57,23 +59,41 @@ const highlights = [
 
 const testimonials = [
   {
-    name: "Wasim Ali",
+    name: "Bhasker Ghosh",
     role: "CEO, TechStart Solutions",
-    content: "Their team was knowledgeable, responsive, and helped us achieve our goals.",
+    content: "I had a great experience while attending consultation...Thank you 🙂",
     rating: 5
   },
   {
-    name: "NILESH DUBEY",
+    name: "Kankana Samadder",
     role: "Software Developer",
-    content: "Best courses at Best price ❤",
-    rating: 5
+    content: "Must go for it!!! And see it by yourself 🥰 ",
+    rating: 4
   },
   {
     name: "Monishankar Banerjee",
     role: "Marketing Director, GrowthCorp",
     content: "Good company for B2B sales, IT support, and digital design solutions. They partner with local and global organizations to help individuals in practical ways to help with skill development.",
     rating: 5
-  }
+  },
+  {
+    name: "Avishikta Chatterjee",
+    role: "Software Developer",
+    content: "Amazing experience 🩷 ",
+    rating: 5
+  },
+  {
+    name: "Swapnamoy Ghosh",
+    role: "Local Guide",
+    content: "Very nice courses at best price .. value for money .. trust worthy.. ",
+    rating: 4
+  },
+  {
+    name: "Aman Kumar Singh",
+    role: "Software Developer",
+    content: "Best professional services with latest technology..!!",
+    rating: 5
+  },
 ];
 
 const brandPartners = [
@@ -165,6 +185,22 @@ const brandPartners = [
 
 export default function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+
+  const scrollTestimonials = (direction: 'left' | 'right') => {
+    if (testimonialsRef.current) {
+      const scrollAmount = 300; // Adjust scroll distance
+      const currentScroll = testimonialsRef.current.scrollLeft;
+      const targetScroll = direction === 'left' 
+        ? currentScroll - scrollAmount 
+        : currentScroll + scrollAmount;
+      
+      testimonialsRef.current.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <Layout>
@@ -181,13 +217,13 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Empowering{" "}
               <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
                 Growth & Innovation
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
               Kin-G Technologies delivers comprehensive solutions that drive business growth and accelerate career development through innovation and excellence.
             </p>
           </motion.div>
@@ -202,10 +238,10 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500 dark:hover:neon-glow-cyan">
+                <Card className="group h-full bg-card/30 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500 dark:hover:neon-glow-cyan">
                   <div className="absolute inset-0 dark:futuristic-grid opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
                   <CardHeader className="relative z-10">
-                    <CardTitle className="text-2xl font-bold mb-2 group-hover:text-neon-cyan transition-colors">
+                    <CardTitle className="text-xl font-bold mb-2 group-hover:text-neon-cyan transition-colors">
                       {highlight.title}
                     </CardTitle>
                     <CardDescription className="text-base">
@@ -236,6 +272,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <LaunchPadSection/>
 
       <LogoCardsSection />
 
@@ -307,32 +345,60 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500">
-                  <CardContent className="p-6">
-                    <div className="flex mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <IconStar key={i} className="h-5 w-5 text-neon-cyan fill-current" />
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground mb-4 italic">"{testimonial.content}"</p>
-                    <div>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      {/* <div className="text-sm text-muted-foreground">{testimonial.role}</div> */}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          {/* Scrollable Testimonials Container */}
+          <div className="relative">
+            {/* Navigation Arrows */}
+            <motion.button
+              onClick={() => scrollTestimonials('left')}
+              className="absolute left-0 top-1/2 z-10 bg-card/90 backdrop-blur-sm border border-border/40 hover:border-neon-cyan/50 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <IconChevronLeft className="h-6 w-6 text-muted-foreground group-hover:text-neon-cyan transition-colors" />
+            </motion.button>
+
+            <motion.button
+              onClick={() => scrollTestimonials('right')}
+              className="absolute right-4 top-1/2 z-10 bg-card/90 backdrop-blur-sm border border-border/40 hover:border-neon-cyan/50 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <IconChevronRight className="h-6 w-6 text-muted-foreground group-hover:text-neon-cyan transition-colors" />
+            </motion.button>
+
+            {/* Scrollable Testimonials */}
+            <div 
+              ref={testimonialsRef}
+              className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 pl-16 pr-16"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5 }}
+                  className="flex-shrink-0 w-80 lg:w-96"
+                >
+                  <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500">
+                    <CardContent className="p-6">
+                      <div className="flex mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <IconStar key={i} className="h-5 w-5 text-neon-cyan fill-current" />
+                        ))}
+                      </div>
+                      <p className="text-muted-foreground mb-4 italic">"{testimonial.content}"</p>
+                      <div>
+                        <div className="font-semibold">{testimonial.name}</div>
+                        <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
