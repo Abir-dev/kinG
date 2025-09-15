@@ -206,9 +206,10 @@ export default function HomePage() {
     <Layout>
       {/* Hero Section */}
       <FullScreenHero />
+      <LaunchPadSection/>
 
       {/* Company Overview */}
-      <section className="py-20 px-5">
+      <section className="py-10 px-5">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -272,8 +273,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <LaunchPadSection/>
 
       <LogoCardsSection />
 
