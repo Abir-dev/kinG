@@ -22,6 +22,7 @@ import {
 import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 
 const pricingTiers = [
   {
@@ -124,54 +125,67 @@ const programFeatures = [
   }
 ];
 
-const curriculum = [
+const courses = [
   {
-    week: "4 Months Course",
-    title: "AI Accelerating Mastery Course",
-    prices: [
-      "25,900",
+    id: 1,
+    title: "Microsoft Data Analyst Training",
+    logo: "/Microsoft.png",
+    duration:"1 Month",
+    keyModules: [
+      "Preparing Data for Analysis with Microsoft Excel",
+      "Harnessing the Power of Data with Power BI",
+      "Extract, Transform & Load (ETL) in Power BI",
+      "Data Modelling & Visualisation Techniques",
+      "Creative Dashboard Design Principles",
+      "Capstone Project Application",
+      "Microsoft PL-300 Exam Preparation"
     ]
   },
   {
-    week: "4 Months Course",
-    title: "Full Stack Development & Web Page Building ",
-    prices: [
-      "36,999"
+    id: 2,
+    title: "Google Data Analyst Training",
+    logo: "/Google.png",
+    duration:"1 Month",
+    keyModules: [
+      "Data Foundations & Decision Making",
+      "Data Cleaning & Preparation Strategies",
+      "Data Exploration & Analysis Techniques",
+      "Effective Data Visualisation",
+      "Data Analysis with R Programming",
+      "Google Data Analytics Capstone Project",
+      "Accelerate Job Search with AI Tools"
     ]
   },
   {
-    week: "4 Months Course",
-    title: "Stock Market Algotrade with AI Tools",
-    prices: [
-      "55,999"
+    id: 3,
+    title: "Meta Data Analytics Training",
+    logo: "/Meta.png",
+    duration:"1 Month",
+    keyModules: [
+      "Data Analytics with Spreadsheets & SQL",
+      "Python Data Analytics Applications",
+      "Statistics Foundation for Data Science",
+      "Data Management Basics",
+      "Completion of this phase awards you the Meta Data Analyst Professional Certification."
     ]
   },
   {
-    week: "4 Months Course",
-    title: "Software Development & Android Apps",
-    prices: [
-      "36,999"
-    ]
-  },
-  {
-    week: "4 Months Course",
-    title: "Tech Support & Network Support",
-    prices: [
-      "21,999"
-    ]
-  },
-  {
-    week: "4 Months Course",
-    title: "Finance & Sales Speech Readiness",
-    prices: [
-      "14,999"
-    ]
-  },
-  {
-    week: "4 Months Course",
-    title: "Digital Marketing",
-    prices: [
-      "11,999"
+    id: 4,
+    title: "Expand Your Skillset with 12 Specialisations",
+    logo: "/logo4.png",
+    duration:"Live Weekly Sessions(3 Classes/Week)",
+    keyModules: [
+      "Power BI",
+      "Tableau",
+      "Excel (Advanced)",
+      "MS Office (Advanced)",
+      "Professional Branding & LinkedIn Optimisation",
+      "Data Science Essentials",
+      "SQL",
+      "Python",
+      "PowerPoint AI Acceleration",
+      "AI Supply Chain & Management",
+      "NO-Code AI Website Building"
     ]
   }
 ];
@@ -237,7 +251,7 @@ export default function LaunchpadPage() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 px-4">
+      <section className="py-8 px-2">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -252,11 +266,10 @@ export default function LaunchpadPage() {
               <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
                 Launchpad
               </span>{" "}
-              Program
+                Master Program
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-              Transform your career with real corporate workload exposure, industry certifications, 
-              and guaranteed placement support. Join 1000+ professionals who have launched successful careers with us.
+              Your 90-Day Career Acceleration Journey Unlock Triple Certification & Real-World Experience
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -302,7 +315,7 @@ export default function LaunchpadPage() {
       </section>
 
       {/* Program Features */}
-      <section className="py-20 px-4">
+      <section className="py-10 px-2">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -346,7 +359,7 @@ export default function LaunchpadPage() {
         </div>
       </section>
 
-      {/* Curriculum */}
+      {/* Programme Overview */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -357,49 +370,81 @@ export default function LaunchpadPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Program{" "}
+              Programme {" "}
               <span className="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
-                Curriculum
+                Overview
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              A structured learning path designed to take you from beginner to job-ready professional
+              Our comprehensive programme offers specialized training in data analytics with industry-leading certifications
             </p>
           </motion.div>
 
-          <div className="space-y-8">
-            {curriculum.map((phase, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {courses.map((course, index) => (
               <motion.div
-                key={phase.week}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                key={course.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -5 }}
               >
-                <Card className="group bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500">
-                  <div className='flex items-center justify-between w-full'>
-                  <CardHeader>
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-neon-purple to-neon-pink rounded-full flex items-center justify-center text-black font-bold">
-                        {index + 1}
-                      </div>
-                      <div>
-                        <CardTitle className="text-2xl">{phase.title}</CardTitle>
-                        <CardDescription className="text-neon-purple font-medium">{phase.week}</CardDescription>
-                      </div>
+                <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500 dark:hover:neon-glow-cyan">
+                  <CardHeader className="text-center pb-4">
+                    <div className="flex items-center justify-center ">
+                      <img
+                        src={course.logo}
+                        alt={`${course.title} logo`}
+                        className="h-20 w-30 object-contain"
+                      />
                     </div>
+                    <CardTitle className="text-xl font-bold mb-2 text-center">
+                      {course.title}
+                    </CardTitle>
+                    <CardTitle className="text-lg font-normal mb-2 text-center">
+                      {course.duration}
+                    </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                      {phase.prices.map((price, topicIndex) => (
-                        <div key={price} className="flex items-center justify-end ">
-                          {/* <IconCheck className="h-4 w-4 text-neon-green flex-shrink-0" /> */}
-                          <span className="text-2xl text-muted-foreground text-bold">₹{price}</span>
+                  
+                  <CardContent className="pt-0">
+                    <div className="space-y-3">
+                      <h4 className="text-sm font-semibold text-neon-cyan mb-3">Key Modules:</h4>
+                      {course.id === 4 ? (
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                          {course.keyModules.map((module, moduleIndex) => (
+                            <motion.div
+                              key={moduleIndex}
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.3, delay: (index * 0.1) + (moduleIndex * 0.05) }}
+                              viewport={{ once: true }}
+                              className="flex items-start space-x-2"
+                            >
+                              <IconCheck className="h-4 w-4 mt-0.5 text-neon-green flex-shrink-0" />
+                              <span className="text-sm text-muted-foreground">{module}</span>
+                            </motion.div>
+                          ))}
                         </div>
-                      ))}
+                      ) : (
+                        <ul className="space-y-2">
+                          {course.keyModules.map((module, moduleIndex) => (
+                            <motion.li
+                              key={moduleIndex}
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.3, delay: (index * 0.1) + (moduleIndex * 0.05) }}
+                              viewport={{ once: true }}
+                              className="flex items-start space-x-2"
+                            >
+                              <IconCheck className="h-4 w-4 mt-0.5 text-neon-green flex-shrink-0" />
+                              <span className="text-sm text-muted-foreground">{module}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </CardContent>
-                  </div>
                 </Card>
               </motion.div>
             ))}
@@ -611,26 +656,36 @@ export default function LaunchpadPage() {
             </p>
           </motion.div>
 
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-300">
-                  <CardHeader>
-                    <CardTitle className="text-lg">{faq.question}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{faq.answer}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <AccordionItem 
+                    value={`item-${index}`}
+                    className="bg-card/50 backdrop-blur-sm border border-border/40 rounded-lg hover:border-neon-cyan/50 transition-all duration-300"
+                  >
+                    <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
+                      <span className="text-lg font-semibold text-muted-foreground">{faq.question}</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-4">
+                      <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
+              ))}
+            </Accordion>
+          </motion.div>
         </div>
       </section>
 
