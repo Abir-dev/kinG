@@ -174,9 +174,9 @@ export const initializeRazorpayPayment = (options: RazorpayOptions) => {
 export const validateRazorpayConfig = () => {
   const keyId = import.meta.env.VITE_RAZORPAY_KEY_ID;
   
-  console.log('🔍 Razorpay Config Debug:');
-  console.log('VITE_RAZORPAY_KEY_ID:', keyId);
-  console.log('All env vars:', import.meta.env);
+  // console.log('🔍 Razorpay Config Debug:');
+  // console.log('VITE_RAZORPAY_KEY_ID:', keyId);
+  // console.log('All env vars:', import.meta.env);
   
   if (!keyId) {
     console.error('❌ Razorpay Key ID not found in environment variables');
