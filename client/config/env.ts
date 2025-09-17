@@ -1,7 +1,7 @@
 // Environment configuration
 export const config = {
   razorpay: {
-    keyId: import.meta.env.VITE_RAZORPAY_KEY_ID,
+    keyId: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_1DP5mmOlF5G5ag",
     keySecret: import.meta.env.RAZORPAY_KEY_SECRET,
   },
   emailjs: {
