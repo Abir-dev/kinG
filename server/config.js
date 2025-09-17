@@ -29,7 +29,7 @@ export const config = {
 
   // CORS Configuration
   cors: {
-    origin: process.env.CORS_ORIGIN || "https://test-kin-g.onrender.com",
+    origin: process.env.CORS_ORIGIN,
   },
 };
 
