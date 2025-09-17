@@ -190,6 +190,58 @@ const courses = [
   }
 ];
 
+const curriculum = [
+  {
+    week: "4 Months Course",
+    title: "AI Accelerating Mastery Course",
+    prices: [
+      "25,900",
+    ]
+  },
+  {
+    week: "4 Months Course",
+    title: "Full Stack Development & Web Page Building ",
+    prices: [
+      "36,999"
+    ]
+  },
+  {
+    week: "4 Months Course",
+    title: "Stock Market Algotrade with AI Tools",
+    prices: [
+      "55,999"
+    ]
+  },
+  {
+    week: "4 Months Course",
+    title: "Software Development & Android Apps",
+    prices: [
+      "36,999"
+    ]
+  },
+  {
+    week: "4 Months Course",
+    title: "Tech Support & Network Support",
+    prices: [
+      "21,999"
+    ]
+  },
+  {
+    week: "4 Months Course",
+    title: "Finance & Sales Speech Readiness",
+    prices: [
+      "14,999"
+    ]
+  },
+  {
+    week: "4 Months Course",
+    title: "Digital Marketing",
+    prices: [
+      "11,999"
+    ]
+  }
+];
+
 const successStories = [
   {
     name: "Rahul Sharma",
@@ -452,7 +504,66 @@ export default function LaunchpadPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Curriculum */}
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Program{" "}
+              <span className="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
+                Curriculum
+              </span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              A structured learning path designed to take you from beginner to job-ready professional
+            </p>
+          </motion.div>
+
+          <div className="space-y-8">
+            {curriculum.map((phase, index) => (
+              <motion.div
+                key={phase.week}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="group bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500 flex items-center justify-between">
+                  <CardHeader>
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-neon-purple to-neon-pink rounded-full flex items-center justify-center text-white font-bold">
+                        {index + 1}
+                      </div>
+                      <div>
+                        <CardTitle className="text-2xl">{phase.title}</CardTitle>
+                        <CardDescription className="text-neon-purple font-medium">{phase.week}</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {phase.prices.map((price, topicIndex) => (
+                        <div key={price} className="flex items-center justify-center space-x-2">
+                          {/* <IconCheck className="h-4 w-4 text-neon-green flex-shrink-0" /> */}
+                          <span className="text-2xl text-muted-foreground text-bold">₹{price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section  */}
       {/* <section id="pricing" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -633,7 +744,7 @@ export default function LaunchpadPage() {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* FAQ Section */}
       <section className="py-20 px-4">

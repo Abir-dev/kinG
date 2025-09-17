@@ -220,7 +220,7 @@ export default function HomePage() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Empowering{" "}
-              <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
+              <span className="bg-gradient-to-r from-[#5a43dd] via-[#853cdf] to-[#FF08B9] bg-clip-text text-transparent dark:from-neon-cyan dark:via-neon-purple dark:to-neon-pink">
                 Growth & Innovation
               </span>
             </h2>
@@ -239,10 +239,10 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="group h-full bg-card/30 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500 dark:hover:neon-glow-cyan">
+                <Card className="group h-full bg-card/30 backdrop-blur-sm border-border/40 hover:border-[#4729ef] dark:hover:border-neon-cyan/50 transition-all duration-500 hover:neon-glow-blue dark:hover:neon-glow-cyan">
                   <div className="absolute inset-0 dark:futuristic-grid opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
                   <CardHeader className="relative z-10">
-                    <CardTitle className="text-xl font-bold mb-2 group-hover:text-neon-cyan transition-colors">
+                    <CardTitle className="text-xl font-bold mb-2 group-hover:text-[#4729ef] dark:group-hover:text-neon-cyan transition-colors">
                       {highlight.title}
                     </CardTitle>
                     <CardDescription className="text-base">
@@ -261,7 +261,7 @@ export default function HomePage() {
                           className="flex items-center text-sm text-muted-foreground"
                         >
                           {/* <IconCheck className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" /> */}
-                          <IconPoint className="h-4 w-4 text-neon-green mr-2 flex-shrink-0"/>
+                          <IconPoint className="h-4 w-4 text-[#4729ef] mr-2 flex-shrink-0"/>
                           {feature}
                         </motion.li>
                       ))}
@@ -288,7 +288,7 @@ export default function HomePage() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Our{" "}
-              <span className="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#5a43dd] via-[#853cdf] to-[#FF08B9] bg-clip-text text-transparent dark:from-neon-cyan dark:via-neon-purple dark:to-neon-pink">
                 Achievements
               </span>
             </h2>
@@ -300,7 +300,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {achievements.map((achievement, index) => (
               <motion.div
-                key={achievement.label}
+                key={achievement.label} 
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -308,9 +308,9 @@ export default function HomePage() {
                 whileHover={{ scale: 1.05 }}
                 className="text-center"
               >
-                <Card className="group bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-300 p-6">
-                  <achievement.icon className="h-12 w-12 mx-auto mb-4 text-neon-cyan group-hover:scale-110 transition-transform" />
-                  <div className="text-3xl font-bold text-primary mb-2">{achievement.number}</div>
+                <Card className="group bg-card/50 backdrop-blur-sm border-border/40 hover:border-[#674cff] dark:hover:border-neon-cyan/50 transition-all duration-300 p-6">
+                  <achievement.icon className="h-12 w-12 mx-auto mb-4 text-[#4729ef] dark:text-neon-cyan group-hover:scale-110 transition-transform" />
+                  <div className="text-3xl font-bold text-[#FF08B9] dark:text-primary mb-2">{achievement.number}</div>
                   <div className="text-lg font-semibold mb-2">{achievement.label}</div>
                   <div className="text-sm text-muted-foreground">{achievement.description}</div>
                 </Card>
@@ -335,7 +335,7 @@ export default function HomePage() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Client{" "}
-              <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#5a43dd] via-[#853cdf] to-[#FF08B9] bg-clip-text text-transparent dark:from-neon-cyan dark:via-neon-purple dark:to-neon-pink">
                 Success Stories
               </span>
             </h2>
@@ -358,7 +358,7 @@ export default function HomePage() {
 
             <motion.button
               onClick={() => scrollTestimonials('right')}
-              className="absolute right-4 top-1/2 z-10 bg-card/90 backdrop-blur-sm border border-border/40 hover:border-neon-cyan/50 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="absolute right-4 top-1/2 z-10 bg-card/90 backdrop-blur-sm border border-border/40  dark:hover:border-neon-cyan/50 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -381,11 +381,11 @@ export default function HomePage() {
                   whileHover={{ y: -5 }}
                   className="flex-shrink-0 w-80 lg:w-96"
                 >
-                  <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500">
+                  <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-[#674cff] dark:hover:border-neon-purple/50 transition-all duration-500">
                     <CardContent className="p-6">
                       <div className="flex mb-4">
                         {[...Array(testimonial.rating)].map((_, i) => (
-                          <IconStar key={i} className="h-5 w-5 text-neon-cyan fill-current" />
+                          <IconStar key={i} className="h-5 w-5 text-[#4729ef] dark:text-neon-cyan fill-current" />
                         ))}
                       </div>
                       <p className="text-muted-foreground mb-4 italic">"{testimonial.content}"</p>
@@ -413,7 +413,7 @@ export default function HomePage() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Ready to{" "}
-              <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#5a43dd] via-[#853cdf] to-[#FF08B9] bg-clip-text text-transparent dark:from-neon-cyan dark:via-neon-purple dark:to-neon-pink">
                 Transform
               </span>{" "}
               Your Future?
@@ -427,7 +427,7 @@ export default function HomePage() {
                 asChild
                 variant="outline"
                 size="lg" 
-                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold "
+                className="border-2 border-[#4729ef] bg-neon-blue/5 hover:bg-neon-blue/25 text-black hover:text-black px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl dark:border-2 dark:border-neon-purple/50 dark:bg-neon-purple/5 dark:hover:bg-neon-purple/30 dark:text-foreground"
               >
                 <Link to="/services">
                   Explore Our Services
@@ -438,7 +438,7 @@ export default function HomePage() {
                 asChild
                 variant="outline" 
                 size="lg"
-                className="border-neon-purple/50 text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300 px-8 py-4 text-lg font-semibold"
+                className="border-neon-purple/50 text-[#FF08B9] dark:text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300 px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/launchpad">
                   Join Launchpad Program

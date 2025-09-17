@@ -3,7 +3,7 @@ import { Navigation } from "./Navigation";
 import { PageTransition } from "./PageTransition";
 import { useGSAPAnimations } from "../hooks/useGSAPAnimations";
 import { useEffect } from "react";
-import { IconAnalyze, IconMail, IconMapPin, IconPhone } from "@tabler/icons-react";
+import { IconMail, IconMapPin, IconPhone } from "@tabler/icons-react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -97,21 +97,17 @@ export function Layout({ children }: LayoutProps) {
                   ))}
                 </div>   */}
                 <div className="flex items-center space-x-3 mb-4">
-                    <IconMapPin className="h-5 w-5 text-muted-foreground text-base" />
-                    <span className="text-muted-foreground text-base">EP & GP Block, Sector V, Kolkata, West Bengal 700091 /<br/>5/2, Simlai Para Lane Paikpara, Kolkata-700002</span>
+                    <IconMapPin className="h-6 w-6 text-[#4729ef] dark:text-neon-cyan" />
+                    <span className="font-semibold">Saltlake Sector V, Kolkata, India</span>
                 </div>
                 <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                      <IconAnalyze className="h-5 w-5 text-muted-foreground text-base" />
-                      <a href="regis no:UDYAM-WB-10-0176316" className=" hover:underline text-muted-foreground text-base">UDYAM-WB-10-0176316</a>
+                    <div className="flex items-center space-x-2">
+                      <IconPhone className="h-5 w-5 text-[#FF08B9] dark:text-neon-purple" />
+                      <a href="tel:+918910481993" className="text-[#FF08B9] dark:text-neon-purple hover:underline">+91 89104 81993</a>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <IconPhone className="h-5 w-5 text-muted-foreground text-base" />
-                      <a href="tel:+918910481993" className="hover:underline text-muted-foreground text-base">+91 8240347001</a>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <IconMail className="h-5 w-5 text-muted-foreground text-base" />
-                      <a href="mailto:admin@kingtechs.in" className="hover:underline text-muted-foreground text-base">admin@kingtechs.in</a>
+                      <IconMail className="h-5 w-5 text-[#4729ef] dark:text-neon-cyan" />
+                      <a href="mailto:admin@kingtechs.in" className="text-[#4729ef] dark:text-neon-cyan hover:underline">admin@kingtechs.in</a>
                     </div>
                 </div>
               </motion.div>

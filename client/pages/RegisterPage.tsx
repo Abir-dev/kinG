@@ -69,7 +69,7 @@ export default function RegisterPage() {
         // if (coursePricing.includes('1299')) return 1299;
         // if (coursePricing.includes('3999')) return 3999;
         if (coursePricing.includes("25900")) return 25900;
-        return 1299; // default
+        return 3000; // default
       case "Registration for AlgoBridge":
         return 9;
       default:
@@ -243,7 +243,7 @@ export default function RegisterPage() {
 
               {/* Student Details */}
               <div className="bg-background/50 border border-neon-purple/20 rounded-lg p-4">
-                <h4 className="text-sm font-semibold text-neon-purple mb-2">
+                <h4 className="text-sm font-semibold text-neon-purple ">
                   Student Details:
                 </h4>
                 <div className="text-xs text-muted-foreground space-y-1">
@@ -255,38 +255,8 @@ export default function RegisterPage() {
               </div>
             </div>
 
-            {/* Payment Button */}
-            <Button
-              onClick={handlePayment}
-              size="lg"
-              className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan py-3 text-lg font-semibold"
-              disabled={
-                paymentLoading ||
-                sending ||
-                !termsAccepted ||
-                !privacyAccepted ||
-                !shippingAccepted ||
-                !refundAccepted
-              }
-            >
-              {paymentLoading ? (
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                  Loading Payment...
-                </div>
-              ) : (
-                `Pay ₹${getPrice()} via Razorpay`
-              )}
-            </Button>
-
-            {error && (
-              <div className="text-neon-purple mt-4 text-sm text-center bg-red-500/10 border border-red-500/20 rounded-lg p-3">
-                {error}
-              </div>
-            )}
-
             {/* Terms and Privacy Policy */}
-            <div className="mt-6 space-y-3">
+            <div className=" space-y-3 mb-5">
               <div className="flex items-start space-x-2">
                 <Checkbox
                   id="terms"
@@ -379,6 +349,131 @@ export default function RegisterPage() {
                 </label>
               </div>
             </div>
+
+            {/* Payment Button */}
+            <Button
+              onClick={handlePayment}
+              size="lg"
+              className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple hover:opacity-90 transition-all duration-300 neon-glow-cyan py-3 text-lg font-semibold"
+              disabled={
+                paymentLoading ||
+                sending ||
+                !termsAccepted ||
+                !privacyAccepted ||
+                !shippingAccepted ||
+                !refundAccepted
+              }
+            >
+              {paymentLoading ? (
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  Loading Payment...
+                </div>
+              ) : (
+                `Pay ₹${getPrice()} via Razorpay`
+              )}
+            </Button>
+
+            {error && (
+              <div className="text-neon-purple mt-4 text-sm text-center bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                {error}
+              </div>
+            )}
+
+            {/* Terms and Privacy Policy
+            <div className="mt-6 space-y-3">
+              <div className="flex items-start space-x-2">
+                <Checkbox
+                  id="terms"
+                  checked={termsAccepted}
+                  onCheckedChange={(checked) =>
+                    setTermsAccepted(checked as boolean)
+                  }
+                />
+                <label
+                  htmlFor="terms"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/terms-of-service"
+                    className="text-neon-cyan hover:text-neon-purple"
+                    target="_blank"
+                  >
+                    Terms of Service
+                  </Link>
+                </label>
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <Checkbox
+                  id="privacy"
+                  checked={privacyAccepted}
+                  onCheckedChange={(checked) =>
+                    setPrivacyAccepted(checked as boolean)
+                  }
+                />
+                <label
+                  htmlFor="privacy"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/privacy-policy"
+                    className="text-neon-cyan hover:text-neon-purple"
+                    target="_blank"
+                  >
+                    Privacy Policy
+                  </Link>
+                </label>
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <Checkbox
+                  id="shipping"
+                  checked={shippingAccepted}
+                  onCheckedChange={(checked) =>
+                    setShippingAccepted(checked as boolean)
+                  }
+                />
+                <label
+                  htmlFor="shipping"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/shipping-policy"
+                    className="text-neon-cyan hover:text-neon-purple"
+                    target="_blank"
+                  >
+                    Shipping Policy
+                  </Link>
+                </label>
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <Checkbox
+                  id="refund"
+                  checked={refundAccepted}
+                  onCheckedChange={(checked) =>
+                    setRefundAccepted(checked as boolean)
+                  }
+                />
+                <label
+                  htmlFor="refund"
+                  className="text-sm text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/refund-policy"
+                    className="text-neon-cyan hover:text-neon-purple"
+                    target="_blank"
+                  >
+                    Refund Policy
+                  </Link>
+                </label>
+              </div>
+            </div> */}
 
             {/* Security Note */}
             <div className="mt-4 text-xs text-muted-foreground text-center">

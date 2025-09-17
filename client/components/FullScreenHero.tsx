@@ -38,16 +38,16 @@ export function FullScreenHero() {
                   </div>
                   
                   <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none">
-                    <span className="text-foreground px-1.5 rounded">
+                    <span className="text-white dark:text-foreground px-1.5 rounded">
                       Kin-G
                     </span>
                     <br/>
-                    <span className="text-foreground text-3xl md:text-5xl lg:text-6xl font-light">
+                    <span className="text-white dark:text-foreground text-3xl md:text-5xl lg:text-6xl font-light">
                       Technologies
                     </span>
                   </h1>
                   
-                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                  <p className="text-base sm:text-lg text-white/90 dark:text-muted-foreground leading-relaxed max-w-2xl">
                     Delivering comprehensive Technologies solutions, career development programs, and business consulting services to drive growth and innovation.
                   </p>
                 </div>
@@ -58,7 +58,7 @@ export function FullScreenHero() {
                     asChild
                     variant="outline" 
                     size="lg" 
-                    className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl"
+                    className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 text-white hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl dark:border-2 dark:border-neon-purple/50 dark:bg-neon-purple/5 dark:hover:bg-neon-purple/30 dark:text-foreground"
                   >
                     <Link to="/services">
                       Explore Our Services
@@ -69,7 +69,7 @@ export function FullScreenHero() {
                     asChild
                     variant="outline" 
                     size="lg"
-                    className="border-2 border-border hover:border-neon-purple/50 hover:bg-neon-purple/5 transition-all px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl"
+                    className="bg-transparent text-white hover:text-white border-2 border-border hover:border-neon-purple/50 hover:bg-neon-purple/5 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl dark:bg-transparent dark:text-foreground dark:border-2 dark:border-border dark:hover:border-neon-purple/50 dark:hover:bg-neon-purple/5"
                   >
                     <Link to="/contact">
                       <IconPhone className="mr-2 h-5 w-5" />
@@ -113,14 +113,14 @@ export function FullScreenHero() {
                         <div>
                           {/* Number + Label on same line */}
                           <div className="flex items-baseline gap-2 mb-1.5">
-                            <div className="text-2xl sm:text-3xl font-bold text-foreground">
+                            <div className="text-2xl sm:text-3xl font-bold text-white dark:text-foreground">
                               {stat.number}
                             </div>
-                            <div className="text-base sm:text-lg font-semibold text-foreground">
+                            <div className="text-base sm:text-lg font-semibold text-white dark:text-foreground">
                               {stat.label}
                             </div>
                           </div>
-                          <div className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                          <div className="text-xs sm:text-sm text-white/80 dark:text-muted-foreground leading-relaxed">
                             {stat.description}
                           </div>
                         </div>

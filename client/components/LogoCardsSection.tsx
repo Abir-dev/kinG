@@ -105,7 +105,7 @@ export const LogoCardsSection: React.FC = () => {
   };
 
   return (
-    <section className="py-12 px-4 relative overflow-hidden">
+    <section className="py-7 px-4 mb-6 relative overflow-hidden">
       {/* Soft background accents (optional) */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-muted/10">
         <div className="absolute top-20 left-20 w-72 h-72 bg-neon-cyan/8 rounded-full blur-3xl"></div>
@@ -123,14 +123,14 @@ export const LogoCardsSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-neon-cyan/20 rounded-full text-sm font-medium text-neon-cyan mb-6 backdrop-blur-sm">
-            <div className="w-2 h-2 bg-neon-cyan rounded-full"></div>
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-neon-cyan/20 rounded-full text-sm font-medium text-[#4729ef] dark:text-neon-cyan mb-6 backdrop-blur-sm">
+            <div className="w-2 h-2 bg-[#4729ef] rounded-full"></div>
             Trusted Global Partnerships
-            <div className="w-2 h-2 bg-neon-purple rounded-full"></div>
+            <div className="w-2 h-2 bg-[#FF08B9] rounded-full"></div>
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
             Industry{" "}
-            <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
+            <span className="bg-gradient-to-r from-[#5a43dd] via-[#853cdf] to-[#FF08B9] bg-clip-text text-transparent dark:from-neon-cyan dark:via-neon-purple dark:to-neon-pink">
               Giants
             </span>
             <br />
@@ -202,10 +202,10 @@ export const LogoCardsSection: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8"
         >
           {[
-            { number: "20+", label: "Global Partners", color: "text-neon-cyan" },
-            { number: "98%", label: "Success Rate", color: "text-neon-purple" },
-            { number: "24/7", label: "Support", color: "text-neon-pink" },
-            { number: "10K+", label: "Users Served", color: "text-neon-cyan" },
+            { number: "20+", label: "Global Partners", color: "text-[#4729ef]" },
+            { number: "98%", label: "Success Rate", color: "text-[#FF08B9]" },
+            { number: "24/7", label: "Support", color: "text-[#853cdf]" },
+            { number: "10K+", label: "Users Served", color: "text-[#4729ef]" },
           ].map((stat) => (
             <motion.div key={stat.label} className="text-center group" whileHover={{ y: -4 }} transition={{ duration: 0.25 }}>
               <div className="text-4xl font-bold mb-2 group-hover:scale-110 transition-transform duration-300">

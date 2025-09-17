@@ -15,7 +15,7 @@ export function ThemeToggle() {
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      className="relative overflow-hidden border-neon-purple/20 hover:border-neon-purple/40 transition-colors"
+      className="relative overflow-hidden border-[#5d41ff] hover:border-[#4729ef] dark:border-neon-purple/20 dark:hover:border-neon-purple/40 transition-colors"
     >
       <motion.div
         initial={false}
@@ -26,7 +26,7 @@ export function ThemeToggle() {
         transition={{ duration: 0.2 }}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <IconSun className="h-4 w-4 text-neon-cyan" />
+        <IconSun className="h-4 w-4 text-[#4729ef]" />
       </motion.div>
       <motion.div
         initial={false}

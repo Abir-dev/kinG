@@ -84,14 +84,14 @@ export function Navigation() {
                 key={item.name}
                 to={item.href}
                 className={`text-foreground hover:text-primary transition-all duration-300 font-medium relative group ${
-                  location.pathname === item.href ? 'text-neon-cyan' : ''
+                  location.pathname === item.href ? 'text-[#4729ef] dark:text-neon-cyan' : ''
                 }`}
               >
                 {item.name}
                 {location.pathname === item.href && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-neon-cyan to-neon-purple"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#5a43dd] to-[#FF08B9] dark:bg-gradient-to-r dark:from-neon-cyan dark:to-neon-purple"
                   />
                 )}
               </Link>
@@ -100,11 +100,12 @@ export function Navigation() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
+            {/* <ThemeToggle /> */}
             <Link to="/contact">
               <Button
                 variant="outline"
                 size="sm"
-                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-4 py-4 text-sm rounded-2xl"
+                className="border-2 border-[#4729ef] dark:border-neon-purple/50 bg-neon-blue/5 hover:bg-neon-blue/25 dark:bg-neon-purple/5 dark:hover:bg-neon-purple/30 transition-all px-4 py-4 text-sm rounded-2xl"
               >
                 Contact Us
               </Button>
@@ -113,7 +114,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             <Button
               variant="ghost"
               size="icon"
