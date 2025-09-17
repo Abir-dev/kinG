@@ -160,12 +160,33 @@ export default function RegisterPage() {
         amount: getPrice(),
       };
 
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID!,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!,
-      );
+      // Check if EmailJS is properly configured
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (
+        !serviceId ||
+        !templateId ||
+        !publicKey ||
+        serviceId === "service_placeholder" ||
+        templateId === "template_placeholder" ||
+        publicKey === "public_key_placeholder"
+      ) {
+        console.warn("EmailJS not configured, skipping email notification");
+        // Still mark as success since payment was successful
+        setSuccess(true);
+        setShowModal(false);
+        navigate("/success");
+        return;
+      }
+
+      try {
+        await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      } catch (emailError) {
+        console.warn("EmailJS failed, but payment was successful:", emailError);
+        // Don't throw error, just log it and continue
+      }
 
       setSuccess(true);
       setShowModal(false);
