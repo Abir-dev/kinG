@@ -124,9 +124,9 @@ export const LogoCardsSection: React.FC = () => {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-neon-cyan/20 rounded-full text-sm font-medium text-[#4729ef] dark:text-neon-cyan mb-6 backdrop-blur-sm">
-            <div className="w-2 h-2 bg-[#4729ef] rounded-full"></div>
+            <div className="w-2 h-2 bg-[#4729ef] dark:bg-neon-cyan rounded-full"></div>
             Trusted Global Partnerships
-            <div className="w-2 h-2 bg-[#FF08B9] rounded-full"></div>
+            <div className="w-2 h-2 bg-[#FF08B9] dark:bg-neon-pink rounded-full"></div>
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
             Industry{" "}
