@@ -25,4 +25,4 @@ services:
       - key: MAIL_PASS
         sync: false
       - key: CORS_ORIGIN
-        value: https://test-kin-g.onrender.com
+        value: https://kin-ekbs2u8kd-abir-devs-projects.vercel.app

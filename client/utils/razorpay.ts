@@ -178,21 +178,13 @@ export const validateRazorpayConfig = () => {
   console.log('VITE_RAZORPAY_KEY_ID:', keyId);
   console.log('All env vars:', import.meta.env);
   
-  // Fallback to hardcoded key if env var is not available
-  const fallbackKeyId = "rzp_live_R8T4nFNuOV2OP4";
-  const finalKeyId = keyId || fallbackKeyId;
-  
-  if (!finalKeyId) {
+  if (!keyId) {
     console.error('❌ Razorpay Key ID not found in environment variables');
     console.error('Available env vars:', Object.keys(import.meta.env));
-    throw new Error('Razorpay Key ID not found in environment variables. Please check VITE_RAZORPAY_KEY_ID in your .env file');
+    throw new Error('Razorpay Key ID not found in environment variables. Please set VITE_RAZORPAY_KEY_ID in your deployment environment');
   }
 
-  if (!keyId) {
-    console.warn('⚠️ Using fallback Razorpay Key ID. Please set VITE_RAZORPAY_KEY_ID in your .env file');
-  }
-
-  return { keyId: finalKeyId };
+  return { keyId };
 };
 
 // Complete payment flow with order creation and verification
