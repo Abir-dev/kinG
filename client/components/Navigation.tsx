@@ -38,7 +38,7 @@ export function Navigation() {
       initial={false}
       animate={{ y: 0, opacity: 1 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "navbar-scrolled mt-4 max-w-6xl mx-auto px-4 " : "navbar-scrolled mt-4 max-w-7xl mx-auto px-4"
+        scrolled ? "navbar-scrolled mt-4 max-w-6xl mx-auto px-4 " : "navbar-top"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -62,33 +62,30 @@ export function Navigation() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`nav-link relative group ${
-                  location.pathname === item.href ? "text-white" : ""
-                }`}
-              >
-                {item.name}
-                {location.pathname === item.href && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#5a43dd] to-[#FF08B9]"
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
+         {/* Desktop Navigation */}
+<div className="hidden md:flex items-center space-x-8">
+  {navItems.map((item) => (
+    <Link
+      key={item.name}
+      to={item.href}
+      className={`nav-link relative group ${
+        location.pathname === item.href ? "text-pink-glow" : ""
+
+      }`}
+    >
+      {item.name}
+    </Link>
+  ))}
+</div>
+
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link to="/contact">
-              <button className="glass-button">Contact Us</button>
-            </Link>
-          </div>
+<div className="hidden md:flex items-center space-x-4">
+  <Link to="/contact">
+    <button className="glass-button-pink">Contact Us</button>
+  </Link>
+</div>
+
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
@@ -118,9 +115,11 @@ export function Navigation() {
                 {item.name}
               </Link>
             ))}
-            <Link to="/contact" onClick={closeMenu} className="mt-4 block w-full">
-              <button className="glass-button w-full py-3 text-lg">Contact Us</button>
-            </Link>
+           {/* Mobile Contact */}
+<Link to="/contact" onClick={closeMenu} className="mt-4 block w-full">
+  <button className="glass-button-pink w-full py-3 text-lg">Contact Us</button>
+</Link>
+
           </div>
         </motion.div>
       </div>

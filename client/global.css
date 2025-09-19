@@ -446,16 +446,31 @@
   -webkit-backdrop-filter: none;
   border: none;
   box-shadow: none;
+  border-radius: 0;
+  transition: all 0.3s ease;
 }
 
+/* Navbar when scrolled */
 .navbar-scrolled {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.07); /* light frosted look */
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border-radius: 15px 15px 15px 15px;
+
+  /* modern subtle glow instead of heavy shadow */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25),
+              0 0 12px rgba(255, 20, 147, 0.25);
+
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
+
+/* GPU hinting */
+.navbar-scrolled,
+.navbar-top {
+  will-change: transform, backdrop-filter, box-shadow, background;
+}
+
 
 /* Nav links */
 .nav-link {
@@ -508,4 +523,26 @@
 
 .animate-slide-in {
   animation: slide-in 0.3s ease-out;
+}
+
+/* Special glass button with pink shade */
+.glass-button-pink {
+  background: rgba(255, 20, 147, 0.15); /* soft pink glass */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 20, 147, 0.4);
+  border-radius: 12px;
+  padding: 8px 16px;
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.glass-button-pink:hover {
+  background: rgba(255, 20, 147, 0.25);
+  border-color: rgba(255, 20, 147, 0.6);
+}
+
+.text-pink-glow {
+  color: rgb(255, 20, 147); /* hot pink */
 }
