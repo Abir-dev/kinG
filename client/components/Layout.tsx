@@ -18,7 +18,7 @@ export function Layout({ children }: LayoutProps) {
   }, [refresh]);
 
   return (
-    <div className="min-h-screen bg-background relative overflow-x-hidden">
+    <div className="min-h-screen  relative overflow-x-hidden">
       <Navigation />
 
       <main className="pt-16">
@@ -26,7 +26,7 @@ export function Layout({ children }: LayoutProps) {
       </main>
 
       {/* Professional Footer */}
-      <footer className="bg-background border-t border-border/20 relative overflow-hidden">
+      <footer className=" border-t border-border/20 relative overflow-hidden">
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 opacity-5">
           <div

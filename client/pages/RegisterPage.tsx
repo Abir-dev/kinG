@@ -506,7 +506,7 @@ export default function RegisterPage() {
 
       <Layout>
         {/* Modern Minimalist Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/20">
+        <section className="relative min-h-screen flex items-center justify-center ">
           <div className="max-w-6xl mx-auto px-6 py-20">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Side - Content */}
@@ -647,7 +647,7 @@ export default function RegisterPage() {
         {/* Registration Form Section */}
         <section
           id="registration-form"
-          className="min-h-screen bg-gradient-to-br from-background via-background/95 to-muted/10 relative"
+          className="min-h-screen  relative"
         >
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-5">
@@ -667,7 +667,7 @@ export default function RegisterPage() {
                   className="mb-8"
                 >
                   <div className="flex items-center gap-3 mb-8">
-                    <div className="w-2 h-8 bg-gradient-to-b from-neon-cyan to-neon-purple rounded-full"></div>
+                    {/* <div className="w-2 h-8 bg-gradient-to-b from-neon-cyan to-neon-purple rounded-full"></div> */}
                     <div>
                       <h1 className="text-3xl font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
                         Ready to Get Started?

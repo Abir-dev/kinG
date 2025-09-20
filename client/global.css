@@ -355,10 +355,14 @@
     animation: shimmer 2s infinite;
   }
 
-  /* Enhanced smooth scroll behavior */
-  html {
-    scroll-behavior: smooth;
-  }
+  html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #000; /* fallback in case image doesn't cover */
+  scroll-behavior: smooth;
+}
+
 
   /* Smooth page transitions */
   * {
@@ -451,19 +455,23 @@
 }
 
 /* Navbar when scrolled */
+/* Navbar when scrolled */
 .navbar-scrolled {
-  background: rgba(255, 255, 255, 0.07); /* light frosted look */
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 20, 147, 0.08); /* subtle pink glass tint */
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  
+  border: 1px solid rgba(255, 20, 147, 0.3); /* slim pink ring */
+  border-radius: 16px;
 
-  /* modern subtle glow instead of heavy shadow */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25),
-              0 0 12px rgba(255, 20, 147, 0.25);
+  /* inner glow + subtle outer ring */
+  box-shadow: 
+    inset 0 0 18px rgba(255, 20, 147, 0.25), /* inner pink glow */
+    0 0 6px rgba(255, 20, 147, 0.4);         /* slim pink ring outside */
 
-  border-radius: 12px;
   transition: all 0.3s ease;
 }
+
 
 /* GPU hinting */
 .navbar-scrolled,

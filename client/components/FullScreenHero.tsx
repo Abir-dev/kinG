@@ -4,22 +4,22 @@ import { IconArrowRight, IconPhone, IconAward, IconUsers, IconTrendingUp } from 
 
 export function FullScreenHero() {
   return (
-    <section className="relative border-none overflow-hidden min-h-[60vh] sm:h-[50vh]"> {/* prevent clipping and borders */}
+    <section className="relative border-none overflow-hidden min-h-screen sm:h-screen"> {/* prevent clipping and borders */}
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        {/* Background image from public folder */}
+      {/* <div className="absolute inset-0">
+     
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat " /* no-repeat avoids faint lines */
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat "
           style={{ backgroundImage: "url('/images/bg1.jpeg')" }}
         />
 
-        {/* Dark overlay for readability */}
+     
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-black/30 bg-no-repeat pointer-events-none mix-blend-normal"></div>
 
-        {/* Accent overlays (non-overlapping to avoid seams) */}
+     
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-neon-cyan/10 to-transparent bg-no-repeat pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-neon-purple/10 to-transparent bg-no-repeat pointer-events-none" />
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col">

@@ -107,12 +107,12 @@ export const LogoCardsSection: React.FC = () => {
   return (
     <section className="py-7 px-4 mb-6 relative overflow-hidden">
       {/* Soft background accents (optional) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-muted/10">
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-muted/10">
         <div className="absolute top-20 left-20 w-72 h-72 bg-neon-cyan/8 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-neon-purple/8 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-neon-pink/6 rounded-full blur-3xl"></div>
         <div className="absolute inset-0 futuristic-grid opacity-5"></div>
-      </div>
+      </div> */}
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}

@@ -38,7 +38,7 @@ export function Navigation() {
       initial={false}
       animate={{ y: 0, opacity: 1 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "navbar-scrolled mt-4 max-w-6xl mx-auto px-4 " : "navbar-top"
+        scrolled ? "navbar-scrolled mt-4 max-w-6xl mx-auto px-4 " : "navbar-scrolled mt-4 max-w-7xl mx-auto px-4 "
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">
