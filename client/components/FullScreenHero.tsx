@@ -71,9 +71,9 @@ export function FullScreenHero() {
                     size="lg"
                     className="bg-transparent text-white hover:text-white border-2 border-border hover:border-neon-purple/50 hover:bg-neon-purple/5 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl dark:bg-transparent dark:text-foreground dark:border-2 dark:border-border dark:hover:border-neon-purple/50 dark:hover:bg-neon-purple/5"
                   >
-                    <Link to="/contact">
-                      <IconPhone className="mr-2 h-5 w-5" />
-                      Contact Us
+                    <Link to="/about">
+                      {/* <IconPhone className="mr-2 h-5 w-5" /> */}
+                      About Us
                     </Link>
                   </Button>
                 </div>

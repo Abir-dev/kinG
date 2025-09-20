@@ -5,7 +5,7 @@ import { IconMenu2, IconX } from "@tabler/icons-react";
 import { Button } from "./ui/button";
 
 const navItems = [
-  { name: "About", href: "/about" },
+  // { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Careers", href: "/careers" },
   { name: "Launchpad", href: "/launchpad" },
@@ -38,7 +38,7 @@ export function Navigation() {
       initial={false}
       animate={{ y: 0, opacity: 1 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "navbar-scrolled mt-4 max-w-6xl mx-auto px-4 " : "navbar-scrolled mt-4 max-w-7xl mx-auto px-4 "
+        scrolled ? "navbar-scrolled mt-4 max-w-5xl mx-auto px-4 " : "navbar-top mt-4 max-w-6xl mx-auto px-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">

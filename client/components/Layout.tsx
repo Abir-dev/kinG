@@ -19,6 +19,8 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen  relative overflow-x-hidden">
+      <div className="fixed inset-0 -z-10 site-pink-gradient-bg" />
+      <div className="fixed inset-0 z-[-5] site-pink-gradient-frost" />
       <Navigation />
 
       <main className="pt-16">

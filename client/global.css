@@ -359,7 +359,7 @@
   margin: 0;
   padding: 0;
   height: 100%;
-  background: #000; /* fallback in case image doesn't cover */
+  background: #ff149314; /* fallback in case image doesn't cover */
   scroll-behavior: smooth;
 }
 
@@ -457,7 +457,7 @@
 /* Navbar when scrolled */
 /* Navbar when scrolled */
 .navbar-scrolled {
-  background: rgba(255, 20, 147, 0.08); /* subtle pink glass tint */
+  background: rgba(94, 34, 66, 0.08); /* subtle pink glass tint */
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   
@@ -553,4 +553,40 @@
 
 .text-pink-glow {
   color: rgb(255, 20, 147); /* hot pink */
+}
+
+.site-pink-gradient-bg {
+  /* Deep black base with evenly distributed darkish pink washes on all quadrants */
+  background-color: #0E0E0E; /* deep base */
+
+  /* Symmetric radial darker pink washes + gentle central glow (darkish pink tones) */
+  background-image:
+    linear-gradient(135deg, rgba(176,0,90,0.26) 0%, rgba(176,0,90,0.18) 35%, rgba(176,0,90,0.10) 60%, rgba(176,0,90,0.00) 100%),
+    radial-gradient(900px 450px at 20% 20%, rgba(176,0,90,0.20), transparent 35%),
+    radial-gradient(900px 450px at 80% 20%, rgba(176,0,90,0.20), transparent 35%),
+    radial-gradient(900px 450px at 20% 80%, rgba(200,30,100,0.10), transparent 35%),
+    radial-gradient(900px 450px at 80% 80%, rgba(200,30,100,0.10), transparent 35%),
+    radial-gradient(1200px 600px at 50% 50%, rgba(176,0,90,0.14), transparent 45%);
+
+  background-blend-mode: screen, screen, screen, screen, screen, normal;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  opacity: 1;
+  will-change: background;
+  pointer-events: none;
+}
+
+/* Transparent glassy frost to mute the neon and give a frosted black glass look */
+.site-pink-gradient-frost {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  pointer-events: none;
+  background: rgba(0,0,0,0.62); /* slightly darker glass to make pink appear richer */
+  backdrop-filter: blur(14px) saturate(0.9);
+  -webkit-backdrop-filter: blur(14px) saturate(0.9);
+  border: 1px solid rgba(176,0,90,0.06); /* faint darker-pink rim */
+  box-shadow: inset 0 2px 80px rgba(176,0,90,0.02), inset 0 8px 40px rgba(0,0,0,0.6);
 }
