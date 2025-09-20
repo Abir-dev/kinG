@@ -145,8 +145,8 @@ const LaunchPadSection: FC = () => {
                   <Card className="group bg-card/30 backdrop-blur-sm border-border/30 relative overflow-hidden h-full">
                     <div className="absolute inset-0 dark:futuristic-grid opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                     <CardContent className="relative z-10 p-6 md:p-8 h-full flex">
-                      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8 w-full items-center 
-                        text-center md:text-left justify-items-center md:justify-items-start">
+                      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-5 w-full items-center 
+                        text-center md:text-left justify-items-center md:justify-items-center">
                         
                         {/* Logo */}
                         <div className="md:col-span-2 flex justify-center">
@@ -242,3 +242,4 @@ const LaunchPadSection: FC = () => {
 };
 
 export default LaunchPadSection;
+
