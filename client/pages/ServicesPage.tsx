@@ -157,7 +157,7 @@ const services = [
     description:
       "Seamless CRM integration and optimized call flow design to streamline your sales processes.",
     icon: IconDatabase,
-    gradient: "from-neon-green to-neon-cyan",
+    gradient: " from-[#0254f4] to-[#20b7bf]",
     detailedDescription:
       "We specialize in enterprise-grade CRM integration and optimization, creating intelligent sales workflows that leverage AI automation, advanced analytics, and seamless third-party integrations. Our solutions transform your sales operations with smart data flow, predictive insights, and enhanced team productivity.",
     features: [
@@ -219,7 +219,7 @@ const services = [
     description:
       "Full-stack development services for modern, responsive websites and mobile applications.",
     icon: IconCode,
-    gradient: "from-neon-cyan to-neon-purple",
+    gradient: "from-neon-blue to-neon-cyan",
     detailedDescription:
       "Our elite development team creates cutting-edge, enterprise-grade websites and mobile applications using the latest technologies and frameworks. We specialize in high-performance, scalable solutions with advanced security, AI integration, and cloud-native architecture that drive measurable business growth.",
     features: [
@@ -343,7 +343,7 @@ const services = [
     description:
       "Data-driven digital marketing strategies and SEO optimization to increase your online visibility.",
     icon: IconTrendingUp,
-    gradient: "from-neon-blue to-neon-green",
+    gradient:  "from-[#0254f4] to-[#20b7bf]",
     detailedDescription:
       "Our comprehensive digital marketing services leverage AI-powered SEO tools, advanced PPC automation, and data-driven content strategies to create high-performance campaigns that dominate search rankings, drive qualified traffic, and maximize revenue growth across all digital channels.",
     features: [
@@ -547,9 +547,9 @@ export default function ServicesPage() {
       {/* Payment Modal */}
       {showModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-lg bg-black/40">
-          <div className="bg-card/80 backdrop-blur-xl border border-neon-cyan/30 shadow-2xl rounded-xl p-8 w-full max-w-md relative flex flex-col items-center">
+          <div className="bg-card/80 backdrop-blur-xl border  shadow-2xl rounded-xl p-8 w-full max-w-md relative flex flex-col items-center">
             <button
-              className="absolute top-2 right-2 text-2xl text-neon-cyan hover:text-neon-purple transition"
+              className="absolute top-2 right-2 text-2xl bg-transparent text-black no-global-button"
               onClick={() => {
                 setShowModal(false);
                 clearError();
@@ -563,7 +563,7 @@ export default function ServicesPage() {
               &times;
             </button>
 
-            <h2 className="text-2xl font-bold mb-6 text-center text-neon-cyan">
+            <h2 className="text-2xl font-bold mb-6 text-center">
               Service Payment
             </h2>
 
@@ -574,7 +574,7 @@ export default function ServicesPage() {
                   <span className="text-sm text-muted-foreground">
                     Service:
                   </span>
-                  <span className="text-sm font-medium text-neon-cyan">
+                  <span className="text-sm font-medium text-[#1c949a]">
                     {selectedService?.title}
                   </span>
                 </div>
@@ -583,17 +583,17 @@ export default function ServicesPage() {
                   <span className="text-sm text-muted-foreground">
                     Package:
                   </span>
-                  <span className="text-sm font-medium text-neon-purple">
+                  <span className="text-sm font-medium text-[#0254f4]">
                     {selectedPackage?.name}
                   </span>
                 </div>
 
-                <div className="border-t border-neon-cyan/20 pt-2 mt-2">
+                <div className="pt-2 mt-2">
                   <div className="flex justify-between items-center">
-                    <span className="font-semibold text-neon-cyan">
+                    <span className="font-semibold">
                       Total Amount:
                     </span>
-                    <span className="text-xl font-bold text-neon-purple">
+                    <span className="text-xl font-bold text-[#0254f4]">
                       {selectedPackage?.price}
                     </span>
                   </div>
@@ -631,7 +631,7 @@ export default function ServicesPage() {
                   <Link
                     to="/terms-of-service"
                     target="_blank"
-                    className="text-neon-purple hover:text-neon-pink underline"
+                    className="text-[#0254f4] hover:text-neon-pink underline"
                   >
                     Terms of Service
                   </Link>
@@ -655,7 +655,7 @@ export default function ServicesPage() {
                   <Link
                     to="/privacy-policy"
                     target="_blank"
-                    className="text-neon-purple hover:text-neon-pink underline"
+                    className="text-[#0254f4] hover:text-neon-pink underline"
                   >
                     Privacy Policy
                   </Link>
@@ -679,7 +679,7 @@ export default function ServicesPage() {
                   <Link
                     to="/shipping-policy"
                     target="_blank"
-                    className="text-neon-purple hover:text-neon-pink underline"
+                    className="text-[#0254f4] hover:text-neon-pink underline"
                   >
                     Shipping Policy
                   </Link>
@@ -703,7 +703,7 @@ export default function ServicesPage() {
                   <Link
                     to="/refund-policy"
                     target="_blank"
-                    className="text-neon-purple hover:text-neon-pink underline"
+                    className="text-[#0254f4] hover:text-neon-pink underline"
                   >
                     Refund Policy
                   </Link>
@@ -759,13 +759,13 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
             className="mb-16"
           >
-            <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-6">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-[#87a7e8] rounded-full text-sm font-medium text-[#0254f4] dark:text-neon-cyan mb-6 backdrop-blur-sm">
               Services
             </div>
             <h1 className="text-4xl md:text-7xl font-bold mb-6">
-              Our{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
-                Services
+               Our Services
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -809,7 +809,7 @@ export default function ServicesPage() {
 
                   <div className="grid md:grid-cols-2 gap-6 mb-8">
                     <div>
-                      <h3 className="text-xl font-semibold mb-3 text-neon-cyan">
+                      <h3 className="text-xl font-semibold mb-3 text-[#1c949a]">
                         Key Features
                       </h3>
                       <ul className="space-y-2">
@@ -818,7 +818,7 @@ export default function ServicesPage() {
                             key={feature}
                             className="flex items-center text-sm text-muted-foreground"
                           >
-                            <IconPoint className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
+                            <IconPoint className="h-4 w-4 text-[#0254f4] mr-2 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -826,7 +826,7 @@ export default function ServicesPage() {
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-semibold mb-3 text-neon-purple">
+                      <h3 className="text-xl font-semibold mb-3 text-[#0254f4]">
                         Benefits
                       </h3>
                       <ul className="space-y-2">
@@ -835,7 +835,7 @@ export default function ServicesPage() {
                             key={benefit}
                             className="flex items-center text-sm text-muted-foreground"
                           >
-                            <IconPoint className="h-4 w-4 text-neon-green mr-2 flex-shrink-0" />
+                            <IconPoint className="h-4 w-4 text-[#0254f4] mr-2 flex-shrink-0" />
                             {benefit}
                           </li>
                         ))}
@@ -925,9 +925,9 @@ export default function ServicesPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Why Choose{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Kin-G Technologies
+                Why Choose Kin-G Technologies
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -948,7 +948,7 @@ export default function ServicesPage() {
               >
                 <Card className="group text-center h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500">
                   <CardContent className="p-6">
-                    <item.icon className="h-12 w-12 mx-auto mb-4 text-neon-cyan group-hover:scale-110 transition-transform" />
+                    <item.icon className="h-12 w-12 mx-auto mb-4 text-[#1c949a] group-hover:scale-110 transition-transform" />
                     <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                     <p className="text-muted-foreground text-sm">
                       {item.description}
@@ -971,9 +971,9 @@ export default function ServicesPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Get Started
+               Ready to Get Started
               </span>
               ?
             </h2>
@@ -986,7 +986,7 @@ export default function ServicesPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold"
+                className="border-2 hover:bg-neon-blue/10 transition-all px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/contact">
                   Contact Us Today
@@ -997,7 +997,7 @@ export default function ServicesPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-neon-purple/50 text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300 px-8 py-4 text-lg font-semibold"
+                className="border-neon-purple/50 text-[#1c949a] hover:text-[#1c949a] transition-all duration-300 px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/launchpad">Explore Launchpad Program</Link>
               </Button>

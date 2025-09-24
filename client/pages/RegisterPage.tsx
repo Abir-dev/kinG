@@ -517,9 +517,9 @@ export default function RegisterPage() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="space-y-4">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-neon-cyan/10 border border-neon-cyan/20 rounded-full text-sm font-medium text-neon-cyan">
-                    <div className="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></div>
-                    Admissions Open 2024
+                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-[#87a7e8] rounded-full text-sm font-medium text-[#0254f4] dark:text-neon-cyan mb-6 backdrop-blur-sm">
+                    <div className="w-2 h-2 bg-[#0254f4] rounded-full animate-pulse"></div>
+                    Admissions Open 2025
                   </div>
 
                   <h1 className="text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[0.9] tracking-tight">
@@ -539,7 +539,7 @@ export default function RegisterPage() {
                 {/* Quick Stats */}
                 <div className="flex items-center gap-8">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-neon-cyan">
+                    <div className="text-2xl font-bold text-[#20b7bf]">
                       1000+
                     </div>
                     <div className="text-sm text-muted-foreground">
@@ -557,7 +557,7 @@ export default function RegisterPage() {
                   </div>
                   <div className="w-px h-12 bg-border"></div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-neon-cyan">
+                    <div className="text-2xl font-bold text-[#20b7bf]">
                       4.8★
                     </div>
                     <div className="text-sm text-muted-foreground">
@@ -571,7 +571,7 @@ export default function RegisterPage() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold rounded-xl"
+                    className="no-global-button border-neon-purple/50 text-[#1c949a] hover:text-[#1c949a] transition-all duration-300 px-6 py-2 font-semibold"
                     onClick={() => {
                       document
                         .querySelector("#registration-form")
@@ -611,7 +611,7 @@ export default function RegisterPage() {
                       <div className="space-y-4">
                         <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
                           <span className="text-sm font-medium">Workshops</span>
-                          <span className="text-neon-cyan font-semibold">
+                          <span className="text-[#20b7bf] font-semibold">
                             ₹26
                           </span>
                         </div>
@@ -627,7 +627,7 @@ export default function RegisterPage() {
                           <span className="text-sm font-medium">
                             AlgoBridge Contest
                           </span>
-                          <span className="text-neon-cyan font-semibold">
+                          <span className="text-[#20b7bf] font-semibold">
                             ₹9
                           </span>
                         </div>
@@ -657,7 +657,7 @@ export default function RegisterPage() {
 
           <div className="relative grid lg:grid-cols-2">
             {/* Left Side - Form */}
-            <div className="bg-card/5 backdrop-blur-sm border-r border-border/10">
+            <div className="bg-card/5 backdrop-blur-sm">
               <div className="p-8">
                 {/* Header */}
                 <motion.div
@@ -669,7 +669,7 @@ export default function RegisterPage() {
                   <div className="flex items-center gap-3 mb-8">
                     {/* <div className="w-2 h-8 bg-gradient-to-b from-neon-cyan to-neon-purple rounded-full"></div> */}
                     <div>
-                      <h1 className="text-3xl font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
+                      <h1 className="text-3xl font-bold bg-gradient-to-r  bg-clip-text text-transparent">
                         Ready to Get Started?
                       </h1>
                       <p className="text-muted-foreground text-lg">
@@ -685,7 +685,7 @@ export default function RegisterPage() {
                     <label className="text-sm font-semibold text-foreground mb-3 block">
                       Registration Type
                     </label>
-                    <div className="grid grid-cols-3 gap-2 p-1 bg-muted/30 rounded-lg border border-border/50">
+                    <div className="grid grid-cols-3 gap-2 p-1 bg-muted/30 rounded-lg">
                       {[
                         {
                           value: "Registration for workshop",
@@ -700,10 +700,10 @@ export default function RegisterPage() {
                         <button
                           key={option.value}
                           onClick={() => setRegistrationType(option.value)}
-                          className={`py-2.5 px-3 rounded-md text-sm font-medium transition-all duration-200 ${
+                          className={`no-global-button border-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-all duration-200 ${
                             registrationType === option.value
-                              ? "bg-gradient-to-r from-neon-cyan to-neon-purple text-white shadow-lg"
-                              : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                              ? "bg-white border-neon-purple/50 text-[#1c949a] shadow"
+                              : "border-neon-purple/50 text-[#1c949a] hover:text-[#1c949a]"
                           }`}
                         >
                           {option.label}
@@ -732,16 +732,16 @@ export default function RegisterPage() {
                           <button
                             key={plan.value}
                             onClick={() => setCoursePricing(plan.value)}
-                            className={`p-3 rounded-lg border-2 transition-all duration-200 text-center ${
+                            className={`no-global-button p-3 rounded-lg border-2 transition-all duration-200 text-center ${
                               coursePricing === plan.value
                                 ? "border-neon-cyan bg-neon-cyan/10 text-neon-cyan"
                                 : "border-border/40 hover:border-neon-cyan/50 hover:bg-neon-cyan/5 text-muted-foreground"
                             }`}
                           >
-                            <div className="font-medium text-xs">
+                            <div className="font-medium text-xs text-[#1c949a]">
                               {plan.label}
                             </div>
-                            <div className="font-bold text-sm mt-1">
+                            <div className="font-bold text-lg mt-1 text-[#1c949a]">
                               {plan.price}
                             </div>
                           </button>
@@ -869,7 +869,7 @@ export default function RegisterPage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold"
+                    className=" text-lg no-global-button border-neon-purple/50 text-[#1c949a] hover:text-[#1c949a] transition-all duration-300 px-6 py-2 font-semibold w-full"
                     onClick={() => {
                       if (
                         name.trim() &&

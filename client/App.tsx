@@ -50,7 +50,7 @@ function AnimatedRoutes() {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="kingTechnologies-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="kingTechnologies-ui-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />

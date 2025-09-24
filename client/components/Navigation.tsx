@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import { Button } from "./ui/button";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   // { name: "About", href: "/about" },
@@ -53,10 +54,10 @@ export function Navigation() {
               />
             </div>
             <div className="flex flex-col z-20">
-              <span className="text-lg font-bold leading-none text-white">
+              <span className="text-lg font-bold leading-none text-foreground">
                 Kin-G
               </span>
-              <span className="text-xs leading-none text-gray-300">
+              <span className="text-xs leading-none text-muted-foreground">
                 Technologies
               </span>
             </div>
@@ -69,8 +70,7 @@ export function Navigation() {
       key={item.name}
       to={item.href}
       className={`nav-link relative group ${
-        location.pathname === item.href ? "text-pink-glow" : ""
-
+        location.pathname === item.href ? "text-[#1c949a] active" : ""
       }`}
     >
       {item.name}
@@ -80,11 +80,12 @@ export function Navigation() {
 
 
           {/* Desktop Actions */}
-<div className="hidden md:flex items-center space-x-4">
-  <Link to="/contact">
-    <button className="glass-button-pink">Contact Us</button>
-  </Link>
-</div>
+            <div className="hidden md:flex items-center space-x-4">
+              {/* <ThemeToggle/> */}
+              <Button asChild variant="outline" size="default" className="no-global-button border-neon-purple/50 text-[#1c949a] hover:text-[#1c949a] transition-all duration-300 px-6 py-2 font-semibold">
+                <Link to="/contact">Contact Us</Link>
+              </Button>
+            </div>
 
 
           {/* Mobile Menu Button */}
@@ -109,16 +110,18 @@ export function Navigation() {
                 to={item.href}
                 onClick={closeMenu}
                 className={`block w-full nav-link ${
-                  location.pathname === item.href ? "text-white" : ""
+                  location.pathname === item.href ? "text-[#1c949a] active" : ""
                 }`}
               >
                 {item.name}
               </Link>
             ))}
            {/* Mobile Contact */}
-<Link to="/contact" onClick={closeMenu} className="mt-4 block w-full">
-  <button className="glass-button-pink w-full py-3 text-lg">Contact Us</button>
-</Link>
+              <Link to="/contact" onClick={closeMenu} className="mt-4 block w-full">
+                <Button asChild variant="outline" size="lg" className="no-global-button w-full border-neon-purple/50 text-[#1c949a] hover:text-[#1c949a] transition-all duration-300 px-8 py-4 text-lg font-semibold">
+                  <span>Contact Us</span>
+                </Button>
+              </Link>
 
           </div>
         </motion.div>

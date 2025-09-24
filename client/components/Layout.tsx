@@ -3,7 +3,7 @@ import { Navigation } from "./Navigation";
 import { PageTransition } from "./PageTransition";
 import { useGSAPAnimations } from "../hooks/useGSAPAnimations";
 import { useEffect } from "react";
-import { IconMail, IconMapPin, IconPhone } from "@tabler/icons-react";
+import { IconMail, IconMapPin, IconPhone, IconRegistered } from "@tabler/icons-react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -18,9 +18,9 @@ export function Layout({ children }: LayoutProps) {
   }, [refresh]);
 
   return (
-    <div className="min-h-screen  relative overflow-x-hidden">
-      <div className="fixed inset-0 -z-10 site-pink-gradient-bg" />
-      <div className="fixed inset-0 z-[-5] site-pink-gradient-frost" />
+    <div className="min-h-screen relative overflow-x-hidden bg-background">
+      <div className="fixed inset-0 -z-10 dark:site-pink-gradient-bg" />
+      <div className="fixed inset-0 z-[-5] dark:site-pink-gradient-frost" />
       <Navigation />
 
       <main className="pt-16">
@@ -28,7 +28,7 @@ export function Layout({ children }: LayoutProps) {
       </main>
 
       {/* Professional Footer */}
-      <footer className=" border-t border-border/20 relative overflow-hidden">
+      <footer className=" relative overflow-hidden">
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 opacity-5">
           <div
@@ -99,22 +99,22 @@ export function Layout({ children }: LayoutProps) {
                   ))}
                 </div>   */}
                 <div className="flex items-center space-x-3 mb-4">
-                    <IconMapPin className="h-6 w-6 text-[#4729ef] dark:text-muted-foreground" />
-                    <span className="font-semibold dark:text-muted-foreground">EP & GP Block, Sector V, Kolkata, West Bengal 700091 /<br/>
+                    <IconMapPin className="h-6 w-6 text-muted-foreground dark:text-muted-foreground" />
+                    <span className="font-semibold text-muted-foreground dark:text-muted-foreground">EP & GP Block, Sector V, Kolkata, West Bengal 700091 /<br/>
                                                     5/2, Simlai Para Lane Paikpara, Kolkata-700002</span>
                 </div>
                 <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                      <IconPhone className="h-5 w-5 text-[#FF08B9] dark:text-muted-foreground" />
-                      <a href="regis no:UDYAM-WB-10-0176316" className="text-[#FF08B9] dark:text-muted-foreground hover:underline">UDYAM-WB-10-0176316</a>
+                      <IconRegistered className="h-5 w-5 text-muted-foreground dark:text-muted-foreground" />
+                      <a href="regis no:UDYAM-WB-10-0176316" className="text-muted-foreground dark:text-muted-foreground hover:underline">UDYAM-WB-10-0176316</a>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <IconPhone className="h-5 w-5 text-[#4729ef] dark:text-muted-foreground" />
-                      <a href="tel:+918910481993" className="text-[#4729ef] dark:text-muted-foreground hover:underline">+91 89104 81993</a>
+                      <IconPhone className="h-5 w-5 text-muted-foreground dark:text-muted-foreground" />
+                      <a href="tel:+918910481993" className="text-muted-foreground dark:text-muted-foreground hover:underline">+91 89104 81993</a>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <IconMail className="h-5 w-5 text-[#FF08B9] dark:text-muted-foreground" />
-                      <a href="mailto:admin@kingtechs.in" className="text-[#FF08B9] dark:text-muted-foreground hover:underline">admin@kingtechs.in</a>
+                      <IconMail className="h-5 w-5 text-muted-foreground dark:text-muted-foreground" />
+                      <a href="mailto:admin@kingtechs.in" className="text-muted-foreground dark:text-muted-foreground hover:underline">admin@kingtechs.in</a>
                     </div>
                 </div>
               </motion.div>
@@ -281,7 +281,7 @@ export function Layout({ children }: LayoutProps) {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-border/20 bg-card/30">
+          <div className="border-t border-border/10  bg-card/30">
             <div className="max-w-7xl mx-auto px-6 py-6">
               <motion.div
                 initial={{ opacity: 0 }}

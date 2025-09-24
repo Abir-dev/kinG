@@ -129,7 +129,7 @@ const courses = [
   {
     id: 1,
     title: "Microsoft Data Analyst Training",
-    logo: "/Microsoft.png",
+    logo: "/Microsoft (1).png",
     duration:"1 Month",
     keyModules: [
       "Preparing Data for Analysis with Microsoft Excel",
@@ -144,7 +144,7 @@ const courses = [
   {
     id: 2,
     title: "Google Data Analyst Training",
-    logo: "/Google.png",
+    logo: "/Google (1).png",
     duration:"1 Month",
     keyModules: [
       "Data Foundations & Decision Making",
@@ -159,7 +159,7 @@ const courses = [
   {
     id: 3,
     title: "Meta Data Analytics Training",
-    logo: "/Meta.png",
+    logo: "/Meta (1).png",
     duration:"1 Month",
     keyModules: [
       "Data Analytics with Spreadsheets & SQL",
@@ -311,14 +311,14 @@ export default function LaunchpadPage() {
             transition={{ duration: 0.8 }}
             className="mb-16"
           >
-            <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-6">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-[#87a7e8] rounded-full text-sm font-medium text-[#0254f4] dark:text-neon-cyan mb-6 backdrop-blur-sm">
               Career Development Program
             </div>
             <h1 className="text-4xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
-                Launchpad
+                Launchpad Master Program
               </span>{" "}
-                Master Program
+                
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
               Your 90-Day Career Acceleration Journey Unlock Triple Certification & Real-World Experience
@@ -356,7 +356,7 @@ export default function LaunchpadPage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="text-center"
                 >
-                  <stat.icon className="h-8 w-8 mx-auto mb-2 text-neon-cyan" />
+                  <stat.icon className="h-8 w-8 mx-auto mb-2 text-[#1c949a]" />
                   <div className="text-2xl md:text-3xl font-bold text-primary">{stat.number}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </motion.div>
@@ -377,9 +377,9 @@ export default function LaunchpadPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Why Choose{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Launchpad
+              Why Choose Launchpad
               </span>
               ?
             </h2>
@@ -400,7 +400,7 @@ export default function LaunchpadPage() {
               >
                 <Card className="group text-center h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500 dark:hover:neon-glow-cyan">
                   <CardContent className="p-6">
-                    <feature.icon className="h-12 w-12 mx-auto mb-4 text-neon-cyan group-hover:scale-110 transition-transform" />
+                    <feature.icon className="h-12 w-12 mx-auto mb-4 text-[#1c949a] group-hover:scale-110 transition-transform" />
                     <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
                     <p className="text-muted-foreground text-sm">{feature.description}</p>
                   </CardContent>
@@ -422,9 +422,9 @@ export default function LaunchpadPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Programme {" "}
+               {" "}
               <span className="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
-                Overview
+               Programme Overview
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -448,7 +448,7 @@ export default function LaunchpadPage() {
                       <img
                         src={course.logo}
                         alt={`${course.title} logo`}
-                        className="h-20 w-30 object-contain"
+                        className={`h-20 w-30 object-contain ${course.id === 4 ? 'invert dark:invert-0' : ''}`}
                       />
                     </div>
                     <CardTitle className="text-xl font-bold mb-2 text-center">
@@ -461,7 +461,7 @@ export default function LaunchpadPage() {
                   
                   <CardContent className="pt-0">
                     <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-neon-cyan mb-3">Key Modules:</h4>
+                      <h4 className="text-sm font-semibold text-[#1c949a] mb-3">Key Modules:</h4>
                       {course.id === 4 ? (
                         <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                           {course.keyModules.map((module, moduleIndex) => (
@@ -489,7 +489,7 @@ export default function LaunchpadPage() {
                               viewport={{ once: true }}
                               className="flex items-start space-x-2"
                             >
-                              <IconCheck className="h-4 w-4 mt-0.5 text-neon-green flex-shrink-0" />
+                              <IconCheck className="h-4 w-4 mt-0.5 text-neon-blue flex-shrink-0" />
                               <span className="text-sm text-muted-foreground">{module}</span>
                             </motion.li>
                           ))}
@@ -525,16 +525,17 @@ export default function LaunchpadPage() {
             </p>
           </motion.div>
 
-          <div className="space-y-8">
+          {/* Grid with 3 cards per row on large screens */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {curriculum.map((phase, index) => (
               <motion.div
-                key={phase.week}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                key={`${phase.title}-grid`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
                 viewport={{ once: true }}
               >
-                <Card className="group bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500 flex items-center justify-between">
+                <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500">
                   <CardHeader>
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-neon-purple to-neon-pink rounded-full flex items-center justify-center text-white font-bold">
@@ -547,10 +548,9 @@ export default function LaunchpadPage() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                      {phase.prices.map((price, topicIndex) => (
-                        <div key={price} className="flex items-center justify-center space-x-2">
-                          {/* <IconCheck className="h-4 w-4 text-neon-green flex-shrink-0" /> */}
+                    <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-4">
+                      {phase.prices.map((price) => (
+                        <div key={`${phase.title}-price`} className="flex items-center justify-start space-x-2">
                           <span className="text-2xl text-muted-foreground text-bold">₹{price}</span>
                         </div>
                       ))}
@@ -757,9 +757,9 @@ export default function LaunchpadPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Frequently Asked{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
-                Questions
+               Frequently Asked Questions
               </span>
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -784,13 +784,13 @@ export default function LaunchpadPage() {
                 >
                   <AccordionItem 
                     value={`item-${index}`}
-                    className="bg-card/50 backdrop-blur-sm border border-border/40 rounded-lg hover:border-neon-cyan/50 transition-all duration-300"
+                    className=" no-global-button bg-white border border-[#1c949a]/40 rounded-lg transition-all duration-300 hover:shadow-[0_0_24px_rgba(28,148,154,0.35)]"
                   >
-                    <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
-                      <span className="text-lg font-semibold text-muted-foreground">{faq.question}</span>
+                    <AccordionTrigger className=" no-global-button px-6 py-4 text-left hover:no-underline text-[#1c949a] bg-white">
+                      <span className="text-lg font-semibold">{faq.question}</span>
                     </AccordionTrigger>
                     <AccordionContent className="px-6 pb-4">
-                      <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                      <p className="leading-relaxed">{faq.answer}</p>
                     </AccordionContent>
                   </AccordionItem>
                 </motion.div>
@@ -825,7 +825,7 @@ export default function LaunchpadPage() {
                 asChild
                 variant="outline"
                 size="lg" 
-                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold"
+                className="border-2 hover:bg-neon-blue/10 transition-all px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/register">
                   Enroll Now
@@ -836,7 +836,7 @@ export default function LaunchpadPage() {
                 asChild
                 variant="outline" 
                 size="lg"
-                className="border-neon-purple/50 text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300 px-8 py-4 text-lg font-semibold"
+                className="border-neon-purple/50 text-[#1c949a] hover:text-[#1c949a] transition-all duration-300 px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/contact">
                   Schedule Consultation

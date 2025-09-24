@@ -178,13 +178,13 @@ Best regards,`);
             transition={{ duration: 0.8 }}
             className="mb-1"
           >
-            <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-6">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-[#87a7e8] rounded-full text-sm font-medium text-[#0254f4] dark:text-neon-cyan mb-6 backdrop-blur-sm">
               Contact Us
             </div>
             <h1 className="text-4xl md:text-7xl font-bold mb-6">
-              Get In{" "}
+             {" "}
               <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
-                Touch
+                Get In Touch
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -315,7 +315,7 @@ Best regards,`);
                   <Button 
                     variant="outline"
                     size="lg" 
-                    className=" w-full border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-4 py-4 text-lg rounded-2xl"
+                    className=" text-lg no-global-button border-neon-purple/50 text-[#1c949a] hover:text-[#1c949a] transition-all duration-300 px-6 py-2 font-bold w-full "
                   >
                     <IconSend className="mr-2 h-5 w-5" />
                     Send Message
@@ -342,21 +342,21 @@ Best regards,`);
                 <Card className="bg-card/30 backdrop-blur-sm border-border/40">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-3 mb-4">
-                      <IconMapPin className="h-6 w-6 text-neon-cyan" />
+                      <IconMapPin className="h-6 w-6 text-[#0254f4]" />
                       <span className="font-semibold">Saltlake Sector V, Kolkata, India</span>
                     </div>
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
-                        <IconPhone className="h-5 w-5 text-neon-purple" />
-                        <a href="tel:+918910481993" className="text-neon-purple hover:underline">+91 89104 81993</a>
+                        <IconPhone className="h-5 w-5 text-[#1c949a]" />
+                        <a href="tel:+918910481993" className="text-[#1c949a] hover:underline">+91 89104 81993</a>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <IconMail className="h-5 w-5 text-neon-cyan" />
-                        <a href="mailto:admin@kingtechs.in" className="text-neon-cyan hover:underline">admin@kingtechs.in</a>
+                        <IconMail className="h-5 w-5 text-[#0254f4]" />
+                        <a href="mailto:admin@kingtechs.in" className="text-[#0254f4] hover:underline">admin@kingtechs.in</a>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <IconBrandInstagram className="h-5 w-5 text-pink-500" />
-                        <a href="https://www.instagram.com/launchpad.kingtechs?igsh=dGdhZHdybmg0Z2Ri" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:underline">@kin.g.tech</a>
+                        <IconBrandInstagram className="h-5 w-5 text-[#1c949a]" />
+                        <a href="https://www.instagram.com/launchpad.kingtechs?igsh=dGdhZHdybmg0Z2Ri" target="_blank" rel="noopener noreferrer" className="text-[#1c949a] hover:underline">@kin.g.tech</a>
                       </div>
                     </div>
                   </CardContent>
@@ -369,19 +369,19 @@ Best regards,`);
                 <Card className="bg-card/30 backdrop-blur-sm border-border/40">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-3 mb-4">
-                      <IconClock className="h-6 w-6 text-neon-cyan" />
+                      <IconClock className="h-6 w-6 text-[#0254f4]" />
                       <span className="font-semibold">Office Hours</span>
                     </div>
                     <div className="space-y-2">
                       {workingHours.map((schedule, index) => (
-                        <div key={index} className="flex justify-between items-center py-2 border-b border-border/20 last:border-b-0">
+                        <div key={index} className="flex justify-between items-center py-2">
                           <span className="text-muted-foreground">{schedule.day}</span>
                           <span className="font-medium">{schedule.hours}</span>
                         </div>
                       ))}
                     </div>
                     <div className="mt-4 p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
-                      <p className="text-sm text-neon-cyan">
+                      <p className="text-sm text-[#0254f4]">
                         <strong>Emergency Support:</strong> Available 24/7 for existing clients with critical issues.
                       </p>
                     </div>
@@ -488,9 +488,9 @@ Best regards,`);
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Quick{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
-                Answers
+               Quick Answers
               </span>
             </h2>
             <p className="text-lg text-muted-foreground">

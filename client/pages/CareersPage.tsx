@@ -257,13 +257,13 @@ export default function CareersPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-block px-4 py-2 rounded-full border border-neon-cyan/30 text-sm font-medium text-neon-cyan mb-6">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-[#87a7e8] rounded-full text-sm font-medium text-[#0254f4] dark:text-neon-cyan mb-6 backdrop-blur-sm">
               Join Our Team
             </div>
             <h1 className="text-4xl md:text-7xl font-bold mb-6">
-              Build Your{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent neon-text-glow">
-                Dream Career
+               Build Your Dream Career
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -306,9 +306,9 @@ export default function CareersPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Our{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Culture
+               Our Culture
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -328,7 +328,7 @@ export default function CareersPage() {
               >
                 <Card className="group text-center h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-cyan/50 transition-all duration-500">
                   <CardContent className="p-6">
-                    <value.icon className="h-12 w-12 mx-auto mb-4 text-neon-cyan group-hover:scale-110 transition-transform" />
+                    <value.icon className="h-12 w-12 mx-auto mb-4 text-[#1c949a] group-hover:scale-110 transition-transform" />
                     <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
                     <p className="text-muted-foreground text-sm">{value.description}</p>
                   </CardContent>
@@ -350,9 +350,9 @@ export default function CareersPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Why Work{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
-                With Us
+               Why Work With Us
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -396,9 +396,9 @@ export default function CareersPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Current{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Openings
+              Current Openings
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -425,13 +425,13 @@ export default function CareersPage() {
                         <div className="flex-1">
                           <CardTitle className="text-xl mb-2">{job.title}</CardTitle>
                           <div className="flex flex-wrap gap-2 mb-3">
-                            <Badge variant="outline" className="border-neon-cyan/30 text-neon-cyan">
+                            <Badge variant="outline" className="border-neon-cyan/30 text-[#1c949a]">
                               {job.department}
                             </Badge>
-                            <Badge variant="outline" className="border-neon-purple/30 text-neon-purple">
+                            <Badge variant="outline" className="border-neon-purple/30 text-">
                               {job.type}
                             </Badge>
-                            <Badge variant="outline" className="border-neon-pink/30 text-neon-pink">
+                            <Badge variant="outline" className="border-neon-pink/30 text-[#0254f4]">
                               {job.experience}
                             </Badge>
                           </div>
@@ -462,11 +462,11 @@ export default function CareersPage() {
                     <CardDescription className="text-base mb-6">{job.description}</CardDescription>
                     
                     <div>
-                      <h4 className="font-semibold mb-3 text-neon-cyan">Key Requirements</h4>
+                      <h4 className="font-semibold mb-3 text-[#1c949a]">Key Requirements</h4>
                       <ul className="space-y-2">
                         {job.requirements.map((req, idx) => (
                           <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <div className="w-1.5 h-1.5 rounded-full bg-neon-cyan mt-2 flex-shrink-0" />
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#0254f4] mt-2 flex-shrink-0" />
                             {req}
                           </li>
                         ))}
@@ -490,9 +490,9 @@ export default function CareersPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Don't See Your{" "}
+              {" "}
               <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Perfect Role
+               Don't See Your Perfect Role
               </span>
               ?
             </h2>
@@ -505,7 +505,7 @@ export default function CareersPage() {
                 asChild
                 variant="outline"
                 size="lg" 
-                className="border-2 border-neon-purple/50 bg-neon-purple/5 hover:bg-neon-purple/30 transition-all px-8 py-4 text-lg font-semibold"
+                className="border-2 hover:bg-neon-blue/10 transition-all px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/contact" state={{ subject: "General Application" }}>
                   Send Your Resume
@@ -516,7 +516,7 @@ export default function CareersPage() {
                 asChild
                 variant="outline" 
                 size="lg"
-                className="border-neon-purple/50 text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300 px-8 py-4 text-lg font-semibold"
+                className="border-neon-purple/50 text-[#1c949a] hover:text-[#1c949a] transition-all duration-300 px-8 py-4 text-lg font-semibold"
               >
                 <Link to="/about">
                   Learn More About Us

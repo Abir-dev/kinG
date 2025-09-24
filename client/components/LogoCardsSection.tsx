@@ -123,15 +123,15 @@ export const LogoCardsSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-neon-cyan/20 rounded-full text-sm font-medium text-[#4729ef] dark:text-neon-cyan mb-6 backdrop-blur-sm">
-            <div className="w-2 h-2 bg-[#4729ef] dark:bg-neon-cyan rounded-full"></div>
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-[#87a7e8] rounded-full text-sm font-medium text-[#0254f4] dark:text-neon-cyan mb-6 backdrop-blur-sm">
+            <div className="w-2 h-2 bg-[#0254f4] dark:bg-neon-cyan rounded-full"></div>
             Trusted Global Partnerships
-            <div className="w-2 h-2 bg-[#FF08B9] dark:bg-neon-pink rounded-full"></div>
+            <div className="w-2 h-2 bg-[#20b7bf] dark:bg-neon-pink rounded-full"></div>
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-            Industry{" "}
-            <span className="bg-gradient-to-r from-[#5a43dd] via-[#853cdf] to-[#FF08B9] bg-clip-text text-transparent dark:from-neon-cyan dark:via-neon-purple dark:to-neon-pink">
-              Giants
+            {/* {" "} */}
+            <span className="bg-clip-text text-transparent dark:from-neon-cyan dark:via-neon-purple dark:to-neon-pink">
+             Industry Giants
             </span>
             <br />
             <span className="text-4xl md:text-4xl text-muted-foreground font-normal">Choose Us</span>
@@ -150,22 +150,22 @@ export const LogoCardsSection: React.FC = () => {
           {/* Navigation arrows (speed nudges) */}
           <motion.button
             onClick={() => nudge("left")}
-            className="absolute left-4 md:left-6 top-1/2 z-20 bg-card/90 backdrop-blur-sm border border-border/40 hover:border-neon-cyan/50 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group"
+            className="absolute left-0 top-1/2 z-10 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 no-global-button border border-transparent hover:border-[#0254f4]"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Scroll logos left"
           >
-            <IconChevronLeft className="h-6 w-6 text-muted-foreground group-hover:text-neon-cyan transition-colors" />
+            <IconChevronLeft className="h-6 w-6 text-[#0254f4]" />
           </motion.button>
 
           <motion.button
             onClick={() => nudge("right")}
-            className="absolute right-4 md:right-6 top-1/2 z-20 bg-card/90 backdrop-blur-sm border border-border/40 hover:border-neon-cyan/50 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group"
+            className="absolute right-4 md:right-6 top-1/2 z-20 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group no-global-button border border-transparent hover:border-[#0254f4]"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Scroll logos right"
           >
-            <IconChevronRight className="h-6 w-6 text-muted-foreground group-hover:text-neon-cyan transition-colors" />
+            <IconChevronRight className="h-6 w-6 text-[#0254f4]" />
           </motion.button>
 
           {/* Scroll container */}
