@@ -90,7 +90,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
+            <Button className="no-global-button" variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <IconX className="h-5 w-5" /> : <IconMenu2 className="h-5 w-5" />}
             </Button>
           </div>

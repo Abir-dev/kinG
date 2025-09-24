@@ -10,6 +10,15 @@ export function FullScreenHero() {
     "/images/hero(5).png",
   ];
 
+  // Mobile-specific posters (update paths when mobile assets are provided)
+  const imagesMobile = [
+    "/images/hero-mobile(1).png",
+    "/images/hero-mobile(2).png",
+    "/images/hero-mobile(3).png",
+    "/images/hero-mobile(4).png",
+    "/images/hero-mobile(5).png",
+  ];
+
   // clone slides for infinite loop
   const slides = [images[images.length - 1], ...images, images[0]];
 
@@ -33,7 +42,8 @@ export function FullScreenHero() {
     let isCancelled = false;
 
     const preload = async () => {
-      const loaders = images.map(
+      const allSources = [...images, ...imagesMobile];
+      const loaders = allSources.map(
         (src) =>
           new Promise<void>((resolve) => {
             const img = new Image();
@@ -99,14 +109,31 @@ export function FullScreenHero() {
               className="w-full flex-shrink-0 h-[500px]"
               aria-hidden={currentIndex !== idx}
             >
-              <img
-                src={src}
-                alt={`Hero ${idx}`}
-                className="w-full h-[500px] object-cover"
-                loading={idx === 1 ? "eager" : "lazy"}
-                decoding="async"
-                draggable={false}
-              />
+              {(() => {
+                // Map cloned indices to real image index to select the matching mobile poster
+                const realImageIndex =
+                  idx === 0
+                    ? images.length - 1
+                    : idx === slides.length - 1
+                    ? 0
+                    : idx - 1;
+
+                const mobileSrc = imagesMobile[realImageIndex] ?? src;
+
+                return (
+                  <picture>
+                    <source media="(max-width: 640px)" srcSet={mobileSrc} />
+                    <img
+                      src={src}
+                      alt={`Hero ${realImageIndex + 1}`}
+                      className="w-full h-[500px] object-cover"
+                      loading={idx === 1 ? "eager" : "lazy"}
+                      decoding="async"
+                      draggable={false}
+                    />
+                  </picture>
+                );
+              })()}
             </div>
           ))}
         </div>

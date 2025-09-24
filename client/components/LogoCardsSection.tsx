@@ -20,9 +20,9 @@ export const LogoCardsSection: React.FC = () => {
   const logoCards = useMemo(
     () => [
       { id: 1, imagePath: "/logocards/LC1.png" },
-      { id: 2, imagePath: "/logocards/LC2.png" },
+      { id: 2, imagePath: "/logocards/LC13.png" },
       { id: 3, imagePath: "/logocards/LC3.png" },
-      { id: 4, imagePath: "/logocards/LC4.png" },
+      { id: 4, imagePath: "/logocards/LC12.png" },
       { id: 5, imagePath: "/logocards/LC5.png" },
       { id: 6, imagePath: "/logocards/LC6.png" },
       { id: 7, imagePath: "/logocards/LC11.png" },
@@ -179,7 +179,7 @@ export const LogoCardsSection: React.FC = () => {
             <div ref={trackRef} className="flex gap-10 py-2 w-max">
               {[...logoCards, ...logoCards].map((card, idx) => (
                 <div key={`${card.id}-${idx}`} className="flex-shrink-0 w-32 h-32 lg:w-40 lg:h-40 group">
-                  <div className="w-full h-full bg-card/50 backdrop-blur-sm  rounded-xl p-4 flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-neon-cyan/20">
+                  <div className="w-full h-full bg-card/50 backdrop-blur-sm  rounded-xl p-4 flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-neon-blue/30">
                     <img
                       src={card.imagePath}
                       alt={`Logo ${card.id}`}

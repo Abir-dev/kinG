@@ -57,42 +57,56 @@ const highlights = [
   }
 ];
 
-const testimonials = [
+type Testimonial = {
+  name: string;
+  role: string;
+  content: string;
+  rating: number;
+  avatar?: string;
+};
+
+const testimonials: Testimonial[] = [
   {
     name: "Bhasker Ghosh",
-    role: "CEO, TechStart Solutions",
+    role: "CEO",
     content: "I had a great experience while attending consultation...Thank you 🙂",
-    rating: 5
+    rating: 5,
+    avatar:"testimonial(1).png"
   },
   {
     name: "Kankana Samadder",
     role: "Software Developer",
     content: "Must go for it!!! And see it by yourself 🥰 ",
-    rating: 4
+    rating: 4,
+    avatar:"testimonial(2).png"
   },
   {
     name: "Monishankar Banerjee",
-    role: "Marketing Director, GrowthCorp",
+    role: "Marketing Director",
     content: "Good company for B2B sales, IT support, and digital design solutions. They partner with local and global organizations to help individuals in practical ways to help with skill development.",
-    rating: 5
+    rating: 5,
+    avatar:"testimonial(3).png"
   },
   {
     name: "Avishikta Chatterjee",
     role: "Software Developer",
     content: "Amazing experience 🩷 ",
-    rating: 5
+    rating: 5,
+    avatar:"testimonial(4).jpeg"
   },
   {
     name: "Swapnamoy Ghosh",
     role: "Local Guide",
     content: "Very nice courses at best price .. value for money .. trust worthy.. ",
-    rating: 4
+    rating: 4,
+    avatar:"testimonial(5).png"
   },
   {
     name: "Aman Kumar Singh",
     role: "Software Developer",
     content: "Best professional services with latest technology..!!",
-    rating: 5
+    rating: 5,
+    avatar:"testimonial(6).webp"
   },
 ];
 
@@ -378,7 +392,7 @@ export default function HomePage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -5 }}
-                  className="flex-shrink-0 w-80 lg:w-96"
+                  className="flex-shrink-0 w-72 sm:w-80 lg:w-96"
                 >
                   <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500">
                     <CardContent className="p-6">
@@ -387,10 +401,25 @@ export default function HomePage() {
                           <IconStar key={i} className="h-5 w-5 text-[#0254f4] fill-current" />
                         ))}
                       </div>
-                      <p className="text-muted-foreground mb-4 italic">"{testimonial.content}"</p>
-                      <div>
-                        <div className="font-semibold">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                      <p className="text-sm sm:text-base text-muted-foreground mb-4 italic">"{testimonial.content}"</p>
+                      <div className="flex items-center gap-3 mt-2">
+                        <div className="h-10 w-10 rounded-full bg-muted flex-shrink-0 overflow-hidden">
+                          {/** Render image only if provided; keeps layout stable on mobile/desktop */}
+                          {testimonial.avatar ? (
+                            <img
+                              src={testimonial.avatar}
+                              alt={testimonial.name}
+                              className="h-full w-full object-cover"
+                              loading="lazy"
+                              decoding="async"
+                              draggable={false}
+                            />
+                          ) : null}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="font-semibold text-sm sm:text-base truncate">{testimonial.name}</div>
+                          <div className="text-xs sm:text-sm text-muted-foreground truncate">{testimonial.role}</div>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>

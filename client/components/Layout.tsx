@@ -217,7 +217,7 @@ export function Layout({ children }: LayoutProps) {
                       whileHover={{ scale: 1.05, x: 5 }}
                       className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 text-sm group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-card border border-border/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
+                      <div className="w-8 h-8 rounded-lg bg-card  flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
                         <svg
                           className="w-4 h-4"
                           fill="currentColor"
@@ -240,7 +240,7 @@ export function Layout({ children }: LayoutProps) {
                       whileHover={{ scale: 1.05, x: 5 }}
                       className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 text-sm group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-card border border-border/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
+                      <div className="w-8 h-8 rounded-lg bg-card flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
                         <svg
                           className="w-4 h-4"
                           fill="currentColor"
@@ -263,7 +263,7 @@ export function Layout({ children }: LayoutProps) {
                       whileHover={{ scale: 1.05, x: 5 }}
                       className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 text-sm group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-card border border-border/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
+                      <div className="w-8 h-8 rounded-lg bg-card flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
                         <svg
                           className="w-4 h-4"
                           fill="currentColor"
