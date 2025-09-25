@@ -194,52 +194,73 @@ const curriculum = [
   {
     week: "4 Months Course",
     title: "AI Accelerating Mastery Course",
-    prices: [
-      "25,900",
-    ]
+    image: "images/hero(1).png",
+    description:"Your 90-Day Career Acceleration Journey Unlock Triple Certification & Real-World Experience",
+    duration: "4 Months",
+    originalPrice: "25,900",
+    discountPercent: 1,
+    offerPrice: "25,900",
   },
   {
     week: "4 Months Course",
-    title: "Full Stack Development & Web Page Building ",
-    prices: [
-      "36,999"
-    ]
+    title: "Full Stack Development & Web Page Building",
+    image: "images/course(2).png",
+    description:"A comprehensive 3-month program designed to professionals into job-ready full stack developers with Microsoft-certified skills.",
+    duration: "3 Months",
+    originalPrice: "36,999",
+    discountPercent: 1,
+    offerPrice: "36,999",
   },
   {
     week: "4 Months Course",
     title: "Stock Market Algotrade with AI Tools",
-    prices: [
-      "55,999"
-    ]
+    image: "images/course(3).png",
+    description:"A comprehensive 4-month program design to lern Stock Market Algotrade with AI Tools",
+    duration: "4 Months",
+    originalPrice: "55,999",
+    discountPercent: 1,
+    offerPrice: "55,999",
   },
   {
     week: "4 Months Course",
     title: "Software Development & Android Apps",
-    prices: [
-      "36,999"
-    ]
+    image: "images/course(4).png",
+    description:"Transform your career in 6 months with comprehensive full-stack training",
+    duration: "6 Months",
+    originalPrice: "21,999",
+    discountPercent: 1,
+    offerPrice: "36,999",
   },
   {
     week: "4 Months Course",
     title: "Tech Support & Network Support",
-    prices: [
-      "21,999"
-    ]
+    image: "images/course(5).png",
+    description:"A comprehensive 3-month training program designed to build IT infrastructure, networking, and security professionals through hands-on labs, simulations, and live case studies.",
+    duration: "3 Months(12 Weeks)",
+    originalPrice: "21,999",
+    discountPercent: 1,
+    offerPrice: "21,999",
   },
   {
     week: "4 Months Course",
     title: "Finance & Sales Speech Readiness",
-    prices: [
-      "14,999"
-    ]
+    image: "images/course(6).png",
+    description:"Transform your career with practical finance knowledge and professional sales communication skills",
+    duration: "4 Months(16 Weeks)",
+    originalPrice: "14,999",
+    discountPercent: 1,
+    offerPrice: "14,999",
   },
   {
     week: "4 Months Course",
-    title: "Digital Marketing",
-    prices: [
-      "11,999"
-    ]
-  }
+    title: "Digital Marketing Course-Kin-G Launchpad",
+    image: "images/hero(5).png",
+    description: "An 8-week comprehensive program equipping student and professionals with practical, job-ready skillsin SEO, Social Media, Ads and Analytics for careers in Degital Marketing ",
+    duration: "8 Weekes",
+    originalPrice: "11,999",
+    discountPercent: 1,
+    offerPrice: "11,999",
+  },
 ];
 
 const successStories = [
@@ -303,7 +324,7 @@ export default function LaunchpadPage() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-8 px-2">
+      <section className="py-8 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -311,7 +332,7 @@ export default function LaunchpadPage() {
             transition={{ duration: 0.8 }}
             className="mb-16"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-[#87a7e8] rounded-full text-sm font-medium text-[#0254f4] dark:text-neon-cyan mb-6 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 border border-[#87a7e8] rounded-full text-sm font-medium text-[#0254f4] dark:text-neon-cyan mb-6 backdrop-blur-sm mt-11">
               Career Development Program
             </div>
             <h1 className="text-4xl md:text-7xl font-bold mb-6">
@@ -514,10 +535,10 @@ export default function LaunchpadPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Program{" "}
+            <h2 className="text-4xl md:text-5xl font-bold mb-5">
+              {" "}
               <span className="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
-                Curriculum
+               Program Curriculum
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -535,25 +556,40 @@ export default function LaunchpadPage() {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 viewport={{ once: true }}
               >
-                <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500">
-                  <CardHeader>
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-neon-purple to-neon-pink rounded-full flex items-center justify-center text-white font-bold">
-                        {index + 1}
+                <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500 overflow-hidden">
+                  <CardHeader className="p-0">
+                    {(phase as any).image && (
+                      <div className="w-full h-50 overflow-hidden">
+                        <img
+                          src={(phase as any).image}
+                          alt={`${phase.title} cover`}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      <div>
-                        <CardTitle className="text-2xl">{phase.title}</CardTitle>
-                        <CardDescription className="text-neon-purple font-medium">{phase.week}</CardDescription>
-                      </div>
+                    )}
+                    <div className="px-6">
+                      <CardTitle className="text-xl">{phase.title}</CardTitle>
+                      {(phase as any).description && (
+                        <p className="mt-1 text-sm text-muted-foreground">{(phase as any).description}</p>
+                      )}
+                      <CardDescription className="text-[#1c949a] pt-2 font-medium">{(phase as any).duration || phase.week}</CardDescription>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-4">
-                      {phase.prices.map((price) => (
-                        <div key={`${phase.title}-price`} className="flex items-center justify-start space-x-2">
-                          <span className="text-2xl text-muted-foreground text-bold">₹{price}</span>
+                    <div className="space-y-2">
+                      {(phase as any).originalPrice && (
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-sm text-muted-foreground line-through">₹{(phase as any).originalPrice}</span>
+                          {(phase as any).discountPercent && (
+                            <span className="text-xs text-[#0bbc1d]  font-medium">{(phase as any).discountPercent}% off</span>
+                          )}
                         </div>
-                      ))}
+                      )}
+                      <div>
+                        <span className="text-3xl font-semibold text-primary">
+                          ₹{(phase as any).offerPrice || (phase as any).price || (phase as any).prices?.[0]}
+                        </span>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>

@@ -80,15 +80,27 @@ export function FullScreenHero() {
 
   // fix smooth infinite loop
   const handleTransitionEnd = () => {
+    let jumped = false;
     if (currentIndex === slides.length - 1) {
-      // at cloned last → jump to real first
+      // at cloned last → jump to real first without animation
       setIsAnimating(false);
       setCurrentIndex(1);
+      jumped = true;
     }
     if (currentIndex === 0) {
-      // at cloned first → jump to real last
+      // at cloned first → jump to real last without animation
       setIsAnimating(false);
       setCurrentIndex(slides.length - 2);
+      jumped = true;
+    }
+
+    // Re-enable animation on the next frame to avoid any visual blink
+    if (jumped) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsAnimating(true);
+        });
+      });
     }
   };
 
@@ -143,7 +155,7 @@ export function FullScreenHero() {
           type="button"
           onClick={handlePrev}
           aria-label="Previous"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-full text-[#0254f4] shadow-lg transition-colors no-global-button border border-transparent hover:border-[#0254f4]"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-full text-[#1c949a] shadow-lg transition-colors no-global-button"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
@@ -153,7 +165,7 @@ export function FullScreenHero() {
           type="button"
           onClick={handleNext}
           aria-label="Next"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-full text-[#0254f4] shadow-lg transition-colors no-global-button border border-transparent hover:border-[#0254f4]"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-full text-[#1c949a] shadow-lg transition-colors no-global-button"
         >
           <ChevronRight className="w-6 h-6" />
         </button>

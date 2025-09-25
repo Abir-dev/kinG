@@ -13,7 +13,7 @@ export const LogoCardsSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<number>();
-  const baseSpeed = 0.4;              // px per frame; adjust for default speed
+  const baseSpeed = 0.7;              // px per frame; default auto-scroll speed when not hovered
   const speedRef = useRef<number>(baseSpeed);
   const boostTimeout = useRef<number | null>(null);
 
@@ -142,7 +142,7 @@ export const LogoCardsSection: React.FC = () => {
         </motion.div>
 
         {/* Carousel with seamless infinite scroll */}
-        <div className="relative">
+        <div className="relative group">
           {/* Edge fade masks */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-16 z-10 bg-gradient-to-r from-background to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-16 z-10 bg-gradient-to-l from-background to-transparent" />
@@ -150,22 +150,22 @@ export const LogoCardsSection: React.FC = () => {
           {/* Navigation arrows (speed nudges) */}
           <motion.button
             onClick={() => nudge("left")}
-            className="absolute left-0 top-1/2 z-10 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 no-global-button border border-transparent hover:border-[#0254f4]"
+            className="absolute left-1 top-1/2 z-30 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 no-global-button opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Scroll logos left"
           >
-            <IconChevronLeft className="h-6 w-6 text-[#0254f4]" />
+            <IconChevronLeft className="h-6 w-6 text-[#1c949a]" />
           </motion.button>
 
           <motion.button
             onClick={() => nudge("right")}
-            className="absolute right-4 md:right-6 top-1/2 z-20 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group no-global-button border border-transparent hover:border-[#0254f4]"
+            className="absolute right-1 top-1/2 z-30 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group no-global-button opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Scroll logos right"
           >
-            <IconChevronRight className="h-6 w-6 text-[#0254f4]" />
+            <IconChevronRight className="h-6 w-6 text-[#1c949a]" />
           </motion.button>
 
           {/* Scroll container */}
@@ -179,7 +179,8 @@ export const LogoCardsSection: React.FC = () => {
             <div ref={trackRef} className="flex gap-10 py-2 w-max">
               {[...logoCards, ...logoCards].map((card, idx) => (
                 <div key={`${card.id}-${idx}`} className="flex-shrink-0 w-32 h-32 lg:w-40 lg:h-40 group">
-                  <div className="w-full h-full bg-card/50 backdrop-blur-sm  rounded-xl p-4 flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-neon-blue/30">
+                  <div className="w-full h-full bg-card/50 backdrop-blur-sm  rounded-xl p-4 flex items-center justify-center transition-all duration-300
+                  ">
                     <img
                       src={card.imagePath}
                       alt={`Logo ${card.id}`}

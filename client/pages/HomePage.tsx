@@ -362,20 +362,20 @@ export default function HomePage() {
             {/* Navigation Arrows */}
             <motion.button
               onClick={() => scrollTestimonials('left')}
-              className="absolute left-0 top-1/2 z-10 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 no-global-button border border-transparent hover:border-[#0254f4]"
+              className="absolute left-0 top-1/2 z-10 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 no-global-button"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <IconChevronLeft className="h-6 w-6 text-[#0254f4]" />
+              <IconChevronLeft className="h-6 w-6 text-[#1c949a]" />
             </motion.button>
 
             <motion.button
               onClick={() => scrollTestimonials('right')}
-              className="absolute right-4 top-1/2 z-10 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 no-global-button border border-transparent hover:border-[#0254f4]"
+              className="absolute right-4 top-1/2 z-10 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 no-global-button"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <IconChevronRight className="h-6 w-6 text-[#0254f4]" />
+              <IconChevronRight className="h-6 w-6 text-[#1c949a]" />
             </motion.button>
 
             {/* Scrollable Testimonials */}
