@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
-  // { name: "About", href: "/about" },
+  { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Careers", href: "/careers" },
   { name: "Launchpad", href: "/launchpad" },
