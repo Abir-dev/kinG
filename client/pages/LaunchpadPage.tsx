@@ -227,7 +227,7 @@ const curriculum = [
     image: "images/course(4).png",
     description:"Transform your career in 6 months with comprehensive full-stack training",
     duration: "6 Months",
-    originalPrice: "21,999",
+    originalPrice: "36,999",
     discountPercent: 1,
     offerPrice: "36,999",
   },
