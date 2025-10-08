@@ -14,17 +14,6 @@ import { Input } from "../components/ui/input";
 import { Checkbox } from "../components/ui/checkbox";
 import emailjs from "@emailjs/browser";
 
-const courses = [
-  "AI Accelerating Mastery Course",
-  "Full Stack Development",
-  "Digital Marketing",
-  "Software Development & Android apps",
-  "Finance & Sales Speech Readiness",
-  "UI/UX Design",
-  "Freelancing & Portfolio building",
-  "Stock market Algotrade with AI Tools",
-];
-
 // Razorpay types are now imported from utils/razorpay
 
 export default function RegisterPage() {
@@ -39,20 +28,7 @@ export default function RegisterPage() {
   const [shippingAccepted, setShippingAccepted] = useState(false);
   const [refundAccepted, setRefundAccepted] = useState(false);
 
-  const courseOptions = [
-    "AI Accelerating Mastery Course",
-    "Full Stack Development",
-    "Digital Marketing",
-    "Software Development & Android apps",
-    "Finance & Sales Speech Readiness",
-    "UI/UX Design",
-    "Freelancing & Portfolio building",
-    "Stock market Algotrade with AI Tools",
-  ];
 
-  const [registrationType, setRegistrationType] = useState("");
-  const [coursePricing, setCoursePricing] = useState("");
-  const [selectedCourse, setSelectedCourse] = useState(courseOptions[0]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -60,21 +36,9 @@ export default function RegisterPage() {
   const [stream, setStream] = useState("");
   const [college, setCollege] = useState("");
 
-  // Get price based on registration type
+  // Get price for workshop
   const getPrice = (): number => {
-    switch (registrationType) {
-      case "Registration for workshop":
-        return 26;
-      case "Registration for Course":
-        // if (coursePricing.includes('1299')) return 1299;
-        // if (coursePricing.includes('3999')) return 3999;
-        if (coursePricing.includes("25900")) return 25900;
-        return 3000; // default
-      case "Registration for AlgoBridge":
-        return 9;
-      default:
-        return 0;
-    }
+    return 6; // Workshop price
   };
 
   // Handle payment
@@ -91,22 +55,14 @@ export default function RegisterPage() {
       await processPayment(
         {
           amount,
-          description: `${registrationType} - ${registrationType === "Registration for Course" ? selectedCourse : ""}`,
+          description: "Registration for Workshop",
           prefill: {
             name,
             email,
             contact: phone,
           },
           notes: {
-            registration_type: registrationType,
-            selected_course:
-              registrationType === "Registration for Course"
-                ? selectedCourse
-                : "N/A",
-            course_pricing:
-              registrationType === "Registration for Course"
-                ? coursePricing
-                : "N/A",
+            registration_type: "Workshop",
             passout_year: passoutYear,
             stream,
             college,
@@ -141,15 +97,7 @@ export default function RegisterPage() {
         name,
         email,
         phone,
-        registrationType,
-        selectedCourse:
-          registrationType === "Registration for Course"
-            ? selectedCourse
-            : "N/A",
-        coursePricing:
-          registrationType === "Registration for Course"
-            ? coursePricing
-            : "N/A",
+        registrationType: "Workshop",
         passoutYear,
         stream,
         college,
@@ -225,30 +173,9 @@ export default function RegisterPage() {
                     Registration Type:
                   </span>
                   <span className="text-sm font-medium text-neon-cyan">
-                    {registrationType}
+                    Workshop
                   </span>
                 </div>
-
-                {registrationType === "Registration for Course" && (
-                  <>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm text-muted-foreground">
-                        Course:
-                      </span>
-                      <span className="text-sm font-medium text-neon-purple">
-                        {selectedCourse}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm text-muted-foreground">
-                        Plan:
-                      </span>
-                      <span className="text-sm font-medium text-neon-cyan">
-                        {coursePricing}
-                      </span>
-                    </div>
-                  </>
-                )}
 
                 <div className="border-t border-neon-cyan/20 pt-2 mt-2">
                   <div className="flex justify-between items-center">
@@ -612,23 +539,7 @@ export default function RegisterPage() {
                         <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
                           <span className="text-sm font-medium">Workshops</span>
                           <span className="text-[#20b7bf] font-semibold">
-                            ₹26
-                          </span>
-                        </div>
-                        <div className="flex items-center justify-between p-3 bg-neon-purple/10 rounded-lg border border-neon-purple/20">
-                          <span className="text-sm font-medium">
-                            Launchpad Program
-                          </span>
-                          <span className="text-neon-purple font-semibold">
-                            ₹25,900
-                          </span>
-                        </div>
-                        <div className="flex items-center justify-between p-3 bg-neon-cyan/10 rounded-lg border border-neon-cyan/20">
-                          <span className="text-sm font-medium">
-                            AlgoBridge Contest
-                          </span>
-                          <span className="text-[#20b7bf] font-semibold">
-                            ₹9
+                            ₹6
                           </span>
                         </div>
                       </div>
@@ -680,75 +591,24 @@ export default function RegisterPage() {
                 </motion.div>
 
                 <div className="space-y-6">
-                  {/* Registration Type - Sleek Toggle */}
-                  <div>
-                    <label className="text-sm font-semibold text-foreground mb-3 block">
-                      Registration Type
-                    </label>
-                    <div className="grid grid-cols-3 gap-2 p-1 bg-muted/30 rounded-lg">
-                      {[
-                        {
-                          value: "Registration for workshop",
-                          label: "Workshop",
-                        },
-                        { value: "Registration for Course", label: "Course" },
-                        {
-                          value: "Registration for AlgoBridge",
-                          label: "AlgoBridge",
-                        },
-                      ].map((option) => (
-                        <button
-                          key={option.value}
-                          onClick={() => setRegistrationType(option.value)}
-                          className={`no-global-button border-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-all duration-200 ${
-                            registrationType === option.value
-                              ? "bg-white border-neon-purple/50 text-[#1c949a] shadow"
-                              : "border-neon-purple/50 text-[#1c949a] hover:text-[#1c949a]"
-                          }`}
-                        >
-                          {option.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Course Pricing - Clean Cards */}
-                  {registrationType === "Registration for Course" && (
-                    <div>
-                      <label className="text-sm font-semibold text-foreground mb-3 block">
-                        Select Plan
-                      </label>
-                      <div className="grid grid-cols-3 gap-2">
-                        {[
-                          {
-                            value: "Basic - ₹25,900",
-                            label: "Basic",
-                            price: "₹25,900",
-                          },
-                          // { value: 'Basic - ₹1299', label: 'Basic', price: '₹1299' },
-                          // { value: 'Pro - ₹3999', label: 'Pro', price: '₹3999' },
-                          // { value: 'Ultimate - ₹7999', label: 'Ultimate', price: '₹7999' }
-                        ].map((plan) => (
-                          <button
-                            key={plan.value}
-                            onClick={() => setCoursePricing(plan.value)}
-                            className={`no-global-button p-3 rounded-lg border-2 transition-all duration-200 text-center ${
-                              coursePricing === plan.value
-                                ? "border-neon-cyan bg-neon-cyan/10 text-neon-cyan"
-                                : "border-border/40 hover:border-neon-cyan/50 hover:bg-neon-cyan/5 text-muted-foreground"
-                            }`}
-                          >
-                            <div className="font-medium text-xs text-[#1c949a]">
-                              {plan.label}
-                            </div>
-                            <div className="font-bold text-lg mt-1 text-[#1c949a]">
-                              {plan.price}
-                            </div>
-                          </button>
-                        ))}
+                  {/* Workshop Registration Info */}
+                  <div className="bg-card/30 backdrop-blur-sm border border-border/40 rounded-xl p-6 shadow-lg">
+                    <div className="text-center space-y-4">
+                      <div className="flex items-center justify-center gap-3">
+                        <div className="w-12 h-12 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full flex items-center justify-center">
+                          <span className="text-black font-bold text-lg">W</span>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-neon-cyan">Workshop Registration</h3>
+                          <p className="text-sm text-muted-foreground">Join our comprehensive workshop</p>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-neon-purple">₹6</div>
+                        <div className="text-sm text-muted-foreground">One-time payment</div>
                       </div>
                     </div>
-                  )}
+                  </div>
 
                   {/* Form Fields - Modern Glass Design */}
                   <div className="bg-card/30 backdrop-blur-sm border border-border/40 rounded-xl p-6 shadow-lg">
@@ -797,30 +657,6 @@ export default function RegisterPage() {
                         </div>
                       </div>
 
-                      {/* Course Selection */}
-                      {registrationType === "Registration for Course" && (
-                        <div>
-                          <label className="text-sm font-medium text-foreground/90 mb-1.5 block">
-                            Course
-                          </label>
-                          <select
-                            value={selectedCourse}
-                            onChange={(e) => setSelectedCourse(e.target.value)}
-                            required
-                            className="w-full bg-background/50 border border-border/50 text-foreground rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-neon-cyan/60 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
-                          >
-                            {courseOptions.map((course) => (
-                              <option
-                                key={course}
-                                value={course}
-                                className="bg-background text-foreground"
-                              >
-                                {course}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      )}
 
                       {/* Academic Information */}
                       <div className="grid grid-cols-2 gap-4">
@@ -875,9 +711,6 @@ export default function RegisterPage() {
                         name.trim() &&
                         phone.trim() &&
                         email.trim() &&
-                        registrationType.trim() &&
-                        (registrationType !== "Registration for Course" ||
-                          (selectedCourse.trim() && coursePricing.trim())) &&
                         passoutYear.trim() &&
                         stream.trim() &&
                         college.trim()

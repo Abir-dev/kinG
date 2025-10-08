@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { 
   IconRocket, 
   IconCheck, 
@@ -17,7 +18,8 @@ import {
   IconBook,
   IconCode,
   IconPresentation,
-  IconHeadphones
+  IconHeadphones,
+  IconShoppingCart
 } from '@tabler/icons-react';
 import { Layout } from '../components/Layout';
 import { Button } from '../components/ui/button';
@@ -197,9 +199,9 @@ const curriculum = [
     image: "images/hero(1).png",
     description:"Your 90-Day Career Acceleration Journey Unlock Triple Certification & Real-World Experience",
     duration: "4 Months",
-    originalPrice: "25,900",
-    discountPercent: 1,
-    offerPrice: "25,900",
+    originalPrice: "60,000",
+    discountPercent: 57,
+    offerPrice: "25,999",
   },
   {
     week: "4 Months Course",
@@ -207,8 +209,8 @@ const curriculum = [
     image: "images/course(2).png",
     description:"A comprehensive 3-month program designed to professionals into job-ready full stack developers with Microsoft-certified skills.",
     duration: "3 Months",
-    originalPrice: "36,999",
-    discountPercent: 1,
+    originalPrice: "70,000",
+    discountPercent: 47,
     offerPrice: "36,999",
   },
   {
@@ -217,9 +219,9 @@ const curriculum = [
     image: "images/course(3).png",
     description:"A comprehensive 4-month program design to lern Stock Market Algotrade with AI Tools",
     duration: "4 Months",
-    originalPrice: "55,999",
-    discountPercent: 1,
-    offerPrice: "55,999",
+    originalPrice: "1,14,000",
+    discountPercent: 47,
+    offerPrice: "59,999",
   },
   {
     week: "4 Months Course",
@@ -227,8 +229,8 @@ const curriculum = [
     image: "images/course(4).png",
     description:"Transform your career in 6 months with comprehensive full-stack training",
     duration: "6 Months",
-    originalPrice: "36,999",
-    discountPercent: 1,
+    originalPrice: "50,000",
+    discountPercent: 26,
     offerPrice: "36,999",
   },
   {
@@ -237,8 +239,8 @@ const curriculum = [
     image: "images/course(5).png",
     description:"A comprehensive 3-month training program designed to build IT infrastructure, networking, and security professionals through hands-on labs, simulations, and live case studies.",
     duration: "3 Months(12 Weeks)",
-    originalPrice: "21,999",
-    discountPercent: 1,
+    originalPrice: "35,000",
+    discountPercent: 37,
     offerPrice: "21,999",
   },
   {
@@ -247,8 +249,8 @@ const curriculum = [
     image: "images/course(6).png",
     description:"Transform your career with practical finance knowledge and professional sales communication skills",
     duration: "4 Months(16 Weeks)",
-    originalPrice: "14,999",
-    discountPercent: 1,
+    originalPrice: "25,000",
+    discountPercent: 40,
     offerPrice: "14,999",
   },
   {
@@ -257,9 +259,63 @@ const curriculum = [
     image: "images/hero(5).png",
     description: "An 8-week comprehensive program equipping student and professionals with practical, job-ready skillsin SEO, Social Media, Ads and Analytics for careers in Degital Marketing ",
     duration: "8 Weekes",
-    originalPrice: "11,999",
-    discountPercent: 1,
-    offerPrice: "11,999",
+    originalPrice: "20,000",
+    discountPercent: 35,
+    offerPrice: "12,999",
+  },
+  {
+    week: "Jr. Developer Program",
+    title: "Jr. Developer - Basic",
+    image: "images/image.png",
+    description: "Foundation program covering essential programming skills including Spoken English, C Language, HTML/CSS/JavaScript, Python, and AIML basics",
+    duration: "3 Months",
+    originalPrice: "15,000",
+    discountPercent: 20,
+    offerPrice: "12,000",
+    curriculum: [
+      "Spoken English",
+      "C Language Basic",
+      "HTML, CSS, JavaScript (Basic)",
+      "Python Basic",
+      "AIML Basic"
+    ]
+  },
+  {
+    week: "Jr. Developer Program",
+    title: "Jr. Developer - Extended",
+    image: "images/courses/image.png",
+    description: "Comprehensive program including Basic curriculum plus SQL/MySQL, Core Java, Webpage Building, UX/UI Design, and AI-powered website creation",
+    duration: "6 Months",
+    originalPrice: "22,500",
+    discountPercent: 20,
+    offerPrice: "18,000",
+    curriculum: [
+      "Everything in Basic",
+      "SQL/MySQL",
+      "Core Java",
+      "Webpage Building",
+      "UX/UI Design",
+      "Making website using AI"
+    ]
+  },
+  {
+    week: "Jr. Developer Program",
+    title: "Jr. Developer - Plus",
+    image: "images/courses/image.png",
+    description: "Complete developer program with all Extended features plus AI, Node.js, React, PHP, C++, and real internship project experience",
+    duration: "9 Months",
+    originalPrice: "32,375",
+    discountPercent: 20,
+    offerPrice: "25,900",
+    curriculum: [
+      "Everything in Extended",
+      "AI",
+      "Node.js",
+      "React",
+      "PHP",
+      "C++",
+      "Internship Project"
+    ]
   },
 ];
 
@@ -321,6 +377,55 @@ const faqs = [
 ];
 
 export default function LaunchpadPage() {
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState<any>(null);
+
+  // Handle course purchase
+  const handleCoursePurchase = async (course: any) => {
+    setPaymentLoading(true);
+    setSelectedCourse(course);
+
+    try {
+      const amount = parseInt(course.offerPrice.replace(/,/g, ''));
+
+      // Use the Razorpay payment system
+      const { processPayment } = await import("../utils/razorpay");
+
+      await processPayment(
+        {
+          amount,
+          description: `Course Purchase - ${course.title}`,
+          prefill: {
+            name: "",
+            email: "",
+            contact: "",
+          },
+          notes: {
+            course_title: course.title,
+            course_duration: course.duration,
+            course_price: course.offerPrice,
+          },
+        },
+        async (paymentDetails) => {
+          // Payment successful
+          console.log("Payment successful:", paymentDetails);
+          // You can add success handling here
+          alert("Payment successful! You will receive course access details via email.");
+        },
+        (errorMessage) => {
+          alert(`Payment failed: ${errorMessage}`);
+        },
+      );
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Payment failed";
+      alert(`Payment failed: ${errorMessage}`);
+    } finally {
+      setPaymentLoading(false);
+      setSelectedCourse(null);
+    }
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -556,8 +661,8 @@ export default function LaunchpadPage() {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 viewport={{ once: true }}
               >
-                <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500 overflow-hidden">
-                  <CardHeader className="p-0">
+                <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-purple/50 transition-all duration-500 overflow-hidden flex flex-col">
+                  <CardHeader className="p-0 flex-shrink-0">
                     {(phase as any).image && (
                       <div className="w-full h-50 overflow-hidden">
                         <img
@@ -575,21 +680,66 @@ export default function LaunchpadPage() {
                       <CardDescription className="text-[#1c949a] pt-2 font-medium">{(phase as any).duration || phase.week}</CardDescription>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2">
-                      {(phase as any).originalPrice && (
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-sm text-muted-foreground line-through">₹{(phase as any).originalPrice}</span>
-                          {(phase as any).discountPercent && (
-                            <span className="text-xs text-[#0bbc1d]  font-medium">{(phase as any).discountPercent}% off</span>
-                          )}
+                  <CardContent className="flex flex-col flex-grow">
+                    <div className="space-y-4 flex-grow">
+                      <div className="space-y-2">
+                        {(phase as any).originalPrice && (
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-sm text-muted-foreground line-through">₹{(phase as any).originalPrice}</span>
+                            {(phase as any).discountPercent && (
+                              <span className="text-xs text-[#0bbc1d] font-medium">{(phase as any).discountPercent}% off</span>
+                            )}
+                          </div>
+                        )}
+                        <div>
+                          <span className="text-3xl font-semibold text-primary">
+                            ₹{(phase as any).offerPrice || (phase as any).price || (phase as any).prices?.[0]}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      {/* Curriculum for Jr. Developer courses */}
+                      {(phase as any).curriculum && (
+                        <div className="space-y-2">
+                          <h4 className="text-sm font-semibold text-[#1c949a] mb-2">Curriculum:</h4>
+                          <div className="space-y-1">
+                            {(phase as any).curriculum.slice(0, 3).map((item: string, idx: number) => (
+                              <div key={idx} className="flex items-start space-x-2">
+                                <IconCheck className="h-4 w-4 mt-0.5 text-neon-blue flex-shrink-0" />
+                                <span className="text-xs text-muted-foreground">{item}</span>
+                              </div>
+                            ))}
+                            {(phase as any).curriculum.length > 3 && (
+                              <div className="text-xs text-muted-foreground">
+                                +{(phase as any).curriculum.length - 3} more modules
+                              </div>
+                            )}
+                          </div>
                         </div>
                       )}
-                      <div>
-                        <span className="text-3xl font-semibold text-primary">
-                          ₹{(phase as any).offerPrice || (phase as any).price || (phase as any).prices?.[0]}
-                        </span>
-                      </div>
+                    </div>
+                    
+                    {/* Buy Now Button - Fixed at bottom */}
+                    <div className="mt-auto pt-4">
+                      <Button
+                        onClick={() => handleCoursePurchase(phase)}
+                        disabled={paymentLoading && selectedCourse?.title === phase.title}
+                        variant="outline"
+                        size="lg"
+                        className="w-full border-2 hover:bg-neon-blue/10 transition-all px-8 py-4 text-lg font-semibold"
+                      >
+                        {paymentLoading && selectedCourse?.title === phase.title ? (
+                          <div className="flex items-center gap-2">
+                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                            Processing...
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-2">
+                            <IconShoppingCart className="h-5 w-5" />
+                            Buy Now
+                          </div>
+                        )}
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>

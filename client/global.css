@@ -98,7 +98,8 @@
     --neon-purple: 280 100% 70%;
     --neon-pink: 320 100% 70%;
     --neon-green: 140 100% 70%;
-    --neon-cyan: 180 100% 70%;
+    /* Replace cyan with bright azure blue for readability */
+    --neon-cyan: 219 98% 48%; /* approx #0254F4 */
   }
 
   .dark {
@@ -143,7 +144,8 @@
     --neon-purple: 280 100% 85%;
     --neon-pink: 320 100% 85%;
     --neon-green: 140 100% 85%;
-    --neon-cyan: 180 100% 85%;
+    /* Bright azure variant in dark for high contrast */
+    --neon-cyan: 219 100% 65%;
     --neon-orange: 25 100% 75%;
     --neon-red: 0 100% 75%;
   }
