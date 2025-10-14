@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import emailjs from '@emailjs/browser';
 
 interface StudentRegistrationFormProps {
   onClose: () => void;
@@ -134,6 +135,53 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
         setIsSubmitted(true);
         console.log('Registration successful:', result);
         toast({ title: 'Registration successful', description: "We'll contact you within 24 hours." });
+
+        // Send email notification via EmailJS
+        try {
+          const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+          const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+          const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+          if (!serviceId || !templateId || !publicKey) {
+            console.warn('EmailJS environment variables not configured. Skipping email notification.');
+          } else {
+            // Prepare template parameters that match your EmailJS template
+            const templateParams = {
+              name: formData.name,
+              email: formData.email,
+              phone: formData.phone,
+              course: formData.course === 'Other' ? formData.customCourse : formData.course,
+              customCourse: formData.course === 'Other' ? formData.customCourse : '',
+              experience: formData.experience || 'Not specified',
+            };
+
+            await emailjs.send(serviceId, templateId, templateParams, publicKey);
+            console.log('Registration email sent successfully!');
+            toast({ 
+              title: 'Email Sent', 
+              description: 'A confirmation email has been sent to techsupport@kingtechs.in.' 
+            });
+          }
+        } catch (emailError: any) {
+          console.error('Error sending registration email:', emailError);
+          
+          // Check for specific EmailJS template errors
+          if (emailError?.text?.includes('corrupted') || emailError?.text?.includes('template')) {
+            console.error('EmailJS template error - check template configuration');
+            toast({ 
+              title: 'Email Template Error', 
+              description: 'Email template configuration issue. Registration was successful though.', 
+              variant: 'destructive' as any 
+            });
+          } else {
+            console.error('EmailJS general error:', emailError);
+            toast({ 
+              title: 'Email Error', 
+              description: 'Failed to send confirmation email. Registration was successful though.', 
+              variant: 'destructive' as any 
+            });
+          }
+        }
       } else {
         // Handle API errors
         console.error('Registration failed:', result);

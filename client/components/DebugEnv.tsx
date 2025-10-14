@@ -34,6 +34,24 @@ const DebugEnv: React.FC = () => {
       </div>
       
       <div style={{ marginBottom: '8px' }}>
+        <strong>EmailJS Service:</strong> {config.emailjs.serviceId ? '✅ Set' : '❌ Missing'}
+      </div>
+      
+      <div style={{ marginBottom: '8px' }}>
+        <strong>EmailJS Template:</strong> {config.emailjs.templateId ? '✅ Set' : '❌ Missing'}
+      </div>
+      
+      <div style={{ marginBottom: '8px' }}>
+        <strong>EmailJS Public Key:</strong> {config.emailjs.publicKey ? '✅ Set' : '❌ Missing'}
+      </div>
+      
+      <div style={{ marginBottom: '8px', fontSize: '10px', color: '#ccc' }}>
+        <strong>Service ID:</strong> {config.emailjs.serviceId || 'Not set'}<br/>
+        <strong>Template ID:</strong> {config.emailjs.templateId || 'Not set'}<br/>
+        <strong>Public Key:</strong> {config.emailjs.publicKey ? 'Set' : 'Not set'}
+      </div>
+      
+      <div style={{ marginBottom: '8px' }}>
         <strong>API Test:</strong> {getApiUrl('api/razorpay/create-order')}
       </div>
       
@@ -78,6 +96,29 @@ const DebugEnv: React.FC = () => {
         }}
       >
         Test Backend
+      </button>
+      
+      <button 
+        onClick={() => {
+          console.log('EmailJS Config:', {
+            serviceId: config.emailjs.serviceId,
+            templateId: config.emailjs.templateId,
+            publicKey: config.emailjs.publicKey ? 'Set' : 'Not set'
+          });
+        }}
+        style={{
+          background: '#ff6b35',
+          color: '#fff',
+          border: 'none',
+          padding: '5px 10px',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          fontSize: '10px',
+          marginLeft: '5px',
+          marginTop: '5px'
+        }}
+      >
+        Test EmailJS
       </button>
     </div>
   );
