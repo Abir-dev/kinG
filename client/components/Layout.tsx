@@ -4,6 +4,8 @@ import { PageTransition } from "./PageTransition";
 import { useGSAPAnimations } from "../hooks/useGSAPAnimations";
 import { useEffect } from "react";
 import { IconMail, IconMapPin, IconPhone, IconRegistered } from "@tabler/icons-react";
+import { useLocation } from "react-router-dom";
+import ApplyNowAd from "./ApplyNowAd";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,6 +13,7 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   const { refresh } = useGSAPAnimations();
+  const location = useLocation();
 
   useEffect(() => {
     // Refresh GSAP ScrollTrigger after component mount
@@ -338,6 +341,9 @@ export function Layout({ children }: LayoutProps) {
           </div>
         </div>
       </footer>
+
+      {/* Apply Now Advertisement - Only show on home page */}
+      {location.pathname === '/' && <ApplyNowAd />}
     </div>
   );
 }

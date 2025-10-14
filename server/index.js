@@ -11,6 +11,7 @@ import { config, validateConfig } from "./config.js";
 // Import routes
 import emailRoutes from "./routes/email.js";
 import razorpayRoutes from "./routes/razorpay.js";
+import userRoutes from "./routes/users.js";
 
 dotenv.config();
 
@@ -69,6 +70,7 @@ app.get("/health", (req, res) => {
 // API routes
 app.use("/api", emailRoutes);
 app.use("/api/razorpay", razorpayRoutes);
+app.use("/api/users", userRoutes);
 
 // Serve static files from the React app in production
 if (config.nodeEnv === "production") {
