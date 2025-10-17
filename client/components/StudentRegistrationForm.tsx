@@ -210,14 +210,14 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
   if (isSubmitted) {
     return (
       <Card className="w-full max-w-md mx-auto">
-        <CardContent className="p-8 text-center">
+        <CardContent className="p-4 sm:p-8 text-center">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, type: "spring" }}
-            className="mb-6"
+            className="mb-4 sm:mb-6"
           >
-            <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+            <CheckCircle className="h-12 w-12 sm:h-16 sm:w-16 text-green-500 mx-auto mb-3 sm:mb-4" />
           </motion.div>
           
           <motion.div
@@ -225,13 +225,13 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent mb-2">
               Registration Successful!
             </h3>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 px-2">
               Thank you for your interest in our Launchpad Program! Your account has been created and our team will contact you within 24 hours to discuss your career goals and next steps.
             </p>
-            <Button onClick={onClose} className="w-full">
+            <Button onClick={onClose} className="w-full touch-manipulation">
               Close
             </Button>
           </motion.div>
@@ -242,34 +242,35 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
 
   return (
     <Card className="w-full max-w-md mx-auto bg-card/90 backdrop-blur-[14px] backdrop-saturate-[160%] border border-[#0254f4]/60 shadow-[inset_0_0_18px_rgba(2,84,244,0.15),0_8px_20px_rgba(2,84,244,0.10)]">
-      <CardHeader className="pb-4">
+      <CardHeader className="pb-3 sm:pb-4 px-4 sm:px-6 pt-4 sm:pt-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 bg-[#0254f4]/20 rounded-lg border border-[#0254f4]/30">
-              <GraduationCap className="h-6 w-6 text-[#0254f4]" />
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-1.5 sm:p-2 bg-[#0254f4]/20 rounded-lg border border-[#0254f4]/30">
+              <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 text-[#0254f4]" />
             </div>
-            <CardTitle className="text-xl bg-gradient-to-r from-[#0254f4] via-[#1c949a] to-[#20b7bf] bg-clip-text text-transparent">
+            <CardTitle className="text-base sm:text-xl bg-gradient-to-r from-[#0254f4] via-[#1c949a] to-[#20b7bf] bg-clip-text text-transparent">
               Student Registration
             </CardTitle>
           </div>
           <button
             onClick={onClose}
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            className="text-muted-foreground hover:text-foreground transition-colors p-2 touch-manipulation -mr-2"
+            aria-label="Close"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-xs sm:text-sm text-muted-foreground mt-2">
           Join our Launchpad Program and kickstart your tech career
         </p>
       </CardHeader>
 
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <CardContent className="px-4 sm:px-6 pb-4 sm:pb-6">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           {/* Name Field */}
-          <div className="space-y-2">
-            <Label htmlFor="name" className="flex items-center space-x-2">
-              <User className="h-4 w-4" />
+          <div className="space-y-1.5 sm:space-y-2">
+            <Label htmlFor="name" className="flex items-center space-x-2 text-sm">
+              <User className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               <span>Full Name *</span>
             </Label>
             <Input
@@ -278,17 +279,17 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
               placeholder="Enter your full name"
               value={formData.name}
               onChange={(e) => handleInputChange('name', e.target.value)}
-              className={errors.name ? 'border-red-500' : ''}
+              className={`touch-manipulation text-base ${errors.name ? 'border-red-500' : ''}`}
             />
             {errors.name && (
-              <p className="text-sm text-red-500">{errors.name}</p>
+              <p className="text-xs sm:text-sm text-red-500">{errors.name}</p>
             )}
           </div>
 
           {/* Email Field */}
-          <div className="space-y-2">
-            <Label htmlFor="email" className="flex items-center space-x-2">
-              <Mail className="h-4 w-4" />
+          <div className="space-y-1.5 sm:space-y-2">
+            <Label htmlFor="email" className="flex items-center space-x-2 text-sm">
+              <Mail className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               <span>Email Address *</span>
             </Label>
             <Input
@@ -297,17 +298,17 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
               placeholder="Enter your email"
               value={formData.email}
               onChange={(e) => handleInputChange('email', e.target.value)}
-              className={errors.email ? 'border-red-500' : ''}
+              className={`touch-manipulation text-base ${errors.email ? 'border-red-500' : ''}`}
             />
             {errors.email && (
-              <p className="text-sm text-red-500">{errors.email}</p>
+              <p className="text-xs sm:text-sm text-red-500">{errors.email}</p>
             )}
           </div>
 
           {/* Phone Field */}
-          <div className="space-y-2">
-            <Label htmlFor="phone" className="flex items-center space-x-2">
-              <Phone className="h-4 w-4" />
+          <div className="space-y-1.5 sm:space-y-2">
+            <Label htmlFor="phone" className="flex items-center space-x-2 text-sm">
+              <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               <span>Contact Number *</span>
             </Label>
             <Input
@@ -316,40 +317,40 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
               placeholder="Enter your phone number"
               value={formData.phone}
               onChange={(e) => handleInputChange('phone', e.target.value)}
-              className={errors.phone ? 'border-red-500' : ''}
+              className={`touch-manipulation text-base ${errors.phone ? 'border-red-500' : ''}`}
             />
             {errors.phone && (
-              <p className="text-sm text-red-500">{errors.phone}</p>
+              <p className="text-xs sm:text-sm text-red-500">{errors.phone}</p>
             )}
           </div>
 
           {/* Course Selection */}
-          <div className="space-y-2">
-            <Label htmlFor="course">Course Interest *</Label>
+          <div className="space-y-1.5 sm:space-y-2">
+            <Label htmlFor="course" className="text-sm">Course Interest *</Label>
             <Select
               value={formData.course}
               onValueChange={(value) => handleInputChange('course', value)}
             >
-              <SelectTrigger className={errors.course ? 'border-red-500' : ''}>
+              <SelectTrigger className={`touch-manipulation text-base ${errors.course ? 'border-red-500' : ''}`}>
                 <SelectValue placeholder="Select a course" />
               </SelectTrigger>
-              <SelectContent className="animate-none">
+              <SelectContent className="animate-none max-h-[60vh]">
                 {courses.map((course) => (
-                  <SelectItem key={course} value={course} className="animate-none">
+                  <SelectItem key={course} value={course} className="animate-none text-sm">
                     {course}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
             {errors.course && (
-              <p className="text-sm text-red-500">{errors.course}</p>
+              <p className="text-xs sm:text-sm text-red-500">{errors.course}</p>
             )}
           </div>
 
           {/* Custom Course Input - Show only when "Other" is selected */}
           {formData.course === 'Other' && (
-            <div className="space-y-2">
-              <Label htmlFor="customCourse" className="flex items-center space-x-2">
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="customCourse" className="flex items-center space-x-2 text-sm">
                 <span>Specify Your Course Interest *</span>
               </Label>
               <Input
@@ -358,27 +359,27 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
                 placeholder="Enter your course of interest"
                 value={formData.customCourse}
                 onChange={(e) => handleInputChange('customCourse', e.target.value)}
-                className={errors.customCourse ? 'border-red-500' : ''}
+                className={`touch-manipulation text-base ${errors.customCourse ? 'border-red-500' : ''}`}
               />
               {errors.customCourse && (
-                <p className="text-sm text-red-500">{errors.customCourse}</p>
+                <p className="text-xs sm:text-sm text-red-500">{errors.customCourse}</p>
               )}
             </div>
           )}
 
           {/* Experience Level */}
-          <div className="space-y-2">
-            <Label htmlFor="experience">Experience Level</Label>
+          <div className="space-y-1.5 sm:space-y-2">
+            <Label htmlFor="experience" className="text-sm">Experience Level</Label>
             <Select
               value={formData.experience}
               onValueChange={(value) => handleInputChange('experience', value)}
             >
-              <SelectTrigger>
+              <SelectTrigger className="touch-manipulation text-base">
                 <SelectValue placeholder="Select your experience level" />
               </SelectTrigger>
               <SelectContent className="animate-none">
                 {experienceLevels.map((level) => (
-                  <SelectItem key={level} value={level} className="animate-none">
+                  <SelectItem key={level} value={level} className="animate-none text-sm">
                     {level}
                   </SelectItem>
                 ))}
@@ -389,14 +390,14 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
           {/* Submit Button */}
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-[#0254f4] to-[#1c949a] hover:from-[#1c949a] hover:to-[#20b7bf] text-white font-semibold py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[0_8px_25px_rgba(2,84,244,0.3)] border-0"
+            className="w-full bg-gradient-to-r from-[#0254f4] to-[#1c949a] hover:from-[#1c949a] hover:to-[#20b7bf] text-white font-semibold py-2.5 sm:py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[0_8px_25px_rgba(2,84,244,0.3)] border-0 touch-manipulation text-sm sm:text-base mt-2"
             disabled={isSubmitting}
           >
             {isSubmitting ? (
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="mr-2"
+                className="mr-2 inline-block"
               >
                 <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
               </motion.div>
@@ -404,7 +405,7 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
             {isSubmitting ? 'Registering...' : 'Register Now'}
           </Button>
 
-          <p className="text-xs text-muted-foreground text-center">
+          <p className="text-[10px] sm:text-xs text-muted-foreground text-center px-2">
             By registering, you agree to our terms and conditions. We'll contact you within 24 hours.
           </p>
         </form>

@@ -45,34 +45,34 @@ export function Layout({ children }: LayoutProps) {
 
         <div className="relative z-10">
           {/* Main Footer Content */}
-          <div className="max-w-7xl mx-auto px-6 py-16">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12">
               {/* Company Info */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="lg:col-span-2"
+                className="sm:col-span-2 lg:col-span-2"
               >
                 {/* Logo and Name */}
-                <div className="flex items-center space-x-4 mb-6">
+                <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
                   <img
                     src="/logo4.png"
                     alt="Kin-G Logo"
-                    className="w-16 h-16 invert dark:invert-0"
+                    className="w-12 h-12 sm:w-16 sm:h-16 invert dark:invert-0"
                   />
                   <div className="flex flex-col">
-                    <span className="text-xl font-bold text-foreground leading-none">
+                    <span className="text-lg sm:text-xl font-bold text-foreground leading-none">
                       Kin-G
                     </span>
-                    <span className="text-sm text-muted-foreground leading-none">
+                    <span className="text-xs sm:text-sm text-muted-foreground leading-none">
                       Technologies
                     </span>
                   </div>
                 </div>
 
-                <p className="text-muted-foreground text-base leading-relaxed mb-6 max-w-md">
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 max-w-md">
                   Delivering comprehensive Technologies solutions, career
                   development programs, and business consulting services.
                 </p>
@@ -101,23 +101,22 @@ export function Layout({ children }: LayoutProps) {
                     </motion.div>
                   ))}
                 </div>   */}
-                <div className="flex items-center space-x-3 mb-4">
-                    <IconMapPin className="h-6 w-6 text-muted-foreground dark:text-muted-foreground" />
-                    <span className="font-semibold text-muted-foreground dark:text-muted-foreground">EP & GP Block, Sector V, Kolkata, West Bengal 700091 /<br/>
-                                                    5/2, Simlai Para Lane Paikpara, Kolkata-700002</span>
+                <div className="flex items-start space-x-2 sm:space-x-3 mb-3 sm:mb-4">
+                    <IconMapPin className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground dark:text-muted-foreground flex-shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm font-semibold text-muted-foreground dark:text-muted-foreground">EP & GP Block, Sector V, Kolkata, West Bengal 700091 / 5/2, Simlai Para Lane Paikpara, Kolkata-700002</span>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1.5 sm:space-y-2">
                     <div className="flex items-center space-x-2">
-                      <IconRegistered className="h-5 w-5 text-muted-foreground dark:text-muted-foreground" />
-                      <a href="regis no:UDYAM-WB-10-0176316" className="text-muted-foreground dark:text-muted-foreground hover:underline">UDYAM-WB-10-0176316</a>
+                      <IconRegistered className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground dark:text-muted-foreground flex-shrink-0" />
+                      <a href="regis no:UDYAM-WB-10-0176316" className="text-xs sm:text-sm text-muted-foreground dark:text-muted-foreground hover:underline">UDYAM-WB-10-0176316</a>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <IconPhone className="h-5 w-5 text-muted-foreground dark:text-muted-foreground" />
-                      <a href="tel:+918910481993" className="text-muted-foreground dark:text-muted-foreground hover:underline">+91 89104 81993</a>
+                      <IconPhone className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground dark:text-muted-foreground flex-shrink-0" />
+                      <a href="tel:+918910481993" className="text-xs sm:text-sm text-muted-foreground dark:text-muted-foreground hover:underline touch-manipulation">+91 89104 81993</a>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <IconMail className="h-5 w-5 text-muted-foreground dark:text-muted-foreground" />
-                      <a href="mailto:admin@kingtechs.in" className="text-muted-foreground dark:text-muted-foreground hover:underline">admin@kingtechs.in</a>
+                      <IconMail className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground dark:text-muted-foreground flex-shrink-0" />
+                      <a href="mailto:admin@kingtechs.in" className="text-xs sm:text-sm text-muted-foreground dark:text-muted-foreground hover:underline touch-manipulation">admin@kingtechs.in</a>
                     </div>
                 </div>
               </motion.div>
@@ -129,10 +128,10 @@ export function Layout({ children }: LayoutProps) {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-foreground font-semibold text-lg mb-6">
+                <h3 className="text-foreground font-semibold text-base sm:text-lg mb-3 sm:mb-6">
                   Services
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {[
                     "Web Development",
                     "Mobile Applications",
@@ -148,7 +147,7 @@ export function Layout({ children }: LayoutProps) {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4, delay: 0.05 * index }}
                         viewport={{ once: true }}
-                        className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm block"
+                        className="text-muted-foreground hover:text-primary transition-colors duration-200 text-xs sm:text-sm block touch-manipulation"
                       >
                         {service}
                       </motion.a>
@@ -164,10 +163,10 @@ export function Layout({ children }: LayoutProps) {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-foreground font-semibold text-lg mb-6">
+                <h3 className="text-foreground font-semibold text-base sm:text-lg mb-3 sm:mb-6">
                   Programs
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {[
                     "Launchpad Career Program",
                     "Training & Development",
@@ -183,7 +182,7 @@ export function Layout({ children }: LayoutProps) {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4, delay: 0.05 * index }}
                         viewport={{ once: true }}
-                        className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm block"
+                        className="text-muted-foreground hover:text-primary transition-colors duration-200 text-xs sm:text-sm block touch-manipulation"
                       >
                         {program}
                       </motion.a>
@@ -199,16 +198,16 @@ export function Layout({ children }: LayoutProps) {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-foreground font-semibold text-lg mb-6">
+                <h3 className="text-foreground font-semibold text-base sm:text-lg mb-3 sm:mb-6">
                   Connect with Us
                 </h3>
-                <div className="space-y-4">
-                  <p className="text-muted-foreground text-sm mb-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-6">
                     Follow us on social media for updates and insights
                   </p>
 
                   {/* Social Media Links */}
-                  <div className="flex flex-col space-y-3">
+                  <div className="flex flex-col space-y-2 sm:space-y-3">
                     <motion.a
                       href="https://www.facebook.com/share/1LMHJULrar/?mibextid=wwXIfr"
                       target="_blank"
@@ -218,11 +217,11 @@ export function Layout({ children }: LayoutProps) {
                       transition={{ duration: 0.4, delay: 0.1 }}
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.05, x: 5 }}
-                      className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 text-sm group"
+                      className="flex items-center space-x-2 sm:space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 text-xs sm:text-sm group touch-manipulation"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-card border border-border/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-card border border-border/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200 flex-shrink-0">
                         <svg
-                          className="w-4 h-4"
+                          className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -241,11 +240,11 @@ export function Layout({ children }: LayoutProps) {
                       transition={{ duration: 0.4, delay: 0.2 }}
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.05, x: 5 }}
-                      className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 text-sm group"
+                      className="flex items-center space-x-2 sm:space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 text-xs sm:text-sm group touch-manipulation"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-card border border-border/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-card border border-border/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200 flex-shrink-0">
                         <svg
-                          className="w-4 h-4"
+                          className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -264,11 +263,11 @@ export function Layout({ children }: LayoutProps) {
                       transition={{ duration: 0.4, delay: 0.3 }}
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.05, x: 5 }}
-                      className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 text-sm group"
+                      className="flex items-center space-x-2 sm:space-x-3 text-muted-foreground hover:text-primary transition-all duration-200 text-xs sm:text-sm group touch-manipulation"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-card border border-border/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-card border border-border/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200 flex-shrink-0">
                         <svg
-                          className="w-4 h-4"
+                          className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -284,54 +283,54 @@ export function Layout({ children }: LayoutProps) {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-border/10 w-[85%] bg-card/30 items-center justify-center">
-            <div className="max-w-7xl mx-auto px-6 py-6 items-center justify-center">
+          <div className="border-t border-border/10 w-full bg-card/30 items-center justify-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 items-center justify-center">
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+                className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0"
               >
-                <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm text-muted-foreground">
-                  <span>
+                <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-xs sm:text-sm text-muted-foreground">
+                  <span className="text-center">
                     © 2025 Kin-G Technologies Pvt. Ltd. All rights reserved.
                   </span>
                 </div>
 
-                <div className="flex items-center space-x-6 text-sm">
+                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm">
                   <motion.a
                     href="/privacy-policy"
                     whileHover={{ scale: 1.05 }}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation"
                   >
                     Privacy Policy
                   </motion.a>
                   <motion.a
                     href="/shipping-policy"
                     whileHover={{ scale: 1.05 }}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation"
                   >
                     Shipping Policy
                   </motion.a>
                   <motion.a
                     href="/refund-policy"
                     whileHover={{ scale: 1.05 }}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation"
                   >
                     Refund Policy
                   </motion.a>
                   <motion.a
                     href="/terms-of-service"
                     whileHover={{ scale: 1.05 }}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation"
                   >
                     Terms of Service
                   </motion.a>
                   <motion.a
                     href="#contact"
                     whileHover={{ scale: 1.05 }}
-                    className="text-primary hover:text-primary/80 transition-colors duration-200 font-medium"
+                    className="text-primary hover:text-primary/80 transition-colors duration-200 font-medium touch-manipulation"
                   >
                     Contact Us
                   </motion.a>

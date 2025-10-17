@@ -49,14 +49,15 @@ export default function ApplyNowAd({ onClose }: ApplyNowAdProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 50 }}
             transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
-            className="fixed bottom-6 right-6 z-50 max-w-sm"
+            className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 w-[calc(100%-1.5rem)] sm:w-auto max-w-sm"
           >
             <Card className="relative bg-card/80 backdrop-blur-[14px] backdrop-saturate-[160%] border border-[#0254f4]/60 shadow-[inset_0_0_18px_rgba(2,84,244,0.15),0_8px_20px_rgba(2,84,244,0.10)] hover:shadow-[inset_0_0_18px_rgba(2,84,244,0.25),0_8px_30px_rgba(2,84,244,0.15)] transition-all duration-500 overflow-hidden">
-              <CardContent className="p-6 relative">
+              <CardContent className="p-4 sm:p-6 relative">
                 {/* Close button */}
                 <button
                   onClick={handleCloseAd}
-                  className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors z-10"
+                  className="absolute top-2 right-2 sm:top-3 sm:right-3 text-muted-foreground hover:text-foreground transition-colors z-10 p-1.5 touch-manipulation"
+                  aria-label="Close"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -65,40 +66,40 @@ export default function ApplyNowAd({ onClose }: ApplyNowAdProps) {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0254f4]/10 via-[#1c949a]/10 to-[#20b7bf]/10 opacity-50" />
                 
                 {/* Sparkle effects */}
-                <div className="absolute top-2 left-2">
+                <div className="absolute top-2 left-2 hidden sm:block">
                   <Sparkles className="h-3 w-3 text-[#0254f4] animate-pulse" />
                 </div>
-                <div className="absolute top-4 right-8">
+                <div className="absolute top-4 right-8 hidden sm:block">
                   <Sparkles className="h-2 w-2 text-[#1c949a] animate-pulse delay-1000" />
                 </div>
 
                 {/* Content */}
-                <div className="space-y-4 relative z-10">
+                <div className="space-y-3 sm:space-y-4 relative z-10">
                   {/* Header */}
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-[#0254f4]/20 rounded-lg border border-[#0254f4]/30">
-                      <GraduationCap className="h-6 w-6 text-[#0254f4]" />
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <div className="p-1.5 sm:p-2 bg-[#0254f4]/20 rounded-lg border border-[#0254f4]/30 flex-shrink-0">
+                      <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 text-[#0254f4]" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg bg-gradient-to-r from-[#0254f4] via-[#1c949a] to-[#20b7bf] bg-clip-text text-transparent">
+                      <h3 className="font-bold text-base sm:text-lg bg-gradient-to-r from-[#0254f4] via-[#1c949a] to-[#20b7bf] bg-clip-text text-transparent leading-tight">
                         Launch Your Career!
                       </h3>
-                      <p className="text-sm text-muted-foreground">Join our Launchpad Program</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">Join our Launchpad Program</p>
                     </div>
                   </div>
 
                   {/* Features */}
-                  <div className="space-y-2">
-                    <div className="flex items-center space-x-2 text-sm">
-                      <Star className="h-4 w-4 text-[#0254f4] fill-current" />
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <div className="flex items-center space-x-2 text-xs sm:text-sm">
+                      <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#0254f4] fill-current flex-shrink-0" />
                       <span className="text-foreground">Real Project Training</span>
                     </div>
-                    <div className="flex items-center space-x-2 text-sm">
-                      <Star className="h-4 w-4 text-[#1c949a] fill-current" />
+                    <div className="flex items-center space-x-2 text-xs sm:text-sm">
+                      <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#1c949a] fill-current flex-shrink-0" />
                       <span className="text-foreground">Job Placement Guarantee</span>
                     </div>
-                    <div className="flex items-center space-x-2 text-sm">
-                      <Star className="h-4 w-4 text-[#20b7bf] fill-current" />
+                    <div className="flex items-center space-x-2 text-xs sm:text-sm">
+                      <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#20b7bf] fill-current flex-shrink-0" />
                       <span className="text-foreground">Industry Certifications</span>
                     </div>
                   </div>
@@ -106,14 +107,14 @@ export default function ApplyNowAd({ onClose }: ApplyNowAdProps) {
                   {/* CTA Button */}
                   <Button
                     onClick={handleApplyClick}
-                    className="w-full bg-gradient-to-r from-[#0254f4] to-[#1c949a] hover:from-[#1c949a] hover:to-[#20b7bf] text-white font-semibold py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[0_8px_25px_rgba(2,84,244,0.3)] border-0"
+                    className="w-full bg-gradient-to-r from-[#0254f4] to-[#1c949a] hover:from-[#1c949a] hover:to-[#20b7bf] text-white font-semibold py-2.5 sm:py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[0_8px_25px_rgba(2,84,244,0.3)] border-0 touch-manipulation text-xs sm:text-sm"
                   >
-                    <UserPlus className="h-4 w-4 mr-2" />
+                    <UserPlus className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
                     Apply Now - Free Registration
                   </Button>
 
                   {/* Urgency text */}
-                  <p className="text-xs text-muted-foreground text-center">
+                  <p className="text-[10px] sm:text-xs text-muted-foreground text-center">
                     Limited seats available for next batch!
                   </p>
                 </div>
@@ -133,14 +134,14 @@ export default function ApplyNowAd({ onClose }: ApplyNowAdProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto"
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="w-full max-w-md max-h-[90vh] overflow-y-auto"
+              className="w-full max-w-md max-h-[95vh] overflow-y-auto my-auto"
             >
               <StudentRegistrationForm onClose={handleCloseForm} />
             </motion.div>
