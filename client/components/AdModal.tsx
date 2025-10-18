@@ -34,6 +34,7 @@ export default function AdModal({ onClose }: AdModalProps) {
   };
 
   const handleCloseAd = () => {
+    console.log('AdModal: Close button clicked');
     setIsVisible(false);
     if (onClose) {
       onClose();
@@ -63,29 +64,26 @@ export default function AdModal({ onClose }: AdModalProps) {
                 <CardContent className="p-4 sm:p-6 md:p-8 relative">
                   {/* Close button */}
                   <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      handleCloseAd();
-                    }}
-                    className="absolute top-2 right-2 sm:top-4 sm:right-4 text-muted-foreground hover:text-foreground active:text-foreground transition-colors z-10 p-3 sm:p-2 hover:bg-muted/50 active:bg-muted/70 rounded-full touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-[40px] sm:min-h-[40px] flex items-center justify-center"
+                    onClick={handleCloseAd}
+                    className="absolute top-2 right-2 sm:top-4 sm:right-4 text-muted-foreground hover:text-foreground active:text-foreground transition-colors z-50 p-3 sm:p-2 hover:bg-muted/50 active:bg-muted/70 rounded-full touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-[40px] sm:min-h-[40px] flex items-center justify-center cursor-pointer"
                     aria-label="Close modal"
                     type="button"
+                    style={{ pointerEvents: 'auto' }}
                   >
-                    <X className="h-5 w-5 sm:h-5 sm:w-5" />
+                    <X className="h-5 w-5 sm:h-5 sm:w-5 pointer-events-none" />
                   </button>
 
                   {/* Animated background gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0254f4]/15 via-[#1c949a]/15 to-[#20b7bf]/15 opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0254f4]/15 via-[#1c949a]/15 to-[#20b7bf]/15 opacity-60 pointer-events-none" />
                   
                   {/* Sparkle effects */}
-                  <div className="absolute top-3 left-3 hidden sm:block">
+                  <div className="absolute top-3 left-3 hidden sm:block pointer-events-none">
                     <Sparkles className="h-4 w-4 text-[#0254f4] animate-pulse" />
                   </div>
-                  <div className="absolute top-6 right-12 hidden sm:block">
+                  <div className="absolute top-6 right-12 hidden sm:block pointer-events-none">
                     <Sparkles className="h-3 w-3 text-[#1c949a] animate-pulse delay-1000" />
                   </div>
-                  <div className="absolute bottom-6 left-8 hidden sm:block">
+                  <div className="absolute bottom-6 left-8 hidden sm:block pointer-events-none">
                     <Sparkles className="h-3 w-3 text-[#20b7bf] animate-pulse delay-2000" />
                   </div>
 

@@ -25,6 +25,10 @@ import { getApiUrl } from "@/config/env";
 import { useToast } from "@/hooks/use-toast";
 
 export default function StudentRegistrationForm({ onClose }: StudentRegistrationFormProps) {
+  const handleClose = () => {
+    console.log('StudentRegistrationForm: Close button clicked');
+    onClose();
+  };
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -253,16 +257,13 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
             </CardTitle>
           </div>
           <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              onClose();
-            }}
-            className="text-muted-foreground hover:text-foreground active:text-foreground transition-colors p-3 sm:p-2 touch-manipulation -mr-2 hover:bg-muted/50 active:bg-muted/70 rounded-full min-w-[44px] min-h-[44px] sm:min-w-[40px] sm:min-h-[40px] flex items-center justify-center"
+            onClick={handleClose}
+            className="text-muted-foreground hover:text-foreground active:text-foreground transition-colors p-3 sm:p-2 touch-manipulation -mr-2 hover:bg-muted/50 active:bg-muted/70 rounded-full min-w-[44px] min-h-[44px] sm:min-w-[40px] sm:min-h-[40px] flex items-center justify-center cursor-pointer relative z-50"
             aria-label="Close registration form"
             type="button"
+            style={{ pointerEvents: 'auto' }}
           >
-            <X className="h-5 w-5 sm:h-5 sm:w-5" />
+            <X className="h-5 w-5 sm:h-5 sm:w-5 pointer-events-none" />
           </button>
         </div>
         <p className="text-xs sm:text-sm text-muted-foreground mt-2">

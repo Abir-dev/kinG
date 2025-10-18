@@ -30,6 +30,10 @@ export function PaymentDialog({
   planDetails,
   onProceed,
 }: PaymentDialogProps) {
+  const handleClose = () => {
+    console.log('PaymentDialog: Close button clicked');
+    onClose();
+  };
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [shippingAccepted, setShippingAccepted] = useState(false);
@@ -49,7 +53,7 @@ export function PaymentDialog({
   return (
     <Dialog open={isOpen} onOpenChange={(open) => {
       if (!open) {
-        onClose();
+        handleClose();
       }
     }}>
       <DialogContent className="sm:max-w-[600px] bg-card/90 backdrop-blur-lg">
@@ -196,13 +200,10 @@ export function PaymentDialog({
         <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 mt-6">
           <Button 
             variant="ghost" 
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              onClose();
-            }}
+            onClick={handleClose}
             type="button"
-            className="w-full sm:w-auto min-h-[44px] touch-manipulation"
+            className="w-full sm:w-auto min-h-[44px] touch-manipulation cursor-pointer"
+            style={{ pointerEvents: 'auto' }}
           >
             Cancel
           </Button>
