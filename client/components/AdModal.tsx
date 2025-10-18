@@ -49,7 +49,7 @@ export default function AdModal({ onClose }: AdModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-md overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-md overflow-y-auto overscroll-contain"
           >
             {/* Background blur overlay */}
             <motion.div
@@ -68,11 +68,11 @@ export default function AdModal({ onClose }: AdModalProps) {
                       e.stopPropagation();
                       handleCloseAd();
                     }}
-                    className="absolute top-2 right-2 sm:top-4 sm:right-4 text-muted-foreground hover:text-foreground transition-colors z-10 p-2 hover:bg-muted/50 rounded-full touch-manipulation"
-                    aria-label="Close"
+                    className="absolute top-2 right-2 sm:top-4 sm:right-4 text-muted-foreground hover:text-foreground active:text-foreground transition-colors z-10 p-3 sm:p-2 hover:bg-muted/50 active:bg-muted/70 rounded-full touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-[40px] sm:min-h-[40px] flex items-center justify-center"
+                    aria-label="Close modal"
                     type="button"
                   >
-                    <X className="h-5 w-5" />
+                    <X className="h-5 w-5 sm:h-5 sm:w-5" />
                   </button>
 
                   {/* Animated background gradient */}
@@ -202,7 +202,7 @@ export default function AdModal({ onClose }: AdModalProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-lg overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-lg overflow-y-auto overscroll-contain"
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}

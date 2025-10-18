@@ -193,7 +193,7 @@ export function PaymentDialog({
           </div>
         </div>
 
-        <div className="flex justify-end gap-4 mt-6">
+        <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 mt-6">
           <Button 
             variant="ghost" 
             onClick={(e) => {
@@ -202,11 +202,12 @@ export function PaymentDialog({
               onClose();
             }}
             type="button"
+            className="w-full sm:w-auto min-h-[44px] touch-manipulation"
           >
             Cancel
           </Button>
           <Button
-            className={`bg-gradient-to-r from-neon-purple to-neon-pink hover:opacity-90 ${
+            className={`w-full sm:w-auto min-h-[44px] touch-manipulation bg-gradient-to-r from-neon-purple to-neon-pink hover:opacity-90 ${
               !(
                 termsAccepted &&
                 privacyAccepted &&

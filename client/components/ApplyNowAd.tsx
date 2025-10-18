@@ -49,7 +49,7 @@ export default function ApplyNowAd({ onClose }: ApplyNowAdProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 50 }}
             transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
-            className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 w-[calc(100%-1.5rem)] sm:w-auto max-w-sm"
+            className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 w-[calc(100%-1.5rem)] sm:w-auto max-w-sm touch-manipulation"
           >
             <Card className="relative bg-card/80 backdrop-blur-[14px] backdrop-saturate-[160%] border border-[#0254f4]/60 shadow-[inset_0_0_18px_rgba(2,84,244,0.15),0_8px_20px_rgba(2,84,244,0.10)] hover:shadow-[inset_0_0_18px_rgba(2,84,244,0.25),0_8px_30px_rgba(2,84,244,0.15)] transition-all duration-500 overflow-hidden">
               <CardContent className="p-4 sm:p-6 relative">
@@ -60,11 +60,11 @@ export default function ApplyNowAd({ onClose }: ApplyNowAdProps) {
                     e.stopPropagation();
                     handleCloseAd();
                   }}
-                  className="absolute top-2 right-2 sm:top-3 sm:right-3 text-muted-foreground hover:text-foreground transition-colors z-10 p-1.5 touch-manipulation"
-                  aria-label="Close"
+                  className="absolute top-2 right-2 sm:top-3 sm:right-3 text-muted-foreground hover:text-foreground active:text-foreground transition-colors z-10 p-3 sm:p-1.5 touch-manipulation hover:bg-muted/50 active:bg-muted/70 rounded-full min-w-[44px] min-h-[44px] sm:min-w-[32px] sm:min-h-[32px] flex items-center justify-center"
+                  aria-label="Close ad"
                   type="button"
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-4 w-4 sm:h-4 sm:w-4" />
                 </button>
 
                 {/* Animated background gradient */}
