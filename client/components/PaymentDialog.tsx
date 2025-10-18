@@ -47,7 +47,11 @@ export function PaymentDialog({
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={(open) => {
+      if (!open) {
+        onClose();
+      }
+    }}>
       <DialogContent className="sm:max-w-[600px] bg-card/90 backdrop-blur-lg">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">
@@ -190,7 +194,15 @@ export function PaymentDialog({
         </div>
 
         <div className="flex justify-end gap-4 mt-6">
-          <Button variant="ghost" onClick={onClose}>
+          <Button 
+            variant="ghost" 
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onClose();
+            }}
+            type="button"
+          >
             Cancel
           </Button>
           <Button

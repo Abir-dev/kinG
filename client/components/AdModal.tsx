@@ -63,9 +63,14 @@ export default function AdModal({ onClose }: AdModalProps) {
                 <CardContent className="p-4 sm:p-6 md:p-8 relative">
                   {/* Close button */}
                   <button
-                    onClick={handleCloseAd}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleCloseAd();
+                    }}
                     className="absolute top-2 right-2 sm:top-4 sm:right-4 text-muted-foreground hover:text-foreground transition-colors z-10 p-2 hover:bg-muted/50 rounded-full touch-manipulation"
                     aria-label="Close"
+                    type="button"
                   >
                     <X className="h-5 w-5" />
                   </button>

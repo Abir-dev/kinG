@@ -55,9 +55,14 @@ export default function ApplyNowAd({ onClose }: ApplyNowAdProps) {
               <CardContent className="p-4 sm:p-6 relative">
                 {/* Close button */}
                 <button
-                  onClick={handleCloseAd}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleCloseAd();
+                  }}
                   className="absolute top-2 right-2 sm:top-3 sm:right-3 text-muted-foreground hover:text-foreground transition-colors z-10 p-1.5 touch-manipulation"
                   aria-label="Close"
+                  type="button"
                 >
                   <X className="h-4 w-4" />
                 </button>

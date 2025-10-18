@@ -253,9 +253,14 @@ export default function StudentRegistrationForm({ onClose }: StudentRegistration
             </CardTitle>
           </div>
           <button
-            onClick={onClose}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onClose();
+            }}
             className="text-muted-foreground hover:text-foreground transition-colors p-2 touch-manipulation -mr-2"
             aria-label="Close"
+            type="button"
           >
             <X className="h-5 w-5" />
           </button>
