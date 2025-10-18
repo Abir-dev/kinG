@@ -34,7 +34,8 @@ if (!fs.existsSync(uploadsDir)) {
 const allowedOrigins = [
   "http://localhost:8080",
   "http://127.0.0.1:8080",
-  "https://kin-ekbs2u8kd-abir-devs-projects.vercel.app"
+  "https://kin-ekbs2u8kd-abir-devs-projects.vercel.app",
+  "https://www.kingtechs.in"
 ];
 
 app.use(
