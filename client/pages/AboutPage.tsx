@@ -457,50 +457,50 @@ export default function AboutPage() {
             {/* Enhanced Timeline Line */}
             <div 
               ref={timelineLineRef}
-              className="absolute left-1/2 transform -translate-x-1/2 w-2 h-full bg-gradient-to-b from-neon-cyan via-neon-purple to-neon-pink opacity-40 rounded-full shadow-lg"
+              className="absolute left-1/2 transform -translate-x-1/2 w-1 sm:w-2 h-full bg-gradient-to-b from-neon-cyan via-neon-purple to-neon-pink opacity-40 rounded-full shadow-lg hidden lg:block"
               style={{
                 boxShadow: '0 0 20px rgba(6, 182, 212, 0.3), 0 0 40px rgba(139, 92, 246, 0.2)'
               }}
             ></div>
             
-            <div className="space-y-16">
+            <div className="space-y-8 lg:space-y-16">
               {timeline.map((item, index) => (
                 <div
                   key={item.year}
-                  className={`flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+                  className={`flex flex-col lg:flex-row items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
                 >
                   <div 
                     ref={el => timelineCardsRef.current[index] = el}
-                    className={`lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-16' : 'lg:pl-16'}`}
+                    className={`w-full lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-16' : 'lg:pl-16'}`}
                   >
                     <Card className="group bg-card/60 backdrop-blur-md border-border/50 hover:border-neon-cyan/70 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-neon-cyan/20">
                       <CardHeader className="pb-4">
                         <div className="flex items-center gap-4">
-                          <div className="w-14 h-14 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-full flex items-center justify-center text-black font-bold text-base sm:text-lg shadow-lg">
                             {item.year.slice(-2)}
                           </div>
                           <div>
-                            <CardTitle className="text-xl group-hover:text-neon-cyan transition-colors duration-300">
+                            <CardTitle className="text-lg sm:text-xl group-hover:text-neon-cyan transition-colors duration-300">
                               {item.title}
                             </CardTitle>
-                            <div className="text-sm text-neon-cyan font-medium bg-neon-cyan/10 px-2 py-1 rounded-full inline-block mt-1">
+                            <div className="text-xs sm:text-sm text-neon-cyan font-medium bg-neon-cyan/10 px-2 py-1 rounded-full inline-block mt-1">
                               {item.year}
                             </div>
                           </div>
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <CardDescription className="text-base leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
+                        <CardDescription className="text-sm sm:text-base leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
                           {item.description}
                         </CardDescription>
                       </CardContent>
                     </Card>
                   </div>
                   
-                  {/* Enhanced Timeline Dots */}
+                  {/* Enhanced Timeline Dots - Visible on mobile too */}
                   <div 
                     ref={el => timelineDotsRef.current[index] = el}
-                    className="hidden lg:block w-8 h-8 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-full border-4 border-background relative z-10 shadow-lg"
+                    className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink rounded-full border-4 border-background relative z-10 shadow-lg my-4 lg:my-0"
                     style={{
                       boxShadow: '0 0 20px rgba(6, 182, 212, 0.6), 0 0 40px rgba(139, 92, 246, 0.4)'
                     }}
@@ -509,7 +509,7 @@ export default function AboutPage() {
                     <div className="absolute inset-1 bg-white rounded-full opacity-80"></div>
                   </div>
                   
-                  <div className="lg:w-1/2"></div>
+                  <div className="w-full lg:w-1/2 hidden lg:block"></div>
                 </div>
               ))}
             </div>
@@ -598,8 +598,8 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          {/* Circular Team Layout - Single Line with Names */}
-          <div className="flex flex-nowrap justify-center items-start gap-4 md:gap-6 lg:gap-8 xl:gap-10 mb-16 overflow-x-auto pb-4">
+          {/* Responsive Team Grid Layout */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 sm:gap-6 md:gap-8 mb-16">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -608,65 +608,65 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="group relative flex flex-col items-center min-w-fit"
+                className="group relative flex flex-col items-center"
               >
                 {/* Circular Image Container */}
-                <div className="relative w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 mb-3">
+                <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 mb-3">
                   {/* Main Circular Image */}
                   <div className="w-full h-full rounded-full overflow-hidden border-4 border-neon-cyan/30 group-hover:border-neon-cyan transition-all duration-500 shadow-lg group-hover:shadow-2xl group-hover:shadow-neon-cyan/30">
-                      <img
-                        src={member.image}
-                        alt={`${member.name} — ${member.designation}`}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      </div>
+                    <img
+                      src={member.image}
+                      alt={`${member.name} — ${member.designation}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
                   
                   {/* Hover Overlay with Designation */}
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-neon-cyan/90 via-neon-purple/90 to-neon-pink/90 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center text-center p-2">
-                    <p className="text-xs md:text-sm text-white/90 font-medium leading-tight text-center">
+                    <p className="text-xs sm:text-sm text-white/90 font-medium leading-tight text-center">
                       {member.designation}
                     </p>
-                    </div>
+                  </div>
                     
                   {/* LinkedIn Link - Appears on hover */}
-                    <motion.a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  <motion.a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={`Open LinkedIn profile of ${member.name}`}
-                    className="absolute -top-1 -right-1 w-6 h-6 bg-neon-cyan/20 backdrop-blur-md rounded-full flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 border-2 border-neon-cyan/50"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                    <IconBrandLinkedin className="h-3 w-3" />
-                    </motion.a>
+                    className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-neon-cyan/20 backdrop-blur-md rounded-full flex items-center justify-center text-neon-cyan hover:bg-neon-cyan hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 border-2 border-neon-cyan/50"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <IconBrandLinkedin className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
+                  </motion.a>
 
                   {/* Special badges for leadership */}
                   {index === 0 && (
-                    <div className="absolute -top-1 -left-1 bg-gradient-to-r from-neon-cyan to-neon-purple px-1.5 py-0.5 rounded-full text-xs font-bold text-white shadow-lg">
+                    <div className="absolute -top-1 -left-1 bg-gradient-to-r from-neon-cyan to-neon-purple px-1 sm:px-1.5 py-0.5 rounded-full text-xs font-bold text-white shadow-lg">
                       CEO
-                  </div>
+                    </div>
                   )}
                   {index === 1 && (
-                    <div className="absolute -top-1 -left-1 bg-gradient-to-r from-neon-purple to-neon-pink px-1.5 py-0.5 rounded-full text-xs font-bold text-white shadow-lg">
+                    <div className="absolute -top-1 -left-1 bg-gradient-to-r from-neon-purple to-neon-pink px-1 sm:px-1.5 py-0.5 rounded-full text-xs font-bold text-white shadow-lg">
                       CFO
-                      </div>
+                    </div>
                   )}
                   {index === 2 && (
-                    <div className="absolute -top-1 -left-1 bg-gradient-to-r from-neon-cyan to-neon-purple px-1.5 py-0.5 rounded-full text-xs font-bold text-white shadow-lg">
+                    <div className="absolute -top-1 -left-1 bg-gradient-to-r from-neon-cyan to-neon-purple px-1 sm:px-1.5 py-0.5 rounded-full text-xs font-bold text-white shadow-lg">
                       CTO
                     </div>
                   )}
-          </div>
+                </div>
 
                 {/* Name Display */}
-                    <div className="text-center">
-                  <h3 className="text-xs md:text-sm lg:text-base font-bold text-foreground group-hover:text-neon-cyan transition-colors duration-300 leading-tight">
-                        {member.name}
-                      </h3>
-                      </div>
+                <div className="text-center">
+                  <h3 className="text-xs sm:text-sm md:text-base font-bold text-foreground group-hover:text-neon-cyan transition-colors duration-300 leading-tight">
+                    {member.name}
+                  </h3>
+                </div>
               </motion.div>
             ))}
           </div>
