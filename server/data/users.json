@@ -166,5 +166,17 @@
     "status": "pending",
     "registrationDate": "2025-10-19T08:35:57.809Z",
     "lastUpdated": "2025-10-19T08:35:57.810Z"
+  },
+  {
+    "id": "18cfee49-79cb-4f07-a518-2b9ed9180d20",
+    "name": "Subhangi Goswami",
+    "email": "subh@gmail.com",
+    "phone": "6754667894",
+    "course": "Microsoft Data Analyst Training (1 Month)",
+    "customCourse": "",
+    "experience": "Intermediate (1-3 years)",
+    "status": "pending",
+    "registrationDate": "2025-10-19T08:56:57.933Z",
+    "lastUpdated": "2025-10-19T08:56:57.933Z"
   }
 ]
