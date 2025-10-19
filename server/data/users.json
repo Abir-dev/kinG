@@ -154,5 +154,17 @@
     "status": "pending",
     "registrationDate": "2025-10-14T16:33:08.224Z",
     "lastUpdated": "2025-10-14T16:33:08.224Z"
+  },
+  {
+    "id": "7116bd8d-6cb4-4c09-85b8-78853e9b28c5",
+    "name": "Soumodip Banerjee",
+    "email": "soumodip@gmail.com",
+    "phone": "8844552233",
+    "course": "Digital Marketing Course (8 Weeks)",
+    "customCourse": "",
+    "experience": "",
+    "status": "pending",
+    "registrationDate": "2025-10-19T08:35:57.809Z",
+    "lastUpdated": "2025-10-19T08:35:57.810Z"
   }
 ]

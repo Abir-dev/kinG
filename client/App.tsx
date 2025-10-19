@@ -22,6 +22,7 @@ import RefundPolicyPage from "./pages/RefundPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
 import NotFound from "./pages/NotFound";
 import AdModal from "./components/AdModal";
+import { ChatAssistant } from "./components/ChatAssistant";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,7 @@ const App = () => (
         <BrowserRouter>
           <AnimatedRoutes />
           <AdModal />
+          <ChatAssistant />
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
