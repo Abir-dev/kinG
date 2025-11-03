@@ -129,7 +129,7 @@ const teamMembers = [
     name: "Abir Lal Banerjee",
     designation: "Full stack Developer / Technical Project Lead",
     description: "Full stack developer and technical lead, architecting scalable solutions.",
-    image: "/images/Abir.png",
+    image: "/images/profile.svg",
     linkedin: "https://linkedin.com/in/abir-lal-banerjee"
   },
   // {
