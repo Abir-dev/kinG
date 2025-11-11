@@ -132,16 +132,22 @@ const certificationTestimonials: CertificationTestimonial[] = [
     certificateImage: "mansinghCertificate.jpeg"
   },
   {
-    name: "Student Name 3",
+    name: "Shashwat",
     certificate: "Mobile App Development",
-    image: "student3.jpg",
-    certificateImage: "certificate3.jpg"
+    image: "images/profile.svg",
+    certificateImage: "shashwatcertificate.jpg"
   },
   {
-    name: "Student Name 4",
+    name: "Geeta Gerola",
     certificate: "Data Science & Analytics",
-    image: "student4.jpg",
-    certificateImage: "certificate4.jpg"
+    image: "images/profile.svg",
+    certificateImage: "geetacertificate.jpg"
+  },
+  {
+    name: "Sumit Modi",
+    certificate: "Data Science & Analytics",
+    image: "images/profile.svg",
+    certificateImage: "sumitcertificate.jpg"
   },
 ];
 
