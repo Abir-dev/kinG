@@ -149,6 +149,42 @@ const certificationTestimonials: CertificationTestimonial[] = [
     image: "images/profile.svg",
     certificateImage: "sumitcertificate.jpg"
   },
+  {
+    name: "Rahul Sonkar",
+    certificate: "Data Science & Analytics",
+    image: "images/profile.svg",
+    certificateImage: "rahulcertificate.jpg"
+  },
+  {
+    name: "Sameer Chugh",
+    certificate: "Data Science & Analytics",
+    image: "images/profile.svg",
+    certificateImage: "sameercertificate.jpg"
+  },
+  {
+    name: "Anushika Chakrawarty",
+    certificate: "Data Science & Analytics",
+    image: "anushika.jpg",
+    certificateImage: "anushikacertificate.jpg"
+  },
+  {
+    name: "Kritika Chakrawarty",
+    certificate: "Data Science & Analytics",
+    image: "kritika.jpg",
+    certificateImage: "kritikacertificate.jpg"
+  },
+  {
+    name: "Utkarsh Chandra Pandey",
+    certificate: "Data Science & Analytics",
+    image: "images/profile.svg",
+    certificateImage: "utkarshcertificate.jpg"
+  },
+  {
+    name: "Anand Kumar",
+    certificate: "Data Science & Analytics",
+    image: "images/profile.svg",
+    certificateImage: "anandcertificate.jpg"
+  },
 ];
 
 const brandPartners = [
