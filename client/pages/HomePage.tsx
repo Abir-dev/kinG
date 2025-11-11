@@ -185,6 +185,30 @@ const certificationTestimonials: CertificationTestimonial[] = [
     image: "images/profile.svg",
     certificateImage: "anandcertificate.jpg"
   },
+  {
+    name: "Shashwat",
+    certificate: "AI tools and ChatGPT workshop",
+    image: "images/profile.svg",
+    certificateImage: "shashwat.jpeg"
+  },
+  {
+    name: "Geeta",
+    certificate: "AI tools and ChatGPT workshop",
+    image: "images/profile.svg",
+    certificateImage: "geeta.jpeg"
+  },
+  {
+    name: "Rahul",
+    certificate: "AI tools and ChatGPT workshop",
+    image: "images/profile.svg",
+    certificateImage: "rahul.jpeg"
+  },
+  {
+    name: "Sumit",
+    certificate: "AI tools and ChatGPT workshop",
+    image: "images/profile.svg",
+    certificateImage: "sumit.jpeg"
+  },
 ];
 
 const brandPartners = [
