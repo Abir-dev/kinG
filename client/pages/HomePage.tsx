@@ -379,7 +379,7 @@ export default function HomePage() {
       
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4">
+      {/* <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -397,12 +397,12 @@ export default function HomePage() {
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Real experiences from students who have achieved exceptional results with our solutions
             </p>
-          </motion.div>
+          </motion.div> */}
 
           {/* Scrollable Testimonials Container */}
-          <div className="relative">
+          {/* <div className="relative"> */}
             {/* Navigation Arrows */}
-            <motion.button
+            {/* <motion.button
               onClick={() => scrollTestimonials('left')}
               className="absolute left-0 top-1/2 z-10 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 no-global-button"
               whileHover={{ scale: 1.1 }}
@@ -418,10 +418,10 @@ export default function HomePage() {
               whileTap={{ scale: 0.95 }}
             >
               <IconChevronRight className="h-6 w-6 text-[#1c949a]" />
-            </motion.button>
+            </motion.button> */}
 
             {/* Scrollable Testimonials */}
-            <div 
+            {/* <div 
               ref={testimonialsRef}
               className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 pl-16 pr-16"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
@@ -447,7 +447,7 @@ export default function HomePage() {
                       <div className="flex items-center gap-3 mt-2">
                         <div className="h-10 w-10 rounded-full bg-muted flex-shrink-0 overflow-hidden">
                           {/** Render image only if provided; keeps layout stable on mobile/desktop */}
-                          {testimonial.avatar ? (
+                          {/* {testimonial.avatar ? (
                             <img
                               src={testimonial.avatar}
                               alt={testimonial.name}
@@ -470,7 +470,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section>  */}
 
       {/* Certification Testimonials Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-background to-background/50">
