@@ -133,55 +133,55 @@ const certificationTestimonials: CertificationTestimonial[] = [
   },
   {
     name: "Shashwat",
-    certificate: "Mobile App Development",
+    certificate: "AI tools and ChatGPT workshop",
     image: "images/profile.svg",
     certificateImage: "shashwatcertificate.jpg"
   },
   {
     name: "Geeta Gerola",
-    certificate: "Data Science & Analytics",
+    certificate: "AI tools and ChatGPT workshop",
     image: "images/profile.svg",
     certificateImage: "geetacertificate.jpg"
   },
   {
     name: "Sumit Modi",
-    certificate: "Data Science & Analytics",
+    certificate: "AI tools and ChatGPT workshop",
     image: "images/profile.svg",
     certificateImage: "sumitcertificate.jpg"
   },
   {
     name: "Rahul Sonkar",
-    certificate: "Data Science & Analytics",
+    certificate: "AI tools and ChatGPT workshop",
     image: "images/profile.svg",
     certificateImage: "rahulcertificate.jpg"
   },
   {
     name: "Sameer Chugh",
-    certificate: "Data Science & Analytics",
+    certificate: "AI tools and ChatGPT workshop",
     image: "images/profile.svg",
     certificateImage: "sameercertificate.jpg"
   },
   {
     name: "Anushika Chakrawarty",
-    certificate: "Data Science & Analytics",
+    certificate: "AI tools and ChatGPT workshop",
     image: "anushika.jpg",
     certificateImage: "anushikacertificate.jpg"
   },
   {
     name: "Kritika Chakrawarty",
-    certificate: "Data Science & Analytics",
+    certificate: "AI tools and ChatGPT workshop",
     image: "kritika.jpg",
     certificateImage: "kritikacertificate.jpg"
   },
   {
     name: "Utkarsh Chandra Pandey",
-    certificate: "Data Science & Analytics",
+    certificate: "AI tools and ChatGPT workshop",
     image: "images/profile.svg",
     certificateImage: "utkarshcertificate.jpg"
   },
   {
     name: "Anand Kumar",
-    certificate: "Data Science & Analytics",
+    certificate: "AI tools and ChatGPT workshop",
     image: "images/profile.svg",
     certificateImage: "anandcertificate.jpg"
   },
