@@ -306,7 +306,7 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Numbers that reflect our commitment to excellence and client success
+              Numbers that reflect our commitment to excellence and student success
             </p>
           </motion.div>
 
@@ -349,11 +349,11 @@ export default function HomePage() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               {" "}
               <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-              Client Success Stories
+              Student Success Stories
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Real experiences from clients who have achieved exceptional results with our solutions
+              Real experiences from students who have achieved exceptional results with our solutions
             </p>
           </motion.div>
 

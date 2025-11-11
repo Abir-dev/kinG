@@ -171,8 +171,8 @@ const values = [
   },
   {
     icon: IconHeart,
-    title: "Client Success",
-    description: "Our clients' success is our success. We're committed to delivering exceptional results every time."
+    title: "Student Success",
+    description: "Our student's success is our success. We're committed to delivering exceptional results every time."
   },
   {
     icon: IconShield,
