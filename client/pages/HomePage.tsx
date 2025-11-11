@@ -6,6 +6,7 @@ import { Layout } from '../components/Layout';
 import { FullScreenHero } from '../components/FullScreenHero';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../components/ui/dialog';
 import { sectionVariants, staggerContainer, fadeInUp, scaleIn, slideInLeft, slideInRight } from '../components/PageTransition';
 import { LogoCardsSection } from '@/components/LogoCardsSection';
 import LaunchPadSection from '@/components/LaunchPadSection';
@@ -110,6 +111,40 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+type CertificationTestimonial = {
+  name: string;
+  certificate: string;
+  image: string;
+  certificateImage: string;
+};
+
+const certificationTestimonials: CertificationTestimonial[] = [
+  {
+    name: "Swatantra mishra",
+    certificate: "AI tools and ChatGPT workshop",
+    image: "swatantra.jpeg",
+    certificateImage: "swatantraCertificate.jpeg"
+  },
+  {
+    name: "Mansingh", 
+    certificate: "AI tools and ChatGPT workshop",
+    image: "mansingh.jpeg",
+    certificateImage: "mansinghCertificate.jpeg"
+  },
+  {
+    name: "Student Name 3",
+    certificate: "Mobile App Development",
+    image: "student3.jpg",
+    certificateImage: "certificate3.jpg"
+  },
+  {
+    name: "Student Name 4",
+    certificate: "Data Science & Analytics",
+    image: "student4.jpg",
+    certificateImage: "certificate4.jpg"
+  },
+];
+
 const brandPartners = [
   {
     name: "Microsoft",
@@ -200,6 +235,7 @@ const brandPartners = [
 export default function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
   const testimonialsRef = useRef<HTMLDivElement>(null);
+  const [selectedCertificate, setSelectedCertificate] = useState<CertificationTestimonial | null>(null);
 
   const scrollTestimonials = (direction: 'left' | 'right') => {
     if (testimonialsRef.current) {
@@ -429,6 +465,89 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Certification Testimonials Section */}
+      <section className="py-20 px-4 bg-gradient-to-b from-background to-background/50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-neon-pink via-neon-purple to-neon-cyan bg-clip-text text-transparent">
+                Certified Success Stories
+              </span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Meet our certified graduates who have completed industry-recognized training programs
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {certificationTestimonials.map((cert, index) => (
+              <motion.div
+                key={cert.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                onClick={() => setSelectedCertificate(cert)}
+                className="cursor-pointer"
+              >
+                <Card className="group h-full bg-card/50 backdrop-blur-sm border-border/40 hover:border-neon-pink/50 transition-all duration-500 overflow-hidden">
+                  <CardContent className="p-6">
+                    <div className="relative mb-4 rounded-lg overflow-hidden aspect-square">
+                      <img
+                        src={cert.image}
+                        alt={cert.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
+                        decoding="async"
+                        draggable={false}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                    <div className="text-center">
+                      <h3 className="font-bold text-lg mb-2 group-hover:text-[#0254f4] transition-colors">
+                        {cert.name}
+                      </h3>
+                      <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                        <IconCheck className="h-4 w-4 text-green-500 flex-shrink-0" />
+                        <span className="group-hover:text-[#1c949a] transition-colors">
+                          {cert.certificate}
+                        </span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certificate Modal */}
+      <Dialog open={!!selectedCertificate} onOpenChange={() => setSelectedCertificate(null)}>
+        <DialogContent className="max-w-4xl w-full p-6">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold">
+              {selectedCertificate?.name} - {selectedCertificate?.certificate}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="mt-4">
+            <img
+              src={selectedCertificate?.certificateImage}
+              alt={`${selectedCertificate?.name}'s certificate`}
+              className="w-full h-auto rounded-lg shadow-lg"
+              loading="lazy"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Call to Action */}
       <section className="py-20 px-4">
